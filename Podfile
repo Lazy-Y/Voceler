@@ -9,7 +9,7 @@
 # pod 'SwiftSpinner'
 # pod 'DynamicButton'
  pod 'TextFieldEffects'
-# pod 'SDAutoLayout'
+ pod 'SDAutoLayout'
 # pod 'DZNEmptyDataSet'
  pod 'BFPaperButton'
 # pod 'LTMorphingLabel'
@@ -19,7 +19,7 @@
 # pod 'Networking'
 # pod 'OmniCarouselView'
 # pod 'Firebase'
-# pod 'Firebase/Auth'
+ pod 'Firebase/Auth'
 # pod 'TagListView'
 
 target 'Voceler' do

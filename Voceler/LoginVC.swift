@@ -6,6 +6,20 @@
 //  Copyright © 2016 Zhenyang Zhong. All rights reserved.
 //
 
+// UI vars
+
+
+// Code vars
+
+
+// Actions
+
+
+// Functions
+
+
+// Override functions
+
 import UIKit
 import TextFieldEffects
 import BFPaperButton
@@ -57,6 +71,7 @@ class LoginVC: UIViewController {
 extension UIViewController{
     func initView(){
         touchToHideKeyboard()
+        edgesForExtendedLayout = []
     }
     
     func touchToHideKeyboard(){
