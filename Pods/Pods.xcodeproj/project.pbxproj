@@ -1,0 +1,921 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		079234622107482DE15756C6F477DF8E /* UIColor+BFPaperColors-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD1CF78BAF65AD8643C53823A77E0D2 /* UIColor+BFPaperColors-dummy.m */; };
+		096313FD1F2E4412C4DE094F1B732E97 /* UIColor+BFPaperColors-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3466E80051F601339DD90EE564A56C /* UIColor+BFPaperColors-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		16D8DE246FED7224ED9772DFB17DEF5C /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 85202B7CEDF31E0FAB5BEADA45D9AF0A /* BFPaperButton.m */; };
+		1E31F8ABC2B853FBE28C4D4E7DAFDC14 /* Pods-Voceler-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C94E831D6B720230A0C46350790D9B28 /* Pods-Voceler-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1F08BE4E1843C1C9433E6341B32D2A63 /* JiroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40B5A8276ED00E11AF98BA550DE554 /* JiroTextField.swift */; };
+		2A8DBD2DA65298375C25C6836D50FAB5 /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436DC41FF1EBAB42AD97BE81ED4671F /* YokoTextField.swift */; };
+		2FB4F324F7891369415C255B73260481 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F00A571B5E4C9A651A2FED606DF614 /* HoshiTextField.swift */; };
+		3C48E7E7511DA9EACB19F735A3B2C77C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F885EAF46A38D9EBC7080EF4BF9528E4 /* Foundation.framework */; };
+		434E4C12CB121CC0A60F0BFD50C54743 /* BFPaperButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB85F05DAB91D3FF56BBEBE30A43A92B /* BFPaperButton-dummy.m */; };
+		51881BC0FDE4E7A1174B2BB21D571D3F /* BFPaperButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 155D3DCBF9970A51DF54CFE2BAA3E550 /* BFPaperButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52396FB7D5DB422BF4C3D88C2B1B565E /* UIColor+BFPaperColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 10335002B40C7DC7D4CFE19093088DB0 /* UIColor+BFPaperColors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D3917384EBBF8FB5DFF41B19459F76E /* Pods-Voceler-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B0793CAE9E50A9076111424EFA8BC9 /* Pods-Voceler-dummy.m */; };
+		7C3E8FBF9CA7E69DDA768FEC9BD5B755 /* TextFieldEffects-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BB184DE3F5FBB9CF5C47F065757BFD /* TextFieldEffects-dummy.m */; };
+		8458837AE7E6D99590D16961D3A6ABD0 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993DE1A0BAFF39F33AB929D865F23B59 /* MinoruTextField.swift */; };
+		8746868DFD9FA683790748D8B544CDFE /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = F104FE3CE0AD3159F8BD5D9552C09498 /* UIColor+BFPaperColors.m */; };
+		94D9F4C5E11335E7624EB5D4D6AE2EFC /* MadokaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8FBC8B66575DB426AC1F94B7C9FC8 /* MadokaTextField.swift */; };
+		9795C30E96A26F4FC82DFEAEA30C85B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F885EAF46A38D9EBC7080EF4BF9528E4 /* Foundation.framework */; };
+		CEDDD4C4AF055B0BD511A951B07DA197 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280232228F29AD65F61AAF484A3AB19 /* IsaoTextField.swift */; };
+		CF08DAE9E7D907AE04B0F2EBF9F14623 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BEED14A8B7F2E8B25B77EFDACB4304 /* TextFieldsEffects.swift */; };
+		CFAAEAFA44FD1269292AA79565EB1E73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F885EAF46A38D9EBC7080EF4BF9528E4 /* Foundation.framework */; };
+		D0A78BEF7DDA5E50C96F56CFAD5395EF /* YoshikoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315D0CB2A3FE32363C4780200A60ACF /* YoshikoTextField.swift */; };
+		D7834CA537F846ED093E0CC65604AD22 /* UIColor_BFPaperColors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0711FBBDD8AE99EDA133D711CD3B05B /* UIColor_BFPaperColors.framework */; };
+		D7A65E6640D8EE212A7CFAFA2FF686C7 /* TextFieldEffects-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445BC9A7F287CC911C6D86903490CA2 /* TextFieldEffects-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D85DFA201DA657BB40093A223606746B /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF80FE74E5753AD1AFADA6570D33115 /* AkiraTextField.swift */; };
+		D8E8C971187817FAA5085378FE6329B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F885EAF46A38D9EBC7080EF4BF9528E4 /* Foundation.framework */; };
+		DB1872FDAE0C1AA5F6DB73C297755E5F /* BFPaperButton.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2E16971433EAC46B2DA5980A8F63E4 /* BFPaperButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2255C9C8D37162009473D527A0B0D67 /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E7B90AA91D0D20533B34E43E0766D /* KaedeTextField.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66F1E47D4A683A0C60556CE01BE40A87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E8D0C9935E1CF5ABB927211DDA94047;
+			remoteInfo = TextFieldEffects;
+		};
+		B73B8CDD2B4EB4B43DAFFC897371670B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99CADFE69A7E494B256A79CC7E9026C1;
+			remoteInfo = "UIColor+BFPaperColors";
+		};
+		D711732D274BC81F21B85755E9F65D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99CADFE69A7E494B256A79CC7E9026C1;
+			remoteInfo = "UIColor+BFPaperColors";
+		};
+		FE514B4BDA1F9E3D64471A75757BE352 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03B15615889710FDACFA6CB29AFBBDF0;
+			remoteInfo = BFPaperButton;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06149D61CB052DBC4ADF8D7EE6FB3043 /* TextFieldEffects.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TextFieldEffects.xcconfig; sourceTree = "<group>"; };
+		0E36FD90A8F8D3D61DC8E48E97D9DE04 /* Pods-Voceler-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Voceler-acknowledgements.markdown"; sourceTree = "<group>"; };
+		10335002B40C7DC7D4CFE19093088DB0 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+BFPaperColors.h"; path = "UIColor+BFPaperColors/UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
+		155D3DCBF9970A51DF54CFE2BAA3E550 /* BFPaperButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BFPaperButton-umbrella.h"; sourceTree = "<group>"; };
+		1C2F970B94BCCE6AD4040099E3C458DF /* Pods-Voceler-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Voceler-frameworks.sh"; sourceTree = "<group>"; };
+		1FADECBA321C0DCBB33551D298B9A03B /* BFPaperButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BFPaperButton.modulemap; sourceTree = "<group>"; };
+		206650A80554E38E3164CA570CE58BA5 /* UIColor+BFPaperColors.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "UIColor+BFPaperColors.modulemap"; sourceTree = "<group>"; };
+		242780CFFE6FD5819DCF16108400B7E8 /* BFPaperButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BFPaperButton.xcconfig; sourceTree = "<group>"; };
+		24CD2CECBF57B5DB6931D3D6E1FECDFB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27CC7AE8740962C84A5C172DF6F88495 /* Pods-Voceler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Voceler.release.xcconfig"; sourceTree = "<group>"; };
+		2CD6ED3124DF61A04EA69718E0CC0A35 /* Pods-Voceler-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Voceler-acknowledgements.plist"; sourceTree = "<group>"; };
+		3445BC9A7F287CC911C6D86903490CA2 /* TextFieldEffects-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TextFieldEffects-umbrella.h"; sourceTree = "<group>"; };
+		34A3EDE19F9B304879B49BAB4A2B9E49 /* UIColor+BFPaperColors.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "UIColor+BFPaperColors.xcconfig"; sourceTree = "<group>"; };
+		3BD1CF78BAF65AD8643C53823A77E0D2 /* UIColor+BFPaperColors-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors-dummy.m"; sourceTree = "<group>"; };
+		3C3466E80051F601339DD90EE564A56C /* UIColor+BFPaperColors-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors-umbrella.h"; sourceTree = "<group>"; };
+		4DFA99672B7CD6A00F383227DB8E67DB /* TextFieldEffects-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TextFieldEffects-prefix.pch"; sourceTree = "<group>"; };
+		52A1C497BB712D4AC559F3EF44499769 /* Pods_Voceler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voceler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A0F97B77448CCD45AB0A3EFFD99F509 /* UIColor+BFPaperColors-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors-prefix.pch"; sourceTree = "<group>"; };
+		68A138DC89BF0645F4BA698CEE4A1314 /* BFPaperButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BFPaperButton-prefix.pch"; sourceTree = "<group>"; };
+		6BD90CFCF457384356E759042BD65182 /* Pods-Voceler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Voceler.debug.xcconfig"; sourceTree = "<group>"; };
+		7315D0CB2A3FE32363C4780200A60ACF /* YoshikoTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YoshikoTextField.swift; path = TextFieldEffects/TextFieldEffects/YoshikoTextField.swift; sourceTree = "<group>"; };
+		8280232228F29AD65F61AAF484A3AB19 /* IsaoTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IsaoTextField.swift; path = TextFieldEffects/TextFieldEffects/IsaoTextField.swift; sourceTree = "<group>"; };
+		83D5B17C74B597B7C85320BD252EB1E9 /* TextFieldEffects.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TextFieldEffects.modulemap; sourceTree = "<group>"; };
+		85202B7CEDF31E0FAB5BEADA45D9AF0A /* BFPaperButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFPaperButton.m; path = Classes/BFPaperButton.m; sourceTree = "<group>"; };
+		8CFC365B107683281B1ECA8EF389AC90 /* BFPaperButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BFPaperButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		921E1A5D561C2A2739EDB90BC1B57A7C /* TextFieldEffects.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextFieldEffects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		97BEED14A8B7F2E8B25B77EFDACB4304 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextFieldsEffects.swift; path = TextFieldEffects/TextFieldEffects/TextFieldsEffects.swift; sourceTree = "<group>"; };
+		993DE1A0BAFF39F33AB929D865F23B59 /* MinoruTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MinoruTextField.swift; path = TextFieldEffects/TextFieldEffects/MinoruTextField.swift; sourceTree = "<group>"; };
+		A3BB184DE3F5FBB9CF5C47F065757BFD /* TextFieldEffects-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TextFieldEffects-dummy.m"; sourceTree = "<group>"; };
+		AFBD14543498FDCB19EE78959F307ADB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D8FBC8B66575DB426AC1F94B7C9FC8 /* MadokaTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MadokaTextField.swift; path = TextFieldEffects/TextFieldEffects/MadokaTextField.swift; sourceTree = "<group>"; };
+		BDEF04E060756F318AA21E0CE961AFFC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE0225BF8462DF3381061C14961909B0 /* UIColor_BFPaperColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIColor_BFPaperColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0B0793CAE9E50A9076111424EFA8BC9 /* Pods-Voceler-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Voceler-dummy.m"; sourceTree = "<group>"; };
+		C1D6F31A76AFC4170F374BE274B009B5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C94E831D6B720230A0C46350790D9B28 /* Pods-Voceler-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Voceler-umbrella.h"; sourceTree = "<group>"; };
+		D0711FBBDD8AE99EDA133D711CD3B05B /* UIColor_BFPaperColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIColor_BFPaperColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB2E16971433EAC46B2DA5980A8F63E4 /* BFPaperButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFPaperButton.h; path = Classes/BFPaperButton.h; sourceTree = "<group>"; };
+		E4E4AAA7FD802B85F1BD5A8802E27C32 /* Pods-Voceler-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Voceler-resources.sh"; sourceTree = "<group>"; };
+		E6CAA438B4B3ABEE210256A94185F9C6 /* Pods-Voceler.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Voceler.modulemap"; sourceTree = "<group>"; };
+		EA40B5A8276ED00E11AF98BA550DE554 /* JiroTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JiroTextField.swift; path = TextFieldEffects/TextFieldEffects/JiroTextField.swift; sourceTree = "<group>"; };
+		F104FE3CE0AD3159F8BD5D9552C09498 /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+BFPaperColors.m"; path = "UIColor+BFPaperColors/UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
+		F13E7B90AA91D0D20533B34E43E0766D /* KaedeTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KaedeTextField.swift; path = TextFieldEffects/TextFieldEffects/KaedeTextField.swift; sourceTree = "<group>"; };
+		F436DC41FF1EBAB42AD97BE81ED4671F /* YokoTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YokoTextField.swift; path = TextFieldEffects/TextFieldEffects/YokoTextField.swift; sourceTree = "<group>"; };
+		F885EAF46A38D9EBC7080EF4BF9528E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F9F00A571B5E4C9A651A2FED606DF614 /* HoshiTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HoshiTextField.swift; path = TextFieldEffects/TextFieldEffects/HoshiTextField.swift; sourceTree = "<group>"; };
+		FB85F05DAB91D3FF56BBEBE30A43A92B /* BFPaperButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BFPaperButton-dummy.m"; sourceTree = "<group>"; };
+		FDF80FE74E5753AD1AFADA6570D33115 /* AkiraTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AkiraTextField.swift; path = TextFieldEffects/TextFieldEffects/AkiraTextField.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D3DDC2ABF9C97C66E7D6F78CC0560FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFAAEAFA44FD1269292AA79565EB1E73 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE26ED36C83E26D5B9B14094FB8CE306 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8E8C971187817FAA5085378FE6329B1 /* Foundation.framework in Frameworks */,
+				D7834CA537F846ED093E0CC65604AD22 /* UIColor_BFPaperColors.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2689BAECEFEF984294DEF4CB2D55FF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9795C30E96A26F4FC82DFEAEA30C85B4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAC34F673E4D777F82CCEB12982FAAAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C48E7E7511DA9EACB19F735A3B2C77C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17F88EED99482D08EF2FAB550E2AF1C6 /* UIColor+BFPaperColors */ = {
+			isa = PBXGroup;
+			children = (
+				10335002B40C7DC7D4CFE19093088DB0 /* UIColor+BFPaperColors.h */,
+				F104FE3CE0AD3159F8BD5D9552C09498 /* UIColor+BFPaperColors.m */,
+				670D4CF6031E493DB89482897AEC0B18 /* Support Files */,
+			);
+			path = "UIColor+BFPaperColors";
+			sourceTree = "<group>";
+		};
+		4F759372B9300161A4EA1B6D2D3270BC /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F885EAF46A38D9EBC7080EF4BF9528E4 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5051118329509A0F86EEE07E4D7DE3B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0711FBBDD8AE99EDA133D711CD3B05B /* UIColor_BFPaperColors.framework */,
+				4F759372B9300161A4EA1B6D2D3270BC /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		670D4CF6031E493DB89482897AEC0B18 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDEF04E060756F318AA21E0CE961AFFC /* Info.plist */,
+				206650A80554E38E3164CA570CE58BA5 /* UIColor+BFPaperColors.modulemap */,
+				34A3EDE19F9B304879B49BAB4A2B9E49 /* UIColor+BFPaperColors.xcconfig */,
+				3BD1CF78BAF65AD8643C53823A77E0D2 /* UIColor+BFPaperColors-dummy.m */,
+				5A0F97B77448CCD45AB0A3EFFD99F509 /* UIColor+BFPaperColors-prefix.pch */,
+				3C3466E80051F601339DD90EE564A56C /* UIColor+BFPaperColors-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/UIColor+BFPaperColors";
+			sourceTree = "<group>";
+		};
+		775BC459E8197C1A892BCBB36F3CB314 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1FADECBA321C0DCBB33551D298B9A03B /* BFPaperButton.modulemap */,
+				242780CFFE6FD5819DCF16108400B7E8 /* BFPaperButton.xcconfig */,
+				FB85F05DAB91D3FF56BBEBE30A43A92B /* BFPaperButton-dummy.m */,
+				68A138DC89BF0645F4BA698CEE4A1314 /* BFPaperButton-prefix.pch */,
+				155D3DCBF9970A51DF54CFE2BAA3E550 /* BFPaperButton-umbrella.h */,
+				24CD2CECBF57B5DB6931D3D6E1FECDFB /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BFPaperButton";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				5051118329509A0F86EEE07E4D7DE3B3 /* Frameworks */,
+				8A11BCBC44F705036F35DFB9CC6B0C5A /* Pods */,
+				F96172A74221B8FF79696B5BEAC786D9 /* Products */,
+				8E0202A599739B805867BD4BE5414524 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8211A10D9B5E71E43F4BCA1678400C68 /* TextFieldEffects */ = {
+			isa = PBXGroup;
+			children = (
+				FDF80FE74E5753AD1AFADA6570D33115 /* AkiraTextField.swift */,
+				F9F00A571B5E4C9A651A2FED606DF614 /* HoshiTextField.swift */,
+				8280232228F29AD65F61AAF484A3AB19 /* IsaoTextField.swift */,
+				EA40B5A8276ED00E11AF98BA550DE554 /* JiroTextField.swift */,
+				F13E7B90AA91D0D20533B34E43E0766D /* KaedeTextField.swift */,
+				B6D8FBC8B66575DB426AC1F94B7C9FC8 /* MadokaTextField.swift */,
+				993DE1A0BAFF39F33AB929D865F23B59 /* MinoruTextField.swift */,
+				97BEED14A8B7F2E8B25B77EFDACB4304 /* TextFieldsEffects.swift */,
+				F436DC41FF1EBAB42AD97BE81ED4671F /* YokoTextField.swift */,
+				7315D0CB2A3FE32363C4780200A60ACF /* YoshikoTextField.swift */,
+				D6638BF837C933C922639FD469AF46ED /* Support Files */,
+			);
+			path = TextFieldEffects;
+			sourceTree = "<group>";
+		};
+		85850B5A795542C5D7EEEE9DEF1D7AC9 /* BFPaperButton */ = {
+			isa = PBXGroup;
+			children = (
+				DB2E16971433EAC46B2DA5980A8F63E4 /* BFPaperButton.h */,
+				85202B7CEDF31E0FAB5BEADA45D9AF0A /* BFPaperButton.m */,
+				775BC459E8197C1A892BCBB36F3CB314 /* Support Files */,
+			);
+			path = BFPaperButton;
+			sourceTree = "<group>";
+		};
+		8A11BCBC44F705036F35DFB9CC6B0C5A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85850B5A795542C5D7EEEE9DEF1D7AC9 /* BFPaperButton */,
+				8211A10D9B5E71E43F4BCA1678400C68 /* TextFieldEffects */,
+				17F88EED99482D08EF2FAB550E2AF1C6 /* UIColor+BFPaperColors */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8E0202A599739B805867BD4BE5414524 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B35DE2FBF766371E3DFA8BE3D12927BE /* Pods-Voceler */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B35DE2FBF766371E3DFA8BE3D12927BE /* Pods-Voceler */ = {
+			isa = PBXGroup;
+			children = (
+				C1D6F31A76AFC4170F374BE274B009B5 /* Info.plist */,
+				E6CAA438B4B3ABEE210256A94185F9C6 /* Pods-Voceler.modulemap */,
+				0E36FD90A8F8D3D61DC8E48E97D9DE04 /* Pods-Voceler-acknowledgements.markdown */,
+				2CD6ED3124DF61A04EA69718E0CC0A35 /* Pods-Voceler-acknowledgements.plist */,
+				C0B0793CAE9E50A9076111424EFA8BC9 /* Pods-Voceler-dummy.m */,
+				1C2F970B94BCCE6AD4040099E3C458DF /* Pods-Voceler-frameworks.sh */,
+				E4E4AAA7FD802B85F1BD5A8802E27C32 /* Pods-Voceler-resources.sh */,
+				C94E831D6B720230A0C46350790D9B28 /* Pods-Voceler-umbrella.h */,
+				6BD90CFCF457384356E759042BD65182 /* Pods-Voceler.debug.xcconfig */,
+				27CC7AE8740962C84A5C172DF6F88495 /* Pods-Voceler.release.xcconfig */,
+			);
+			name = "Pods-Voceler";
+			path = "Target Support Files/Pods-Voceler";
+			sourceTree = "<group>";
+		};
+		D6638BF837C933C922639FD469AF46ED /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFBD14543498FDCB19EE78959F307ADB /* Info.plist */,
+				83D5B17C74B597B7C85320BD252EB1E9 /* TextFieldEffects.modulemap */,
+				06149D61CB052DBC4ADF8D7EE6FB3043 /* TextFieldEffects.xcconfig */,
+				A3BB184DE3F5FBB9CF5C47F065757BFD /* TextFieldEffects-dummy.m */,
+				4DFA99672B7CD6A00F383227DB8E67DB /* TextFieldEffects-prefix.pch */,
+				3445BC9A7F287CC911C6D86903490CA2 /* TextFieldEffects-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TextFieldEffects";
+			sourceTree = "<group>";
+		};
+		F96172A74221B8FF79696B5BEAC786D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CFC365B107683281B1ECA8EF389AC90 /* BFPaperButton.framework */,
+				52A1C497BB712D4AC559F3EF44499769 /* Pods_Voceler.framework */,
+				921E1A5D561C2A2739EDB90BC1B57A7C /* TextFieldEffects.framework */,
+				BE0225BF8462DF3381061C14961909B0 /* UIColor_BFPaperColors.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5FFC790932ED54D97C0E8ED460C6E3B7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51881BC0FDE4E7A1174B2BB21D571D3F /* BFPaperButton-umbrella.h in Headers */,
+				DB1872FDAE0C1AA5F6DB73C297755E5F /* BFPaperButton.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A45EC78DBDCCA5CA53E15F80073C273D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7A65E6640D8EE212A7CFAFA2FF686C7 /* TextFieldEffects-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1E2D7300C9565A330EEFA583EF67880 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				096313FD1F2E4412C4DE094F1B732E97 /* UIColor+BFPaperColors-umbrella.h in Headers */,
+				52396FB7D5DB422BF4C3D88C2B1B565E /* UIColor+BFPaperColors.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F84C4006304E1A96F3341195C2B6FEFA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E31F8ABC2B853FBE28C4D4E7DAFDC14 /* Pods-Voceler-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		03B15615889710FDACFA6CB29AFBBDF0 /* BFPaperButton */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C2BABD5168F143EFDE2C1ED8ADA1D58 /* Build configuration list for PBXNativeTarget "BFPaperButton" */;
+			buildPhases = (
+				F8860C75290EADEF35DCD0A6AC89BA86 /* Sources */,
+				AE26ED36C83E26D5B9B14094FB8CE306 /* Frameworks */,
+				5FFC790932ED54D97C0E8ED460C6E3B7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0012619112E3FCA8BEC4A89C0D97A596 /* PBXTargetDependency */,
+			);
+			name = BFPaperButton;
+			productName = BFPaperButton;
+			productReference = 8CFC365B107683281B1ECA8EF389AC90 /* BFPaperButton.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4E8D0C9935E1CF5ABB927211DDA94047 /* TextFieldEffects */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3768DFC3B290E82ED16485D37A4FAA5E /* Build configuration list for PBXNativeTarget "TextFieldEffects" */;
+			buildPhases = (
+				3F33B426B30AB42C321132D4CECE45C3 /* Sources */,
+				CAC34F673E4D777F82CCEB12982FAAAA /* Frameworks */,
+				A45EC78DBDCCA5CA53E15F80073C273D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TextFieldEffects;
+			productName = TextFieldEffects;
+			productReference = 921E1A5D561C2A2739EDB90BC1B57A7C /* TextFieldEffects.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6703571A64DC0A97F625372DD86BEB28 /* Pods-Voceler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FC56FF09415B380F759E0CBBB212FB6 /* Build configuration list for PBXNativeTarget "Pods-Voceler" */;
+			buildPhases = (
+				C82D09AAAD244F12378179564B9EB97E /* Sources */,
+				C2689BAECEFEF984294DEF4CB2D55FF6 /* Frameworks */,
+				F84C4006304E1A96F3341195C2B6FEFA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6517B749BF9E36C00A176E90744DB9D /* PBXTargetDependency */,
+				B731125E1DF6B1CFA98FEF37103D242C /* PBXTargetDependency */,
+				45A3C2E2D757CDA91826486B061F1E20 /* PBXTargetDependency */,
+			);
+			name = "Pods-Voceler";
+			productName = "Pods-Voceler";
+			productReference = 52A1C497BB712D4AC559F3EF44499769 /* Pods_Voceler.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		99CADFE69A7E494B256A79CC7E9026C1 /* UIColor+BFPaperColors */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CF8F008359D2ACB1B97019A9AEA9026 /* Build configuration list for PBXNativeTarget "UIColor+BFPaperColors" */;
+			buildPhases = (
+				456858E6D92B961BD5D64923F8048CD9 /* Sources */,
+				4D3DDC2ABF9C97C66E7D6F78CC0560FA /* Frameworks */,
+				D1E2D7300C9565A330EEFA583EF67880 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UIColor+BFPaperColors";
+			productName = "UIColor+BFPaperColors";
+			productReference = BE0225BF8462DF3381061C14961909B0 /* UIColor_BFPaperColors.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					03B15615889710FDACFA6CB29AFBBDF0 = {
+						DevelopmentTeam = BQJG9S336S;
+						DevelopmentTeamName = "Zhenyang Zhong (Personal Team)";
+					};
+					4E8D0C9935E1CF5ABB927211DDA94047 = {
+						DevelopmentTeam = BQJG9S336S;
+						DevelopmentTeamName = "Zhenyang Zhong (Personal Team)";
+					};
+					6703571A64DC0A97F625372DD86BEB28 = {
+						DevelopmentTeam = BQJG9S336S;
+						DevelopmentTeamName = "Zhenyang Zhong (Personal Team)";
+					};
+					99CADFE69A7E494B256A79CC7E9026C1 = {
+						DevelopmentTeam = BQJG9S336S;
+						DevelopmentTeamName = "Zhenyang Zhong (Personal Team)";
+					};
+				};
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = F96172A74221B8FF79696B5BEAC786D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03B15615889710FDACFA6CB29AFBBDF0 /* BFPaperButton */,
+				6703571A64DC0A97F625372DD86BEB28 /* Pods-Voceler */,
+				4E8D0C9935E1CF5ABB927211DDA94047 /* TextFieldEffects */,
+				99CADFE69A7E494B256A79CC7E9026C1 /* UIColor+BFPaperColors */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F33B426B30AB42C321132D4CECE45C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D85DFA201DA657BB40093A223606746B /* AkiraTextField.swift in Sources */,
+				2FB4F324F7891369415C255B73260481 /* HoshiTextField.swift in Sources */,
+				CEDDD4C4AF055B0BD511A951B07DA197 /* IsaoTextField.swift in Sources */,
+				1F08BE4E1843C1C9433E6341B32D2A63 /* JiroTextField.swift in Sources */,
+				F2255C9C8D37162009473D527A0B0D67 /* KaedeTextField.swift in Sources */,
+				94D9F4C5E11335E7624EB5D4D6AE2EFC /* MadokaTextField.swift in Sources */,
+				8458837AE7E6D99590D16961D3A6ABD0 /* MinoruTextField.swift in Sources */,
+				7C3E8FBF9CA7E69DDA768FEC9BD5B755 /* TextFieldEffects-dummy.m in Sources */,
+				CF08DAE9E7D907AE04B0F2EBF9F14623 /* TextFieldsEffects.swift in Sources */,
+				2A8DBD2DA65298375C25C6836D50FAB5 /* YokoTextField.swift in Sources */,
+				D0A78BEF7DDA5E50C96F56CFAD5395EF /* YoshikoTextField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		456858E6D92B961BD5D64923F8048CD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				079234622107482DE15756C6F477DF8E /* UIColor+BFPaperColors-dummy.m in Sources */,
+				8746868DFD9FA683790748D8B544CDFE /* UIColor+BFPaperColors.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C82D09AAAD244F12378179564B9EB97E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D3917384EBBF8FB5DFF41B19459F76E /* Pods-Voceler-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8860C75290EADEF35DCD0A6AC89BA86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				434E4C12CB121CC0A60F0BFD50C54743 /* BFPaperButton-dummy.m in Sources */,
+				16D8DE246FED7224ED9772DFB17DEF5C /* BFPaperButton.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0012619112E3FCA8BEC4A89C0D97A596 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "UIColor+BFPaperColors";
+			target = 99CADFE69A7E494B256A79CC7E9026C1 /* UIColor+BFPaperColors */;
+			targetProxy = B73B8CDD2B4EB4B43DAFFC897371670B /* PBXContainerItemProxy */;
+		};
+		45A3C2E2D757CDA91826486B061F1E20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "UIColor+BFPaperColors";
+			target = 99CADFE69A7E494B256A79CC7E9026C1 /* UIColor+BFPaperColors */;
+			targetProxy = D711732D274BC81F21B85755E9F65D34 /* PBXContainerItemProxy */;
+		};
+		A6517B749BF9E36C00A176E90744DB9D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BFPaperButton;
+			target = 03B15615889710FDACFA6CB29AFBBDF0 /* BFPaperButton */;
+			targetProxy = FE514B4BDA1F9E3D64471A75757BE352 /* PBXContainerItemProxy */;
+		};
+		B731125E1DF6B1CFA98FEF37103D242C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TextFieldEffects;
+			target = 4E8D0C9935E1CF5ABB927211DDA94047 /* TextFieldEffects */;
+			targetProxy = 66F1E47D4A683A0C60556CE01BE40A87 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		034014829C1E4434983CF3A690C12017 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		0674D9C7F3D816DC1599F7B9850CB528 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27CC7AE8740962C84A5C172DF6F88495 /* Pods-Voceler.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Voceler/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Voceler/Pods-Voceler.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Voceler;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1460F2ADE140AA796E9C13CB172C9DE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34A3EDE19F9B304879B49BAB4A2B9E49 /* UIColor+BFPaperColors.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/UIColor+BFPaperColors/UIColor+BFPaperColors-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UIColor+BFPaperColors/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/UIColor+BFPaperColors/UIColor+BFPaperColors.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = UIColor_BFPaperColors;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		23820972E20DB243BF1AEC3C829CBDCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06149D61CB052DBC4ADF8D7EE6FB3043 /* TextFieldEffects.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TextFieldEffects/TextFieldEffects-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TextFieldEffects/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TextFieldEffects/TextFieldEffects.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TextFieldEffects;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6BCF7D632DAC66EA4DD49897A3F0803B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 242780CFFE6FD5819DCF16108400B7E8 /* BFPaperButton.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BFPaperButton/BFPaperButton-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BFPaperButton/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BFPaperButton/BFPaperButton.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = BFPaperButton;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9A73EC042BC7AD8F89559E0B149E426D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34A3EDE19F9B304879B49BAB4A2B9E49 /* UIColor+BFPaperColors.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/UIColor+BFPaperColors/UIColor+BFPaperColors-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UIColor+BFPaperColors/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/UIColor+BFPaperColors/UIColor+BFPaperColors.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = UIColor_BFPaperColors;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B497143275574F8571BB7D60C55BF45D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BD90CFCF457384356E759042BD65182 /* Pods-Voceler.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Voceler/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Voceler/Pods-Voceler.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Voceler;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C7E474A03CAE21F1CB6046E7344C59BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D08CAB69F8CCA0E92D5D4227D8963209 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06149D61CB052DBC4ADF8D7EE6FB3043 /* TextFieldEffects.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TextFieldEffects/TextFieldEffects-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TextFieldEffects/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TextFieldEffects/TextFieldEffects.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TextFieldEffects;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F44FF314BD1D8D4E929414D34048423A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 242780CFFE6FD5819DCF16108400B7E8 /* BFPaperButton.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BFPaperButton/BFPaperButton-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BFPaperButton/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BFPaperButton/BFPaperButton.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = BFPaperButton;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2CF8F008359D2ACB1B97019A9AEA9026 /* Build configuration list for PBXNativeTarget "UIColor+BFPaperColors" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1460F2ADE140AA796E9C13CB172C9DE1 /* Debug */,
+				9A73EC042BC7AD8F89559E0B149E426D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				034014829C1E4434983CF3A690C12017 /* Debug */,
+				C7E474A03CAE21F1CB6046E7344C59BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3768DFC3B290E82ED16485D37A4FAA5E /* Build configuration list for PBXNativeTarget "TextFieldEffects" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D08CAB69F8CCA0E92D5D4227D8963209 /* Debug */,
+				23820972E20DB243BF1AEC3C829CBDCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FC56FF09415B380F759E0CBBB212FB6 /* Build configuration list for PBXNativeTarget "Pods-Voceler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B497143275574F8571BB7D60C55BF45D /* Debug */,
+				0674D9C7F3D816DC1599F7B9850CB528 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C2BABD5168F143EFDE2C1ED8ADA1D58 /* Build configuration list for PBXNativeTarget "BFPaperButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F44FF314BD1D8D4E929414D34048423A /* Debug */,
+				6BCF7D632DAC66EA4DD49897A3F0803B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

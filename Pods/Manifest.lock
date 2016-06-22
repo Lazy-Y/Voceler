@@ -1,0 +1,18 @@
+PODS:
+  - BFPaperButton (2.0.29):
+    - UIColor+BFPaperColors
+  - TextFieldEffects (1.2.0)
+  - UIColor+BFPaperColors (1.7.2)
+
+DEPENDENCIES:
+  - BFPaperButton
+  - TextFieldEffects
+
+SPEC CHECKSUMS:
+  BFPaperButton: 7df738f2e749a9a4edd3e043f0621ee02215e417
+  TextFieldEffects: bc4fd3bd557321bd61a0762f3f50965477a36f62
+  UIColor+BFPaperColors: 03101fe6c10ed00c6daae7c26553f1de41500853
+
+PODFILE CHECKSUM: 0aeed64c2bcd32a62c3da9a94566869f84783881
+
+COCOAPODS: 1.0.1

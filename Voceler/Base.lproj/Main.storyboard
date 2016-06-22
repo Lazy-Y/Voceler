@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Voceler-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,108 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="vY9-mY-jrV">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="GgJ-VU-o60"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mFA-E2-9gi" customClass="KaedeTextField" customModule="TextFieldEffects">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="B51-go-Yr9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Le2-Zd-IOV" customClass="KaedeTextField" customModule="TextFieldEffects">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BjQ-SQ-wJC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Oi-52-GCo" customClass="BFPaperButton">
+                                <color key="backgroundColor" red="0.16697824767633918" green="0.74243125302731072" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LTD-RG-KQd"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLD-vp-sEX" customClass="BFPaperButton">
+                                <color key="backgroundColor" red="0.16470588235294117" green="0.74509803921568629" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="kCs-Gr-2jy"/>
+                                </constraints>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ory-dq-nfx" customClass="BFPaperButton">
+                                <color key="backgroundColor" red="1" green="0.23977922765259663" blue="0.34896770920337805" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mXk-7b-Dhb"/>
+                                </constraints>
+                                <state key="normal" title="Reset password">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Le2-Zd-IOV" secondAttribute="trailing" constant="20" id="1qC-wh-2BA"/>
+                            <constraint firstItem="vY9-mY-jrV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="3qh-Va-TpK"/>
+                            <constraint firstItem="ory-dq-nfx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="3yd-87-18g"/>
+                            <constraint firstItem="vY9-mY-jrV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="107" id="5cv-yu-T8O"/>
+                            <constraint firstItem="mFA-E2-9gi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="9dm-F0-Ltb"/>
+                            <constraint firstItem="ory-dq-nfx" firstAttribute="top" secondItem="jLD-vp-sEX" secondAttribute="bottom" constant="8" id="CSj-GY-Khl"/>
+                            <constraint firstItem="mFA-E2-9gi" firstAttribute="top" secondItem="vY9-mY-jrV" secondAttribute="bottom" constant="30" id="Cn8-r5-uqR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mFA-E2-9gi" secondAttribute="trailing" constant="20" id="Epc-bE-ens"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jLD-vp-sEX" secondAttribute="trailing" constant="50" id="Gbe-vG-hOV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ory-dq-nfx" secondAttribute="trailing" constant="50" id="Odp-8e-uqF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vY9-mY-jrV" secondAttribute="trailing" constant="108" id="PAo-Cd-ssr"/>
+                            <constraint firstItem="5Oi-52-GCo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="PIO-ej-Ov4"/>
+                            <constraint firstItem="Le2-Zd-IOV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Vmr-zo-BLv"/>
+                            <constraint firstItem="5Oi-52-GCo" firstAttribute="top" secondItem="Le2-Zd-IOV" secondAttribute="bottom" constant="40" id="XI0-ZD-EYp"/>
+                            <constraint firstItem="jLD-vp-sEX" firstAttribute="top" secondItem="5Oi-52-GCo" secondAttribute="bottom" constant="8" id="YXK-Ao-eGS"/>
+                            <constraint firstItem="jLD-vp-sEX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="ecM-cH-1ar"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Oi-52-GCo" secondAttribute="trailing" constant="50" id="ma5-gb-KYt"/>
+                            <constraint firstItem="Le2-Zd-IOV" firstAttribute="top" secondItem="mFA-E2-9gi" secondAttribute="bottom" constant="10" id="yq3-ge-wxW"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Voceler" id="k5l-fn-M2g"/>
+                    <connections>
+                        <outlet property="emailField" destination="mFA-E2-9gi" id="4zx-XM-dSi"/>
+                        <outlet property="loginBtn" destination="5Oi-52-GCo" id="sWs-YA-DOJ"/>
+                        <outlet property="logoImg" destination="vY9-mY-jrV" id="XTp-An-JwY"/>
+                        <outlet property="passwordField" destination="Le2-Zd-IOV" id="823-5u-F7M"/>
+                        <outlet property="resetBtn" destination="ory-dq-nfx" id="pqr-Gi-JdJ"/>
+                        <outlet property="signupBtn" destination="jLD-vp-sEX" id="cG0-Kb-jPe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="640" height="610"/>
+    </resources>
 </document>
