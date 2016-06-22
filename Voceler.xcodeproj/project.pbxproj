@@ -1,0 +1,302 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD1DBB0B1D1A4D9E00E6762D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */; };
+		FD1DBB0D1D1A4D9E00E6762D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1DBB0C1D1A4D9E00E6762D /* ViewController.swift */; };
+		FD1DBB101D1A4D9E00E6762D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB0E1D1A4D9E00E6762D /* Main.storyboard */; };
+		FD1DBB121D1A4D9E00E6762D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */; };
+		FD1DBB151D1A4D9E00E6762D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB131D1A4D9E00E6762D /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FD1DBB071D1A4D9E00E6762D /* Voceler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voceler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FD1DBB0C1D1A4D9E00E6762D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FD1DBB0F1D1A4D9E00E6762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FD1DBB141D1A4D9E00E6762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FD1DBB161D1A4D9E00E6762D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD1DBB041D1A4D9E00E6762D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD1DBAFE1D1A4D9E00E6762D = {
+			isa = PBXGroup;
+			children = (
+				FD1DBB091D1A4D9E00E6762D /* Voceler */,
+				FD1DBB081D1A4D9E00E6762D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD1DBB081D1A4D9E00E6762D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD1DBB071D1A4D9E00E6762D /* Voceler.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD1DBB091D1A4D9E00E6762D /* Voceler */ = {
+			isa = PBXGroup;
+			children = (
+				FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */,
+				FD1DBB0C1D1A4D9E00E6762D /* ViewController.swift */,
+				FD1DBB0E1D1A4D9E00E6762D /* Main.storyboard */,
+				FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */,
+				FD1DBB131D1A4D9E00E6762D /* LaunchScreen.storyboard */,
+				FD1DBB161D1A4D9E00E6762D /* Info.plist */,
+			);
+			path = Voceler;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD1DBB061D1A4D9E00E6762D /* Voceler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD1DBB191D1A4D9E00E6762D /* Build configuration list for PBXNativeTarget "Voceler" */;
+			buildPhases = (
+				FD1DBB031D1A4D9E00E6762D /* Sources */,
+				FD1DBB041D1A4D9E00E6762D /* Frameworks */,
+				FD1DBB051D1A4D9E00E6762D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Voceler;
+			productName = Voceler;
+			productReference = FD1DBB071D1A4D9E00E6762D /* Voceler.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD1DBAFF1D1A4D9E00E6762D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Zhenyang Zhong";
+				TargetAttributes = {
+					FD1DBB061D1A4D9E00E6762D = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = BQJG9S336S;
+						DevelopmentTeamName = "Zhenyang Zhong (Personal Team)";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FD1DBB021D1A4D9E00E6762D /* Build configuration list for PBXProject "Voceler" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FD1DBAFE1D1A4D9E00E6762D;
+			productRefGroup = FD1DBB081D1A4D9E00E6762D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD1DBB061D1A4D9E00E6762D /* Voceler */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FD1DBB051D1A4D9E00E6762D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD1DBB151D1A4D9E00E6762D /* LaunchScreen.storyboard in Resources */,
+				FD1DBB121D1A4D9E00E6762D /* Assets.xcassets in Resources */,
+				FD1DBB101D1A4D9E00E6762D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD1DBB031D1A4D9E00E6762D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD1DBB0D1D1A4D9E00E6762D /* ViewController.swift in Sources */,
+				FD1DBB0B1D1A4D9E00E6762D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FD1DBB0E1D1A4D9E00E6762D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD1DBB0F1D1A4D9E00E6762D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FD1DBB131D1A4D9E00E6762D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD1DBB141D1A4D9E00E6762D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FD1DBB171D1A4D9E00E6762D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FD1DBB181D1A4D9E00E6762D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FD1DBB1A1D1A4D9E00E6762D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Voceler/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = owen.Voceler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		FD1DBB1B1D1A4D9E00E6762D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Voceler/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = owen.Voceler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD1DBB021D1A4D9E00E6762D /* Build configuration list for PBXProject "Voceler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD1DBB171D1A4D9E00E6762D /* Debug */,
+				FD1DBB181D1A4D9E00E6762D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD1DBB191D1A4D9E00E6762D /* Build configuration list for PBXNativeTarget "Voceler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD1DBB1A1D1A4D9E00E6762D /* Debug */,
+				FD1DBB1B1D1A4D9E00E6762D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD1DBAFF1D1A4D9E00E6762D /* Project object */;
+}
