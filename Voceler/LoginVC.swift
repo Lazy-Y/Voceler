@@ -6,27 +6,26 @@
 //  Copyright © 2016 Zhenyang Zhong. All rights reserved.
 //
 
-// UI vars
+// UIVars
 
-
-// Code vars
-
+// FieldVars
 
 // Actions
 
-
 // Functions
-
 
 // Override functions
 
 import UIKit
 import TextFieldEffects
 import BFPaperButton
+import SwiftString
+import SCLAlertView
+import FirebaseAuth
+import SwiftSpinner
 
-class LoginVC: UIViewController {
-    
-    // UI vars
+class LoginVC: UIViewController{
+    // UIVars
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var emailField: KaedeTextField!
     @IBOutlet weak var passwordField: KaedeTextField!
@@ -34,12 +33,43 @@ class LoginVC: UIViewController {
     @IBOutlet weak var signupBtn: BFPaperButton!
     @IBOutlet weak var resetBtn: BFPaperButton!
     
-    
-    // Code vars
-    
+    // FieldVars
+    var repassField: UITextField?
     
     // Actions
-    
+    @IBAction func loginAct(_ sender: AnyObject) {
+    }
+    @IBAction func signupAct(_ sender: AnyObject) {
+        if !checkEmail() {
+            _ = SCLAlertView().showError("Sorry", subTitle: "Incorrect Email format.")
+            return
+        }
+        if !checkPassword(){
+            _ = SCLAlertView().showError("Sorry", subTitle: "A valid password has at lease 6 characters.")
+            return
+        }
+        showConfirmPsw()
+    }
+    @IBAction func resetAct(_ sender: AnyObject) {
+        if let text = emailField.text where text.isEmail(){
+            let spinner = SwiftSpinner.show("Processing...")
+            spinner.backgroundColor = themeColor
+            FIRAuth.auth()?.sendPasswordReset(withEmail: text, completion: { (error) in
+                SwiftSpinner.hide()
+                DispatchQueue.main.async(execute: {
+                    if let error = error{
+                        _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
+                    }
+                    else {
+                        _ = SCLAlertView().showSuccess("Success", subTitle: "An Email to reset password has been sent to you.")
+                    }
+                })
+            })
+        }
+        else {
+            _ = SCLAlertView().showError("Sorry", subTitle: "Incorrect Email format.")
+        }
+    }
     
     // Functions
     func initUI(){
@@ -51,6 +81,66 @@ class LoginVC: UIViewController {
         resetBtn.setup(radius: 16)
     }
     
+    func initNoti(){
+        let notiCenter = NotificationCenter.default()
+        notiCenter.addObserver(self, selector: #selector(emailChange(noti:)), name: Notification.Name.UITextFieldTextDidChange, object: emailField)
+        notiCenter.addObserver(self, selector: #selector(passwordChange(noti:)), name: Notification.Name.UITextFieldTextDidChange, object: passwordField)
+    }
+    
+    func emailChange(noti:Notification) {
+        if checkEmail(){
+            emailField.textColor = UIColor.black()
+        }
+        else {
+            emailField.textColor = UIColor.red()
+        }
+    }
+    
+    func passwordChange(noti:Notification) {
+        if checkPassword(){
+            passwordField.textColor = UIColor.black()
+        }
+        else {
+            passwordField.textColor = UIColor.red()
+        }
+    }
+    
+    func checkEmail() -> Bool {
+        return emailField.text!.isEmail()
+    }
+    
+    func checkPassword() -> Bool{
+        return passwordField.text!.length >= 6
+    }
+    
+    func showConfirmPsw() {
+        let alert = SCLAlertView()
+        repassField = alert.addTextField()
+        repassField?.isSecureTextEntry = true
+        _ = alert.showEdit("Sign up", subTitle: "Please re-enter your password.")
+        alert.doneButton.addTarget(self, action: #selector(alertClose), for: .touchUpInside)
+    }
+    
+    func alertClose(){
+        if let text = repassField?.text{
+            if text != passwordField.text{
+                _ = SCLAlertView().showError("Sorry", subTitle: "Two passwords are not the same")
+            }
+            else {
+                let spinner = SwiftSpinner.show("Signing up...")
+                spinner.backgroundColor = themeColor
+                FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in
+                    SwiftSpinner.hide()
+                    if let error = error{
+                        _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
+                    }
+                    else {
+                        _ = SCLAlertView().showSuccess("Success", subTitle: "Signup successfully!")
+                    }
+                })
+            }
+        }
+    }
     
     // Override functions
     override func viewDidLoad() {
@@ -58,49 +148,13 @@ class LoginVC: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         initView()
         initUI()
+        initNoti()
+        emailField.text = "zhenyanz@usc.edu"
+        passwordField.text = "123456"
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-
-}
-
-extension UIViewController{
-    func initView(){
-        touchToHideKeyboard()
-        edgesForExtendedLayout = []
-    }
-    
-    func touchToHideKeyboard(){
-        let tab = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tab.isEnabled = true
-        view.addGestureRecognizer(tab)
-    }
-    
-    func hideKeyboard(){
-        view.endEditing(true)
-    }
-}
-
-extension UIImageView{
-    func setup(radius:CGFloat){
-        layer.masksToBounds = true
-        layer.cornerRadius = radius
-    }
-}
-
-extension UITextField{
-    func setup(radius:CGFloat){
-        layer.cornerRadius = radius
-    }
-}
-
-extension BFPaperButton{
-    func setup(radius:CGFloat){
-        isRaised = false
-        cornerRadius = radius
     }
 }

@@ -23,12 +23,12 @@
                                     <constraint firstAttribute="height" constant="128" id="GgJ-VU-o60"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mFA-E2-9gi" customClass="KaedeTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mFA-E2-9gi" customClass="KaedeTextField" customModule="TextFieldEffects">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="B51-go-Yr9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                         <real key="value" value="1"/>
@@ -38,12 +38,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Le2-Zd-IOV" customClass="KaedeTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Le2-Zd-IOV" customClass="KaedeTextField" customModule="TextFieldEffects">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BjQ-SQ-wJC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                         <real key="value" value="1"/>
@@ -61,6 +61,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ayJ-Ty-xfX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLD-vp-sEX" customClass="BFPaperButton">
                                 <color key="backgroundColor" red="0.16470588235294117" green="0.74509803921568629" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,7 +74,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="IR3-Ri-ovl" kind="show" id="St8-fd-Wjo"/>
+                                    <action selector="signupAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NPc-tD-UYx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ory-dq-nfx" customClass="BFPaperButton">
@@ -82,6 +85,9 @@
                                 <state key="normal" title="Reset password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qcd-Qa-ygS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
@@ -120,55 +126,8 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="n8w-ap-3M8">
-            <objects>
-                <navigationController id="IR3-Ri-ovl" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O7l-Mi-dEm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1647058824" green="0.74509803919999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="f5l-PK-OmC" kind="relationship" relationship="rootViewController" id="kzY-k4-MFL"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FNu-ky-TUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="33" y="686"/>
-        </scene>
-        <!--Sign up-->
-        <scene sceneID="tky-8T-IeT">
-            <objects>
-                <viewController storyboardIdentifier="SignupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="f5l-PK-OmC" customClass="SignupVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="W6t-kD-oKI"/>
-                        <viewControllerLayoutGuide type="bottom" id="nPH-Bu-wpG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="E6t-ZR-ftB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Sign up" id="xKV-Kn-4KC">
-                        <barButtonItem key="leftBarButtonItem" image="left2_filled-25" id="sxh-5g-b6L">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="backAct:" destination="f5l-PK-OmC" id="ZiP-Up-PSx"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x2Q-7N-iug" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="685.60000000000002" y="685.90704647676171"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="left2_filled-25" width="25" height="25"/>
         <image name="logo" width="640" height="610"/>
     </resources>
 </document>

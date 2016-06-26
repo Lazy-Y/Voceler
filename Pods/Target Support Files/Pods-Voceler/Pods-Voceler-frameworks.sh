@@ -85,13 +85,25 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/BFPaperButton/BFPaperButton.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MMDrawerController/MMDrawerController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NSString-Email/NSString_Email.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SCLAlertView/SCLAlertView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SDAutoLayout/SDAutoLayout.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SFFocusViewLayout/SFFocusViewLayout.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftSpinner/SwiftSpinner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftString/SwiftString.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TextFieldEffects/TextFieldEffects.framework"
   install_framework "$BUILT_PRODUCTS_DIR/UIColor+BFPaperColors/UIColor_BFPaperColors.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/BFPaperButton/BFPaperButton.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MMDrawerController/MMDrawerController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NSString-Email/NSString_Email.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SCLAlertView/SCLAlertView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SDAutoLayout/SDAutoLayout.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SFFocusViewLayout/SFFocusViewLayout.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftSpinner/SwiftSpinner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftString/SwiftString.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TextFieldEffects/TextFieldEffects.framework"
   install_framework "$BUILT_PRODUCTS_DIR/UIColor+BFPaperColors/UIColor_BFPaperColors.framework"
 fi

@@ -9,12 +9,47 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MMDrawerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NSString-Email.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Voceler.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDAutoLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SFFocusViewLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftString-SwiftString.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftString.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,22 +72,57 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>04D818E4E97243F65096BDE0F347DFB7</key>
+		<key>13967D9472FC1F8ACB9AD2DF1A02FC7B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62A9A76A7D9DD8939DD8EAA5E2B58455</key>
+		<key>64CB32E412F34B16BECA7A49FD937125</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8AF77FF716F2308848FD3855F25747D0</key>
+		<key>68B6F43538E359DA8EE5CF6DAB1F8B19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>96D3562E47E4792B0A6093A0323EB398</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>99CADFE69A7E494B256A79CC7E9026C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A98FEADA64FF00A73A66B7086BE926A2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B3BA16734490E5CEDF5C67EA3F53E927</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C1A9DE9FB098AEDBBDBAB58D06B7946B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D72332634D3A6AAEB322F2A9F86E5760</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E68A03BCA9D45436880493937DC9017C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5A8E8177DE74842D56E4328B5595A26</key>
 		<dict>
 			<key>primary</key>
 			<true/>

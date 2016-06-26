@@ -115,16 +115,16 @@ import UIKit
         placeholderLabel.textAlignment = textAlignment
 
         if isFirstResponder() || text!.isNotEmpty {
-            placeholderLabel.font = placeholderFontFromFontAndPercentageOfOriginalSize(font: font!, percentageOfOriginalSize: placeholderFontScale * 0.8)
+            placeholderLabel.font = placeholderFontFromFontAndPercentageOfOriginalSize(font!, percentageOfOriginalSize: placeholderFontScale * 0.8)
             placeholderLabel.text = placeholder?.uppercased()
             placeholderLabel.textColor = activeBorderColor
         } else {
-            placeholderLabel.font = placeholderFontFromFontAndPercentageOfOriginalSize(font: font!, percentageOfOriginalSize: placeholderFontScale)
+            placeholderLabel.font = placeholderFontFromFontAndPercentageOfOriginalSize(font!, percentageOfOriginalSize: placeholderFontScale)
             placeholderLabel.textColor = placeholderColor
         }
     }
 
-    private func placeholderFontFromFontAndPercentageOfOriginalSize(font: UIFont, percentageOfOriginalSize: CGFloat) -> UIFont! {
+    private func placeholderFontFromFontAndPercentageOfOriginalSize(_ font: UIFont, percentageOfOriginalSize: CGFloat) -> UIFont! {
         let smallerFont = UIFont(name: font.fontName, size: font.pointSize * percentageOfOriginalSize)
         return smallerFont
     }
@@ -134,7 +134,7 @@ import UIKit
     }
 
     private var placeholderHeight : CGFloat {
-        return placeHolderInsets.y + placeholderFontFromFontAndPercentageOfOriginalSize(font: font!, percentageOfOriginalSize: placeholderFontScale).lineHeight
+        return placeHolderInsets.y + placeholderFontFromFontAndPercentageOfOriginalSize(font!, percentageOfOriginalSize: placeholderFontScale).lineHeight
     }
     
     private func animateViews() {
