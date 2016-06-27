@@ -20,6 +20,9 @@ pod 'SwiftString'
 pod 'SCLAlertView'
 pod 'MMDrawerController'
 pod 'SFFocusViewLayout'
+pod 'BSGridCollectionViewLayout'
+pod 'GrowingTextViewHandler'
+pod 'SCTableViewCell'
 
 target 'Voceler' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks

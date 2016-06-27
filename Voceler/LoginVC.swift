@@ -38,17 +38,27 @@ class LoginVC: UIViewController{
     
     // Actions
     @IBAction func loginAct(_ sender: AnyObject) {
+        if checkEmail(showAlert: true) && checkPassword(showAlert: true){
+            let spinner = SwiftSpinner.show("Login...")
+            spinner.backgroundColor = themeColor
+            FIRAuth.auth()?.signIn(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in
+                DispatchQueue.main.async(execute: {
+                    SwiftSpinner.hide()
+                    if let error = error{
+                        _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
+                    }
+                    else {
+                        drawer.centerViewController = VC(name: "Question")
+                        self.show(drawer, sender: self)
+                    }
+                })
+            })
+        }
     }
     @IBAction func signupAct(_ sender: AnyObject) {
-        if !checkEmail() {
-            _ = SCLAlertView().showError("Sorry", subTitle: "Incorrect Email format.")
-            return
+        if checkEmail(showAlert: true) && checkPassword(showAlert: true){
+            showConfirmPsw()
         }
-        if !checkPassword(){
-            _ = SCLAlertView().showError("Sorry", subTitle: "A valid password has at lease 6 characters.")
-            return
-        }
-        showConfirmPsw()
     }
     @IBAction func resetAct(_ sender: AnyObject) {
         if let text = emailField.text where text.isEmail(){
@@ -105,20 +115,37 @@ class LoginVC: UIViewController{
         }
     }
     
-    func checkEmail() -> Bool {
-        return emailField.text!.isEmail()
+    func checkEmail(showAlert:Bool = false) -> Bool {
+        if emailField.text!.isEmail() {
+            return true
+        }
+        else {
+            if showAlert{
+                _ = SCLAlertView().showError("Sorry", subTitle: "Incorrect Email format.")
+            }
+            return false
+        }
     }
     
-    func checkPassword() -> Bool{
-        return passwordField.text!.length >= 6
+    func checkPassword(showAlert:Bool = false) -> Bool{
+        if passwordField.text!.length >= 6 {
+            return true
+        }
+        else {
+            if showAlert{
+                _ = SCLAlertView().showError("Sorry", subTitle: "A valid password has at lease 6 characters.")
+            }
+            return false
+        }
     }
     
     func showConfirmPsw() {
         let alert = SCLAlertView()
         repassField = alert.addTextField()
         repassField?.isSecureTextEntry = true
-        _ = alert.showEdit("Sign up", subTitle: "Please re-enter your password.")
-        alert.doneButton.addTarget(self, action: #selector(alertClose), for: .touchUpInside)
+        _ = alert.addButton("Done", action: alertClose)
+        _ = alert.showEdit("Sign up", subTitle: "Please re-enter your password.", closeButtonTitle: "Cancel")
+        alert.doneButton.setTitle("Cancel", for: [])
     }
     
     func alertClose(){
@@ -149,6 +176,7 @@ class LoginVC: UIViewController{
         initView()
         initUI()
         initNoti()
+        print(loginBtn.backgroundColor)
         emailField.text = "zhenyanz@usc.edu"
         passwordField.text = "123456"
     }
@@ -156,5 +184,11 @@ class LoginVC: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = FIRAuth.auth()?.currentUser{
+            show(drawer, sender: self)
+        }
     }
 }
