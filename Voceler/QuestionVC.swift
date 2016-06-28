@@ -8,8 +8,9 @@
 
 import UIKit
 import GrowingTextViewHandler
+import SCTableViewCell
 
-class QuestionVC: UIViewController, UITextViewDelegate  {
+class QuestionVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
     // UIVars
     var handler:GrowingTextViewHandler!
     
@@ -31,6 +32,7 @@ class QuestionVC: UIViewController, UITextViewDelegate  {
         detailTV.delegate = self
         handler = GrowingTextViewHandler(textView: self.detailTV, withHeightConstraint: self.heightConstraint)
         handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 8)
+        detailTV.isSelectable = false
         askerProfile.layer.cornerRadius = 20
         askerProfile.layer.masksToBounds = true
     }
@@ -52,5 +54,13 @@ class QuestionVC: UIViewController, UITextViewDelegate  {
     
     override func viewDidAppear(_ animated: Bool) {
         handler.resizeTextView(withAnimation: true)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = SCTableViewCell(style: .default, reuseIdentifier: "reuseIdentifier", in: <#T##UITableView!#>)
     }
 }
