@@ -168,6 +168,9 @@
                                     <constraint firstAttribute="width" constant="64" id="rR7-oI-DnM"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="logo"/>
+                                <connections>
+                                    <action selector="showProfile:" destination="5Bf-16-xYp" eventType="touchUpInside" id="Az9-Jb-aGU"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lazy-Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZv-w9-gr1">
                                 <constraints>
@@ -288,16 +291,17 @@
                         <outlet property="askerProfile" destination="5fG-DK-5uZ" id="Slk-0o-wGG"/>
                         <outlet property="detailTV" destination="r2J-lQ-BdC" id="bF8-qF-EwI"/>
                         <outlet property="heightConstraint" destination="PQb-Mg-ECw" id="3MH-Hh-g2u"/>
+                        <outlet property="optTbv" destination="1uJ-rx-rnN" id="l5N-X2-xKy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zuF-6U-cPF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1364" y="37.331334332833585"/>
         </scene>
-        <!--View Controller-->
+        <!--ProfileVC-->
         <scene sceneID="Rm5-t0-FOh">
             <objects>
-                <viewController id="szR-mG-dQI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="szR-mG-dQI" customClass="ProfileVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BAK-w4-bcB"/>
                         <viewControllerLayoutGuide type="bottom" id="L5U-aa-xEo"/>

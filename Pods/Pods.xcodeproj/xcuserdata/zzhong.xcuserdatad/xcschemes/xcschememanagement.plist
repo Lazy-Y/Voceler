@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FoldingCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GrowingTextViewHandler.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,57 +102,47 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>181082A6A09DF44D8F40C413F0982FAE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1A5FBA8E56A90F0FED60D64534DCF266</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1B851D484AD23B7317E83942CA46B06D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3233A37038BBF96FD6550F27D8CE8AA8</key>
+		<key>332C2A9784F09ABA713ADA8E2240ED04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6578EBCF2707B62D6765B39997DC5A18</key>
+		<key>3C6603C48008B8706D2A069F66654F1F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D4A0E4AB8E5C5A0FB7F5CDBB0A00C2C</key>
+		<key>44D04613A7591446E9F604C26C55657F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CB3A69BB00E753F14AE59D32CFA00F9</key>
+		<key>6F04E7E9175AFBF2F4FA5BC97D0A62B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>81C8248E142E72F2D294322CAA13D425</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>82E1F657AF0C7149B704B0C66D7C8B4C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>856DBB99F0D1F47DB9D21A472008B0F4</key>
+		<key>72B9FAFCD383B5708061A605CBC52F6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>8AA3DDB8797222294E1288CB197A8347</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8CAB835E4104B0A936AF3D92A7E2A1D5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>90C6420708644206B2E1707DCDC8EE7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,7 +157,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A4DDEA4AAA9EFA6A44983B99C2F75A30</key>
+		<key>A3464DFD23ED529075672B6D7D399A81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B640F9265E7FEFD8AF859DBA7A2AFFD8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C09A7D2B514FB240A4F5A34D14E5B908</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E23E2D3597FE3569FE4684C9E9B76EB8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

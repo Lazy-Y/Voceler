@@ -19,11 +19,14 @@
 		FD87D7291D1F8DA900D77DC2 /* Globle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87D7281D1F8DA900D77DC2 /* Globle.swift */; };
 		FD8A5E531D1F97620068F57A /* CtrlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8A5E521D1F97620068F57A /* CtrlVC.swift */; };
 		FD9855421D1FA5CB0038CBC3 /* CtrlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */; };
+		FDA2BA791D222A1A0003633E /* OptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2BA781D222A1A0003633E /* OptCell.swift */; };
+		FDA2BA7B1D222A250003633E /* OptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDA2BA7A1D222A250003633E /* OptCell.xib */; };
+		FDA2BA7D1D222A790003633E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2BA7C1D222A790003633E /* ProfileVC.swift */; };
+		FDA2BA7F1D222BD70003633E /* OptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2BA7E1D222BD70003633E /* OptView.swift */; };
 		FDBBB5DF1D20544100D75467 /* QuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBB5DE1D20544100D75467 /* QuestionVC.swift */; };
 		FDBBB5E31D2055D000D75467 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBB5E21D2055D000D75467 /* CollectionVC.swift */; };
 		FDBBB5E71D2055E600D75467 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBB5E61D2055E600D75467 /* SettingsVC.swift */; };
 		FDD344361D1B91980040356A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD344351D1B91980040356A /* LoginVC.swift */; };
-		FDFD5CC51D20C284000B1CD1 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD5CC41D20C284000B1CD1 /* ProfileVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,11 +46,14 @@
 		FD87D7281D1F8DA900D77DC2 /* Globle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globle.swift; sourceTree = "<group>"; };
 		FD8A5E521D1F97620068F57A /* CtrlVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CtrlVC.swift; sourceTree = "<group>"; };
 		FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CtrlCell.xib; sourceTree = "<group>"; };
+		FDA2BA781D222A1A0003633E /* OptCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptCell.swift; sourceTree = "<group>"; };
+		FDA2BA7A1D222A250003633E /* OptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptCell.xib; sourceTree = "<group>"; };
+		FDA2BA7C1D222A790003633E /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		FDA2BA7E1D222BD70003633E /* OptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptView.swift; sourceTree = "<group>"; };
 		FDBBB5DE1D20544100D75467 /* QuestionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionVC.swift; sourceTree = "<group>"; };
 		FDBBB5E21D2055D000D75467 /* CollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		FDBBB5E61D2055E600D75467 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		FDD344351D1B91980040356A /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		FDFD5CC41D20C284000B1CD1 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,14 +111,17 @@
 				FD8A5E521D1F97620068F57A /* CtrlVC.swift */,
 				FDBBB5DE1D20544100D75467 /* QuestionVC.swift */,
 				FDBBB5E21D2055D000D75467 /* CollectionVC.swift */,
+				FDA2BA7C1D222A790003633E /* ProfileVC.swift */,
 				FDBBB5E61D2055E600D75467 /* SettingsVC.swift */,
-				FDFD5CC41D20C284000B1CD1 /* ProfileVC.swift */,
+				FDA2BA7E1D222BD70003633E /* OptView.swift */,
 				FD1036D91D1FB01600AC1FE9 /* CtrlCell.swift */,
+				FDA2BA781D222A1A0003633E /* OptCell.swift */,
 				FD149E1A1D1B7939007F3F7B /* UIExtension.swift */,
 				FD149E1C1D1B7C81007F3F7B /* NSExtension.swift */,
 				FD87D7281D1F8DA900D77DC2 /* Globle.swift */,
 				FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */,
 				FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */,
+				FDA2BA7A1D222A250003633E /* OptCell.xib */,
 				FD1DBB0E1D1A4D9E00E6762D /* Main.storyboard */,
 				FD1DBB131D1A4D9E00E6762D /* LaunchScreen.storyboard */,
 				FD1DBB161D1A4D9E00E6762D /* Info.plist */,
@@ -187,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD1DBB151D1A4D9E00E6762D /* LaunchScreen.storyboard in Resources */,
+				FDA2BA7B1D222A250003633E /* OptCell.xib in Resources */,
 				FD1DBB121D1A4D9E00E6762D /* Assets.xcassets in Resources */,
 				FD1DBB1D1D1A65CC00E6762D /* GoogleService-Info.plist in Resources */,
 				FD1DBB101D1A4D9E00E6762D /* Main.storyboard in Resources */,
@@ -249,16 +259,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDA2BA7D1D222A790003633E /* ProfileVC.swift in Sources */,
+				FDA2BA7F1D222BD70003633E /* OptView.swift in Sources */,
 				FD87D7291D1F8DA900D77DC2 /* Globle.swift in Sources */,
 				FD8A5E531D1F97620068F57A /* CtrlVC.swift in Sources */,
 				FD149E1B1D1B7939007F3F7B /* UIExtension.swift in Sources */,
+				FDA2BA791D222A1A0003633E /* OptCell.swift in Sources */,
 				FDBBB5DF1D20544100D75467 /* QuestionVC.swift in Sources */,
 				FDBBB5E31D2055D000D75467 /* CollectionVC.swift in Sources */,
 				FDBBB5E71D2055E600D75467 /* SettingsVC.swift in Sources */,
 				FD149E1D1D1B7C81007F3F7B /* NSExtension.swift in Sources */,
 				FD1DBB0B1D1A4D9E00E6762D /* AppDelegate.swift in Sources */,
 				FDD344361D1B91980040356A /* LoginVC.swift in Sources */,
-				FDFD5CC51D20C284000B1CD1 /* ProfileVC.swift in Sources */,
 				FD1036DA1D1FB01600AC1FE9 /* CtrlCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,6 +23,7 @@ pod 'SFFocusViewLayout'
 pod 'BSGridCollectionViewLayout'
 pod 'GrowingTextViewHandler'
 pod 'SCTableViewCell'
+pod 'FoldingCell'
 
 target 'Voceler' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks

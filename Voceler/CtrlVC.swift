@@ -22,6 +22,10 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     let viewsArr = ["Question", "Collection", "Settings", "Log out"]
     
     // Actions
+    @IBAction func showProfile(_ sender: AnyObject) {
+        drawer.centerViewController = VC(name: "Profile")
+        drawer.toggle(.left, animated: true, completion: nil)
+    }
     
     // Functions
     func initUI() {
