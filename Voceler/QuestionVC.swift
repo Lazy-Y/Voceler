@@ -10,35 +10,53 @@ import UIKit
 import GrowingTextViewHandler
 import FoldingCell
 
-class QuestionVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
-    // UIVars
+class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    // FieldVars
     var handler:GrowingTextViewHandler!
     var cellHeights = [CGFloat]()
-    let kCloseCellHeight: CGFloat = 75 // equal or greater foregroundView height
-    let kOpenCellHeight: CGFloat = 300 // equal or greater containerView height
+    let kCloseCellHeight: CGFloat = 70 // equal or greater foregroundView height
+    let kOpenCellHeight: CGFloat = 310 // equal or greater containerView height
+    var liked = false
+    let cellContent = ["Swift", "Python", "C++", "Java", "PHP", "JavaScript", "Nodejs", "HTML", "Bash", "Assembly"]
     
-    // FieldVars
+    // UIVars
+    @IBOutlet weak var likeBtn: UIButton!
     @IBOutlet weak var detailTV: UITextView!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var askerProfile: UIButton!
     @IBOutlet weak var askerLbl: UILabel!
     @IBOutlet weak var optTbv: UITableView!
+    @IBOutlet weak var scrollHeight: NSLayoutConstraint!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // Actions
     @IBAction func showAskVC(_ sender: AnyObject) {
         
     }
     
+    @IBAction func likeAction(_ sender: AnyObject) {
+        liked = !liked
+        if liked {
+            likeBtn.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
+        }
+        else{
+            likeBtn.setImage(#imageLiteral(resourceName: "star_filled").withRenderingMode(.alwaysTemplate), for: [])
+        }
+    }
+    
     // Functions
     func setupUI() {
         setupProfile()
         edgesForExtendedLayout = []
-        detailTV.delegate = self
+//        detailTV.board(radius: 16, width: 3, color: themeColor)
         handler = GrowingTextViewHandler(textView: self.detailTV, withHeightConstraint: self.heightConstraint)
-        handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 8)
-        detailTV.isSelectable = false
-        askerProfile.layer.cornerRadius = 20
-        askerProfile.layer.masksToBounds = true
+        handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 5)
+        detailTV.isEditable = false
+        askerProfile.board(radius: 20, width: 3, color: UIColor.white())
+        let img = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
+        likeBtn.setImage(img, for: [])
+        likeBtn.tintColor = darkRed
         initTable()
     }
     
@@ -50,6 +68,22 @@ class QuestionVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UIT
             cellHeights.append(kCloseCellHeight)
         }
         optTbv.separatorStyle = .none
+        optTbv.showsVerticalScrollIndicator = false
+        optTbv.isScrollEnabled = false
+    }
+    
+    func setDescription(description:String) {
+        detailTV.isSelectable = true
+        handler.setText(description, withAnimation: true)
+        detailTV.isSelectable = false
+        resizeScrollView()
+    }
+    
+    func resizeScrollView() {
+        let height = heightConstraint.constant + 16 + optTbv.contentSize.height
+        scrollHeight.constant = height
+        contentViewHeight.constant = height
+        scrollView.contentSize.height = height
     }
     
     // Override functions
@@ -63,12 +97,8 @@ class QuestionVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UIT
         // Dispose of any resources that can be recreated.
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        handler.resizeTextView(withAnimation: true)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
-        handler.resizeTextView(withAnimation: true)
+        setDescription(description: "Which language is the best in the world?")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -77,6 +107,7 @@ class QuestionVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "OptCell") as! OptCell
+        cell.setUp(tbv: optTbv, row: indexPath, color: UIColor.darkGray(), foreViewText: cellContent[indexPath.row], num: 200 - indexPath.row * 10, contentViewText: "As Sergey and I wrote in the original founders letter 11 years ago, “Google is not a conventional company. We do not intend to become one.”")
         return cell
     }
     
@@ -86,29 +117,26 @@ class QuestionVC: UIViewController, UITextViewDelegate, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! FoldingCell
-        
         var duration = 0.0
         if cellHeights[indexPath.row] == kCloseCellHeight { // open cell
             cellHeights[indexPath.row] = kOpenCellHeight
             cell.selectedAnimation(true, animated: true, completion: nil)
             duration = 0.5
-        } else {// close cell
+        } else {
             cellHeights[indexPath.row] = kCloseCellHeight
             cell.selectedAnimation(false, animated: true, completion: nil)
             duration = 1.1
         }
-        
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { () -> Void in
             tableView.beginUpdates()
             tableView.endUpdates()
             }, completion: nil)
+        Timer.scheduledTimer(timeInterval: duration + 0.01, target: self, selector: #selector(resizeScrollView), userInfo: nil, repeats: false)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
         if cell is FoldingCell {
             let foldingCell = cell as! FoldingCell
-            
             if cellHeights[indexPath.row] == kCloseCellHeight {
                 foldingCell.selectedAnimation(false, animated: false, completion:nil)
             } else {

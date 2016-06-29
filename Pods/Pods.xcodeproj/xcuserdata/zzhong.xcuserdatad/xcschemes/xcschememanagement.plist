@@ -24,12 +24,37 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JSBadgeView-JSBadgeView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSBadgeView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MMDrawerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>NSString-Email.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Networking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -79,6 +104,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TagListView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TextFieldEffects.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,17 +127,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>0BF061EA426558C5BA3C445B0BA528A2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>105BB21DDA17F283BCA6C012BAB3E330</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>13967D9472FC1F8ACB9AD2DF1A02FC7B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>181082A6A09DF44D8F40C413F0982FAE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1A5FBA8E56A90F0FED60D64534DCF266</key>
+		<key>19099AD44297B76B5EFAE340213CBCFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +152,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>332C2A9784F09ABA713ADA8E2240ED04</key>
+		<key>1ED4DFAAD25E1999D0244868457A351E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3C6603C48008B8706D2A069F66654F1F</key>
+		<key>207B528A62DFD756FB39E7B93772FB19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,17 +167,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F04E7E9175AFBF2F4FA5BC97D0A62B9</key>
+		<key>5090F2012AEB1F630154403BDE373032</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>72B9FAFCD383B5708061A605CBC52F6B</key>
+		<key>59CDDB315DD2B098E0CD9ED56B026F4B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7DF6904D18F1D48B8BF88C31E05E2300</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>8AA3DDB8797222294E1288CB197A8347</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8FD41A5D7E5E3D1BB9EFD0FE3DF6F0C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90A273395558728DBAC2CA8DC707E081</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9164C464CFACAAF09C99E627341CB377</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,22 +212,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A3464DFD23ED529075672B6D7D399A81</key>
+		<key>A00F51781201D70FE5D98D7CB0CC1505</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B640F9265E7FEFD8AF859DBA7A2AFFD8</key>
+		<key>B16C92FB9DB3FE8F761FFDE51400C959</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C09A7D2B514FB240A4F5A34D14E5B908</key>
+		<key>B7A16923B260AA30A2790CAE220394C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E23E2D3597FE3569FE4684C9E9B76EB8</key>
+		<key>BB169118B0AEA96ABAA54B2C024A5AB1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5587BDBCCFAC21CA3CB005702DAE5E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

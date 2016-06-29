@@ -8,7 +8,10 @@
 
 import UIKit
 import MMDrawerController
-let themeColor = UIColor(colorLiteralRed: 0.334777, green: 0.694178, blue: 0.785027, alpha: 1)
+let themeColor = UIColor(red: 0, green: 191/256, blue: 1, alpha: 1)//UIColor(red: 0.434777, green: 0.794178, blue: 0.885027, alpha: 1)
+let buttomColor = UIColor(red: 0.694986, green: 0.813917, blue: 0.213036, alpha: 1)
+let pinkColor = UIColor(red: 1, green: 0.3, blue: 0.3, alpha: 1.0)
+let darkRed = UIColor(red: 0.8824, green: 0.0039, blue: 0.2353, alpha: 1.0)
 
 func getVC(name:String) -> UIViewController {
     let board = UIStoryboard(name: "Main", bundle: nil)
@@ -29,9 +32,7 @@ func profileItem() -> UIBarButtonItem {
     let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
     let img = UIImage(named: "logo")!.resize(newWidth: 40)
     btn.setImage(img, for: [])
-    btn.layer.cornerRadius = 20
-    btn.layer.masksToBounds = true
-    //    btn.addTarget(btn, action: #selector(vc.showMore(_:)), for: .touchUpInside)
+    btn.board(radius: 20, width: 3, color: UIColor.white())
     return UIBarButtonItem(customView: btn)
 }
 
@@ -77,4 +78,14 @@ func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
     let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return image
+}
+
+func changingColor(firstColor:UIColor, secondeColor:UIColor, fraction:CGFloat) -> CGColor {
+    let (red1, green1, blue1, alpha1) = firstColor.rgb()
+    let (red2, green2, blue2, alpha2) = secondeColor.rgb()
+    let red = red2 * fraction + red1 * (1 - fraction)
+    let green = green2 * fraction + green1 * (1 - fraction)
+    let blue = blue2 * fraction + blue1 * (1 - fraction)
+    let alpha = alpha2 * fraction + alpha1 * (1 - fraction)
+    return UIColor(red: red, green: green, blue: blue, alpha: alpha).cgColor
 }

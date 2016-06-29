@@ -23,23 +23,29 @@
 
 import UIKit
 
+let themeColor = UIColor(red: 0.334777, green: 0.694178, blue: 0.785027, alpha: 1)
+let flipColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4)
+
 /// UITableViewCell with folding animation
 public class FoldingCell: UITableViewCell {
   
   /// UIView whitch display when cell open
   @IBOutlet weak public var containerView: UIView!
   @IBOutlet weak public var containerViewTop: NSLayoutConstraint!
+    @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
   
   /// UIView whitch display when cell close
   @IBOutlet weak public var foregroundView: RotatedView!
   @IBOutlet weak public var foregroundViewTop: NSLayoutConstraint!
+  @IBOutlet weak var foregroundViewHeight: NSLayoutConstraint!
+    
   var animationView: UIView?
   
   ///  the number of folding elements. Default 2
   @IBInspectable public var itemCount: NSInteger = 2
   
   /// The color of the back cell
-  @IBInspectable public var backViewColor: UIColor = UIColor.brown()
+  @IBInspectable public var backViewColor: UIColor = flipColor //themeColor
   
   var animationItemViews: [RotatedView]?
   
@@ -92,7 +98,7 @@ public class FoldingCell: UITableViewCell {
         fatalError("set constratins outlets")
     }
     
-    containerViewTop.constant = foregroundViewTop.constant
+    containerViewTop.constant = foregroundViewTop.constant - foregroundViewHeight.constant / 2
     containerView.alpha = 0;
     
     foregroundView.layer.anchorPoint = CGPoint.init(x: 0.5, y: 1)

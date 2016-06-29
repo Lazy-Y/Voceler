@@ -67,3 +67,26 @@ extension UIImage{
         return newImage!
     }
 }
+
+extension UIColor {
+    func rgb() -> (CGFloat, CGFloat, CGFloat, CGFloat) {
+        var fRed : CGFloat = 0
+        var fGreen : CGFloat = 0
+        var fBlue : CGFloat = 0
+        var fAlpha: CGFloat = 0
+        if self.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha) {
+            return (fRed, fGreen, fBlue, fAlpha)
+        } else {
+            return (0, 0, 0, 0)
+        }
+    }
+}
+
+extension UIView{
+    func board(radius:CGFloat, width:CGFloat, color:UIColor) {
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
+        layer.borderColor = color.cgColor
+        layer.borderWidth = width
+    }
+}

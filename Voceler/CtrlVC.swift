@@ -29,10 +29,7 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     // Functions
     func initUI() {
-        profileBtn.layer.masksToBounds = true
-        profileBtn.layer.cornerRadius = 32
-        profileBtn.layer.borderColor = UIColor.white().cgColor
-        profileBtn.layer.borderWidth = 3
+        profileBtn.board(radius: 32, width: 3, color: UIColor.white())
         moneyImg.image = UIImage(named: "money")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         moneyImg.tintColor = UIColor.white()
         collectionView.register(UINib(nibName: "CtrlCell", bundle: nil), forCellWithReuseIdentifier: "CtrlCell")

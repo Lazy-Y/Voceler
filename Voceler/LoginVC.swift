@@ -89,6 +89,8 @@ class LoginVC: UIViewController{
         loginBtn.setup(radius: 16)
         signupBtn.setup(radius: 16)
         resetBtn.setup(radius: 16)
+        loginBtn.backgroundColor = themeColor
+        signupBtn.backgroundColor = themeColor
     }
     
     func initNoti(){
