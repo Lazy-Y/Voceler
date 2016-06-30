@@ -30,8 +30,7 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     // Functions
     func initUI() {
         profileBtn.board(radius: 32, width: 3, color: UIColor.white())
-        moneyImg.image = UIImage(named: "money")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        moneyImg.tintColor = UIColor.white()
+        moneyImg.setIcon(img: #imageLiteral(resourceName: "money"), color: .white())
         collectionView.register(UINib(nibName: "CtrlCell", bundle: nil), forCellWithReuseIdentifier: "CtrlCell")
         let layout = GridCollectionViewLayout()
         layout.itemsPerRow = 2
@@ -66,8 +65,7 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CtrlCell", for: indexPath) as! CtrlCell
         cell.title.text = viewsArr[indexPath.row]
         cell.title.textColor = UIColor.white()
-        cell.imageView.image = UIImage(named: viewsArr[indexPath.row])!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        cell.imageView.tintColor = UIColor.white()
+        cell.imageView.setIcon(img: UIImage(named: viewsArr[indexPath.row])!, color: .white())
         return cell
     }
     

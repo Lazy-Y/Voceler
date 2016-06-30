@@ -41,6 +41,11 @@ extension UIImageView{
         layer.masksToBounds = true
         layer.cornerRadius = radius
     }
+    
+    func setIcon(img:UIImage, color:UIColor) {
+        image = img.withRenderingMode(.alwaysTemplate)
+        tintColor = color
+    }
 }
 
 extension UITextField{

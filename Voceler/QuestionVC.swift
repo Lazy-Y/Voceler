@@ -57,6 +57,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let img = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
         likeBtn.setImage(img, for: [])
         likeBtn.tintColor = darkRed
+        scrollView.showsVerticalScrollIndicator = false
         initTable()
     }
     

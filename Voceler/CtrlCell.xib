@@ -47,6 +47,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="question_mark_filled-50" width="50" height="50"/>
+        <image name="question_mark_filled-50" width="640" height="610"/>
     </resources>
 </document>
