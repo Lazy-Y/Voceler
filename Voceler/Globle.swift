@@ -19,13 +19,15 @@ func getVC(name:String) -> UIViewController {
     return board.instantiateViewController(withIdentifier: name)
 }
 
-func getNav(name:String) -> UINavigationController {
+func getNav(name:String, isCenter:Bool) -> UINavigationController {
     let vc = getVC(name: name)
     let nav = UINavigationController(rootViewController: vc)
     nav.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 20)!, NSForegroundColorAttributeName: UIColor.white()]
     vc.title = name
     nav.navigationBar.barTintColor = themeColor
-    vc.navigationItem.leftBarButtonItem = profileItem()
+    if isCenter{
+        vc.navigationItem.leftBarButtonItem = profileItem()
+    }
     return nav
 }
 
@@ -52,13 +54,17 @@ var drawer:MMDrawerController{
     }
 }
 
-internal var myVC = [String:UINavigationController]()
-func VC(name:String) -> UINavigationController{
+internal var myVC = [String:UIViewController]()
+func VC(name:String, isNav:Bool = true, isCenter:Bool = true) -> UIViewController{
     if let vc = myVC[name]{
         return vc
     }
+    else if isNav{
+        myVC[name] = getNav(name: name, isCenter: isCenter)
+        return myVC[name]!
+    }
     else {
-        myVC[name] = getNav(name: name)
+        myVC[name] = getVC(name: name)
         return myVC[name]!
     }
 }

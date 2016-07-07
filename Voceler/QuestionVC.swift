@@ -32,7 +32,8 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Actions
     @IBAction func showAskVC(_ sender: AnyObject) {
-        
+        let vc = VC(name: "Ask Question", isCenter: false)
+        show(vc, sender: self)
     }
     
     @IBAction func likeAction(_ sender: AnyObject) {
@@ -49,7 +50,6 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setupUI() {
         setupProfile()
         edgesForExtendedLayout = []
-//        detailTV.board(radius: 16, width: 3, color: themeColor)
         handler = GrowingTextViewHandler(textView: self.detailTV, withHeightConstraint: self.heightConstraint)
         handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 5)
         detailTV.isEditable = false

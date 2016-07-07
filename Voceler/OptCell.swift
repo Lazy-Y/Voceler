@@ -66,7 +66,7 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func animationDuration(_ itemIndex:NSInteger, type:AnimationType)-> TimeInterval {
-        return (itemIndex < 1) ? 0.33 : 0.26
+        return (itemIndex < 1) ? 0.3 : 0.2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

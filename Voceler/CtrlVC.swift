@@ -47,7 +47,6 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         initUI()
     }
