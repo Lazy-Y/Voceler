@@ -17,35 +17,50 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate{
     
     // FieldVars
     var handler:GrowingTextViewHandler!
+    var text:String?
+    var parentVC:OptionsVC?
+    var indexPath:IndexPath?
     
     // Actions
+    func textChange(noti:Notification) {
+        handler.resizeTextView(withAnimation: true)
+    }
+    
+    func nextAction(){
+        if let parentVC = parentVC{
+            if let indexPath = indexPath{
+                dismiss(animated: true, completion: {
+                    parentVC.textReset(indexPath: indexPath, text: self.textView.text)
+                })
+            }
+            else {
+                dismiss(animated: true, completion: { 
+                    parentVC.addOpt(text: self.textView.text)
+                })
+            }
+        }
+        else {
+            navigationController?.pushViewController(VC(name: "Options", isNav: false, isCenter: false), animated: true)
+        }
+    }
+    
+    func cancelAction() {
+        dismiss(animated: true, completion: nil)
+    }
     
     // Functions
     func setupUI() {
         let notiCenter = NotificationCenter.default()
         notiCenter.addObserver(self, selector: #selector(textChange(noti:)), name: Notification.Name.UITextViewTextDidChange, object: textView)
-        
         navigationController?.navigationBar.tintColor = UIColor.white()
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(nextAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
         edgesForExtendedLayout = []
         textView.text = ""
         textView.becomeFirstResponder()
         handler = GrowingTextViewHandler(textView: textView, withHeightConstraint: heightTV)
         handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 10)
         scroll.delegate = self
-    }
-    
-    func textChange(noti:Notification) {
-        handler.resizeTextView(withAnimation: true)
-    }
-    
-    func nextAction(){
-        navigationController?.pushViewController(VC(name: "Options", isNav: false, isCenter: false), animated: true)
-    }
-    
-    func cancelAction() {
-        dismiss(animated: true, completion: nil)
     }
     
     // Override functions
@@ -57,5 +72,11 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         textView.endEditing(true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let text = text {
+            handler.setText(text, withAnimation: true)
+        }
     }
 }

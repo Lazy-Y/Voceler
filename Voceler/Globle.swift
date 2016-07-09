@@ -12,7 +12,7 @@ let themeColor = UIColor(red: 0, green: 191/256, blue: 1, alpha: 1)//UIColor(red
 let buttomColor = UIColor(red: 0.694986, green: 0.813917, blue: 0.213036, alpha: 1)
 let pinkColor = UIColor(red: 1, green: 0.3, blue: 0.3, alpha: 1.0)
 let darkRed = UIColor(red: 0.8824, green: 0.0039, blue: 0.2353, alpha: 1.0)
-let lightGray = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+let lightGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
 
 func getVC(name:String) -> UIViewController {
     let board = UIStoryboard(name: "Main", bundle: nil)
@@ -96,3 +96,4 @@ func changingColor(firstColor:UIColor, secondeColor:UIColor, fraction:CGFloat) -
     let alpha = alpha2 * fraction + alpha1 * (1 - fraction)
     return UIColor(red: red, green: green, blue: blue, alpha: alpha).cgColor
 }
+

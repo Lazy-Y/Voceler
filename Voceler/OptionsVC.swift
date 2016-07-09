@@ -10,23 +10,67 @@ import UIKit
 import BFPaperButton
 import SDAutoLayout
 
-class OptionsVC: UIViewController {
+class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // UIVars
     var addBtn:BFPaperButton!
     var table:UITableView!
     
     // FieldVars
+    var optArr = [String]()
     
     // Actions
+    func addAction(){
+        let board = UIStoryboard(name: "Main", bundle: nil)
+        let vc = board.instantiateViewController(withIdentifier: "Ask Question") as! AskProblemVC
+        let nav = UINavigationController(rootViewController: vc)
+        vc.navigationItem.title = "Option"
+        nav.navigationBar.barTintColor = themeColor
+        nav.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 20)!, NSForegroundColorAttributeName: UIColor.white()]
+        vc.parentVC = self
+        show(nav, sender: self)
+    }
+    
+    func editAction(indexPath:IndexPath){
+        let board = UIStoryboard(name: "Main", bundle: nil)
+        let vc = board.instantiateViewController(withIdentifier: "Ask Question") as! AskProblemVC
+        let nav = UINavigationController(rootViewController: vc)
+        vc.navigationItem.title = "Option"
+        nav.navigationBar.barTintColor = themeColor
+        nav.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 20)!, NSForegroundColorAttributeName: UIColor.white()]
+        vc.text = optArr[indexPath.row]
+        vc.parentVC = self
+        vc.indexPath = indexPath
+        show(nav, sender: self)
+    }
+    
+    func backAction() {
+        navigationController!.popViewController(animated: true)
+    }
+    
+    func textReset(indexPath:IndexPath, text:String){
+        optArr[indexPath.row] = text
+        table.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    func addOpt(text:String) {
+        optArr.append(text)
+        table.insertRows(at: [IndexPath(item: optArr.count-1, section: 0)], with: .automatic)
+    }
+    
+    func nextAction(){
+        navigationController?.pushViewController(VC(name: "Tags", isNav: false, isCenter: false), animated: true)
+    }
     
     // Functions
     func setupUI() {
         // Setup Nav
         edgesForExtendedLayout = []
-        let leftBtn = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backAction))
+        let leftBtn = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backAction))
         navigationController?.navigationBar.tintColor = UIColor.white()
         navigationItem.leftBarButtonItem = leftBtn
         navigationItem.title = "Options"
+        let rightBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
+        navigationItem.rightBarButtonItem = rightBtn
         
         // Setup add button
         addBtn = BFPaperButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100), raised: false)!
@@ -50,14 +94,10 @@ class OptionsVC: UIViewController {
             .rightSpaceToView(view, 0)!
             .bottomSpaceToView(addBtn, 0)!
         table.backgroundColor = lightGray
-    }
-    
-    func addAction(){
-        print("Hello world")
-    }
-    
-    func backAction() {
-        navigationController!.popViewController(animated: true)
+        table.delegate = self
+        table.dataSource = self
+        table.register(UINib(nibName: "AddOptCell", bundle: nil), forCellReuseIdentifier: "AddOptCell")
+        optArr = ["The University of Southern California requires all students have comprehensive health insurance.  All students enrolled in 6 or more units are automatically enrolled into the USC Student Health Insurance plan.  Students taking courses through the Health Sciences Campus and all international students are automatically enrolled as well.  This will help cover the cost of care that cannot be obtained at the health center on campus, especially in emergency situations where hospitalization may be required.", "Please note that at any time during the semester, if the number of units you are registered in drops below 6 units, you will need to contact the health insurance office, or you may be automatically dropped from insurance coverage.", "The Engemann Student Health Center will serve as your health care center on campus. Your mandatory payment of the health center fee each semester ($295 for fall and separate from the insurance premium), covers most primary care services. We have many available resources to keep you healthy during your academic years. Our integration with both the Division of Student Affairs and the USC health care community helps support USC’s mission of providing you with high quality, cost-effective, student-focused services.", "Fusion 360 is 3D CAD reinvented. Get industrial and mechanical design, simulation, collaboration, and machining in a single package. Fusion 360 connects your entire product development process and works on both Mac and PC."]
     }
     
     // Override functions
@@ -65,5 +105,43 @@ class OptionsVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupUI()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return optArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddOptCell") as! AddOptCell
+        cell.textView.text = optArr[indexPath.row]
+        cell.textView.isScrollEnabled = false
+        cell.parentTB = table
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+        editAction(indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 66
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            self.optArr.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        }
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            tableView.setEditing(false, animated: true)
+            self.editAction(indexPath: indexPath)
+        }
+        return [deleteAction, editAction]
     }
 }

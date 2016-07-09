@@ -14,6 +14,9 @@
 		FD1036DA1D1FB01600AC1FE9 /* CtrlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1036D91D1FB01600AC1FE9 /* CtrlCell.swift */; };
 		FD149E1B1D1B7939007F3F7B /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD149E1A1D1B7939007F3F7B /* UIExtension.swift */; };
 		FD149E1D1D1B7C81007F3F7B /* NSExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD149E1C1D1B7C81007F3F7B /* NSExtension.swift */; };
+		FD17E2061D2F4B3500FC0FB3 /* AddOptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD17E2041D2F4B3500FC0FB3 /* AddOptCell.swift */; };
+		FD17E2071D2F4B3500FC0FB3 /* AddOptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD17E2051D2F4B3500FC0FB3 /* AddOptCell.xib */; };
+		FD17E2091D2F666000FC0FB3 /* TagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD17E2081D2F666000FC0FB3 /* TagsController.swift */; };
 		FD1DBB0B1D1A4D9E00E6762D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */; };
 		FD1DBB101D1A4D9E00E6762D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB0E1D1A4D9E00E6762D /* Main.storyboard */; };
 		FD1DBB121D1A4D9E00E6762D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */; };
@@ -43,6 +46,9 @@
 		FD1036D91D1FB01600AC1FE9 /* CtrlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CtrlCell.swift; sourceTree = "<group>"; };
 		FD149E1A1D1B7939007F3F7B /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
 		FD149E1C1D1B7C81007F3F7B /* NSExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSExtension.swift; sourceTree = "<group>"; };
+		FD17E2041D2F4B3500FC0FB3 /* AddOptCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOptCell.swift; sourceTree = "<group>"; };
+		FD17E2051D2F4B3500FC0FB3 /* AddOptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddOptCell.xib; sourceTree = "<group>"; };
+		FD17E2081D2F666000FC0FB3 /* TagsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsController.swift; sourceTree = "<group>"; };
 		FD1DBB071D1A4D9E00E6762D /* Voceler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voceler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD1DBB0F1D1A4D9E00E6762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,9 +129,11 @@
 				FDBBB5E61D2055E600D75467 /* SettingsVC.swift */,
 				FD10047A1D262BA600627FFA /* AskProblemVC.swift */,
 				FD8BEBDB1D2E3D55001C5C08 /* OptionsVC.swift */,
+				FD17E2081D2F666000FC0FB3 /* TagsController.swift */,
 				FDA2BA7E1D222BD70003633E /* OptView.swift */,
 				FD1036D91D1FB01600AC1FE9 /* CtrlCell.swift */,
 				FDA2BA781D222A1A0003633E /* OptCell.swift */,
+				FD17E2041D2F4B3500FC0FB3 /* AddOptCell.swift */,
 				FD0325271D24E53E002956FD /* UserListCell.swift */,
 				FD149E1A1D1B7939007F3F7B /* UIExtension.swift */,
 				FD149E1C1D1B7C81007F3F7B /* NSExtension.swift */,
@@ -134,6 +142,7 @@
 				FD0325281D24E53E002956FD /* UserListCell.xib */,
 				FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */,
 				FDA2BA7A1D222A250003633E /* OptCell.xib */,
+				FD17E2051D2F4B3500FC0FB3 /* AddOptCell.xib */,
 				FD1DBB0E1D1A4D9E00E6762D /* Main.storyboard */,
 				FD1DBB131D1A4D9E00E6762D /* LaunchScreen.storyboard */,
 				FD1DBB161D1A4D9E00E6762D /* Info.plist */,
@@ -210,6 +219,7 @@
 				FD1DBB151D1A4D9E00E6762D /* LaunchScreen.storyboard in Resources */,
 				FD03252A1D24E53E002956FD /* UserListCell.xib in Resources */,
 				FDA2BA7B1D222A250003633E /* OptCell.xib in Resources */,
+				FD17E2071D2F4B3500FC0FB3 /* AddOptCell.xib in Resources */,
 				FD1DBB121D1A4D9E00E6762D /* Assets.xcassets in Resources */,
 				FD1DBB1D1D1A65CC00E6762D /* GoogleService-Info.plist in Resources */,
 				FD1DBB101D1A4D9E00E6762D /* Main.storyboard in Resources */,
@@ -272,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD17E2091D2F666000FC0FB3 /* TagsController.swift in Sources */,
 				FD0325291D24E53E002956FD /* UserListCell.swift in Sources */,
 				FDA2BA7D1D222A790003633E /* ProfileVC.swift in Sources */,
 				FDA2BA7F1D222BD70003633E /* OptView.swift in Sources */,
@@ -286,6 +297,7 @@
 				FD1DBB0B1D1A4D9E00E6762D /* AppDelegate.swift in Sources */,
 				FDD344361D1B91980040356A /* LoginVC.swift in Sources */,
 				FD1036DA1D1FB01600AC1FE9 /* CtrlCell.swift in Sources */,
+				FD17E2061D2F4B3500FC0FB3 /* AddOptCell.swift in Sources */,
 				FD10047B1D262BA600627FFA /* AskProblemVC.swift in Sources */,
 				FD8BEBDC1D2E3D55001C5C08 /* OptionsVC.swift in Sources */,
 			);
@@ -404,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7BCB2A59640AD1049CD15269 /* Pods-Voceler.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Voceler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -418,6 +431,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 48CD1EA7447FC7E965D6ED24 /* Pods-Voceler.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Voceler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

@@ -144,7 +144,7 @@
                             <constraint firstItem="kdk-0n-NNS" firstAttribute="leading" secondItem="24H-Ap-m3A" secondAttribute="leading" id="oVi-2L-C9i"/>
                             <constraint firstItem="OKx-kc-d4R" firstAttribute="top" secondItem="24H-Ap-m3A" secondAttribute="top" id="v3C-fs-y08"/>
                             <constraint firstItem="OKx-kc-d4R" firstAttribute="leading" secondItem="kdk-0n-NNS" secondAttribute="trailing" id="wtl-jA-mcJ"/>
-                            <constraint firstAttribute="height" constant="60" id="y38-DU-eb0"/>
+                            <constraint firstAttribute="height" constant="50" id="y38-DU-eb0"/>
                         </constraints>
                     </view>
                 </subviews>

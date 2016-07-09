@@ -44,8 +44,8 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
         contentCV.board(radius: 0, width: 1, color: .black())
         let contentTap = UITapGestureRecognizer(target: self, action: #selector(textTapped))
         contentTF.addGestureRecognizer(contentTap)
-        contentTF.font = UIFont(name: "Helvetica Neue", size: 18)
-        textField.font = UIFont(name: "Helvetica Neue", size: 18)
+        contentTF.font = UIFont(name: "Helvetica Neue", size: 16)
+        textField.font = UIFont(name: "Helvetica Neue", size: 16)
         
         userTBV.register(UINib(nibName: "UserListCell", bundle: nil), forCellReuseIdentifier: "UserListCell")
         userTBV.delegate = self

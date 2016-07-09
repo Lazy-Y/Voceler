@@ -14,8 +14,8 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // FieldVars
     var handler:GrowingTextViewHandler!
     var cellHeights = [CGFloat]()
-    let kCloseCellHeight: CGFloat = 70 // equal or greater foregroundView height
-    let kOpenCellHeight: CGFloat = 310 // equal or greater containerView height
+    let kCloseCellHeight: CGFloat = 65 // equal or greater foregroundView height
+    let kOpenCellHeight: CGFloat = 315 // equal or greater containerView height
     var liked = false
     let cellContent = ["Swift", "Python", "C++", "Java", "PHP", "JavaScript", "Nodejs", "HTML", "Bash", "Assembly"]
     
@@ -32,7 +32,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Actions
     @IBAction func showAskVC(_ sender: AnyObject) {
-        let vc = VC(name: "Ask Question", isCenter: false)
+        let vc = VC(name: "Ask Question", isCenter: false) as! UINavigationController
         show(vc, sender: self)
     }
     
@@ -132,7 +132,12 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             tableView.beginUpdates()
             tableView.endUpdates()
             }, completion: nil)
-        Timer.scheduledTimer(timeInterval: duration + 0.01, target: self, selector: #selector(resizeScrollView), userInfo: nil, repeats: false)
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { 
+            tableView.beginUpdates()
+            tableView.endUpdates()
+            }) { (success) in
+                self.resizeScrollView()
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
