@@ -20,10 +20,10 @@ pod 'SCTableViewCell'
 pod 'FoldingCell'
 pod 'JSQMessagesViewController'
 pod 'JSBadgeView'
-#pod 'SFDraggableDialogView'
-#pod 'ZFDragableModalTransition'
-#pod 'WZDraggableSwitchHeaderView'
-#pod 'DBProfileViewController'
+pod 'SFDraggableDialogView'
+pod 'ZFDragableModalTransition'
+pod 'WZDraggableSwitchHeaderView'
+pod 'DBProfileViewController'
 
 target 'Voceler' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
