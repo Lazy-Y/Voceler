@@ -43,10 +43,6 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         show(nav, sender: self)
     }
     
-    func backAction() {
-        navigationController!.popViewController(animated: true)
-    }
-    
     func textReset(indexPath:IndexPath, text:String){
         optArr[indexPath.row] = text
         table.reloadRows(at: [indexPath], with: .automatic)
@@ -65,9 +61,7 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setupUI() {
         // Setup Nav
         edgesForExtendedLayout = []
-        let leftBtn = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backAction))
-        navigationController?.navigationBar.tintColor = UIColor.white()
-        navigationItem.leftBarButtonItem = leftBtn
+        setBackItem()
         navigationItem.title = "Options"
         let rightBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
         navigationItem.rightBarButtonItem = rightBtn
@@ -120,7 +114,6 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
         tableView.cellForRow(at: indexPath)?.isSelected = false
         editAction(indexPath: indexPath)
     }

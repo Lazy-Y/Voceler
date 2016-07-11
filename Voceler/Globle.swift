@@ -16,7 +16,9 @@ let lightGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
 
 func getVC(name:String) -> UIViewController {
     let board = UIStoryboard(name: "Main", bundle: nil)
-    return board.instantiateViewController(withIdentifier: name)
+    let vc = board.instantiateViewController(withIdentifier: name)
+    vc.edgesForExtendedLayout = []
+    return vc
 }
 
 func getNav(name:String, isCenter:Bool) -> UINavigationController {
@@ -57,6 +59,16 @@ var drawer:MMDrawerController{
 internal var myVC = [String:UIViewController]()
 func VC(name:String, isNav:Bool = true, isCenter:Bool = true) -> UIViewController{
     if let vc = myVC[name]{
+        return vc
+    }
+    else if name == "CollectionQuestion"{
+        let board = UIStoryboard(name: "Main", bundle: nil)
+        let vc = board.instantiateViewController(withIdentifier: "Question") as! QuestionVC
+        vc.title = "Question"
+        vc.navigationItem.leftBarButtonItem?.title = "Back"
+        vc.navigationItem.rightBarButtonItem = nil
+        vc.setBackItem()
+        vc.edgesForExtendedLayout = []
         return vc
     }
     else if isNav{

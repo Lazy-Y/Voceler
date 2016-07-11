@@ -105,27 +105,26 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKx-kc-d4R">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="128" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td4-21-SKh">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="ZSQ-I6-ev0">
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ZSQ-I6-ev0" secondAttribute="height" multiplier="1:1" id="fU3-El-cmj"/>
                                             <constraint firstAttribute="height" constant="25" id="hHb-YA-sk6"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="128" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td4-21-SKh">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="td4-21-SKh" firstAttribute="leading" secondItem="ZSQ-I6-ev0" secondAttribute="trailing" constant="8" id="2kV-BJ-iBm"/>
-                                    <constraint firstItem="ZSQ-I6-ev0" firstAttribute="leading" secondItem="OKx-kc-d4R" secondAttribute="leading" constant="15" id="CgC-TH-Lz0"/>
+                                    <constraint firstItem="td4-21-SKh" firstAttribute="leading" secondItem="OKx-kc-d4R" secondAttribute="leading" constant="8" id="Gcj-7U-TEx"/>
                                     <constraint firstItem="ZSQ-I6-ev0" firstAttribute="centerY" secondItem="OKx-kc-d4R" secondAttribute="centerY" id="KXw-ps-3DZ"/>
+                                    <constraint firstItem="td4-21-SKh" firstAttribute="centerY" secondItem="OKx-kc-d4R" secondAttribute="centerY" id="OdM-Tv-Ee9"/>
                                     <constraint firstAttribute="width" constant="108" id="UNl-4i-BqY"/>
-                                    <constraint firstAttribute="bottom" secondItem="td4-21-SKh" secondAttribute="bottom" constant="14" id="fdh-AA-vbd"/>
-                                    <constraint firstAttribute="trailing" secondItem="td4-21-SKh" secondAttribute="trailing" constant="8" id="hk4-0l-0MM"/>
-                                    <constraint firstItem="td4-21-SKh" firstAttribute="top" secondItem="OKx-kc-d4R" secondAttribute="top" constant="14" id="jVH-Lw-OOp"/>
+                                    <constraint firstItem="ZSQ-I6-ev0" firstAttribute="leading" secondItem="td4-21-SKh" secondAttribute="trailing" id="mpy-LK-CEZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZSQ-I6-ev0" secondAttribute="trailing" constant="8" id="uhp-tx-jsf"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdk-0n-NNS">
@@ -175,9 +174,13 @@
                 <outlet property="foregroundViewTop" destination="RJG-1n-kbr" id="Fvf-Oy-hOD"/>
                 <outlet property="likeBtn" destination="ZSQ-I6-ev0" id="rO7-2a-sqj"/>
                 <outlet property="moreImg" destination="wTX-iB-1fR" id="3nA-d5-mxy"/>
+                <outlet property="moreView" destination="HzW-gn-iKZ" id="rGM-yl-s3g"/>
                 <outlet property="numOfLike" destination="td4-21-SKh" id="F97-Ls-wMd"/>
+                <outlet property="numOfLikeWidth" destination="UNl-4i-BqY" id="HHK-1Q-DL6"/>
                 <outlet property="reportImg" destination="tDk-dt-eFh" id="WHf-SR-lAU"/>
+                <outlet property="reportView" destination="Zjg-Mu-LMb" id="PNM-sH-SyH"/>
                 <outlet property="textField" destination="kdk-0n-NNS" id="eW0-2g-gXn"/>
+                <outlet property="textViewToBottom" destination="o9F-5q-9wl" id="BOP-jv-Ow3"/>
                 <outlet property="userTBV" destination="vf0-1E-kFv" id="vDO-iZ-f2P"/>
             </connections>
             <point key="canvasLocation" x="-50" y="19"/>

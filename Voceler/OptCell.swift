@@ -8,6 +8,7 @@
 
 import UIKit
 import FoldingCell
+import SDAutoLayout
 
 class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
     
@@ -20,11 +21,20 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var userTBV: UITableView!
     @IBOutlet weak var moreImg: UIImageView!
     @IBOutlet weak var reportImg: UIImageView!
+    @IBOutlet weak var numOfLikeWidth: NSLayoutConstraint!
+    @IBOutlet weak var reportView: UIView!
+    @IBOutlet weak var moreView: UIView!
     
     var tableView: UITableView!
     var indexPath: IndexPath!
     
-    func setUp(tbv:UITableView, row:IndexPath, color:UIColor, foreViewText:String, num:Int, contentViewText:String) {
+    @IBOutlet weak var textViewToBottom: NSLayoutConstraint!
+    
+    
+    func setUp(tbv:UITableView, row:IndexPath, color:UIColor, foreViewText:String, num:Int, contentViewText:String, isInCollection:Bool = false) {
+        contentCV.isHidden = true
+        textViewToBottom.constant = 0
+        
         tableView = tbv
         indexPath = row
         textField.text = foreViewText
@@ -32,7 +42,7 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
         
         containerView.board(radius: 16, width: 1.5, color: UIColor(cgColor: containerView.layer.borderColor!))
         foregroundView.board(radius: 16, width: 1.5, color: UIColor(cgColor: foregroundView.layer.borderColor!))
-        likeBtn.setIcon(img: #imageLiteral(resourceName: "like"), color: pinkColor)
+        likeBtn.setIcon(img: #imageLiteral(resourceName: "checked_2-50"), color: pinkColor)
         controlView.backgroundColor = lightGray
         controlView.board(radius: 0, width: 1, color: .black())
         let tap = UITapGestureRecognizer(target: self, action: #selector(likeAction))
@@ -55,10 +65,16 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
         
         moreImg.setIcon(img: #imageLiteral(resourceName: "more-50"), color: .black())
         reportImg.setIcon(img: #imageLiteral(resourceName: "police-50"), color: .black())
+        
+        if isInCollection{
+            likeBtn.isHidden = true
+            _ = numOfLike.sd_layout().rightSpaceToView(controlView, 8)
+            numOfLikeWidth.constant = 80
+        }
     }
 
     func likeAction(){
-        likeBtn.setIcon(img: #imageLiteral(resourceName: "like_filled"), color: pinkColor)
+        likeBtn.setIcon(img: #imageLiteral(resourceName: "checked_2_filled-25"), color: pinkColor)
     }
     
     func textTapped() {
@@ -66,7 +82,7 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func animationDuration(_ itemIndex:NSInteger, type:AnimationType)-> TimeInterval {
-        return (itemIndex < 1) ? 0.3 : 0.2
+        return 0.2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

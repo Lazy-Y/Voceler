@@ -20,6 +20,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let cellContent = ["Swift", "Python", "C++", "Java", "PHP", "JavaScript", "Nodejs", "HTML", "Bash", "Assembly"]
     
     // UIVars
+    @IBOutlet weak var titleBarView: UIVisualEffectView!
     @IBOutlet weak var likeBtn: UIButton!
     @IBOutlet weak var detailTV: UITextView!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
@@ -46,10 +47,14 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func concludeAction(){
+        print("Conclude")
+    }
+    
     // Functions
     func setupUI() {
         setupProfile()
-        edgesForExtendedLayout = []
+        _ = titleBarView.addBorder(edges: .bottom, colour: UIColor.gray(), thickness: 1.5)
         handler = GrowingTextViewHandler(textView: self.detailTV, withHeightConstraint: self.heightConstraint)
         handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 5)
         detailTV.isEditable = false
@@ -87,10 +92,30 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         scrollView.contentSize.height = height
     }
     
+    private var isCollection:Bool?
+    private var isLiked:Bool?
+    func collectionSetup(collection:Bool){
+        isCollection = collection
+    }
+    
+    func collectionSetup(){
+        if let isCollection = isCollection where isCollection{
+            likeBtn.isHidden = false
+            navigationItem.rightBarButtonItem = nil
+        }
+        else{
+            likeBtn.isHidden = true
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Conclude", style: .done, target: self, action: #selector(concludeAction))
+        }
+    }
+    
     // Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        if isCollection != nil{
+            collectionSetup()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,7 +133,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "OptCell") as! OptCell
-        cell.setUp(tbv: optTbv, row: indexPath, color: UIColor.darkGray(), foreViewText: cellContent[indexPath.row], num: 200 - indexPath.row * 10, contentViewText: "As Sergey and I wrote in the original founders letter 11 years ago, “Google is not a conventional company. We do not intend to become one.”")
+        cell.setUp(tbv: optTbv, row: indexPath, color: UIColor.darkGray(), foreViewText: cellContent[indexPath.row], num: 200 - indexPath.row * 10, contentViewText: "As Sergey and I wrote in the original founders letter 11 years ago, “Google is not a conventional company. We do not intend to become one.”", isInCollection: isCollection != nil)
         return cell
     }
     
