@@ -22,6 +22,10 @@
 		FD1DBB121D1A4D9E00E6762D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */; };
 		FD1DBB151D1A4D9E00E6762D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB131D1A4D9E00E6762D /* LaunchScreen.storyboard */; };
 		FD1DBB1D1D1A65CC00E6762D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB1C1D1A65CC00E6762D /* GoogleService-Info.plist */; };
+		FD2148001D373B07008A52B9 /* BFPaperButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2147FF1D373B07008A52B9 /* BFPaperButton.framework */; };
+		FD2148021D375694008A52B9 /* Birthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2148011D375694008A52B9 /* Birthday.swift */; };
+		FD67A7D51D360889008E3ACC /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67A7D31D360889008E3ACC /* ProfileCell.swift */; };
+		FD67A7D61D360889008E3ACC /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD67A7D41D360889008E3ACC /* ProfileCell.xib */; };
 		FD682A991D33002500D2F4B6 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD682A971D33002500D2F4B6 /* CollectionCell.swift */; };
 		FD682A9A1D33002500D2F4B6 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD682A981D33002500D2F4B6 /* CollectionCell.xib */; };
 		FD87D7291D1F8DA900D77DC2 /* Globle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87D7281D1F8DA900D77DC2 /* Globle.swift */; };
@@ -58,6 +62,10 @@
 		FD1DBB141D1A4D9E00E6762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD1DBB161D1A4D9E00E6762D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD1DBB1C1D1A65CC00E6762D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FD2147FF1D373B07008A52B9 /* BFPaperButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BFPaperButton.framework; path = "../../../Library/Developer/Xcode/DerivedData/Voceler-fmeteizufhecrheeqxxyrnwvwjat/Build/Products/Debug-iphoneos/BFPaperButton/BFPaperButton.framework"; sourceTree = "<group>"; };
+		FD2148011D375694008A52B9 /* Birthday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Birthday.swift; sourceTree = "<group>"; };
+		FD67A7D31D360889008E3ACC /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		FD67A7D41D360889008E3ACC /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		FD682A971D33002500D2F4B6 /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		FD682A981D33002500D2F4B6 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
 		FD87D7281D1F8DA900D77DC2 /* Globle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globle.swift; sourceTree = "<group>"; };
@@ -79,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD2148001D373B07008A52B9 /* BFPaperButton.framework in Frameworks */,
 				521B6ADC8DEEA2D69804A5AC /* Pods_Voceler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +98,7 @@
 		8D6A22570FF0744EA3138BDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD2147FF1D373B07008A52B9 /* BFPaperButton.framework */,
 				BD6436A294F41E6FC8BFCCD4 /* Pods_Voceler.framework */,
 			);
 			name = Frameworks;
@@ -106,8 +116,8 @@
 		FD1DBAFE1D1A4D9E00E6762D = {
 			isa = PBXGroup;
 			children = (
-				FD1DBB091D1A4D9E00E6762D /* Voceler */,
 				FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */,
+				FD1DBB091D1A4D9E00E6762D /* Voceler */,
 				FD1DBB081D1A4D9E00E6762D /* Products */,
 				DAC74AB05877AD87CE1DBA66 /* Pods */,
 				8D6A22570FF0744EA3138BDE /* Frameworks */,
@@ -140,11 +150,12 @@
 				FD8A5E521D1F97620068F57A /* CtrlVC.swift */,
 				FDBBB5DE1D20544100D75467 /* QuestionVC.swift */,
 				FDBBB5E21D2055D000D75467 /* CollectionVC.swift */,
-				FDA2BA7C1D222A790003633E /* ProfileVC.swift */,
 				FDBBB5E61D2055E600D75467 /* SettingsVC.swift */,
 				FD10047A1D262BA600627FFA /* AskProblemVC.swift */,
 				FD8BEBDB1D2E3D55001C5C08 /* OptionsVC.swift */,
 				FD17E2081D2F666000FC0FB3 /* TagsController.swift */,
+				FDA2BA7C1D222A790003633E /* ProfileVC.swift */,
+				FD2148011D375694008A52B9 /* Birthday.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -158,6 +169,7 @@
 				FD682A971D33002500D2F4B6 /* CollectionCell.swift */,
 				FD17E2041D2F4B3500FC0FB3 /* AddOptCell.swift */,
 				FD0325271D24E53E002956FD /* UserListCell.swift */,
+				FD67A7D31D360889008E3ACC /* ProfileCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -185,6 +197,7 @@
 				FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */,
 				FDA2BA7A1D222A250003633E /* OptCell.xib */,
 				FD17E2051D2F4B3500FC0FB3 /* AddOptCell.xib */,
+				FD67A7D41D360889008E3ACC /* ProfileCell.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -263,6 +276,7 @@
 				FD1DBB1D1D1A65CC00E6762D /* GoogleService-Info.plist in Resources */,
 				FD1DBB101D1A4D9E00E6762D /* Main.storyboard in Resources */,
 				FD9855421D1FA5CB0038CBC3 /* CtrlCell.xib in Resources */,
+				FD67A7D61D360889008E3ACC /* ProfileCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +344,9 @@
 				FD8A5E531D1F97620068F57A /* CtrlVC.swift in Sources */,
 				FD149E1B1D1B7939007F3F7B /* UIExtension.swift in Sources */,
 				FDA2BA791D222A1A0003633E /* OptCell.swift in Sources */,
+				FD67A7D51D360889008E3ACC /* ProfileCell.swift in Sources */,
 				FDBBB5DF1D20544100D75467 /* QuestionVC.swift in Sources */,
+				FD2148021D375694008A52B9 /* Birthday.swift in Sources */,
 				FDBBB5E31D2055D000D75467 /* CollectionVC.swift in Sources */,
 				FDBBB5E71D2055E600D75467 /* SettingsVC.swift in Sources */,
 				FD149E1D1D1B7C81007F3F7B /* NSExtension.swift in Sources */,

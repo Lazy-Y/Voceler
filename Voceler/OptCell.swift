@@ -40,8 +40,8 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
         textField.text = foreViewText
         numOfLike.text = String(num)
         
-        containerView.board(radius: 16, width: 1.5, color: UIColor(cgColor: containerView.layer.borderColor!))
-        foregroundView.board(radius: 16, width: 1.5, color: UIColor(cgColor: foregroundView.layer.borderColor!))
+        containerView.board(radius: 5, width: 1, color: UIColor(cgColor: containerView.layer.borderColor!))
+        foregroundView.board(radius: 5, width: 1, color: UIColor(cgColor: foregroundView.layer.borderColor!))
         likeBtn.setIcon(img: #imageLiteral(resourceName: "checked_2-50"), color: pinkColor)
         controlView.backgroundColor = lightGray
         controlView.board(radius: 0, width: 1, color: .black())

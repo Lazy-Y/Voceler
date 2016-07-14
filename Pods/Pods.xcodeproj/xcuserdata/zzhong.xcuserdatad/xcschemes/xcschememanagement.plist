@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DGElasticPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FXBlurView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -55,6 +60,11 @@
 			<false/>
 		</dict>
 		<key>JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LTNavigationBar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -157,6 +167,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>072A34BA58495FE02E3B73C57A1D625F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0814C8B4E25502BB12D77FD7F1C508D0</key>
 		<dict>
 			<key>primary</key>
@@ -167,17 +182,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>115824B7CB2E76E5ACB836A251E79404</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>13967D9472FC1F8ACB9AD2DF1A02FC7B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>170C5C3BED77BF19DBA648E0D85E0827</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1844221DC79E66E37313DB9EBCD55108</key>
+		<key>15718F6619EF8F28BEBC0BFB02564403</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -192,17 +207,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>236FAF13B89FF98D6C928F437BB635E6</key>
+		<key>246B8F15B0A5C7A1D160639012C58691</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F96CDD4AAAB340E496AFA5257EB492C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>39F5DAD501CD28510F0DDDC7265A6B0F</key>
+		<key>2942EFF978111EA3A637D7D91122D13B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -212,7 +222,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3BB0A43D4D479DAFAD44AEC43C34BD02</key>
+		<key>3B6DC450B6F16A14AB25BDD20A128D1B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -227,12 +237,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>72130E15A4EA07B12F8E203482C15C1D</key>
+		<key>60B1B9709BA25D4B10662B4D42BEE16A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>87BAA8D51BF00818F5EE0CE8978CDCDF</key>
+		<key>79062FFC7625D718411B0B4F75490F98</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84A4BF4039E57D962D64AD9C2A4D339D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -267,32 +282,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A9E7237B56C616B2B39B27029F409A3A</key>
+		<key>C1AA8F8ED407AF4A67BEA395C46749DD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C87EE46FAD3F6965864FC5048520278A</key>
+		<key>DFE45494B402247471E441FE45BDFB0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4603B2080701573827D41D9CCB7B73A</key>
+		<key>E1DC5A9B8B52FE139867548DCEEDB532</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB39DC840618F576F01162AE58D2A096</key>
+		<key>E4BAF8AD880E894DB42D1E5A53F59DFA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FCAB4EDC4C02DC91DB5B5506A673577B</key>
+		<key>EE233CED1B72770E72889C0922C27816</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FCBBCE3F134589792D50F29B36A2F091</key>
+		<key>F660F7BACF4460B40C5A9B0584F62136</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FABEFE59C2CD9C196FD2B92D8E5BC90E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -9,6 +9,7 @@
 import UIKit
 import BFPaperButton
 import MMDrawerController
+import LTNavigationBar
 
 extension UIViewController{
     func initView(){
@@ -39,12 +40,23 @@ extension UIViewController{
     
     func setBackItem() {
         let leftBtn = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backAction))
-        navigationController?.navigationBar.tintColor = UIColor.white()
+        navigationController?.navigationBar.tintColor = .white()
         navigationItem.leftBarButtonItem = leftBtn
     }
     
     func backAction() {
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+extension UINavigationController{
+    func transparentBar(){
+        navigationBar.barTintColor = .clear()
+        navigationBar.backgroundColor = .clear()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
     }
 }
 
@@ -100,6 +112,14 @@ extension UIColor {
 }
 
 extension UIView{
+    func hideKeyboard(){
+        endEditing(true)
+    }
+    func touchToHideKeyboard(){
+        let tab = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tab.isEnabled = true
+        addGestureRecognizer(tab)
+    }
     func board(radius:CGFloat, width:CGFloat, color:UIColor) {
         layer.cornerRadius = radius
         layer.masksToBounds = true

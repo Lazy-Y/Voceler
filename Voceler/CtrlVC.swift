@@ -17,6 +17,11 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBOutlet weak var profileBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var moneyImg: UIImageView!
+    @IBOutlet weak var wuImg: UIImageView!
+    @IBOutlet weak var wuLbl: UILabel!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var amountLbl: UILabel!
+    
     
     // FieldVars
     let viewsArr = ["Question", "Collection", "Settings", "Log out"]
@@ -28,9 +33,9 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     // Functions
-    func initUI() {
-        profileBtn.board(radius: 32, width: 3, color: UIColor.white())
-        moneyImg.setIcon(img: #imageLiteral(resourceName: "money"), color: .white())
+    func setupUI() {
+        profileBtn.board(radius: 32, width: 3, color: themeColor)
+        moneyImg.setIcon(img: #imageLiteral(resourceName: "money"), color: themeColor)
         collectionView.register(UINib(nibName: "CtrlCell", bundle: nil), forCellWithReuseIdentifier: "CtrlCell")
         let layout = GridCollectionViewLayout()
         layout.itemsPerRow = 2
@@ -41,6 +46,12 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
+        wuImg.setIcon(img: #imageLiteral(resourceName: "lol-32"), color: themeColor)
+        wuLbl.text = "I'll regrade your ass ignment!"
+        wuLbl.textColor = themeColor
+        nameLbl.textColor = themeColor
+        amountLbl.textColor = themeColor
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
     }
     
     // Override functions
@@ -48,7 +59,7 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        initUI()
+        setupUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,8 +74,8 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CtrlCell", for: indexPath) as! CtrlCell
         cell.title.text = viewsArr[indexPath.row]
-        cell.title.textColor = UIColor.white()
-        cell.imageView.setIcon(img: UIImage(named: viewsArr[indexPath.row])!, color: .white())
+        cell.title.textColor = themeColor
+        cell.imageView.setIcon(img: UIImage(named: viewsArr[indexPath.row])!, color: themeColor)
         return cell
     }
     

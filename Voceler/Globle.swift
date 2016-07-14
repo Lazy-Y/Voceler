@@ -16,7 +16,7 @@ let lightGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
 
 func getVC(name:String) -> UIViewController {
     let board = UIStoryboard(name: "Main", bundle: nil)
-    let vc = board.instantiateViewController(withIdentifier: name)
+    let vc = board.instantiateViewController(withIdentifier: name == "ProfileOther" ? "Profile" : name)
     vc.edgesForExtendedLayout = []
     return vc
 }
@@ -29,6 +29,9 @@ func getNav(name:String, isCenter:Bool) -> UINavigationController {
     nav.navigationBar.barTintColor = themeColor
     if isCenter{
         vc.navigationItem.leftBarButtonItem = profileItem()
+    }
+    if name == "Profile"{
+        nav.transparentBar()
     }
     return nav
 }

@@ -84,11 +84,11 @@ class LoginVC: UIViewController{
     // Functions
     func initUI(){
         logoImg.setup(radius: 64)
-        emailField.setup(radius: 16)
-        passwordField.setup(radius: 16)
-        loginBtn.setup(radius: 16)
-        signupBtn.setup(radius: 16)
-        resetBtn.setup(radius: 16)
+        emailField.setup(radius: 5)
+        passwordField.setup(radius: 5)
+        loginBtn.setup(radius: 5)
+        signupBtn.setup(radius: 5)
+        resetBtn.setup(radius: 5)
         loginBtn.backgroundColor = themeColor
         signupBtn.backgroundColor = themeColor
     }

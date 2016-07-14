@@ -14,8 +14,8 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // FieldVars
     var handler:GrowingTextViewHandler!
     var cellHeights = [CGFloat]()
-    let kCloseCellHeight: CGFloat = 65 // equal or greater foregroundView height
-    let kOpenCellHeight: CGFloat = 315 // equal or greater containerView height
+    let kCloseCellHeight: CGFloat = 55 // equal or greater foregroundView height
+    let kOpenCellHeight: CGFloat = 305 // equal or greater containerView height
     var liked = false
     let cellContent = ["Swift", "Python", "C++", "Java", "PHP", "JavaScript", "Nodejs", "HTML", "Bash", "Assembly"]
     
@@ -32,6 +32,14 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var scrollView: UIScrollView!
     
     // Actions
+    
+    @IBAction func askerInfo(_ sender: AnyObject) {
+        let vc = VC(name: "ProfileOther", isNav: false, isCenter: false) as! ProfileVC
+        vc.setBackItem()
+        vc.editable = false
+        vc.setEditable()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     @IBAction func showAskVC(_ sender: AnyObject) {
         let vc = VC(name: "Ask Question", isCenter: false) as! UINavigationController
         show(vc, sender: self)
@@ -59,11 +67,11 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 5)
         detailTV.isEditable = false
         askerProfile.board(radius: 20, width: 3, color: UIColor.white())
-        let img = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
-        likeBtn.setImage(img, for: [])
+        likeBtn.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
         likeBtn.tintColor = darkRed
         scrollView.showsVerticalScrollIndicator = false
         initTable()
+        navigationController?.transparentBar()
     }
     
     func initTable() {
@@ -86,7 +94,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func resizeScrollView() {
-        let height = heightConstraint.constant + 16 + optTbv.contentSize.height
+        let height = heightConstraint.constant + 210 + optTbv.contentSize.height
         scrollHeight.constant = height
         contentViewHeight.constant = height
         scrollView.contentSize.height = height
@@ -125,6 +133,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         setDescription(description: "Which language is the best in the world?")
+        resizeScrollView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -174,5 +183,9 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 foldingCell.selectedAnimation(true, animated: false, completion: nil)
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.lt_setBackgroundColor(themeColor)
     }
 }
