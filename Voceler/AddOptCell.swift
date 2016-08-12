@@ -10,7 +10,7 @@ import UIKit
 
 class AddOptCell: UITableViewCell {
 
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textLbl: UILabel!
     var parentTB:UITableView!
     
     func tapped(){
@@ -21,8 +21,8 @@ class AddOptCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
-        textView.addGestureRecognizer(tap)
-        textView.font = UIFont(name: "Helvetica Neue", size: 16)
+        textLbl.addGestureRecognizer(tap)
+        textLbl.font = UIFont(name: "Helvetica Neue", size: 16)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

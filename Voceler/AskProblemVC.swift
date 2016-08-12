@@ -52,7 +52,6 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate{
     func setupUI() {
         let notiCenter = NotificationCenter.default()
         notiCenter.addObserver(self, selector: #selector(textChange(noti:)), name: Notification.Name.UITextViewTextDidChange, object: textView)
-        navigationController?.navigationBar.tintColor = UIColor.white()
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
         edgesForExtendedLayout = []
@@ -63,7 +62,7 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate{
         scroll.delegate = self
     }
     
-    // Override functions
+    // Override functions    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -75,6 +74,7 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if let text = text {
             handler.setText(text, withAnimation: true)
         }

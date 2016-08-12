@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '15718F6619EF8F28BEBC0BFB02564403'
+               BlueprintIdentifier = '2D61F4EB3AF864468A6FDFC3EF8D3019'
                BlueprintName = 'WZDraggableSwitchHeaderView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'WZDraggableSwitchHeaderView.framework'>

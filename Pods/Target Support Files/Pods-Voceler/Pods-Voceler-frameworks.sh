@@ -108,6 +108,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/TagListView/TagListView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TextFieldEffects/TextFieldEffects.framework"
   install_framework "$BUILT_PRODUCTS_DIR/UIColor+BFPaperColors/UIColor_BFPaperColors.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UIViewController+NavigationBar/UIViewController_NavigationBar.framework"
   install_framework "$BUILT_PRODUCTS_DIR/WZDraggableSwitchHeaderView/WZDraggableSwitchHeaderView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ZFDragableModalTransition/ZFDragableModalTransition.framework"
 fi
@@ -136,6 +137,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/TagListView/TagListView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TextFieldEffects/TextFieldEffects.framework"
   install_framework "$BUILT_PRODUCTS_DIR/UIColor+BFPaperColors/UIColor_BFPaperColors.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UIViewController+NavigationBar/UIViewController_NavigationBar.framework"
   install_framework "$BUILT_PRODUCTS_DIR/WZDraggableSwitchHeaderView/WZDraggableSwitchHeaderView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ZFDragableModalTransition/ZFDragableModalTransition.framework"
 fi

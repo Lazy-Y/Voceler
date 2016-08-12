@@ -28,7 +28,7 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupProfile()
-        navigationController?.navigationBar.tintColor = UIColor.white()
+        navigationBar.setColor(color: themeColor)
         table.delegate = self
         table.dataSource = self
         table.register(UINib(nibName: "CollectionCell", bundle: nil), forCellReuseIdentifier: "CollectionCell")
@@ -100,5 +100,9 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
         return [deleteAction]
+    }
+    
+    override func hasCustomNavigationBar() -> Bool {
+        return true
     }
 }

@@ -15,7 +15,7 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var likeBtn: UIImageView!
     @IBOutlet weak var numOfLike: UILabel!
     @IBOutlet weak var controlView: UIView!
-    @IBOutlet weak var textField: UITextView!
+    @IBOutlet weak var textLbl: UILabel!
     @IBOutlet weak var contentTF: UITextView!
     @IBOutlet weak var contentCV: UIView!
     @IBOutlet weak var userTBV: UITableView!
@@ -27,17 +27,18 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
     
     var tableView: UITableView!
     var indexPath: IndexPath!
+    var parent: QuestionVC!
     
     @IBOutlet weak var textViewToBottom: NSLayoutConstraint!
     
-    
-    func setUp(tbv:UITableView, row:IndexPath, color:UIColor, foreViewText:String, num:Int, contentViewText:String, isInCollection:Bool = false) {
+    func setUp(parent:QuestionVC, tbv:UITableView, row:IndexPath, color:UIColor, foreViewText:String, num:Int, contentViewText:String, isInCollection:Bool = false) {
+        self.parent = parent
         contentCV.isHidden = true
         textViewToBottom.constant = 0
         
         tableView = tbv
         indexPath = row
-        textField.text = foreViewText
+        textLbl.text = foreViewText
         numOfLike.text = String(num)
         
         containerView.board(radius: 5, width: 1, color: UIColor(cgColor: containerView.layer.borderColor!))
@@ -48,14 +49,14 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
         let tap = UITapGestureRecognizer(target: self, action: #selector(likeAction))
         controlView.addGestureRecognizer(tap)
         let textTap = UITapGestureRecognizer(target: self, action: #selector(textTapped))
-        textField.addGestureRecognizer(textTap)
+        textLbl.addGestureRecognizer(textTap)
         contentTF.text = contentViewText
         contentCV.backgroundColor = lightGray
         contentCV.board(radius: 0, width: 1, color: .black())
         let contentTap = UITapGestureRecognizer(target: self, action: #selector(textTapped))
         contentTF.addGestureRecognizer(contentTap)
         contentTF.font = UIFont(name: "Helvetica Neue", size: 16)
-        textField.font = UIFont(name: "Helvetica Neue", size: 16)
+        textLbl.font = UIFont(name: "Helvetica Neue", size: 16)
         
         userTBV.register(UINib(nibName: "UserListCell", bundle: nil), forCellReuseIdentifier: "UserListCell")
         userTBV.delegate = self
@@ -96,5 +97,10 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        parent.showAskerInfo()
+        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
 }

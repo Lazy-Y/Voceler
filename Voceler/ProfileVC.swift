@@ -11,9 +11,11 @@ import DBProfileViewController
 import SDAutoLayout
 import TextFieldEffects
 import BFPaperButton
+import UIViewController_NavigationBar
 
 class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     // UIVars
+    @IBOutlet weak var wallTop: NSLayoutConstraint!
     @IBOutlet weak var wallImg: UIImageView!
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var usernameTF: UITextField!
@@ -33,7 +35,8 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     
     // Actions
     override func backAction() {
-        _ = navigationController?.popViewController(animated: true)
+//        navigationController!.navigationBar.lt_setBackgroundColor(themeColor)
+        _ = navigationController!.popViewController(animated: true)
     }
     
     private var editMode = false
@@ -63,7 +66,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             case "Birthday":
                 let vc = VC(name: "Birthday", isNav: false, isCenter: false) as! Birthday
                 vc.textField = textField
-                navigationController?.navigationBar.lt_setBackgroundColor(themeColor)
+                vc.navigationBar.setColor(color: themeColor)
                 navigationController?.pushViewController(vc, animated: true)
             default:
                 textField.becomeFirstResponder()
@@ -72,14 +75,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     }
     
     // Functions
-    func setEditable(){
+    private func setEditable(){
         controlView?.isHidden = !editable
-        if editable{
-            bottomSpace?.constant = 50
-        }
-        else{
-            bottomSpace?.constant = 0
-        }
+        bottomSpace?.constant = editable ? 50 : 0
     }
     
     func setupUI(){
@@ -108,8 +106,8 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             .bottomSpaceToView(controlView, 0)?
             .leftSpaceToView(controlView, 0)?
             .rightSpaceToView(controlView, 0)
-        navigationController?.navigationBar.tintColor = .white()
         resizeTableView()
+        setEditable()
     }
     
     func resizeTableView() {
@@ -149,22 +147,5 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if editable{
-//            navigationController?.transparentBar()
-            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        }
-        else{
-            navigationController?.navigationBar.lt_reset()
-            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        if !editable{
-            navigationController?.navigationBar.lt_reset()
-        }
     }
 }

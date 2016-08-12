@@ -127,22 +127,21 @@
                                     <constraint firstAttribute="trailing" secondItem="ZSQ-I6-ev0" secondAttribute="trailing" constant="8" id="uhp-tx-jsf"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdk-0n-NNS">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpl-6Z-egs">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kdk-0n-NNS" firstAttribute="top" secondItem="24H-Ap-m3A" secondAttribute="top" id="II2-bu-nHB"/>
-                            <constraint firstAttribute="bottom" secondItem="kdk-0n-NNS" secondAttribute="bottom" id="ZY9-QD-AtP"/>
+                            <constraint firstAttribute="bottom" secondItem="hpl-6Z-egs" secondAttribute="bottom" id="amX-nX-skP"/>
                             <constraint firstAttribute="bottom" secondItem="OKx-kc-d4R" secondAttribute="bottom" id="fL5-u7-UMe"/>
+                            <constraint firstItem="OKx-kc-d4R" firstAttribute="leading" secondItem="hpl-6Z-egs" secondAttribute="trailing" id="gys-Sz-pdI"/>
+                            <constraint firstItem="hpl-6Z-egs" firstAttribute="leading" secondItem="24H-Ap-m3A" secondAttribute="leading" constant="8" id="iiO-60-bfg"/>
                             <constraint firstAttribute="trailing" secondItem="OKx-kc-d4R" secondAttribute="trailing" id="lOy-CO-vIw"/>
-                            <constraint firstItem="kdk-0n-NNS" firstAttribute="leading" secondItem="24H-Ap-m3A" secondAttribute="leading" id="oVi-2L-C9i"/>
                             <constraint firstItem="OKx-kc-d4R" firstAttribute="top" secondItem="24H-Ap-m3A" secondAttribute="top" id="v3C-fs-y08"/>
-                            <constraint firstItem="OKx-kc-d4R" firstAttribute="leading" secondItem="kdk-0n-NNS" secondAttribute="trailing" id="wtl-jA-mcJ"/>
+                            <constraint firstItem="hpl-6Z-egs" firstAttribute="top" secondItem="24H-Ap-m3A" secondAttribute="top" id="wAK-aV-X5u"/>
                             <constraint firstAttribute="height" constant="50" id="y38-DU-eb0"/>
                         </constraints>
                     </view>
@@ -179,7 +178,7 @@
                 <outlet property="numOfLikeWidth" destination="UNl-4i-BqY" id="HHK-1Q-DL6"/>
                 <outlet property="reportImg" destination="tDk-dt-eFh" id="WHf-SR-lAU"/>
                 <outlet property="reportView" destination="Zjg-Mu-LMb" id="PNM-sH-SyH"/>
-                <outlet property="textField" destination="kdk-0n-NNS" id="eW0-2g-gXn"/>
+                <outlet property="textLbl" destination="hpl-6Z-egs" id="85k-DF-jIv"/>
                 <outlet property="textViewToBottom" destination="o9F-5q-9wl" id="BOP-jv-Ow3"/>
                 <outlet property="userTBV" destination="vf0-1E-kFv" id="vDO-iZ-f2P"/>
             </connections>

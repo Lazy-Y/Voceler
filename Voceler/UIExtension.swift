@@ -40,7 +40,6 @@ extension UIViewController{
     
     func setBackItem() {
         let leftBtn = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backAction))
-        navigationController?.navigationBar.tintColor = .white()
         navigationItem.leftBarButtonItem = leftBtn
     }
     
@@ -50,13 +49,16 @@ extension UIViewController{
     
 }
 
-extension UINavigationController{
-    func transparentBar(){
-        navigationBar.barTintColor = .clear()
-        navigationBar.backgroundColor = .clear()
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.isTranslucent = true
+extension UINavigationBar{
+    func setColor(color:UIColor){
+        barTintColor = color
+        backgroundColor = color
+        tintColor = .white()
+        isTranslucent = true
+        titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 20)!, NSForegroundColorAttributeName: UIColor.white()]
+        if color == UIColor.clear(){
+            setBackgroundImage(UIImage(), for: .default)
+        }
     }
 }
 

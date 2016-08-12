@@ -149,6 +149,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UIViewController+NavigationBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>WZDraggableSwitchHeaderView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -167,12 +172,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>072A34BA58495FE02E3B73C57A1D625F</key>
+		<key>0814C8B4E25502BB12D77FD7F1C508D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0814C8B4E25502BB12D77FD7F1C508D0</key>
+		<key>0F874E6788FEA74D4815BFC9B78520A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -192,11 +197,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15718F6619EF8F28BEBC0BFB02564403</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>1B851D484AD23B7317E83942CA46B06D</key>
 		<dict>
 			<key>primary</key>
@@ -207,12 +207,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>246B8F15B0A5C7A1D160639012C58691</key>
+		<key>228804816AE5508FA4EE3AF3DF095CDC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2942EFF978111EA3A637D7D91122D13B</key>
+		<key>22B6EA30235E6352E23CE00A92F623E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2D61F4EB3AF864468A6FDFC3EF8D3019</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>344991812C7D4678E16CBAA15A658ED9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -222,12 +232,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B6DC450B6F16A14AB25BDD20A128D1B</key>
+		<key>44D04613A7591446E9F604C26C55657F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44D04613A7591446E9F604C26C55657F</key>
+		<key>53196AC51C30A3D8E97D2D735E2432B7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>55F2D2CC94C9C90B4019562BD42A6448</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -237,17 +252,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>60B1B9709BA25D4B10662B4D42BEE16A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>79062FFC7625D718411B0B4F75490F98</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>84A4BF4039E57D962D64AD9C2A4D339D</key>
+		<key>72AF36B795634F1256413F0F1EEE1551</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -282,37 +287,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C1AA8F8ED407AF4A67BEA395C46749DD</key>
+		<key>ABD073C40C6D7D935597BE47EDBEDF20</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DFE45494B402247471E441FE45BDFB0E</key>
+		<key>B91D00E75AD337C9BD221D4440B36F0D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E1DC5A9B8B52FE139867548DCEEDB532</key>
+		<key>E3E28946CAA96781FB770897D3329AF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4BAF8AD880E894DB42D1E5A53F59DFA</key>
+		<key>E4B3F8125D35A5E56685EA2657FB30A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EE233CED1B72770E72889C0922C27816</key>
+		<key>E6293AF4F9BB4039570E7812B03FBC6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F660F7BACF4460B40C5A9B0584F62136</key>
+		<key>F67F77BC4640FC3614A23B1F310287EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>FABEFE59C2CD9C196FD2B92D8E5BC90E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE1D0AD0526A8BB1E0074455C29B6199</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -21,7 +21,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // UIVars
     @IBOutlet weak var titleBarView: UIVisualEffectView!
-    @IBOutlet weak var likeBtn: UIButton!
+    @IBOutlet weak var likeBtn: UIButton?
     @IBOutlet weak var detailTV: UITextView!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var askerProfile: UIButton!
@@ -32,14 +32,10 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var scrollView: UIScrollView!
     
     // Actions
-    
     @IBAction func askerInfo(_ sender: AnyObject) {
-        let vc = VC(name: "ProfileOther", isNav: false, isCenter: false) as! ProfileVC
-        vc.setBackItem()
-        vc.editable = false
-        vc.setEditable()
-        navigationController?.pushViewController(vc, animated: true)
+        showAskerInfo()
     }
+    
     @IBAction func showAskVC(_ sender: AnyObject) {
         let vc = VC(name: "Ask Question", isCenter: false) as! UINavigationController
         show(vc, sender: self)
@@ -48,10 +44,10 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBAction func likeAction(_ sender: AnyObject) {
         liked = !liked
         if liked {
-            likeBtn.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
+            likeBtn?.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
         }
         else{
-            likeBtn.setImage(#imageLiteral(resourceName: "star_filled").withRenderingMode(.alwaysTemplate), for: [])
+            likeBtn?.setImage(#imageLiteral(resourceName: "star_filled").withRenderingMode(.alwaysTemplate), for: [])
         }
     }
     
@@ -59,7 +55,18 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         print("Conclude")
     }
     
+    override func backAction() {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     // Functions
+    func showAskerInfo(){
+        let vc = VC(name: "Profile", isNav: false, isCenter: false, isNew: true) as! ProfileVC
+        vc.setBackItem()
+        vc.editable = false
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func setupUI() {
         setupProfile()
         _ = titleBarView.addBorder(edges: .bottom, colour: UIColor.gray(), thickness: 1.5)
@@ -67,18 +74,20 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 5)
         detailTV.isEditable = false
         askerProfile.board(radius: 20, width: 3, color: UIColor.white())
-        likeBtn.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
-        likeBtn.tintColor = darkRed
+        likeBtn?.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
+        likeBtn?.tintColor = darkRed
         scrollView.showsVerticalScrollIndicator = false
         initTable()
-        navigationController?.transparentBar()
+        navigationBar.setColor(color: themeColor)
+        edgesForExtendedLayout = []
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ask").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(showAskVC(_:)))
     }
     
     func initTable() {
         optTbv.register(UINib(nibName: "OptCell", bundle: nil), forCellReuseIdentifier: "OptCell") 
         optTbv.delegate = self
         optTbv.dataSource = self
-        for _ in 0...9 {
+        for _ in 0..<cellContent.count {
             cellHeights.append(kCloseCellHeight)
         }
         optTbv.separatorStyle = .none
@@ -104,15 +113,16 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private var isLiked:Bool?
     func collectionSetup(collection:Bool){
         isCollection = collection
+        collectionSetup()
     }
     
     func collectionSetup(){
-        if let isCollection = isCollection where isCollection{
+        if let isCollection = isCollection, likeBtn = likeBtn where isCollection{
             likeBtn.isHidden = false
             navigationItem.rightBarButtonItem = nil
         }
         else{
-            likeBtn.isHidden = true
+            likeBtn?.isHidden = true
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Conclude", style: .done, target: self, action: #selector(concludeAction))
         }
     }
@@ -124,6 +134,8 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if isCollection != nil{
             collectionSetup()
         }
+        setDescription(description: "Which language is the best in the world?")
+        resizeScrollView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -131,18 +143,13 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        setDescription(description: "Which language is the best in the world?")
-        resizeScrollView()
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 10
+        return cellContent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "OptCell") as! OptCell
-        cell.setUp(tbv: optTbv, row: indexPath, color: UIColor.darkGray(), foreViewText: cellContent[indexPath.row], num: 200 - indexPath.row * 10, contentViewText: "As Sergey and I wrote in the original founders letter 11 years ago, “Google is not a conventional company. We do not intend to become one.”", isInCollection: isCollection != nil)
+        cell.setUp(parent: self,tbv: optTbv, row: indexPath, color: UIColor.darkGray(), foreViewText: cellContent[indexPath.row], num: 200 - indexPath.row * 10, contentViewText: "As Sergey and I wrote in the original founders letter 11 years ago, “Google is not a conventional company. We do not intend to become one.”", isInCollection: isCollection != nil)
         return cell
     }
     
@@ -185,7 +192,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.lt_setBackgroundColor(themeColor)
+    override func hasCustomNavigationBar() -> Bool {
+        return true
     }
 }

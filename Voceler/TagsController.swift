@@ -103,10 +103,9 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
     func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) -> Void{
         self.tagView.removeTagView(tagView)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }

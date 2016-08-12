@@ -24,8 +24,7 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let vc = board.instantiateViewController(withIdentifier: "Ask Question") as! AskProblemVC
         let nav = UINavigationController(rootViewController: vc)
         vc.navigationItem.title = "Option"
-        nav.navigationBar.barTintColor = themeColor
-        nav.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 20)!, NSForegroundColorAttributeName: UIColor.white()]
+        nav.navigationBar.setColor(color: themeColor)
         vc.parentVC = self
         show(nav, sender: self)
     }
@@ -35,8 +34,7 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let vc = board.instantiateViewController(withIdentifier: "Ask Question") as! AskProblemVC
         let nav = UINavigationController(rootViewController: vc)
         vc.navigationItem.title = "Option"
-        nav.navigationBar.barTintColor = themeColor
-        nav.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 20)!, NSForegroundColorAttributeName: UIColor.white()]
+        nav.navigationBar.setColor(color: themeColor)
         vc.text = optArr[indexPath.row]
         vc.parentVC = self
         vc.indexPath = indexPath
@@ -54,7 +52,8 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func nextAction(){
-        navigationController?.pushViewController(VC(name: "Tags", isNav: false, isCenter: false), animated: true)
+        let vc = VC(name: "Tags", isNav: false, isCenter: false)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // Functions
@@ -92,6 +91,8 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         table.dataSource = self
         table.register(UINib(nibName: "AddOptCell", bundle: nil), forCellReuseIdentifier: "AddOptCell")
         optArr = ["The University of Southern California requires all students have comprehensive health insurance.  All students enrolled in 6 or more units are automatically enrolled into the USC Student Health Insurance plan.  Students taking courses through the Health Sciences Campus and all international students are automatically enrolled as well.  This will help cover the cost of care that cannot be obtained at the health center on campus, especially in emergency situations where hospitalization may be required.", "Please note that at any time during the semester, if the number of units you are registered in drops below 6 units, you will need to contact the health insurance office, or you may be automatically dropped from insurance coverage.", "The Engemann Student Health Center will serve as your health care center on campus. Your mandatory payment of the health center fee each semester ($295 for fall and separate from the insurance premium), covers most primary care services. We have many available resources to keep you healthy during your academic years. Our integration with both the Division of Student Affairs and the USC health care community helps support USC’s mission of providing you with high quality, cost-effective, student-focused services.", "Fusion 360 is 3D CAD reinvented. Get industrial and mechanical design, simulation, collaboration, and machining in a single package. Fusion 360 connects your entire product development process and works on both Mac and PC."]
+        navigationBar.setColor(color: themeColor)
+        table.tableFooterView = UIView()
     }
     
     // Override functions
@@ -107,8 +108,7 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddOptCell") as! AddOptCell
-        cell.textView.text = optArr[indexPath.row]
-        cell.textView.isScrollEnabled = false
+        cell.textLbl.text = optArr[indexPath.row]
         cell.parentTB = table
         return cell
     }
@@ -116,10 +116,6 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
         editAction(indexPath: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 66
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

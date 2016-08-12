@@ -31,8 +31,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </textField>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="edit_row-50" translatesAutoresizingMaskIntoConstraints="NO" id="6b1-0H-vq1">
-                        <frame key="frameInset" minX="284" minY="35" width="28" height="28"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_row-50" translatesAutoresizingMaskIntoConstraints="NO" id="6b1-0H-vq1">
                         <constraints>
                             <constraint firstAttribute="width" secondItem="6b1-0H-vq1" secondAttribute="height" multiplier="1:1" id="TJX-57-5qH"/>
                             <constraint firstAttribute="height" constant="28" id="hhg-xu-xVy"/>

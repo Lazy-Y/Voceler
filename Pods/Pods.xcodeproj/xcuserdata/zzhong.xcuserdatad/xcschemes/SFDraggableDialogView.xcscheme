@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '2942EFF978111EA3A637D7D91122D13B'
+               BlueprintIdentifier = 'B91D00E75AD337C9BD221D4440B36F0D'
                BlueprintName = 'SFDraggableDialogView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'SFDraggableDialogView.framework'>

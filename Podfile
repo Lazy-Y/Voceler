@@ -26,6 +26,7 @@ pod 'WZDraggableSwitchHeaderView'
 pod 'DBProfileViewController'
 pod 'DGElasticPullToRefresh'
 pod 'LTNavigationBar'
+pod 'UIViewController+NavigationBar'
 
 target 'Voceler' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks

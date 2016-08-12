@@ -16,7 +16,7 @@ let lightGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
 
 func getVC(name:String) -> UIViewController {
     let board = UIStoryboard(name: "Main", bundle: nil)
-    let vc = board.instantiateViewController(withIdentifier: name == "ProfileOther" ? "Profile" : name)
+    let vc = board.instantiateViewController(withIdentifier: name)
     vc.edgesForExtendedLayout = []
     return vc
 }
@@ -24,14 +24,13 @@ func getVC(name:String) -> UIViewController {
 func getNav(name:String, isCenter:Bool) -> UINavigationController {
     let vc = getVC(name: name)
     let nav = UINavigationController(rootViewController: vc)
-    nav.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 20)!, NSForegroundColorAttributeName: UIColor.white()]
     vc.title = name
-    nav.navigationBar.barTintColor = themeColor
     if isCenter{
         vc.navigationItem.leftBarButtonItem = profileItem()
+        nav.navigationBar.setColor(color: .clear())
     }
-    if name == "Profile"{
-        nav.transparentBar()
+    else {
+        nav.navigationBar.setColor(color: themeColor)
     }
     return nav
 }
@@ -60,8 +59,11 @@ var drawer:MMDrawerController{
 }
 
 internal var myVC = [String:UIViewController]()
-func VC(name:String, isNav:Bool = true, isCenter:Bool = true) -> UIViewController{
-    if let vc = myVC[name]{
+func VC(name:String, isNav:Bool = true, isCenter:Bool = true, isNew:Bool = false) -> UIViewController{
+    if isNew{
+        return getVC(name: name)
+    }
+    else if let vc = myVC[name]{
         return vc
     }
     else if name == "CollectionQuestion"{
@@ -72,6 +74,7 @@ func VC(name:String, isNav:Bool = true, isCenter:Bool = true) -> UIViewControlle
         vc.navigationItem.rightBarButtonItem = nil
         vc.setBackItem()
         vc.edgesForExtendedLayout = []
+        myVC[name] = vc
         return vc
     }
     else if isNav{
@@ -112,3 +115,9 @@ func changingColor(firstColor:UIColor, secondeColor:UIColor, fraction:CGFloat) -
     return UIColor(red: red, green: green, blue: blue, alpha: alpha).cgColor
 }
 
+func color(hex: Int) -> UIColor {
+    let red = CGFloat(hex >> 16 & 0xff) / 255
+    let green = CGFloat(hex >> 8 & 0xff) / 255
+    let blue  = CGFloat(hex & 0xff) / 255
+    return UIColor(red: red, green: green, blue: blue, alpha: 1)
+}

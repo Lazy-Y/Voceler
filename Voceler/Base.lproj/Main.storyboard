@@ -353,7 +353,7 @@
                             <constraint firstItem="0jl-NI-1zz" firstAttribute="trailing" secondItem="XA6-RZ-vBn" secondAttribute="trailingMargin" constant="10" id="UR1-Me-3x3"/>
                             <constraint firstItem="3tI-le-5Yu" firstAttribute="leading" secondItem="XA6-RZ-vBn" secondAttribute="leading" id="UfN-tF-O5e"/>
                             <constraint firstItem="kKs-8s-5aI" firstAttribute="top" secondItem="0jl-NI-1zz" secondAttribute="bottom" id="sSb-ai-Z9L"/>
-                            <constraint firstItem="3tI-le-5Yu" firstAttribute="top" secondItem="fKZ-PZ-Ppz" secondAttribute="bottom" id="xpa-gz-Xzp"/>
+                            <constraint firstItem="3tI-le-5Yu" firstAttribute="top" secondItem="fKZ-PZ-Ppz" secondAttribute="bottom" constant="45" id="xpa-gz-Xzp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="pN9-Kl-Y2r">
@@ -537,6 +537,7 @@
                         <outlet property="table" destination="qQX-mh-8Z3" id="kst-hL-zyP"/>
                         <outlet property="usernameTF" destination="ubu-If-DRO" id="OLO-43-Vka"/>
                         <outlet property="wallImg" destination="0uW-mx-46n" id="ddJ-K1-vqt"/>
+                        <outlet property="wallTop" destination="UeN-P1-VTd" id="Ity-GA-6dV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QNO-co-7rb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -662,7 +663,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="O22-mK-s9j" secondAttribute="trailing" id="3Y6-vX-geP"/>
                             <constraint firstItem="O22-mK-s9j" firstAttribute="top" secondItem="Ii2-Iw-Yu3" secondAttribute="bottom" id="Gd2-6L-s9b"/>
-                            <constraint firstItem="Ii2-Iw-Yu3" firstAttribute="top" secondItem="ioC-qb-bS2" secondAttribute="top" id="OwJ-WA-R0i"/>
+                            <constraint firstItem="Ii2-Iw-Yu3" firstAttribute="top" secondItem="ioC-qb-bS2" secondAttribute="top" constant="63" id="OwJ-WA-R0i"/>
                             <constraint firstAttribute="trailing" secondItem="Ii2-Iw-Yu3" secondAttribute="trailing" id="je5-Se-Pq9"/>
                             <constraint firstItem="Ii2-Iw-Yu3" firstAttribute="leading" secondItem="ioC-qb-bS2" secondAttribute="leading" id="mxb-dD-Otr"/>
                             <constraint firstItem="qeO-5Z-w8J" firstAttribute="top" secondItem="O22-mK-s9j" secondAttribute="bottom" id="s5N-xM-G1S"/>
@@ -704,7 +705,7 @@
                         <viewControllerLayoutGuide type="top" id="dTu-UA-34u"/>
                         <viewControllerLayoutGuide type="bottom" id="72r-PZ-rFq"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="2yd-ut-dz0">
+                    <view key="view" contentMode="scaleToFill" id="2yd-ut-dz0">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

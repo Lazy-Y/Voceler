@@ -59,6 +59,7 @@ PODS:
   - TagListView (1.0.0)
   - TextFieldEffects (1.2.0)
   - UIColor+BFPaperColors (1.7.2)
+  - UIViewController+NavigationBar (0.3.3)
   - WZDraggableSwitchHeaderView (0.0.1)
   - ZFDragableModalTransition (0.6)
 
@@ -85,6 +86,7 @@ DEPENDENCIES:
   - SwiftString
   - TagListView
   - TextFieldEffects
+  - UIViewController+NavigationBar
   - WZDraggableSwitchHeaderView
   - ZFDragableModalTransition
 
@@ -121,9 +123,10 @@ SPEC CHECKSUMS:
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
   TextFieldEffects: bc4fd3bd557321bd61a0762f3f50965477a36f62
   UIColor+BFPaperColors: 03101fe6c10ed00c6daae7c26553f1de41500853
+  UIViewController+NavigationBar: 1f72c3b1df21b24ee8fa13f822b5126f180b77f3
   WZDraggableSwitchHeaderView: 6debb503cc70def6200c45a0b3ecaeb6fb7606c8
   ZFDragableModalTransition: 0d294eaaba6edfcb9839595de765f9ca06a4b524
 
-PODFILE CHECKSUM: ed0722322b39cb3dc00d3b754ac1057ef8eaab2e
+PODFILE CHECKSUM: 7b511f73e2c23a48b0edea7ffccbab22919ff7e2
 
 COCOAPODS: 1.0.1
