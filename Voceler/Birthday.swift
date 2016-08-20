@@ -33,7 +33,6 @@ class Birthday: UIViewController {
             .leftSpaceToView(view, 0)?
             .rightSpaceToView(view, 0)?
             .heightIs(200)
-        setBackItem()
         navigationBar.setColor(color: themeColor)
         birthPicker.maximumDate = Date()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(confirmAction))

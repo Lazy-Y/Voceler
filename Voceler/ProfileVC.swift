@@ -11,9 +11,12 @@ import DBProfileViewController
 import SDAutoLayout
 import TextFieldEffects
 import BFPaperButton
+import FirebaseAuth
 import UIViewController_NavigationBar
+import SCLAlertView
+import SwiftSpinner
 
-class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // UIVars
     @IBOutlet weak var wallTop: NSLayoutConstraint!
     @IBOutlet weak var wallImg: UIImageView!
@@ -27,30 +30,48 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     @IBOutlet weak var scrollHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomSpace: NSLayoutConstraint?
     var editBtn = BFPaperButton(raised: false)!
+    private var takeProfile = UIImageView(image: #imageLiteral(resourceName: "compact_camera-50"))
+    private var takeWall = UIImageView(image: #imageLiteral(resourceName: "compact_camera-50"))
+    private var setImgTo = "profileImg"
+    private var picker = UIImagePickerController()
+    let old_val = NSMutableArray()
     
     // FieldVars
-    let attributeArr = ["Email", "What's up", "Sex", "Birthday", "Region"]
-    let contentArr = ["392609144@qq.com", "I'll regrade your ass ignment!", "Male", "10-06-1995", "Los Angeles"]
+    let attributeArr = ["What's up", "Sex", "Birthday", "Region"]
+    var contentArr:[NSMutableString] = ["I'll regrade your ass ignment!", "Male", "10-06-1995", "Los Angeles"]
     var editable = true
+    var uid:String?
     
     // Actions
-    override func backAction() {
-//        navigationController!.navigationBar.lt_setBackgroundColor(themeColor)
-        _ = navigationController!.popViewController(animated: true)
-    }
-    
     private var editMode = false
     func editAction() {
         editMode = !editMode
+        table.allowsSelection = editMode
+        usernameTF.isEnabled = editMode
+        takeProfile.isHidden = !editMode
+        takeWall.isHidden = !editMode
+        table.reloadData()
         if editMode{
+            old_val.removeAllObjects()
+            for item in contentArr {
+                old_val.add(item as String)
+            }
+            old_val.add(profileImg.image!)
+            old_val.add(wallImg.image!)
             usernameTF.layer.borderWidth = 1
         }
         else {
             usernameTF.layer.borderWidth = 0
+            for i in 0..<contentArr.count {
+                if old_val[i] as! NSString != contentArr[i] {
+                    showSaveAlert()
+                    return
+                }
+            }
+            if old_val[contentArr.count] as? UIImage != profileImg.image || old_val[contentArr.count+1] as? UIImage != wallImg.image{
+                showSaveAlert()
+            }
         }
-        table.allowsSelection = editMode
-        usernameTF.isEnabled = editMode
-        table.reloadData()
     }
     
     func cellTapped(textField:UITextField){
@@ -74,14 +95,56 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         }
     }
     
+    func changeImg(target:UITapGestureRecognizer) {
+        if editMode{
+            if profileImg.gestureRecognizers!.contains(target){
+                setImgTo = "profileImg"
+            }
+            else{
+                setImgTo = "wallImg"
+            }
+            show(picker, sender: self)
+        }
+    }
+    
     // Functions
+    private func showSaveAlert(){
+        let alert = SCLAlertView()
+        _ = alert.addButton("Save", action: {
+            for i in 0..<self.contentArr.count{
+                self.old_val[i] = self.contentArr[i]
+            }
+            self.old_val[self.contentArr.count] = self.profileImg.image!
+            self.old_val[self.contentArr.count+1] = self.wallImg.image!
+        })
+        let resp = alert.showNotice("Save", subTitle: "Do you want to save changes?", closeButtonTitle: "Cancel", duration: 0, colorStyle: 0x2866BF, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.bottomToTop)
+        resp.setDismissBlock { 
+            for i in 0..<self.contentArr.count{
+                self.contentArr[i] = NSMutableString(string: self.old_val[i] as! NSString)
+            }
+            self.profileImg.image = self.old_val[self.contentArr.count] as? UIImage
+            self.wallImg.image = self.old_val[self.contentArr.count+1] as? UIImage
+            self.table.reloadData()
+        }
+//        table.reloadData()
+    }
+    
     private func setEditable(){
+        editable = FIRAuth.auth()?.currentUser?.uid == uid
         controlView?.isHidden = !editable
         bottomSpace?.constant = editable ? 50 : 0
     }
     
     func setupUI(){
+        picker.delegate = self
         edgesForExtendedLayout = .top
+        for parent in self.navigationController!.navigationBar.subviews {
+            for childView in parent.subviews {
+                if(childView is UIImageView && !childView.clipsToBounds) {
+                    childView.removeFromSuperview()
+                }
+            }
+        }
         title = ""
         usernameTF.placeholder = "Username"
         usernameTF.layer.borderColor = UIColor.gray().cgColor
@@ -107,7 +170,28 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             .leftSpaceToView(controlView, 0)?
             .rightSpaceToView(controlView, 0)
         resizeTableView()
-        setEditable()
+        
+        contentView.addSubview(takeProfile)
+        _ = takeProfile.sd_layout()
+            .topSpaceToView(profileImg, -36)?
+            .leftSpaceToView(profileImg, -36)?
+            .heightIs(36)?
+            .widthIs(36)
+        
+        wallImg.addSubview(takeWall)
+        _ = takeWall.sd_layout()
+            .bottomSpaceToView(wallImg, 0)?
+            .rightSpaceToView(wallImg, 10)?
+            .heightIs(36)?
+            .widthIs(36)
+        
+        takeProfile.isHidden = true
+        takeWall.isHidden = true
+        
+        let profileTap = UITapGestureRecognizer(target: self, action: #selector(changeImg(target:)))
+        profileImg.addGestureRecognizer(profileTap)
+        let wallTap = UITapGestureRecognizer(target: self, action: #selector(changeImg(target:)))
+        wallImg.addGestureRecognizer(wallTap)
     }
     
     func resizeTableView() {
@@ -116,11 +200,16 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     }
     
     // Override functions
+    override func viewWillAppear(_ animated: Bool) {
+        setEditable()
+        navigationBar.isHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProfile()
         setupUI()
-        setEditable()
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,19 +222,30 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return attributeArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell") as! ProfileCell
         cell.setVC(vc: self)
         cell.textField.placeholder = attributeArr[indexPath.row]
-        cell.textField.text = contentArr[indexPath.row]
+        cell.textValue = contentArr[indexPath.row]
         cell.setEdit(editMode: editMode)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        picker.dismiss(animated: true) {
+            if self.setImgTo == "profileImg"{
+                self.profileImg.image = info["UIImagePickerControllerOriginalImage"] as? UIImage
+            }
+            else if self.setImgTo == "wallImg"{
+                self.wallImg.image = info["UIImagePickerControllerOriginalImage"] as? UIImage
+            }
+        }
     }
 }

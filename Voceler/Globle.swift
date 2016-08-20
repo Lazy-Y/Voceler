@@ -70,9 +70,6 @@ func VC(name:String, isNav:Bool = true, isCenter:Bool = true, isNew:Bool = false
         let board = UIStoryboard(name: "Main", bundle: nil)
         let vc = board.instantiateViewController(withIdentifier: "Question") as! QuestionVC
         vc.title = "Question"
-        vc.navigationItem.leftBarButtonItem?.title = "Back"
-        vc.navigationItem.rightBarButtonItem = nil
-        vc.setBackItem()
         vc.edgesForExtendedLayout = []
         myVC[name] = vc
         return vc

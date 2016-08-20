@@ -9,11 +9,16 @@
 import UIKit
 import TextFieldEffects
 
-class ProfileCell: UITableViewCell {
+class ProfileCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var textField: AkiraTextField!
     @IBOutlet weak var editImg: UIImageView!
     @IBOutlet weak var rightConst: NSLayoutConstraint!
+    var textValue:NSMutableString!{
+        didSet{
+            textField.text = textValue as String
+        }
+    }
     
     var parent:ProfileVC!
     
@@ -38,10 +43,16 @@ class ProfileCell: UITableViewCell {
         parent = vc
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textValue.replaceCharacters(in: NSMakeRange(0, textValue.length), with: textField.text!)
+        print(textValue)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         textField.borderStyle = .none
+        textField.delegate = self
         editImg.setIcon(img: #imageLiteral(resourceName: "edit_row-50"), color: .gray())
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         contentView.addGestureRecognizer(tap)
@@ -52,5 +63,4 @@ class ProfileCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

@@ -60,7 +60,6 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setupUI() {
         // Setup Nav
         edgesForExtendedLayout = []
-        setBackItem()
         navigationItem.title = "Options"
         let rightBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
         navigationItem.rightBarButtonItem = rightBtn

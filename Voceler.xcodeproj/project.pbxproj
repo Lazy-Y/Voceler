@@ -58,7 +58,7 @@
 		FD1DBB071D1A4D9E00E6762D /* Voceler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voceler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD1DBB0F1D1A4D9E00E6762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Voceler/Assets.xcassets; sourceTree = "<group>"; };
+		FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD1DBB141D1A4D9E00E6762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD1DBB161D1A4D9E00E6762D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD1DBB1C1D1A65CC00E6762D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -116,7 +116,6 @@
 		FD1DBAFE1D1A4D9E00E6762D = {
 			isa = PBXGroup;
 			children = (
-				FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */,
 				FD1DBB091D1A4D9E00E6762D /* Voceler */,
 				FD1DBB081D1A4D9E00E6762D /* Products */,
 				DAC74AB05877AD87CE1DBA66 /* Pods */,
@@ -177,6 +176,7 @@
 		FD682A9D1D33044300D2F4B6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */,
 				FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */,
 				FD149E1A1D1B7939007F3F7B /* UIExtension.swift */,
 				FD149E1C1D1B7C81007F3F7B /* NSExtension.swift */,

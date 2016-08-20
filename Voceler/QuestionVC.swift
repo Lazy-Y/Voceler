@@ -55,15 +55,9 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         print("Conclude")
     }
     
-    override func backAction() {
-        _ = navigationController?.popViewController(animated: true)
-    }
-    
     // Functions
     func showAskerInfo(){
         let vc = VC(name: "Profile", isNav: false, isCenter: false, isNew: true) as! ProfileVC
-        vc.setBackItem()
-        vc.editable = false
         navigationController?.pushViewController(vc, animated: true)
     }
     

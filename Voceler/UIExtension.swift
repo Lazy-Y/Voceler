@@ -32,20 +32,22 @@ extension UIViewController{
     }
     
     func setupProfile(){
-        let btn = (navigationItem.leftBarButtonItem?.customView as? UIButton)
-        if let btn = btn{
+        if let btn = navigationItem.leftBarButtonItem?.customView as? UIButton{
             btn.addTarget(self, action: #selector(showMore), for: .touchUpInside)
         }
     }
     
-    func setBackItem() {
-        let leftBtn = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backAction))
-        navigationItem.leftBarButtonItem = leftBtn
-    }
+//    func setBackItem() {
+//        let leftBtn = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backAction))
+//        navigationItem.leftBarButtonItem = leftBtn
+//        navigationItem.leftItemsSupplementBackButton = false
+//        navigationItem.backBarButtonItem = leftBtn
+//        navigationItem.backBarButtonItem?.title = "Back"
+//    }
     
-    func backAction() {
-        _ = navigationController?.popViewController(animated: true)
-    }
+//    func backAction() {
+//        _ = navigationController?.popViewController(animated: true)
+//    }
     
 }
 
@@ -114,6 +116,20 @@ extension UIColor {
 }
 
 extension UIView{
+    func blury() {
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            self.backgroundColor = UIColor.clear()
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = self.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            
+            self.addSubview(blurEffectView) //if you have more UIViews, use an insertSubview API to place it where needed
+        } else {
+            self.backgroundColor = UIColor.black()
+        }
+    }
     func hideKeyboard(){
         endEditing(true)
     }
