@@ -84,7 +84,9 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == viewsArr.count - 1 {
             try! FIRAuth.auth()?.signOut()
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: {
+                clearVC()
+            })
         }
         else {
             drawer.centerViewController = VC(name: viewsArr[indexPath.row])

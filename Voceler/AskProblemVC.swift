@@ -69,12 +69,12 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate{
         setupUI()
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         textView.endEditing(true)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let text = text {
             handler.setText(text, withAnimation: true)
         }

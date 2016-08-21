@@ -37,8 +37,8 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     let old_val = NSMutableArray()
     
     // FieldVars
-    let attributeArr = ["What's up", "Sex", "Birthday", "Region"]
-    var contentArr:[NSMutableString] = ["I'll regrade your ass ignment!", "Male", "10-06-1995", "Los Angeles"]
+    let attributeArr = ["What's up", "Region", "Sex", "Birthday", "hello"]
+    var contentArr:[NSMutableString] = ["I'll regrade your ass ignment!", "Los Angeles", "Male", "10-06-1995", "world"]
     var editable = true
     var uid:String?
     
@@ -52,15 +52,18 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         takeWall.isHidden = !editMode
         table.reloadData()
         if editMode{
+            editBtn.setTitle("  Done", for: [])
             old_val.removeAllObjects()
             for item in contentArr {
                 old_val.add(item as String)
             }
             old_val.add(profileImg.image!)
             old_val.add(wallImg.image!)
+            old_val.add(usernameTF.text!)
             usernameTF.layer.borderWidth = 1
         }
         else {
+            editBtn.setTitle("  Edit", for: [])
             usernameTF.layer.borderWidth = 0
             for i in 0..<contentArr.count {
                 if old_val[i] as! NSString != contentArr[i] {
@@ -68,7 +71,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                     return
                 }
             }
-            if old_val[contentArr.count] as? UIImage != profileImg.image || old_val[contentArr.count+1] as? UIImage != wallImg.image{
+            if old_val[contentArr.count] as? UIImage != profileImg.image || old_val[contentArr.count+1] as? UIImage != wallImg.image || old_val[contentArr.count+2] as? String != usernameTF.text{
                 showSaveAlert()
             }
         }
@@ -90,6 +93,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                 vc.navigationBar.setColor(color: themeColor)
                 navigationController?.pushViewController(vc, animated: true)
             default:
+                textField.isUserInteractionEnabled = true
                 textField.becomeFirstResponder()
             }
         }
@@ -116,6 +120,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             }
             self.old_val[self.contentArr.count] = self.profileImg.image!
             self.old_val[self.contentArr.count+1] = self.wallImg.image!
+            self.old_val[self.contentArr.count+2] = self.usernameTF.text!
         })
         let resp = alert.showNotice("Save", subTitle: "Do you want to save changes?", closeButtonTitle: "Cancel", duration: 0, colorStyle: 0x2866BF, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.bottomToTop)
         resp.setDismissBlock { 
@@ -124,9 +129,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             }
             self.profileImg.image = self.old_val[self.contentArr.count] as? UIImage
             self.wallImg.image = self.old_val[self.contentArr.count+1] as? UIImage
+            self.usernameTF.text = self.old_val[self.contentArr.count+2] as? String
             self.table.reloadData()
         }
-//        table.reloadData()
     }
     
     private func setEditable(){
@@ -147,7 +152,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         }
         title = ""
         usernameTF.placeholder = "Username"
-        usernameTF.layer.borderColor = UIColor.gray().cgColor
+        usernameTF.layer.borderColor = UIColor.lightGray().cgColor
         contentView.touchToHideKeyboard()
         scroll.delegate = self
         view.backgroundColor = lightGray
@@ -161,6 +166,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         moneyImg.setIcon(img: #imageLiteral(resourceName: "money"), color: pinkColor)
         editBtn.backgroundColor = themeColor
         editBtn.tintColor = .white()
+        editBtn.setTitle("  Edit", for: [])
         editBtn.setImage(#imageLiteral(resourceName: "edit_row-32").withRenderingMode(.alwaysTemplate), for: [])
         controlView!.addSubview(editBtn)
         editBtn.addTarget(self, action: #selector(editAction), for: [.touchUpInside])
@@ -187,6 +193,8 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         
         takeProfile.isHidden = true
         takeWall.isHidden = true
+        takeProfile.setIcon(img: #imageLiteral(resourceName: "compact_camera-50"), color: .gray())
+        takeWall.setIcon(img: #imageLiteral(resourceName: "compact_camera-50"), color: .gray())
         
         let profileTap = UITapGestureRecognizer(target: self, action: #selector(changeImg(target:)))
         profileImg.addGestureRecognizer(profileTap)
@@ -217,10 +225,6 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         // Dispose of any resources that can be recreated.
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        view.endEditing(true)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return attributeArr.count
     }
@@ -247,5 +251,20 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                 self.wallImg.image = info["UIImagePickerControllerOriginalImage"] as? UIImage
             }
         }
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        let info = notification.userInfo!
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue()
+        
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            self.bottomSpace?.constant = keyboardFrame.size.height + 20
+        })
+    }
+    
+    
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        hideKeyboard()
     }
 }

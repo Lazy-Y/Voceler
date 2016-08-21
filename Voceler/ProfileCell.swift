@@ -45,7 +45,7 @@ class ProfileCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textValue.replaceCharacters(in: NSMakeRange(0, textValue.length), with: textField.text!)
-        print(textValue)
+        textField.isUserInteractionEnabled = false
     }
     
     override func awakeFromNib() {
@@ -53,6 +53,7 @@ class ProfileCell: UITableViewCell, UITextFieldDelegate {
         // Initialization code
         textField.borderStyle = .none
         textField.delegate = self
+        textField.isUserInteractionEnabled = false
         editImg.setIcon(img: #imageLiteral(resourceName: "edit_row-50"), color: .gray())
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         contentView.addGestureRecognizer(tap)

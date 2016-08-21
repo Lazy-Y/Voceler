@@ -27,6 +27,9 @@ pod 'DBProfileViewController'
 pod 'DGElasticPullToRefresh'
 pod 'LTNavigationBar'
 pod 'UIViewController+NavigationBar'
+pod 'IQKeyboardManagerSwift'
+pod 'RATreeView'
+pod 'MJRefresh'
 
 target 'Voceler' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks

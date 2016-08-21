@@ -59,6 +59,12 @@ var drawer:MMDrawerController{
 }
 
 internal var myVC = [String:UIViewController]()
+
+func clearVC(){
+    myVC.removeAll()
+    drawerVC = nil
+}
+
 func VC(name:String, isNav:Bool = true, isCenter:Bool = true, isNew:Bool = false) -> UIViewController{
     if isNew{
         return getVC(name: name)

@@ -9,6 +9,7 @@
 import UIKit
 import GrowingTextViewHandler
 import FoldingCell
+import MJRefresh
 
 class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // FieldVars
@@ -87,6 +88,25 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         optTbv.separatorStyle = .none
         optTbv.showsVerticalScrollIndicator = false
         optTbv.isScrollEnabled = false
+        
+        if navigationController?.childViewControllers.first == self{
+            let header = MJRefreshNormalHeader(refreshingBlock: {
+                print("refresh")
+                self.scrollView.mj_header.endRefreshing()
+            })!
+            header.lastUpdatedTimeLabel.isHidden = true
+            header.setTitle("Next question", for: .pulling)
+            header.setTitle("Pull down to skip", for: .idle)
+            scrollView.mj_header = header
+            
+            let footer = MJRefreshBackNormalFooter(refreshingBlock: {
+                print("Add option")
+                self.scrollView.mj_footer.endRefreshing()
+            })!
+            footer.setTitle("Pull to add an option", for: .idle)
+            footer.setTitle("Add an option", for: .pulling)
+            scrollView.mj_footer = footer
+        }
     }
     
     func setDescription(description:String) {
@@ -97,7 +117,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func resizeScrollView() {
-        let height = heightConstraint.constant + 210 + optTbv.contentSize.height
+        let height = heightConstraint.constant + optTbv.contentSize.height - 30
         scrollHeight.constant = height
         contentViewHeight.constant = height
         scrollView.contentSize.height = height

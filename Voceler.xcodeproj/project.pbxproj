@@ -209,12 +209,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD1DBB191D1A4D9E00E6762D /* Build configuration list for PBXNativeTarget "Voceler" */;
 			buildPhases = (
+				96A5B47E27560AA186A755AF /* 📦 Check Pods Manifest.lock */,
 				5F57B7078AE17EB4159BA709 /* [CP] Check Pods Manifest.lock */,
 				FD1DBB031D1A4D9E00E6762D /* Sources */,
 				FD1DBB041D1A4D9E00E6762D /* Frameworks */,
 				FD1DBB051D1A4D9E00E6762D /* Resources */,
 				A010AEBFE41EAB9861F2A252 /* [CP] Embed Pods Frameworks */,
 				E078468EFA13A2DADB2F2B97 /* [CP] Copy Pods Resources */,
+				121A7597155DFF0E70894905 /* 📦 Embed Pods Frameworks */,
+				935617E69EB4904AC74299A5 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -283,6 +286,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		121A7597155DFF0E70894905 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Voceler/Pods-Voceler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5F57B7078AE17EB4159BA709 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -291,6 +309,36 @@
 			inputPaths = (
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		935617E69EB4904AC74299A5 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Voceler/Pods-Voceler-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96A5B47E27560AA186A755AF /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
