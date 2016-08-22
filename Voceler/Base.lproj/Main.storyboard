@@ -181,7 +181,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B5F5242F-161D-4E47-A5D4-BDF5C22ACECC" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="59ED5EA6-03C9-4E0A-9F0A-8E2EBF90A64B" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CHq-WE-AFu"/>
                                     <constraint firstAttribute="width" secondItem="FcM-1F-ypy" secondAttribute="height" multiplier="1:1" id="Cs5-Mb-8RV"/>
@@ -267,7 +267,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="0fc-mD-V5A"/>
                                                 </constraints>
-                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -417,7 +417,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7m6-3f-nFP">
                                         <subviews>
-                                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7CE37790-E6AE-4123-A8B0-DC044FADD018" translatesAutoresizingMaskIntoConstraints="NO" id="0uW-mx-46n">
+                                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D04EE874-3AEC-4D68-A0B5-1A66AF19723E" translatesAutoresizingMaskIntoConstraints="NO" id="0uW-mx-46n">
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="0uW-mx-46n" secondAttribute="height" multiplier="15:6" id="sCU-tG-bep"/>
                                                 </constraints>
@@ -433,7 +433,7 @@
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-bM-wV8">
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B5F5242F-161D-4E47-A5D4-BDF5C22ACECC" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="59ED5EA6-03C9-4E0A-9F0A-8E2EBF90A64B" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
                                                                 <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Vy3-mf-sh0" secondAttribute="height" multiplier="1:1" id="hjN-Wc-liO"/>
@@ -477,7 +477,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="ubu-If-DRO" secondAttribute="trailing" constant="8" id="yla-oh-g3G"/>
                                                 </constraints>
                                             </view>
-                                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8BFEB6BE-24C7-49EC-B978-BB98BEC9EB0D" translatesAutoresizingMaskIntoConstraints="NO" id="EAv-Be-YgT">
+                                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AC3706E7-3937-400F-9BBE-C1FCE0ABAD56" translatesAutoresizingMaskIntoConstraints="NO" id="EAv-Be-YgT">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="O7r-cN-1Fd"/>
@@ -653,7 +653,7 @@
                                         <frame key="frameInset" minY="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZV4-bv-9DX" id="JQY-mX-5hc">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -757,11 +757,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tags" id="tbu-cW-fb4">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Ocz-XH-W4B">
-                            <connections>
-                                <action selector="back" destination="TlI-qa-gel" id="bSq-fZ-44g"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="PCb-mn-cHO">
                             <connections>
                                 <action selector="doneActionWithSender:" destination="TlI-qa-gel" id="kJW-xp-jPz"/>
@@ -781,23 +776,23 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7CE37790-E6AE-4123-A8B0-DC044FADD018" width="3024" height="4032">
+        <image name="59ED5EA6-03C9-4E0A-9F0A-8E2EBF90A64B" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
-V05TQ29sb3KAAoAMEiTAAACAA4AKXHszMDI0LCA0MDMyfdIVChYYWk5TLm9iamVjdHOhF4AEgAnSFQoa
-GKIbHIAFgAaACRAF0yAKISIjJFdOUy5iYXNlW05TLnJlbGF0aXZlgACACIAHXxCBZmlsZTovLy9BcHBs
-aWNhdGlvbnMvWGNvZGUtYmV0YS5hcHAvQ29udGVudHMvUGx1Z0lucy9JREVJbnRlcmZhY2VCdWlsZGVy
-S2l0LmlkZXBsdWdpbi9Db250ZW50cy9SZXNvdXJjZXMvSUJNaXNzaW5nSW1hZ2VHbHlwaC50aWZm0ico
-KSpaJGNsYXNzbmFtZVgkY2xhc3Nlc1VOU1VSTKIpK1hOU09iamVjdNInKC0uV05TQXJyYXmiLSvTMDEK
-MjM0V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0icoNjdXTlNDb2xvcqI2K9InKDk6V05TSW1h
-Z2WiOStfEA9OU0tleWVkQXJjaGl2ZXLRPT5Ucm9vdIABAAgAEQAaACMALQAyADcARQBLAFYAXQBkAHEA
-eACAAIIAhACJAIsAjQCaAJ8AqgCsAK4AsAC1ALgAugC8AL4AwADHAM8A2wDdAN8A4QFlAWoBdQF+AYQB
-hwGQAZUBnQGgAacBrwG8AcEBwwHFAcoB0gHVAdoB4gHlAfcB+gH/AAAAAAAAAgEAAAAAAAAAPwAAAAAA
-AAAAAAAAAAAAAgE
+V05TQ29sb3KAAoAMEiTAAACAA4AKWHs1MCwgNTB90hUKFhhaTlMub2JqZWN0c6EXgASACdIVChoYohsc
+gAWABoAJEAXTIAohIiMkV05TLmJhc2VbTlMucmVsYXRpdmWAAIAIgAdfEIFmaWxlOi8vL0FwcGxpY2F0
+aW9ucy9YY29kZS1iZXRhLmFwcC9Db250ZW50cy9QbHVnSW5zL0lERUludGVyZmFjZUJ1aWxkZXJLaXQu
+aWRlcGx1Z2luL0NvbnRlbnRzL1Jlc291cmNlcy9JQk1pc3NpbmdJbWFnZUdseXBoLnRpZmbSJygpKlok
+Y2xhc3NuYW1lWCRjbGFzc2VzVU5TVVJMoikrWE5TT2JqZWN00icoLS5XTlNBcnJheaItK9MwMQoyMzRX
+TlNXaGl0ZVxOU0NvbG9yU3BhY2VEMCAwABADgAvSJyg2N1dOU0NvbG9yojYr0icoOTpXTlNJbWFnZaI5
+K18QD05TS2V5ZWRBcmNoaXZlctE9PlRyb290gAEACAARABoAIwAtADIANwBFAEsAVgBdAGQAcQB4AIAA
+ggCEAIkAiwCNAJYAmwCmAKgAqgCsALEAtAC2ALgAugC8AMMAywDXANkA2wDdAWEBZgFxAXoBgAGDAYwB
+kQGZAZwBowGrAbgBvQG/AcEBxgHOAdEB1gHeAeEB8wH2AfsAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAA
+AAAAAAAB/Q
 </mutableData>
         </image>
-        <image name="8BFEB6BE-24C7-49EC-B978-BB98BEC9EB0D" width="640" height="610">
+        <image name="AC3706E7-3937-400F-9BBE-C1FCE0ABAD56" width="640" height="610">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -813,20 +808,20 @@ jgGTAZsBngGlAa0BugG/AcEBwwHIAdAB0wHYAeAB4wH1AfgB/QAAAAAAAAIBAAAAAAAAAD8AAAAAAAAA
 AAAAAAAAAAH/A
 </mutableData>
         </image>
-        <image name="B5F5242F-161D-4E47-A5D4-BDF5C22ACECC" width="50" height="50">
+        <image name="D04EE874-3AEC-4D68-A0B5-1A66AF19723E" width="3024" height="4032">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
-V05TQ29sb3KAAoAMEiTAAACAA4AKWHs1MCwgNTB90hUKFhhaTlMub2JqZWN0c6EXgASACdIVChoYohsc
-gAWABoAJEAXTIAohIiMkV05TLmJhc2VbTlMucmVsYXRpdmWAAIAIgAdfEIFmaWxlOi8vL0FwcGxpY2F0
-aW9ucy9YY29kZS1iZXRhLmFwcC9Db250ZW50cy9QbHVnSW5zL0lERUludGVyZmFjZUJ1aWxkZXJLaXQu
-aWRlcGx1Z2luL0NvbnRlbnRzL1Jlc291cmNlcy9JQk1pc3NpbmdJbWFnZUdseXBoLnRpZmbSJygpKlok
-Y2xhc3NuYW1lWCRjbGFzc2VzVU5TVVJMoikrWE5TT2JqZWN00icoLS5XTlNBcnJheaItK9MwMQoyMzRX
-TlNXaGl0ZVxOU0NvbG9yU3BhY2VEMCAwABADgAvSJyg2N1dOU0NvbG9yojYr0icoOTpXTlNJbWFnZaI5
-K18QD05TS2V5ZWRBcmNoaXZlctE9PlRyb290gAEACAARABoAIwAtADIANwBFAEsAVgBdAGQAcQB4AIAA
-ggCEAIkAiwCNAJYAmwCmAKgAqgCsALEAtAC2ALgAugC8AMMAywDXANkA2wDdAWEBZgFxAXoBgAGDAYwB
-kQGZAZwBowGrAbgBvQG/AcEBxgHOAdEB1gHeAeEB8wH2AfsAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAA
-AAAAAAAB/Q
+V05TQ29sb3KAAoAMEiTAAACAA4AKXHszMDI0LCA0MDMyfdIVChYYWk5TLm9iamVjdHOhF4AEgAnSFQoa
+GKIbHIAFgAaACRAF0yAKISIjJFdOUy5iYXNlW05TLnJlbGF0aXZlgACACIAHXxCBZmlsZTovLy9BcHBs
+aWNhdGlvbnMvWGNvZGUtYmV0YS5hcHAvQ29udGVudHMvUGx1Z0lucy9JREVJbnRlcmZhY2VCdWlsZGVy
+S2l0LmlkZXBsdWdpbi9Db250ZW50cy9SZXNvdXJjZXMvSUJNaXNzaW5nSW1hZ2VHbHlwaC50aWZm0ico
+KSpaJGNsYXNzbmFtZVgkY2xhc3Nlc1VOU1VSTKIpK1hOU09iamVjdNInKC0uV05TQXJyYXmiLSvTMDEK
+MjM0V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0icoNjdXTlNDb2xvcqI2K9InKDk6V05TSW1h
+Z2WiOStfEA9OU0tleWVkQXJjaGl2ZXLRPT5Ucm9vdIABAAgAEQAaACMALQAyADcARQBLAFYAXQBkAHEA
+eACAAIIAhACJAIsAjQCaAJ8AqgCsAK4AsAC1ALgAugC8AL4AwADHAM8A2wDdAN8A4QFlAWoBdQF+AYQB
+hwGQAZUBnQGgAacBrwG8AcEBwwHFAcoB0gHVAdoB4gHlAfcB+gH/AAAAAAAAAgEAAAAAAAAAPwAAAAAA
+AAAAAAAAAAAAAgE
 </mutableData>
         </image>
         <image name="ask" width="32" height="32"/>

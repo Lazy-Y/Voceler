@@ -15,10 +15,6 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
     
     @IBOutlet weak var tagView: TagListView!
     
-    @IBAction func back() {
-        _ = navigationController?.popViewController(animated: true)
-    }
-    
     @IBAction func doneAction(sender: AnyObject) {
         let first = navigationController?.viewControllers[0] as! AskProblemVC
         first.handler.setText("", withAnimation: false)
