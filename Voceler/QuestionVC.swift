@@ -10,6 +10,7 @@ import UIKit
 import GrowingTextViewHandler
 import FoldingCell
 import MJRefresh
+import SCLAlertView
 
 class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // FieldVars
@@ -100,7 +101,12 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             scrollView.mj_header = header
             
             let footer = MJRefreshBackNormalFooter(refreshingBlock: {
-                print("Add option")
+                let alert = SCLAlertView()
+                let optionText = alert.addTextView()
+                _ = alert.addButton("Add", action: { 
+                    print(optionText.text)
+                })
+                _ = alert.showEdit("Another Option", subTitle: "", closeButtonTitle: "Cancel")
                 self.scrollView.mj_footer.endRefreshing()
             })!
             footer.setTitle("Pull to add an option", for: .idle)

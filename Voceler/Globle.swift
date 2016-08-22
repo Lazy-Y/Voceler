@@ -24,6 +24,7 @@ func getVC(name:String) -> UIViewController {
 func getNav(name:String, isCenter:Bool) -> UINavigationController {
     let vc = getVC(name: name)
     let nav = UINavigationController(rootViewController: vc)
+    nav.navigationBar.barStyle = .blackTranslucent
     vc.title = name
     if isCenter{
         vc.navigationItem.leftBarButtonItem = profileItem()
