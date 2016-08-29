@@ -23,6 +23,7 @@ import SwiftString
 import SCLAlertView
 import FirebaseAuth
 import SwiftSpinner
+import FirebaseDatabase
 
 class LoginVC: UIViewController{
     // UIVars
@@ -47,9 +48,13 @@ class LoginVC: UIViewController{
                     if let error = error{
                         _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
                     }
-                    else {
+                    else if let user = user{
+                        currUser = UserModel.getUser(uid: user.uid)
                         drawer.centerViewController = VC(name: "Question")
                         self.show(drawer, sender: self)
+                    }
+                    else {
+                        _ = SCLAlertView().showError("Sorry", subTitle: "Unable to find the user.")
                     }
                 })
             })
@@ -163,8 +168,18 @@ class LoginVC: UIViewController{
                     if let error = error{
                         _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
                     }
+                    else if let user = user{
+                        let ref = FIRDatabase.database().reference().child("Users").child(user.uid)
+                        ref.child("email").setValue(user.email)
+                        currUser = UserModel.getUser(uid: user.uid)
+                        let alert = SCLAlertView().showSuccess("Success", subTitle: "Signup successfully!")
+                        alert.setDismissBlock({ 
+                            drawer.centerViewController = VC(name: "Question")
+                            self.show(drawer, sender: self)
+                        })
+                    }
                     else {
-                        _ = SCLAlertView().showSuccess("Success", subTitle: "Signup successfully!")
+                        _ = SCLAlertView().showError("Sorry", subTitle: "Unknown error occurs")
                     }
                 })
             }
@@ -189,8 +204,9 @@ class LoginVC: UIViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = FIRAuth.auth()?.currentUser{
+        if let user = FIRAuth.auth()?.currentUser{
             show(drawer, sender: self)
+            currUser = UserModel.getUser(uid: user.uid)
         }
     }
 }

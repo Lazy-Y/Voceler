@@ -13,6 +13,7 @@ let buttomColor = UIColor(red: 0.694986, green: 0.813917, blue: 0.213036, alpha:
 let pinkColor = UIColor(red: 1, green: 0.3, blue: 0.3, alpha: 1.0)
 let darkRed = UIColor(red: 0.8824, green: 0.0039, blue: 0.2353, alpha: 1.0)
 let lightGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+var currUser:UserModel?
 
 func getVC(name:String) -> UIViewController {
     let board = UIStoryboard(name: "Main", bundle: nil)
@@ -64,6 +65,7 @@ internal var myVC = [String:UIViewController]()
 func clearVC(){
     myVC.removeAll()
     drawerVC = nil
+    currUser = nil
 }
 
 func VC(name:String, isNav:Bool = true, isCenter:Bool = true, isNew:Bool = false) -> UIViewController{

@@ -14,9 +14,11 @@ class Birthday: UIViewController {
     var birthPicker = UIDatePicker()
     var textField:UITextField!
     let formatter = DateFormatter()
+    var text:NSMutableString!
     
     func confirmAction() {
         textField.text = formatter.string(from: birthPicker.date)
+        text.setString(textField.text!)
         _ = navigationController?.popViewController(animated: true)
     }
     
@@ -26,7 +28,13 @@ class Birthday: UIViewController {
         birthPicker.datePickerMode = .date
         title = "Birthday"
         formatter.dateFormat = "MM-dd-yyyy"
-        birthPicker.setDate(formatter.date(from: textField.text!)!, animated: true)
+        if let date = textField.text where date != ""{
+            birthPicker.setDate(formatter.date(from: date)!, animated: true)
+        }
+        else{
+            birthPicker.setDate(Date(), animated: true)
+        }
+        
         view.addSubview(birthPicker)
         _ = birthPicker.sd_layout()?
             .topSpaceToView(view, 64)?

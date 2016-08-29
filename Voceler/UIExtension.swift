@@ -36,19 +36,6 @@ extension UIViewController{
             btn.addTarget(self, action: #selector(showMore), for: .touchUpInside)
         }
     }
-    
-//    func setBackItem() {
-//        let leftBtn = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backAction))
-//        navigationItem.leftBarButtonItem = leftBtn
-//        navigationItem.leftItemsSupplementBackButton = false
-//        navigationItem.backBarButtonItem = leftBtn
-//        navigationItem.backBarButtonItem?.title = "Back"
-//    }
-    
-//    func backAction() {
-//        _ = navigationController?.popViewController(animated: true)
-//    }
-    
 }
 
 extension UINavigationBar{
@@ -220,5 +207,31 @@ extension UIView{
         }
         
         return borders
+    }
+}
+
+extension UIImage {
+    var uncompressedPNGData: NSData! { return UIImagePNGRepresentation(self)! }
+    var highestQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 1.0)! }
+    var highQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 0.75)! }
+    var mediumQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 0.5)! }
+    var lowQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 0.25)! }
+    var lowestQualityJPEGNSData:NSData! { return UIImageJPEGRepresentation(self, 0.0)! }
+    func dataAtMost(bytes:Int)->Data{
+        if uncompressedPNGData.length <= bytes{
+            return uncompressedPNGData as Data
+        }
+        else if highestQualityJPEGNSData.length <= bytes{
+            return highestQualityJPEGNSData as Data
+        }
+        else if mediumQualityJPEGNSData.length <= bytes{
+            return mediumQualityJPEGNSData as Data
+        }
+        else if lowQualityJPEGNSData.length <= bytes{
+            return lowQualityJPEGNSData as Data
+        }
+        else{
+            return lowestQualityJPEGNSData as Data
+        }
     }
 }

@@ -28,9 +28,11 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     // Actions
     @IBAction func showProfile(_ sender: AnyObject) {
-        let profile = VC(name: "Profile")
-        (profile.childViewControllers.first as! ProfileVC).uid = FIRAuth.auth()?.currentUser?.uid
-        drawer.centerViewController = profile
+        let profileNav = VC(name: "Profile")
+        let profileVC = profileNav.childViewControllers.first as! ProfileVC
+        profileVC.thisUser = currUser
+        currUser?.profileVC = profileVC
+        drawer.centerViewController = profileNav
         drawer.toggle(.left, animated: true, completion: nil)
     }
     

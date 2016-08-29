@@ -15,17 +15,27 @@ import FirebaseAuth
 import UIViewController_NavigationBar
 import SCLAlertView
 import SwiftSpinner
+import FirebaseStorage
 
 class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // UIVars
     @IBOutlet weak var wallTop: NSLayoutConstraint!
     @IBOutlet weak var wallImg: UIImageView!
     @IBOutlet weak var profileImg: UIImageView!
-    @IBOutlet weak var usernameTF: UITextField!
+    @IBOutlet weak var usernameTF: UITextField?{
+        didSet{
+            if let username = thisUser.username{
+                usernameTF!.text = username
+            }
+            else{
+                usernameTF!.text = ""
+            }
+        }
+    }
     @IBOutlet weak var controlView: UIView?
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scroll: UIScrollView!
-    @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var table: UITableView?
     @IBOutlet weak var moneyImg: UIImageView!
     @IBOutlet weak var scrollHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomSpace: NSLayoutConstraint?
@@ -34,23 +44,32 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     private var takeWall = UIImageView(image: #imageLiteral(resourceName: "compact_camera-50"))
     private var setImgTo = "profileImg"
     private var picker = UIImagePickerController()
+    var thisUser:UserModel!{
+        didSet{
+            loadUserInfo()
+        }
+    }
     let old_val = NSMutableArray()
     
     // FieldVars
-    let attributeArr = ["What's up", "Region", "Sex", "Birthday", "hello"]
-    var contentArr:[NSMutableString] = ["I'll regrade your ass ignment!", "Los Angeles", "Male", "10-06-1995", "world"]
+    let attributeArr = ["What's up", "Region", "Sex", "Birthday"]
+    var contentArr:[NSMutableString] = ["I'll regrade your ass ignment!", "Los Angeles", "Male", "10-06-1995"]
     var editable = true
-    var uid:String?
+    private var loadNeeded = 3
     
     // Actions
     private var editMode = false
     func editAction() {
+        if loadNeeded > 0 {
+            _ = SCLAlertView().showWait("Sorry", subTitle: "Synchronizing user info...", duration: 1)
+            return
+        }
         editMode = !editMode
-        table.allowsSelection = editMode
-        usernameTF.isEnabled = editMode
+        table!.allowsSelection = editMode
+        usernameTF!.isEnabled = editMode
         takeProfile.isHidden = !editMode
         takeWall.isHidden = !editMode
-        table.reloadData()
+        table!.reloadData()
         if editMode{
             editBtn.setTitle("  Done", for: [])
             old_val.removeAllObjects()
@@ -59,36 +78,39 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             }
             old_val.add(profileImg.image!)
             old_val.add(wallImg.image!)
-            old_val.add(usernameTF.text!)
-            usernameTF.layer.borderWidth = 1
+            old_val.add(usernameTF!.text!)
+            usernameTF!.layer.borderWidth = 1
         }
         else {
             editBtn.setTitle("  Edit", for: [])
-            usernameTF.layer.borderWidth = 0
+            usernameTF?.layer.borderWidth = 0
             for i in 0..<contentArr.count {
                 if old_val[i] as! NSString != contentArr[i] {
                     showSaveAlert()
                     return
                 }
             }
-            if old_val[contentArr.count] as? UIImage != profileImg.image || old_val[contentArr.count+1] as? UIImage != wallImg.image || old_val[contentArr.count+2] as? String != usernameTF.text{
+            if old_val[contentArr.count] as? UIImage != profileImg.image || old_val[contentArr.count+1] as? UIImage != wallImg.image || old_val[contentArr.count+2] as? String != usernameTF?.text{
                 showSaveAlert()
             }
         }
     }
     
-    func cellTapped(textField:UITextField){
+    func cellTapped(textField:UITextField, text:NSMutableString){
         if editMode{
             switch textField.placeholder! {
             case "Sex":
-                if textField.text == "Male"{
+                if text == "Male"{
+                    text.setString("Female")
                     textField.text = "Female"
                 }
                 else {
+                    text.setString("Male")
                     textField.text = "Male"
                 }
             case "Birthday":
                 let vc = VC(name: "Birthday", isNav: false, isCenter: false) as! Birthday
+                vc.text = text
                 vc.textField = textField
                 vc.navigationBar.setColor(color: themeColor)
                 navigationController?.pushViewController(vc, animated: true)
@@ -116,11 +138,28 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         let alert = SCLAlertView()
         _ = alert.addButton("Save", action: {
             for i in 0..<self.contentArr.count{
-                self.old_val[i] = self.contentArr[i]
+                if self.old_val[i] as! String != self.contentArr[i] as String{
+                    self.old_val[i] = self.contentArr[i] as String
+                    self.thisUser.ref.child(self.attributeArr[i]).setValue(self.old_val[i])
+                }
             }
-            self.old_val[self.contentArr.count] = self.profileImg.image!
+            if self.old_val[self.contentArr.count] as! UIImage != self.profileImg.image!{
+                self.old_val[self.contentArr.count] = self.profileImg.image!
+                _ = SwiftSpinner.show("Uploading profile image...")
+                self.thisUser.storageRef.child("profileImg.jpeg").put(self.profileImg.image!.dataAtMost(bytes: 1024*1024))
+                SwiftSpinner.hide()
+            }
+            if self.old_val[self.contentArr.count+1] as! UIImage != self.wallImg.image!{
+                self.old_val[self.contentArr.count+1] = self.wallImg.image!
+                _ = SwiftSpinner.show("Uploading wall image...")
+                self.thisUser.storageRef.child("wallImg.jpeg").put(self.wallImg.image!.dataAtMost(bytes: 1024*1024))
+                SwiftSpinner.hide()
+            }
             self.old_val[self.contentArr.count+1] = self.wallImg.image!
-            self.old_val[self.contentArr.count+2] = self.usernameTF.text!
+            if self.old_val[self.contentArr.count+2] as? String != self.usernameTF?.text!{
+                self.old_val[self.contentArr.count+2] = self.usernameTF!.text!
+                 self.thisUser.ref.child("username").setValue(self.usernameTF!.text!)
+            }
         })
         let resp = alert.showNotice("Save", subTitle: "Do you want to save changes?", closeButtonTitle: "Cancel", duration: 0, colorStyle: 0x2866BF, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.bottomToTop)
         resp.setDismissBlock { 
@@ -129,13 +168,13 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             }
             self.profileImg.image = self.old_val[self.contentArr.count] as? UIImage
             self.wallImg.image = self.old_val[self.contentArr.count+1] as? UIImage
-            self.usernameTF.text = self.old_val[self.contentArr.count+2] as? String
-            self.table.reloadData()
+            self.usernameTF!.text = self.old_val[self.contentArr.count+2] as? String
+            self.table!.reloadData()
         }
     }
     
     private func setEditable(){
-        editable = FIRAuth.auth()?.currentUser?.uid == uid
+        editable = FIRAuth.auth()?.currentUser?.uid == thisUser.uid
         controlView?.isHidden = !editable
         bottomSpace?.constant = editable ? 50 : 0
     }
@@ -151,19 +190,20 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             }
         }
         title = ""
-        usernameTF.placeholder = "Username"
-        usernameTF.layer.borderColor = UIColor.lightGray().cgColor
+        usernameTF!.placeholder = "Username"
+        usernameTF!.layer.borderColor = UIColor.lightGray().cgColor
         contentView.touchToHideKeyboard()
         scroll.delegate = self
         view.backgroundColor = lightGray
         controlView!.backgroundColor = themeColor
         profileImg.board(radius: 50, width: 3, color: .white())
         _ = profileImg.sd_layout().topSpaceToView(wallImg, -70)?.heightIs(100)?.widthIs(100)
-        table.delegate = self
-        table.dataSource = self
-        table.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "ProfileCell")
-        table.allowsSelection = false
+        table!.delegate = self
+        table!.dataSource = self
+        table!.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "ProfileCell")
+        table!.allowsSelection = false
         moneyImg.setIcon(img: #imageLiteral(resourceName: "money"), color: pinkColor)
+        
         editBtn.backgroundColor = themeColor
         editBtn.tintColor = .white()
         editBtn.setTitle("  Edit", for: [])
@@ -200,11 +240,58 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         profileImg.addGestureRecognizer(profileTap)
         let wallTap = UITapGestureRecognizer(target: self, action: #selector(changeImg(target:)))
         wallImg.addGestureRecognizer(wallTap)
+        
+        setImgs()
     }
     
     func resizeTableView() {
-        table.reloadData()
-        scrollHeight!.constant = UIScreen.main().bounds.width * 0.4 + 110 + table.contentSize.height
+        table!.reloadData()
+        scrollHeight!.constant = UIScreen.main().bounds.width * 0.4 + 110 + table!.contentSize.height
+    }
+    
+    func setImgs(){
+        thisUser.storageRef.child("profileImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
+            self.loadComplete()
+            if error?.code != -13010{
+                error?.show()
+            }
+            if let data = data{
+                 self.profileImg.image = UIImage(data: data)
+            }
+        }
+        thisUser.storageRef.child("wallImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
+            self.loadComplete()
+            if error?.code != -13010{
+                error?.show()
+            }
+            if let data = data{
+                self.wallImg.image = UIImage(data: data)
+            }
+        }
+    }
+
+    func loadUserInfo(){
+        if let username = thisUser.username{
+            usernameTF?.text = username
+        }
+        else{
+            usernameTF?.text = ""
+        }
+        contentArr.removeAll()
+        for item in attributeArr {
+            if let val = thisUser.infoDic[item]{
+                contentArr.append(NSMutableString(string: val))
+            }
+            else{
+                contentArr.append(NSMutableString())
+            }
+        }
+        table?.reloadData()
+        loadComplete()
+    }
+    
+    private func loadComplete(){
+        loadNeeded -= 1
     }
     
     // Override functions
@@ -261,8 +348,6 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             self.bottomSpace?.constant = keyboardFrame.size.height + 20
         })
     }
-    
-    
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         hideKeyboard()

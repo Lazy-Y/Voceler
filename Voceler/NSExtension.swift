@@ -8,9 +8,16 @@
 
 import Foundation
 import NSString_Email
+import SCLAlertView
 
 extension String{
     func isEmail() -> Bool{
         return (self as NSString).isEmail()
+    }
+}
+
+extension NSError{
+    func show(){
+        _ = SCLAlertView().showError("Error", subTitle: localizedDescription)
     }
 }

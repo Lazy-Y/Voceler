@@ -29,7 +29,7 @@ class TreeViewCell: UITableViewCell {
             arrow.image = #imageLiteral(resourceName: "forward-50")
         }
         else{
-            arrow.image = #imageLiteral(resourceName: "horizontal_line_filled-50")
+            arrow.image = #imageLiteral(resourceName: "horizontal_line-50")
         }
         contentView.addSubview(arrow)
         _ = arrow.sd_layout().rightSpaceToView(contentView, 10)?.widthIs(16)?.heightIs(16)?.centerYEqualToView(contentView)

@@ -16,14 +16,16 @@ class ProfileCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var rightConst: NSLayoutConstraint!
     var textValue:NSMutableString!{
         didSet{
-            textField.text = textValue as String
+            if textField.text != textValue as String{
+                textField.text = textValue as String
+            }
         }
     }
     
     var parent:ProfileVC!
     
     func tapped() {
-        parent.cellTapped(textField: textField)
+        parent.cellTapped(textField: textField, text: textValue)
     }
     
     func setEdit(editMode:Bool) {
@@ -57,6 +59,11 @@ class ProfileCell: UITableViewCell, UITextFieldDelegate {
         editImg.setIcon(img: #imageLiteral(resourceName: "edit_row-50"), color: .gray())
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         contentView.addGestureRecognizer(tap)
+        NotificationCenter.default().addObserver(self, selector: #selector(textChanged(sender:)), name: .UITextFieldTextDidChange, object: nil)
+    }
+    
+    func textChanged(sender:AnyObject) {
+        self.textValue.setString(self.textField.text!)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
