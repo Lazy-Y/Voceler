@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+import Networking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true
+//        let networking = Networking(baseURL: "https://voceler.com:3000/v1/posts")
+//        networking.GET(<#T##path: String##String#>, completion: <#T##(JSON: AnyObject?, error: NSError?) -> ()#>)
         return true
     }
 

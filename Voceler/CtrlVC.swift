@@ -37,8 +37,16 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     // Functions
+    func setProfileImg() {
+        if let img = currUser?.profileImg{
+            profileBtn.setImage(img, for: [])
+        }
+    }
+    
     func setupUI() {
         profileBtn.board(radius: 32, width: 3, color: themeColor)
+            setProfileImg()
+        NotificationCenter.default().addObserver(self, selector: #selector(setProfileImg), name: NSNotification.Name("finishProfileImg"), object: nil)
         moneyImg.setIcon(img: #imageLiteral(resourceName: "money"), color: themeColor)
         collectionView.register(UINib(nibName: "CtrlCell", bundle: nil), forCellWithReuseIdentifier: "CtrlCell")
         let layout = GridCollectionViewLayout()

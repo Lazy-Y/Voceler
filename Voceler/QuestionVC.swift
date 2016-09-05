@@ -19,7 +19,8 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let kCloseCellHeight: CGFloat = 55 // equal or greater foregroundView height
     let kOpenCellHeight: CGFloat = 305 // equal or greater containerView height
     var liked = false
-    let cellContent = ["Swift", "Python", "C++", "Java", "PHP", "JavaScript", "Nodejs", "HTML", "Bash", "Assembly"]
+    var cellContent = ["Swift", "Python", "C++", "Java", "PHP", "JavaScript", "Nodejs", "HTML", "Bash", "Assembly"]
+    var asker:UserModel?
     
     // UIVars
     @IBOutlet weak var titleBarView: UIVisualEffectView!
@@ -32,6 +33,8 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var scrollHeight: NSLayoutConstraint!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
+    var pullUpMask = UILabel()
+    var pullDownMask = UILabel()
     
     // Actions
     @IBAction func askerInfo(_ sender: AnyObject) {
@@ -58,8 +61,25 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     // Functions
+    func setQuestion(question:QuestionModel){
+        asker = UserModel.getUser(uid: question.qAskerID, getProfile: true)
+        detailTV.text = question.qDescrption
+        cellContent = question.qOptions
+        cellHeights = [CGFloat](repeatElement(kCloseCellHeight, count: cellContent.count))
+        if cellContent.count == 0 {
+            pullUpMask.isHidden = false
+            pullDownMask.isHidden = false
+        }
+        else {
+            pullUpMask.isHidden = true
+            pullDownMask.isHidden = true
+        }
+        optTbv.reloadData()
+    }
+    
     func showAskerInfo(){
         let vc = VC(name: "Profile", isNav: false, isCenter: false, isNew: true) as! ProfileVC
+        vc.thisUser = asker
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -77,10 +97,32 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         navigationBar.setColor(color: themeColor)
         edgesForExtendedLayout = []
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ask").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(showAskVC(_:)))
+        
+        pullUpMask.text = "Pull up to add an option"
+        pullUpMask.textAlignment = .center
+        pullUpMask.isHidden = true
+        pullUpMask.textColor = .gray()
+        scrollView.addSubview(pullUpMask)
+        _ = pullUpMask.sd_layout().topSpaceToView(detailTV, 10)?.leftSpaceToView(scrollView, 0)?.rightSpaceToView(scrollView, 0)?.heightIs(30)
+        pullDownMask.text = "Pull down to skip"
+        pullDownMask.textAlignment = .center
+        pullDownMask.isHidden = true
+        pullDownMask.textColor = .gray()
+        scrollView.addSubview(pullDownMask)
+        _ = pullDownMask.sd_layout().topSpaceToView(pullUpMask, 10)?.leftSpaceToView(scrollView, 0)?.rightSpaceToView(scrollView, 0)?.heightIs(30)
+    }
+    
+    func addOption(text:String){
+        cellContent.append(text)
+        cellHeights.append(kCloseCellHeight)
+        optTbv.reloadData()
+        resizeScrollView()
+        pullDownMask.isHidden = true
+        pullUpMask.isHidden = true
     }
     
     func initTable() {
-        optTbv.register(UINib(nibName: "OptCell", bundle: nil), forCellReuseIdentifier: "OptCell") 
+        optTbv.register(UINib(nibName: "OptCell", bundle: nil), forCellReuseIdentifier: "OptCell")
         optTbv.delegate = self
         optTbv.dataSource = self
         for _ in 0..<cellContent.count {
@@ -93,6 +135,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if navigationController?.childViewControllers.first == self{
             let header = MJRefreshNormalHeader(refreshingBlock: {
                 print("refresh")
+                self.setQuestion(question: QuestionModel.getQuestion(qid: "abcdefg"))
                 self.scrollView.mj_header.endRefreshing()
             })!
             header.lastUpdatedTimeLabel.isHidden = true
@@ -103,8 +146,13 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let footer = MJRefreshBackNormalFooter(refreshingBlock: {
                 let alert = SCLAlertView()
                 let optionText = alert.addTextView()
-                _ = alert.addButton("Add", action: { 
-                    print(optionText.text)
+                _ = alert.addButton("Add", action: {
+                    if optionText.text == ""{
+                        _ = SCLAlertView().showError("Sorry", subTitle: "Option text cannot be empty.")
+                    }
+                    else{
+                        self.addOption(text: optionText.text)
+                    }
                 })
                 _ = alert.showEdit("Another Option", subTitle: "", closeButtonTitle: "Cancel")
                 self.scrollView.mj_footer.endRefreshing()
@@ -174,7 +222,8 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeights[indexPath.row]
+//        return cellHeights[indexPath.row]
+        return kCloseCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -187,7 +236,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } else {
             cellHeights[indexPath.row] = kCloseCellHeight
             cell.selectedAnimation(false, animated: true, completion: nil)
-            duration = 1.1
+            duration = 0.8
         }
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { () -> Void in
             tableView.beginUpdates()
@@ -206,7 +255,8 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let foldingCell = cell as! FoldingCell
             if cellHeights[indexPath.row] == kCloseCellHeight {
                 foldingCell.selectedAnimation(false, animated: false, completion:nil)
-            } else {
+            }
+            else {
                 foldingCell.selectedAnimation(true, animated: false, completion: nil)
             }
         }

@@ -22,16 +22,34 @@ class UserModel: NSObject {
     var qCollection = Array<String>() // Collected Question
     var infoDic = Dictionary<String,String>() // Basic info array
     var profileVC:ProfileVC?
+    var profileImg:UIImage?
+    var wallImg:UIImage?
     
     private init(uid:String){
         self.uid = uid
     }
     
-    static func getUser(uid:String)->UserModel{
+    static func getUser(uid:String, getWall:Bool = false, getProfile:Bool = false)->UserModel{
         let user = UserModel(uid: uid)
         let ref = FIRDatabase.database().reference().child("Users").child(uid)
         user.storageRef = FIRStorage.storage().reference().child("Users").child(uid)
         user.setup(ref: ref)
+        if getProfile {
+            user.storageRef.child("profileImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
+                if let data = data{
+                    user.profileImg = UIImage(data: data)
+                }
+                NotificationCenter.default().post(name: NSNotification.Name("finishProfileImg"), object: nil)
+            }
+        }
+        if getWall{
+            user.storageRef.child("wallImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
+                if let data = data{
+                    user.wallImg = UIImage(data: data)
+                }
+                NotificationCenter.default().post(name: NSNotification.Name("finishWallImg"), object: nil)
+            }
+        }
         return user
     }
     

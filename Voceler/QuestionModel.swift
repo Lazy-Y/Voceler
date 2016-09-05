@@ -35,4 +35,7 @@ class QuestionModel: NSObject {
         qStatus = status
         qType = type
     }
+    static func getQuestion(qid: String)->QuestionModel{
+        return QuestionModel(qid: qid, descrpt:"Hello" , askerID: "abc")
+    }
 }

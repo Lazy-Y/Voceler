@@ -49,7 +49,7 @@ class LoginVC: UIViewController{
                         _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
                     }
                     else if let user = user{
-                        currUser = UserModel.getUser(uid: user.uid)
+                        currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
                         drawer.centerViewController = VC(name: "Question")
                         self.show(drawer, sender: self)
                     }
@@ -171,7 +171,7 @@ class LoginVC: UIViewController{
                     else if let user = user{
                         let ref = FIRDatabase.database().reference().child("Users").child(user.uid)
                         ref.child("email").setValue(user.email)
-                        currUser = UserModel.getUser(uid: user.uid)
+                        currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
                         let alert = SCLAlertView().showSuccess("Success", subTitle: "Signup successfully!")
                         alert.setDismissBlock({ 
                             drawer.centerViewController = VC(name: "Question")
@@ -206,7 +206,7 @@ class LoginVC: UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         if let user = FIRAuth.auth()?.currentUser{
             show(drawer, sender: self)
-            currUser = UserModel.getUser(uid: user.uid)
+            currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
         }
     }
 }

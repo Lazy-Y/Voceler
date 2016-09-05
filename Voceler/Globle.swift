@@ -28,21 +28,13 @@ func getNav(name:String, isCenter:Bool) -> UINavigationController {
     nav.navigationBar.barStyle = .blackTranslucent
     vc.title = name
     if isCenter{
-        vc.navigationItem.leftBarButtonItem = profileItem()
+        vc.setProfileItem()
         nav.navigationBar.setColor(color: .clear())
     }
     else {
         nav.navigationBar.setColor(color: themeColor)
     }
     return nav
-}
-
-func profileItem() -> UIBarButtonItem {
-    let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-    let img = UIImage(named: "logo")!.resize(newWidth: 40)
-    btn.setImage(img, for: [])
-    btn.board(radius: 20, width: 3, color: UIColor.white())
-    return UIBarButtonItem(customView: btn)
 }
 
 internal var drawerVC:MMDrawerController?
@@ -56,6 +48,7 @@ var drawer:MMDrawerController{
         vc.openDrawerGestureModeMask = .panningCenterView
         vc.closeDrawerGestureModeMask = .panningCenterView
         drawerVC = vc
+        vc.closeDrawerGestureModeMask = .all
         return vc
     }
 }

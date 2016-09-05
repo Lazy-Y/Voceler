@@ -36,6 +36,25 @@ extension UIViewController{
             btn.addTarget(self, action: #selector(showMore), for: .touchUpInside)
         }
     }
+    
+    func profileClicked(){
+        drawer.toggle(.left, animated: true, completion: nil)
+    }
+    
+    func setProfileItem() {
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        btn.addTarget(self, action: #selector(profileClicked), for: .touchUpInside)
+        if let img = currUser?.profileImg {
+            btn.setImage(img, for: [])
+        }
+        else{
+            let img = UIImage(named: "logo")!.resize(newWidth: 40)
+            btn.setImage(img, for: [])
+            NotificationCenter.default().addObserver(self, selector: #selector(setProfileItem), name: NSNotification.Name("finishProfileImg"), object: nil)
+        }
+        btn.board(radius: 20, width: 3, color: UIColor.white())
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+    }
 }
 
 extension UINavigationBar{

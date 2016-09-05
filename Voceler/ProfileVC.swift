@@ -146,13 +146,17 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             if self.old_val[self.contentArr.count] as! UIImage != self.profileImg.image!{
                 self.old_val[self.contentArr.count] = self.profileImg.image!
                 _ = SwiftSpinner.show("Uploading profile image...")
-                self.thisUser.storageRef.child("profileImg.jpeg").put(self.profileImg.image!.dataAtMost(bytes: 1024*1024))
+                currUser?.profileImg = self.profileImg.image
+                self.thisUser.storageRef.child("profileImg.jpeg").put(self.profileImg.image!.dataAtMost(bytes: 100*1024))
+                NotificationCenter.default().post(name: NSNotification.Name("finishProfileImg"), object: nil)
+                self.setProfileItem()
                 SwiftSpinner.hide()
             }
             if self.old_val[self.contentArr.count+1] as! UIImage != self.wallImg.image!{
                 self.old_val[self.contentArr.count+1] = self.wallImg.image!
                 _ = SwiftSpinner.show("Uploading wall image...")
-                self.thisUser.storageRef.child("wallImg.jpeg").put(self.wallImg.image!.dataAtMost(bytes: 1024*1024))
+                currUser?.wallImg = self.wallImg.image
+                self.thisUser.storageRef.child("wallImg.jpeg").put(self.wallImg.image!.dataAtMost(bytes: 400*1024))
                 SwiftSpinner.hide()
             }
             self.old_val[self.contentArr.count+1] = self.wallImg.image!
@@ -241,7 +245,10 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         let wallTap = UITapGestureRecognizer(target: self, action: #selector(changeImg(target:)))
         wallImg.addGestureRecognizer(wallTap)
         
-        setImgs()
+        setProfileImg()
+        setWallImg()
+        NotificationCenter.default().addObserver(self, selector: #selector(setProfileImg), name: NSNotification.Name("finishProfileImg"), object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(setWallImg), name: NSNotification.Name("finishWallImg"), object: nil)
     }
     
     func resizeTableView() {
@@ -249,24 +256,17 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         scrollHeight!.constant = UIScreen.main().bounds.width * 0.4 + 110 + table!.contentSize.height
     }
     
-    func setImgs(){
-        thisUser.storageRef.child("profileImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
-            self.loadComplete()
-            if error?.code != -13010{
-                error?.show()
-            }
-            if let data = data{
-                 self.profileImg.image = UIImage(data: data)
-            }
+    func setProfileImg(){
+        if currUser?.profileImg != nil {
+            profileImg.image = currUser?.profileImg
+            loadComplete()
         }
-        thisUser.storageRef.child("wallImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
-            self.loadComplete()
-            if error?.code != -13010{
-                error?.show()
-            }
-            if let data = data{
-                self.wallImg.image = UIImage(data: data)
-            }
+    }
+    
+    func setWallImg(){
+        if currUser?.wallImg != nil {
+            wallImg.image = currUser?.wallImg
+            loadComplete()
         }
     }
 
