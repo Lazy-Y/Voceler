@@ -23,7 +23,7 @@ class QuestionModel: NSObject {
     var QID:String!
     var qDescrption:String! // Question Description
     var qAskerID:String! // UID
-    var qAnonymous:Bool! // Don't show the asker to public
+    var qAnonymous:Bool // Don't show the asker to public
     var qStatus:QuestionStatus!
     var qType:QuestionType!
     var qOptions = Array<String>() // Question options (option id: OID)

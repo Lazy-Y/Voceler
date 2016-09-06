@@ -20,7 +20,19 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let kOpenCellHeight: CGFloat = 305 // equal or greater containerView height
     var liked = false
     var cellContent = ["Swift", "Python", "C++", "Java", "PHP", "JavaScript", "Nodejs", "HTML", "Bash", "Assembly"]
-    var asker:UserModel?
+    var asker:UserModel?{
+        didSet{
+            if let asker = asker{
+                if let img = asker.profileImg {
+                    askerProfile.setImage(img, for: [])
+                }
+                else{
+                    asker.loadProfileImg(name: "finishAskerProfile")
+                    NotificationCenter.default().addObserver(self, selector: #selector(setAskerImg), name: NSNotification.Name("finishAskerProfile"), object: nil)
+                }
+            }
+        }
+    }
     
     // UIVars
     @IBOutlet weak var titleBarView: UIVisualEffectView!
@@ -61,8 +73,19 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     // Functions
+    func setAskerImg(){
+        if let img = asker?.profileImg{
+            askerProfile.setImage(img, for: [])
+        }
+    }
+    
     func setQuestion(question:QuestionModel){
-        asker = UserModel.getUser(uid: question.qAskerID, getProfile: true)
+        if question.qAnonymous {
+            asker = nil
+        }
+        else{
+            asker = UserModel.getUser(uid: question.qAskerID, getProfile: true)
+        }
         detailTV.text = question.qDescrption
         cellContent = question.qOptions
         cellHeights = [CGFloat](repeatElement(kCloseCellHeight, count: cellContent.count))
@@ -78,12 +101,19 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func showAskerInfo(){
-        let vc = VC(name: "Profile", isNav: false, isCenter: false, isNew: true) as! ProfileVC
-        vc.thisUser = asker
-        navigationController?.pushViewController(vc, animated: true)
+        if let asker = asker{
+            let vc = VC(name: "Profile", isNav: false, isCenter: false, isNew: true) as! ProfileVC
+            vc.thisUser = asker
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else{
+            _ = SCLAlertView().showWarning("Sorry", subTitle: "Anonymous asker")
+        }
     }
     
     func setupUI() {
+        asker = currUser
+        
         setupProfile()
         _ = titleBarView.addBorder(edges: .bottom, colour: UIColor.gray(), thickness: 1.5)
         handler = GrowingTextViewHandler(textView: self.detailTV, withHeightConstraint: self.heightConstraint)
@@ -135,7 +165,9 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if navigationController?.childViewControllers.first == self{
             let header = MJRefreshNormalHeader(refreshingBlock: {
                 print("refresh")
-                self.setQuestion(question: QuestionModel.getQuestion(qid: "abcdefg"))
+                let q = QuestionModel.getQuestion(qid: "abcdefg")
+                q.qAnonymous = true
+                self.setQuestion(question: q)
                 self.scrollView.mj_header.endRefreshing()
             })!
             header.lastUpdatedTimeLabel.isHidden = true
@@ -222,8 +254,7 @@ class QuestionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return cellHeights[indexPath.row]
-        return kCloseCellHeight
+        return cellHeights[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

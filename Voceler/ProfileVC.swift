@@ -24,7 +24,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var usernameTF: UITextField?{
         didSet{
-            if let username = thisUser.username{
+            if let username = thisUser?.username{
                 usernameTF!.text = username
             }
             else{
@@ -44,7 +44,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     private var takeWall = UIImageView(image: #imageLiteral(resourceName: "compact_camera-50"))
     private var setImgTo = "profileImg"
     private var picker = UIImagePickerController()
-    var thisUser:UserModel!{
+    var thisUser:UserModel?{
         didSet{
             loadUserInfo()
         }
@@ -140,14 +140,14 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             for i in 0..<self.contentArr.count{
                 if self.old_val[i] as! String != self.contentArr[i] as String{
                     self.old_val[i] = self.contentArr[i] as String
-                    self.thisUser.ref.child(self.attributeArr[i]).setValue(self.old_val[i])
+                    self.thisUser?.ref.child(self.attributeArr[i]).setValue(self.old_val[i])
                 }
             }
             if self.old_val[self.contentArr.count] as! UIImage != self.profileImg.image!{
                 self.old_val[self.contentArr.count] = self.profileImg.image!
                 _ = SwiftSpinner.show("Uploading profile image...")
                 currUser?.profileImg = self.profileImg.image
-                self.thisUser.storageRef.child("profileImg.jpeg").put(self.profileImg.image!.dataAtMost(bytes: 100*1024))
+                self.thisUser?.storageRef.child("profileImg.jpeg").put(self.profileImg.image!.dataAtMost(bytes: 100*1024))
                 NotificationCenter.default().post(name: NSNotification.Name("finishProfileImg"), object: nil)
                 self.setProfileItem()
                 SwiftSpinner.hide()
@@ -156,13 +156,13 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                 self.old_val[self.contentArr.count+1] = self.wallImg.image!
                 _ = SwiftSpinner.show("Uploading wall image...")
                 currUser?.wallImg = self.wallImg.image
-                self.thisUser.storageRef.child("wallImg.jpeg").put(self.wallImg.image!.dataAtMost(bytes: 400*1024))
+                self.thisUser?.storageRef.child("wallImg.jpeg").put(self.wallImg.image!.dataAtMost(bytes: 400*1024))
                 SwiftSpinner.hide()
             }
             self.old_val[self.contentArr.count+1] = self.wallImg.image!
             if self.old_val[self.contentArr.count+2] as? String != self.usernameTF?.text!{
                 self.old_val[self.contentArr.count+2] = self.usernameTF!.text!
-                 self.thisUser.ref.child("username").setValue(self.usernameTF!.text!)
+                 self.thisUser?.ref.child("username").setValue(self.usernameTF!.text!)
             }
         })
         let resp = alert.showNotice("Save", subTitle: "Do you want to save changes?", closeButtonTitle: "Cancel", duration: 0, colorStyle: 0x2866BF, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.bottomToTop)
@@ -178,7 +178,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     }
     
     private func setEditable(){
-        editable = FIRAuth.auth()?.currentUser?.uid == thisUser.uid
+        editable = FIRAuth.auth()?.currentUser?.uid == thisUser?.uid
         controlView?.isHidden = !editable
         bottomSpace?.constant = editable ? 50 : 0
     }
@@ -271,7 +271,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     }
 
     func loadUserInfo(){
-        if let username = thisUser.username{
+        if let username = thisUser?.username{
             usernameTF?.text = username
         }
         else{
@@ -279,7 +279,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         }
         contentArr.removeAll()
         for item in attributeArr {
-            if let val = thisUser.infoDic[item]{
+            if let val = thisUser?.infoDic[item]{
                 contentArr.append(NSMutableString(string: val))
             }
             else{

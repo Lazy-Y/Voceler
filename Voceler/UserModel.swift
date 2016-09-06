@@ -29,25 +29,31 @@ class UserModel: NSObject {
         self.uid = uid
     }
     
+    func loadProfileImg(name:String = "finishProfileImg"){
+        storageRef.child("profileImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
+            if let data = data{
+                self.profileImg = UIImage(data: data)
+            }
+            NotificationCenter.default().post(name: NSNotification.Name(name), object: nil)
+        }
+    }
+    
     static func getUser(uid:String, getWall:Bool = false, getProfile:Bool = false)->UserModel{
         let user = UserModel(uid: uid)
         let ref = FIRDatabase.database().reference().child("Users").child(uid)
         user.storageRef = FIRStorage.storage().reference().child("Users").child(uid)
         user.setup(ref: ref)
         if getProfile {
-            user.storageRef.child("profileImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
-                if let data = data{
-                    user.profileImg = UIImage(data: data)
-                }
-                NotificationCenter.default().post(name: NSNotification.Name("finishProfileImg"), object: nil)
-            }
+            user.loadProfileImg()
         }
         if getWall{
             user.storageRef.child("wallImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
                 if let data = data{
                     user.wallImg = UIImage(data: data)
                 }
-                NotificationCenter.default().post(name: NSNotification.Name("finishWallImg"), object: nil)
+                if currUser == user{
+                    NotificationCenter.default().post(name: NSNotification.Name("finishWallImg"), object: nil)
+                }
             }
         }
         return user

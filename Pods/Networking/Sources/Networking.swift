@@ -118,8 +118,8 @@ public class Networking {
     private let baseURL: String
     var fakeRequests = [RequestType : [String : FakeRequest]]()
     var token: String?
-    var authorizationHeaderValue: String?
-    var authorizationHeaderKey = "Authorization"
+    var authorizationHeaderValue = [String]()
+    var authorizationHeaderKey = [String]()
     var cache: Cache<AnyObject, AnyObject>
     var configurationType: ConfigurationType
 
@@ -179,8 +179,8 @@ public class Networking {
      - parameter authorizationHeaderValue: Sets this value to the HTTP `Authorization` header or to the `headerKey` if you provided that
      */
     public func authenticate(headerKey: String = "Authorization", headerValue: String) {
-        self.authorizationHeaderKey = headerKey
-        self.authorizationHeaderValue = headerValue
+        self.authorizationHeaderKey.append(headerKey)
+        self.authorizationHeaderValue.append(headerValue)
     }
 
     /**
@@ -451,11 +451,14 @@ extension Networking {
             request.addValue(accept, forHTTPHeaderField: "Accept")
         }
 
-        if let authorizationHeader = self.authorizationHeaderValue {
-            request.setValue(authorizationHeader, forHTTPHeaderField: self.authorizationHeaderKey)
-        } else if let token = self.token {
-            request.setValue("Bearer \(token)", forHTTPHeaderField: self.authorizationHeaderKey)
+        for i in 0..<authorizationHeaderValue.count {
+            request.setValue(authorizationHeaderValue[i], forHTTPHeaderField: self.authorizationHeaderKey[i])
         }
+//        if let authorizationHeader = self.authorizationHeaderValue {
+//            request.setValue(authorizationHeader, forHTTPHeaderField: self.authorizationHeaderKey)
+//        } else if let token = self.token {
+//            request.setValue("Bearer \(token)", forHTTPHeaderField: self.authorizationHeaderKey)
+//        }
 
         DispatchQueue.main.async {
             NetworkActivityIndicator.sharedIndicator.visible = true
