@@ -35,7 +35,6 @@
 		FD682A9A1D33002500D2F4B6 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD682A981D33002500D2F4B6 /* CollectionCell.xib */; };
 		FD87D7291D1F8DA900D77DC2 /* Globle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87D7281D1F8DA900D77DC2 /* Globle.swift */; };
 		FD8A5E531D1F97620068F57A /* CtrlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8A5E521D1F97620068F57A /* CtrlVC.swift */; };
-		FD8BEBDC1D2E3D55001C5C08 /* OptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8BEBDB1D2E3D55001C5C08 /* OptionsVC.swift */; };
 		FD9855421D1FA5CB0038CBC3 /* CtrlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */; };
 		FDA2BA791D222A1A0003633E /* OptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2BA781D222A1A0003633E /* OptCell.swift */; };
 		FDA2BA7B1D222A250003633E /* OptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDA2BA7A1D222A250003633E /* OptCell.xib */; };
@@ -80,7 +79,6 @@
 		FD682A981D33002500D2F4B6 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
 		FD87D7281D1F8DA900D77DC2 /* Globle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globle.swift; sourceTree = "<group>"; };
 		FD8A5E521D1F97620068F57A /* CtrlVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CtrlVC.swift; sourceTree = "<group>"; };
-		FD8BEBDB1D2E3D55001C5C08 /* OptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsVC.swift; sourceTree = "<group>"; };
 		FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CtrlCell.xib; sourceTree = "<group>"; };
 		FDA2BA781D222A1A0003633E /* OptCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptCell.swift; sourceTree = "<group>"; };
 		FDA2BA7A1D222A250003633E /* OptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptCell.xib; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				FDBBB5E21D2055D000D75467 /* CollectionVC.swift */,
 				FDBBB5E61D2055E600D75467 /* SettingsVC.swift */,
 				FD10047A1D262BA600627FFA /* AskProblemVC.swift */,
-				FD8BEBDB1D2E3D55001C5C08 /* OptionsVC.swift */,
 				FD17E2081D2F666000FC0FB3 /* TagsController.swift */,
 				FDA2BA7C1D222A790003633E /* ProfileVC.swift */,
 				FD2148011D375694008A52B9 /* Birthday.swift */,
@@ -430,7 +427,6 @@
 				FD1036DA1D1FB01600AC1FE9 /* CtrlCell.swift in Sources */,
 				FD17E2061D2F4B3500FC0FB3 /* AddOptCell.swift in Sources */,
 				FD10047B1D262BA600627FFA /* AskProblemVC.swift in Sources */,
-				FD8BEBDC1D2E3D55001C5C08 /* OptionsVC.swift in Sources */,
 				BAD6C0B01D6B646900361A93 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

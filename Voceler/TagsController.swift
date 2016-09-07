@@ -19,9 +19,8 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
     @IBAction func doneAction(sender: AnyObject) {
         let first = navigationController?.viewControllers[0] as! AskProblemVC
         first.handler.setText("", withAnimation: false)
-        let second = navigationController?.viewControllers[1] as! OptionsVC
-        second.optArr.removeAll()
-        second.table.reloadData()
+        first.optArr.removeAll()
+        first.table.reloadData()
         tagView.removeAllTags()
         textField.text = ""
         optTBV.isHidden = true
