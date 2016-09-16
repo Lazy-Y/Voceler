@@ -7,22 +7,34 @@
 //
 
 import UIKit
+import GrowingTextViewHandler
 
 class AddOptCell: UITableViewCell {
 
-    @IBOutlet weak var textLbl: UILabel!
-    var parentTB:UITableView!
+    @IBOutlet weak var textView: UITextView!
+    var index:Int!
+    var parent:AskProblemVC!
+    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+    var handler:GrowingTextViewHandler!
     
-    func tapped(){
-        parentTB.delegate?.tableView!(parentTB, didSelectRowAt: parentTB.indexPath(for: self)!)
-    }
+//    func tapped(){
+//        parentTB.delegate?.tableView!(parentTB, didSelectRowAt: parentTB.indexPath(for: self)!)
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
-        textLbl.addGestureRecognizer(tap)
-        textLbl.font = UIFont(name: "Helvetica Neue", size: 16)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
+//        textView.addGestureRecognizer(tap)
+        textView.font = UIFont(name: "Helvetica Neue", size: 16)
+        handler = GrowingTextViewHandler(textView: textView, withHeightConstraint: textViewHeight)
+        let notiCenter = NotificationCenter.default
+        notiCenter.addObserver(self, selector: #selector(textChange(noti:)), name: Notification.Name.UITextViewTextDidChange, object: textView)
+    }
+    
+    func textChange(noti:Notification) {
+        handler.setText(textView.text, withAnimation: true)
+        parent.optArr[index] = textView.text
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

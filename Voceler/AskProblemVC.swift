@@ -15,7 +15,9 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
     @IBOutlet weak var heightTV: NSLayoutConstraint!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var scroll: UIScrollView!
-    var addBtn:BFPaperButton!
+    
+    @IBOutlet weak var contentView: UIView!
+    
     var table:UITableView!
     
     // FieldVars
@@ -64,9 +66,10 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
     }
     
     func addOpt() {
-        parentVC!.optArr.append(textView.text)
-        parentVC!.table.insertRows(at: [IndexPath(item: parentVC!.optArr.count-1, section: 0)], with: .automatic)
-        dismiss(animated: true, completion: nil)
+        optArr.append("")
+        table.reloadData()
+        let cell = table.cellForRow(at: IndexPath(row: optArr.count-1, section: 0)) as! AddOptCell
+        cell.textView.becomeFirstResponder()
     }
     
     func nextAction(){
@@ -83,6 +86,7 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
         edgesForExtendedLayout = []
         textView.text = ""
         textView.becomeFirstResponder()
+        
         handler = GrowingTextViewHandler(textView: textView, withHeightConstraint: heightTV)
         handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 10)
         scroll.delegate = self
@@ -91,27 +95,18 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
             let rightBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
             navigationItem.rightBarButtonItem = rightBtn
             
-            // Setup add button
-            addBtn = BFPaperButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100), raised: false)!
-            view.addSubview(addBtn)
-            _ = addBtn.sd_layout()
-                .bottomSpaceToView(view, 0)!
-                .leftSpaceToView(view, 0)!
-                .rightSpaceToView(view, 0)!
-                .heightIs(50)
-            addBtn.setTitle("Add Option", for: [])
-            addBtn.backgroundColor = themeColor
-            addBtn.tintColor = UIColor.white
-            addBtn.addTarget(self, action: #selector(addAction), for: .touchUpInside)
+           
             
             // Setup Table
             table = UITableView()
-            view.addSubview(table)
+            contentView.addSubview(table)
             _ = table.sd_layout()
-                .topSpaceToView(textView, 10)!
-                .leftSpaceToView(view, 0)!
-                .rightSpaceToView(view, 0)!
-                .bottomSpaceToView(addBtn, 0)!
+                .topSpaceToView(textView, 2)!
+                .leftSpaceToView(contentView, 0)!
+                .rightSpaceToView(contentView, 0)!
+                .bottomSpaceToView(contentView, 0)!
+            _ = table.addBorder(edges: .top, colour: .black, thickness: 2)
+            _ = textView.addBorder(edges: .bottom, colour: .black)
             table.backgroundColor = lightGray
             table.delegate = self
             table.dataSource = self
@@ -119,6 +114,8 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
             navigationBar.setColor(color: themeColor)
             table.tableFooterView = UIView()
         }
+        
+        textView.becomeFirstResponder()
     }
     
     // Override functions    
@@ -139,19 +136,41 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return optArr.count
+        return optArr.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddOptCell") as! AddOptCell
-        cell.textLbl.text = optArr[indexPath.row]
-        cell.parentTB = table
-        return cell
+        if indexPath.row == optArr.count{
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Add an Option"
+            cell.textLabel?.textColor = .gray
+            cell.backgroundColor = .lightGray
+            cell.textLabel?.textAlignment = .center
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddOptCell") as! AddOptCell
+            cell.textView.text = optArr[indexPath.row]
+            cell.parent = self
+            cell.index = indexPath.row
+            return cell
+        }
+    }
+    
+    override func cellHeight(for indexPath: IndexPath!, cellContentViewWidth width: CGFloat, tableView: UITableView!) -> CGFloat {
+        if let cell = tableView.cellForRow(at: indexPath) as? AddOptCell{
+            return cell.textViewHeight.constant + 16
+        }
+        else {
+            return tableView.cellForRow(at: indexPath)!.height
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        editAction(indexPath: indexPath)
+        if indexPath.row == optArr.count{
+            addOpt()
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
