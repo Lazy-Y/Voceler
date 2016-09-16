@@ -16,18 +16,17 @@ public extension String {
     ///  - returns: The string between the two bookends, or nil if the bookends cannot be found, the bookends are the same or appear contiguously.
     func between(_ left: String, _ right: String) -> String? {
         guard
-            let leftRange = range(of: left), rightRange = range(of: right, options: .backwardsSearch)
-            where left != right && leftRange.upperBound != rightRange.lowerBound
+            let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards)
+            , left != right && leftRange.upperBound != rightRange.lowerBound
             else { return nil }
 
-//        return self[leftRange.endIndex...rightRange.index(before: rightRange.startIndex)]
+        return self[leftRange.upperBound...rightRange.lowerBound]
 
-        return self[leftRange.lowerBound...rightRange.upperBound]
     }
     
     // https://gist.github.com/stevenschobert/540dd33e828461916c11
     func camelize() -> String {
-        let source = clean(" ", allOf: "-", "_")
+        let source = clean(" ", allOf: ["-", "_"])
         if source.characters.contains(" ") {
             let first = source.substring(to: source.characters.index(source.startIndex, offsetBy: 1))
             let cammel = NSString(format: "%@", (source as NSString).capitalized.replacingOccurrences(of: " ", with: "", options: [], range: nil)) as String
@@ -41,7 +40,7 @@ public extension String {
     }
     
     func capitalize() -> String {
-        return self.uppercased()
+        return capitalized
     }
     
     func contains(_ substring: String) -> Bool {
@@ -60,7 +59,7 @@ public extension String {
     }
     
     func chompRight(_ suffix: String) -> String {
-        if let suffixRange = range(of: suffix, options: .backwardsSearch) {
+        if let suffixRange = range(of: suffix, options: .backwards) {
             if suffixRange.upperBound >= endIndex {
                 return self[startIndex..<suffixRange.lowerBound]
             } else {
@@ -75,7 +74,7 @@ public extension String {
         return components.joined(separator: " ")
     }
     
-    func clean(_ with: String, allOf: String...) -> String {
+    func clean(_ with: String, allOf: [String]) -> String {
         var string = self
         for target in allOf {
             string = string.replacingOccurrences(of: target, with: with)
@@ -150,11 +149,11 @@ public extension String {
     }
     
     func join<S: Sequence>(_ elements: S) -> String {
-        return elements.map{String($0)}.joined(separator: self)
+        return elements.map{String(describing: $0)}.joined(separator: self)
     }
     
     func latinize() -> String {
-        return self.folding(.diacriticInsensitiveSearch, locale: Locale.current())
+        return self.folding(options: .diacriticInsensitive, locale: Locale.current)
     }
     
     func lines() -> [String] {
@@ -195,13 +194,13 @@ public extension String {
         return hasPrefix(prefix)
     }
     
-//    func stripPunctuation() -> String {
-//        return components(separatedBy: .punctuation())
-//            .joined(separator: "")
-//            .components(separatedBy: " ")
-//            .filter { $0 != "" }
-//            .joined(separator: " ")
-//    }
+    func stripPunctuation() -> String {
+        return components(separatedBy: CharacterSet.punctuationCharacters)
+            .joined(separator: "")
+            .components(separatedBy: " ")
+            .filter { $0 != "" }
+            .joined(separator: " ")
+    }
     
     func times(_ n: Int) -> String {
         return (0..<n).reduce("") { $0.0 + self }
@@ -221,7 +220,7 @@ public extension String {
         return nil
     }
     
-    func toDouble(_ locale: Locale = Locale.system()) -> Double? {
+    func toDouble(_ locale: Locale = Locale.current) -> Double? {
         let nf = NumberFormatter()
         nf.locale = locale
         if let number = nf.number(from: self) {
@@ -256,7 +255,7 @@ public extension String {
     }
     
     func trimmedRight() -> String {
-        if let range = rangeOfCharacter(from: CharacterSet.whitespacesAndNewlines.inverted, options: NSString.CompareOptions.backwardsSearch) {
+        if let range = rangeOfCharacter(from: CharacterSet.whitespacesAndNewlines.inverted, options: NSString.CompareOptions.backwards) {
             return self[startIndex..<range.upperBound]
         }
         return self

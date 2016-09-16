@@ -24,6 +24,26 @@
 
 import Foundation
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 private var kIQShouldHideTitle      = "kIQShouldHideTitle"
 
@@ -48,7 +68,7 @@ public extension UIView {
     */
     public var shouldHideTitle: Bool? {
         get {
-            let aValue: AnyObject? = objc_getAssociatedObject(self, &kIQShouldHideTitle)
+            let aValue: AnyObject? = objc_getAssociatedObject(self, &kIQShouldHideTitle) as AnyObject?
             
             if aValue == nil {
                 return false
@@ -60,7 +80,7 @@ public extension UIView {
             objc_setAssociatedObject(self, &kIQShouldHideTitle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if let toolbar = self.inputAccessoryView as? IQToolbar {
-                if self.responds(to: Selector("placeholder")) {
+                if self.responds(to: #selector(getter: UITextField.placeholder)) {
                     let textField = self as AnyObject
                     toolbar.title = textField.placeholder
                 }
@@ -107,7 +127,7 @@ public extension UIView {
     */
     public var previousInvocation : (target: AnyObject?, selector: Selector?) {
         get {
-            let target: AnyObject? = objc_getAssociatedObject(self, &kIQPreviousInvocationTarget)
+            let target: AnyObject? = objc_getAssociatedObject(self, &kIQPreviousInvocationTarget) as AnyObject?
             var selector : Selector?
 
             if let selectorString = objc_getAssociatedObject(self, &kIQPreviousInvocationSelector) as? String {
@@ -132,7 +152,7 @@ public extension UIView {
     */
     public var nextInvocation : (target: AnyObject?, selector: Selector?) {
         get {
-            let target: AnyObject? = objc_getAssociatedObject(self, &kIQNextInvocationTarget)
+            let target: AnyObject? = objc_getAssociatedObject(self, &kIQNextInvocationTarget) as AnyObject?
             var selector : Selector?
             
             if let selectorString = objc_getAssociatedObject(self, &kIQNextInvocationSelector) as? String {
@@ -157,7 +177,7 @@ public extension UIView {
     */
     public var doneInvocation : (target: AnyObject?, selector: Selector?) {
         get {
-            let target: AnyObject? = objc_getAssociatedObject(self, &kIQDoneInvocationTarget)
+            let target: AnyObject? = objc_getAssociatedObject(self, &kIQDoneInvocationTarget) as AnyObject?
             var selector : Selector?
             
             if let selectorString = objc_getAssociatedObject(self, &kIQDoneInvocationSelector) as? String {
@@ -215,7 +235,7 @@ public extension UIView {
     public func addDoneOnKeyboardWithTarget (_ target : AnyObject?, action : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: Selector("setInputAccessoryView:")) {
+        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
@@ -271,7 +291,7 @@ public extension UIView {
         var title : String?
         
         if shouldShowPlaceholder == true {
-            if self.responds(to: Selector("placeholder")) {
+            if self.responds(to: #selector(getter: UITextField.placeholder)) {
                 let textField = self as AnyObject
                 title = textField.placeholder
             }
@@ -296,7 +316,7 @@ public extension UIView {
     public func addRightButtonOnKeyboardWithImage (_ image : UIImage, target : AnyObject?, action : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: Selector("setInputAccessoryView:")) {
+        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
@@ -354,7 +374,7 @@ public extension UIView {
         var title : String?
         
         if shouldShowPlaceholder == true {
-            if self.responds(to: Selector("placeholder")) {
+            if self.responds(to: #selector(getter: UITextField.placeholder)) {
                 let textField = self as AnyObject
                 title = textField.placeholder
             }
@@ -386,7 +406,7 @@ public extension UIView {
     public func addRightButtonOnKeyboardWithText (_ text : String, target : AnyObject?, action : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: Selector("setInputAccessoryView:")) {
+        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
 
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
@@ -443,7 +463,7 @@ public extension UIView {
         var title : String?
 
         if shouldShowPlaceholder == true {
-            if self.responds(to: Selector("placeholder")) {
+            if self.responds(to: #selector(getter: UITextField.placeholder)) {
                 let textField = self as AnyObject
                 title = textField.placeholder
             }
@@ -480,7 +500,7 @@ public extension UIView {
     public func addCancelDoneOnKeyboardWithTarget (_ target : AnyObject?, cancelAction : Selector, doneAction : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: Selector("setInputAccessoryView:")) {
+        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             
@@ -543,7 +563,7 @@ public extension UIView {
         var title : String?
         
         if shouldShowPlaceholder == true {
-            if self.responds(to: Selector("placeholder")) {
+            if self.responds(to: #selector(getter: UITextField.placeholder)) {
                 let textField = self as AnyObject
                 title = textField.placeholder
             }
@@ -584,7 +604,7 @@ public extension UIView {
     public func addRightLeftOnKeyboardWithTarget( _ target : AnyObject?, leftButtonTitle : String, rightButtonTitle : String, rightButtonAction : Selector, leftButtonAction : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: Selector("setInputAccessoryView:")) {
+        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             
@@ -649,7 +669,7 @@ public extension UIView {
         var title : String?
         
         if shouldShowPlaceholder == true {
-            if self.responds(to: Selector("placeholder")) {
+            if self.responds(to: #selector(getter: UITextField.placeholder)) {
                 let textField = self as AnyObject
                 title = textField.placeholder
             }
@@ -688,7 +708,7 @@ public extension UIView {
     public func addPreviousNextDoneOnKeyboardWithTarget ( _ target : AnyObject?, previousAction : Selector, nextAction : Selector, doneAction : Selector,  titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: Selector("setInputAccessoryView:")) {
+        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             
@@ -700,7 +720,7 @@ public extension UIView {
             // Get the top level "bundle" which may actually be the framework
             var bundle = Bundle(for: IQKeyboardManager.self)
             
-            if let resourcePath = bundle.pathForResource("IQKeyboardManager", ofType: "bundle") {
+            if let resourcePath = bundle.path(forResource: "IQKeyboardManager", ofType: "bundle") {
                 if let resourcesBundle = Bundle(path: resourcePath) {
                     bundle = resourcesBundle
                 }
@@ -786,7 +806,7 @@ public extension UIView {
         var title : String?
         
         if shouldShowPlaceholder == true {
-            if self.responds(to: Selector("placeholder")) {
+            if self.responds(to: #selector(getter: UITextField.placeholder)) {
                 let textField = self as AnyObject
                 title = textField.placeholder
             }
@@ -812,7 +832,7 @@ public extension UIView {
     public func addPreviousNextRightOnKeyboardWithTarget( _ target : AnyObject?, rightButtonImage : UIImage, previousAction : Selector, nextAction : Selector, rightButtonAction : Selector, titleText : String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: Selector("setInputAccessoryView:")) {
+        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             
@@ -824,7 +844,7 @@ public extension UIView {
             // Get the top level "bundle" which may actually be the framework
             var bundle = Bundle(for: IQKeyboardManager.self)
             
-            if let resourcePath = bundle.pathForResource("IQKeyboardManager", ofType: "bundle") {
+            if let resourcePath = bundle.path(forResource: "IQKeyboardManager", ofType: "bundle") {
                 if let resourcesBundle = Bundle(path: resourcePath) {
                     bundle = resourcesBundle
                 }
@@ -912,7 +932,7 @@ public extension UIView {
         var title : String?
         
         if shouldShowPlaceholder == true {
-            if self.responds(to: Selector("placeholder")) {
+            if self.responds(to: #selector(getter: UITextField.placeholder)) {
                 let textField = self as AnyObject
                 title = textField.placeholder
             }
@@ -949,7 +969,7 @@ public extension UIView {
     public func addPreviousNextRightOnKeyboardWithTarget( _ target : AnyObject?, rightButtonTitle : String, previousAction : Selector, nextAction : Selector, rightButtonAction : Selector, titleText : String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: Selector("setInputAccessoryView:")) {
+        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             
@@ -961,7 +981,7 @@ public extension UIView {
             // Get the top level "bundle" which may actually be the framework
             var bundle = Bundle(for: IQKeyboardManager.self)
             
-            if let resourcePath = bundle.pathForResource("IQKeyboardManager", ofType: "bundle") {
+            if let resourcePath = bundle.path(forResource: "IQKeyboardManager", ofType: "bundle") {
                 if let resourcesBundle = Bundle(path: resourcePath) {
                     bundle = resourcesBundle
                 }
@@ -1048,7 +1068,7 @@ public extension UIView {
         var title : String?
         
         if shouldShowPlaceholder == true {
-            if self.responds(to: Selector("placeholder")) {
+            if self.responds(to: #selector(getter: UITextField.placeholder)) {
                 let textField = self as AnyObject
                 title = textField.placeholder
             }

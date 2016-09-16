@@ -22,30 +22,48 @@
 // THE SOFTWARE.
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
 
-let themeColor = UIColor(red: 0.334777, green: 0.694178, blue: 0.785027, alpha: 1)
-let flipColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4)
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 /// UITableViewCell with folding animation
-public class FoldingCell: UITableViewCell {
+open class FoldingCell: UITableViewCell {
   
   /// UIView whitch display when cell open
-  @IBOutlet weak public var containerView: UIView!
-  @IBOutlet weak public var containerViewTop: NSLayoutConstraint!
+  @IBOutlet weak open var containerView: UIView!
+  @IBOutlet weak open var containerViewTop: NSLayoutConstraint!
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
+    
   
   /// UIView whitch display when cell close
-  @IBOutlet weak public var foregroundView: RotatedView!
-  @IBOutlet weak public var foregroundViewTop: NSLayoutConstraint!
-  @IBOutlet weak var foregroundViewHeight: NSLayoutConstraint!
+  @IBOutlet weak open var foregroundView: RotatedView!
+  @IBOutlet weak open var foregroundViewTop: NSLayoutConstraint!
+    @IBOutlet weak var foregroundViewHeight: NSLayoutConstraint!
     
   var animationView: UIView?
   
   ///  the number of folding elements. Default 2
-  @IBInspectable public var itemCount: NSInteger = 2
+  @IBInspectable open var itemCount: NSInteger = 2
   
   /// The color of the back cell
-  @IBInspectable public var backViewColor: UIColor = flipColor //themeColor
+  @IBInspectable open var backViewColor: UIColor = UIColor.brown
   
   var animationItemViews: [RotatedView]?
   
@@ -70,7 +88,7 @@ public class FoldingCell: UITableViewCell {
     super.init(coder: aDecoder)
   }
   
-  override public func awakeFromNib() {
+  override open func awakeFromNib() {
     super.awakeFromNib()
     
     commonInit()
@@ -79,7 +97,7 @@ public class FoldingCell: UITableViewCell {
   /**
    Call this method in methods init(style: UITableViewCellStyle, reuseIdentifier: String?) after creating Views
    */
-  public func commonInit() {
+  open func commonInit() {
     configureDefaultState()
     
     self.selectionStyle = .none
@@ -98,7 +116,7 @@ public class FoldingCell: UITableViewCell {
         fatalError("set constratins outlets")
     }
     
-    containerViewTop.constant = foregroundViewTop.constant - foregroundViewHeight.constant / 2
+    containerViewTop.constant = foregroundViewTop.constant
     containerView.alpha = 0;
     
     foregroundView.layer.anchorPoint = CGPoint.init(x: 0.5, y: 1)
@@ -117,7 +135,7 @@ public class FoldingCell: UITableViewCell {
     var items = [RotatedView]()
     items.append(foregroundView)
     var rotatedViews = [RotatedView]()
-    for case let itemView as RotatedView in animationView.subviews.filter({$0 is RotatedView}).sorted(isOrderedBefore: { $0.tag < $1.tag }){
+    for case let itemView as RotatedView in animationView.subviews.filter({$0 is RotatedView}).sorted(by: { $0.tag < $1.tag }){
       rotatedViews.append(itemView)
       if let backView = itemView.backView {
         rotatedViews.append(backView)
@@ -153,20 +171,20 @@ public class FoldingCell: UITableViewCell {
     
     let anAnimationView = UIView(frame: containerView.frame)
     anAnimationView.layer.cornerRadius = foregroundView.layer.cornerRadius
-    anAnimationView.backgroundColor = UIColor.clear()
+    anAnimationView.backgroundColor = UIColor.clear
     anAnimationView.translatesAutoresizingMaskIntoConstraints = false
     self.contentView.addSubview(anAnimationView)
     
     // copy constraints from containerView
     var newConstraints = [NSLayoutConstraint]()
     for constraint in self.contentView.constraints {
-      if let item = constraint.firstItem as? UIView where item == containerView {
+      if let item = constraint.firstItem as? UIView , item == containerView {
         let newConstraint = NSLayoutConstraint( item: anAnimationView, attribute: constraint.firstAttribute,
           relatedBy: constraint.relation, toItem: constraint.secondItem, attribute: constraint.secondAttribute,
           multiplier: constraint.multiplier, constant: constraint.constant)
         
         newConstraints.append(newConstraint)
-      } else if let item: UIView = constraint.secondItem as? UIView where item == containerView {
+      } else if let item: UIView = constraint.secondItem as? UIView , item == containerView {
         let newConstraint = NSLayoutConstraint(item: constraint.firstItem, attribute: constraint.firstAttribute,
           relatedBy: constraint.relation, toItem: anAnimationView, attribute: constraint.secondAttribute,
           multiplier: constraint.multiplier, constant: constraint.constant)
@@ -248,7 +266,7 @@ public class FoldingCell: UITableViewCell {
     if let animationView = self.animationView {
       // added back view
       var previusView: RotatedView?
-      for case let contener as RotatedView in animationView.subviews.sorted(isOrderedBefore: { $0.tag < $1.tag })
+      for case let contener as RotatedView in animationView.subviews.sorted(by: { $0.tag < $1.tag })
         where contener.tag > 0 && contener.tag < animationView.subviews.count {
           previusView?.addBackView(contener.bounds.size.height, color: backViewColor)
           previusView = contener
@@ -257,7 +275,7 @@ public class FoldingCell: UITableViewCell {
     animationItemViews = createAnimationItemView()
   }
   
-  private func removeImageItemsFromAnimationView() {
+  fileprivate func removeImageItemsFromAnimationView() {
     
     guard let animationView = self.animationView else {
       return
@@ -276,7 +294,7 @@ public class FoldingCell: UITableViewCell {
    - parameter animated:   Specify true if you want to animate the change in visibility or false if you want immediately.
    - parameter completion: A block object to be executed when the animation sequence ends.
    */
-  public func selectedAnimation(_ isSelected: Bool, animated: Bool, completion: ((Void) -> Void)?) {
+  open func selectedAnimation(_ isSelected: Bool, animated: Bool, completion: ((Void) -> Void)?) {
     
     if isSelected {
       
@@ -298,7 +316,7 @@ public class FoldingCell: UITableViewCell {
     }
   }
   
-  public func isAnimating()->Bool {
+  open func isAnimating()->Bool {
     guard let animationItemViews = self.animationItemViews else {
       return false
     }
@@ -319,7 +337,7 @@ public class FoldingCell: UITableViewCell {
   
   // MARK: animations
   
-  public func animationDuration(_ itemIndex:NSInteger, type:AnimationType)-> TimeInterval {
+  open func animationDuration(_ itemIndex:NSInteger, type:AnimationType)-> TimeInterval {
     assert(false, "added this method to cell")
     return 0
   }
@@ -375,11 +393,11 @@ public class FoldingCell: UITableViewCell {
     
     if let first = firstItemView {
       first.layer.masksToBounds = true
-      DispatchQueue.main.after(when: DispatchTime.now() + Double(Int64(durations[0] * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
+      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(durations[0] * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
         first.layer.cornerRadius = 0
       }
     }
-    DispatchQueue.main.after(when: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
       self.animationView?.alpha = 0
       self.containerView.alpha  = 1
       completion?()
@@ -422,7 +440,7 @@ public class FoldingCell: UITableViewCell {
       delay += durations[index]
     }
     
-    DispatchQueue.main.after(when: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
       if let animationView  = self.animationView {
         animationView.alpha = 0
       }
@@ -433,7 +451,7 @@ public class FoldingCell: UITableViewCell {
       let firstItemView = animationView.subviews.filter{$0.tag == 0}.first
       firstItemView?.layer.cornerRadius = 0
       if let durationLast = durations.last {
-        DispatchQueue.main.after(when: DispatchTime.now() + Double(Int64((delay - durationLast - durationLast / 2.0) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64((delay - durationLast - durationLast / 2.0) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
           firstItemView?.layer.cornerRadius = self.foregroundView.layer.cornerRadius
         }
       }
@@ -444,7 +462,7 @@ public class FoldingCell: UITableViewCell {
 
 // MARK: RotatedView
 
-public class RotatedView: UIView {
+open class RotatedView: UIView, CAAnimationDelegate {
   var hiddenAfterAnimation = false
   var backView: RotatedView?
   
@@ -506,13 +524,14 @@ extension RotatedView {
     
     self.layer.add(rotateAnimation, forKey: "rotation.x")
   }
-  
-  override public func animationDidStart(_ anim: CAAnimation) {
+    
+    public func animationDidStart(_ anim: CAAnimation) {
     self.layer.shouldRasterize = true
     self.alpha = 1
   }
-  
-  override public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    
+
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
     if hiddenAfterAnimation {
       self.alpha = 0
     }
@@ -527,7 +546,7 @@ extension UIView {
     UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
     
     let context = UIGraphicsGetCurrentContext();
-    context!.translate(x: frame.origin.x * -1, y: frame.origin.y * -1)
+    context?.translateBy(x: frame.origin.x * -1, y: frame.origin.y * -1)
     
     guard let currentContext = UIGraphicsGetCurrentContext() else {
       return nil

@@ -148,7 +148,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                 _ = SwiftSpinner.show("Uploading profile image...")
                 currUser?.profileImg = self.profileImg.image
                 self.thisUser?.storageRef.child("profileImg.jpeg").put(self.profileImg.image!.dataAtMost(bytes: 100*1024))
-                NotificationCenter.default().post(name: NSNotification.Name("finishProfileImg"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name("finishProfileImg"), object: nil)
                 self.setProfileItem()
                 SwiftSpinner.hide()
             }
@@ -195,12 +195,12 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         }
         title = ""
         usernameTF!.placeholder = "Username"
-        usernameTF!.layer.borderColor = UIColor.lightGray().cgColor
+        usernameTF!.layer.borderColor = UIColor.lightGray.cgColor
         contentView.touchToHideKeyboard()
         scroll.delegate = self
         view.backgroundColor = lightGray
         controlView!.backgroundColor = themeColor
-        profileImg.board(radius: 50, width: 3, color: .white())
+        profileImg.board(radius: 50, width: 3, color: .white)
         _ = profileImg.sd_layout().topSpaceToView(wallImg, -70)?.heightIs(100)?.widthIs(100)
         table!.delegate = self
         table!.dataSource = self
@@ -209,7 +209,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         moneyImg.setIcon(img: #imageLiteral(resourceName: "money"), color: pinkColor)
         
         editBtn.backgroundColor = themeColor
-        editBtn.tintColor = .white()
+        editBtn.tintColor = .white
         editBtn.setTitle("  Edit", for: [])
         editBtn.setImage(#imageLiteral(resourceName: "edit_row-32").withRenderingMode(.alwaysTemplate), for: [])
         controlView!.addSubview(editBtn)
@@ -237,8 +237,8 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         
         takeProfile.isHidden = true
         takeWall.isHidden = true
-        takeProfile.setIcon(img: #imageLiteral(resourceName: "compact_camera-50"), color: .gray())
-        takeWall.setIcon(img: #imageLiteral(resourceName: "compact_camera-50"), color: .gray())
+        takeProfile.setIcon(img: #imageLiteral(resourceName: "compact_camera-50"), color: .gray)
+        takeWall.setIcon(img: #imageLiteral(resourceName: "compact_camera-50"), color: .gray)
         
         let profileTap = UITapGestureRecognizer(target: self, action: #selector(changeImg(target:)))
         profileImg.addGestureRecognizer(profileTap)
@@ -247,13 +247,13 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         
         setProfileImg()
         setWallImg()
-        NotificationCenter.default().addObserver(self, selector: #selector(setProfileImg), name: NSNotification.Name("finishProfileImg"), object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(setWallImg), name: NSNotification.Name("finishWallImg"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setProfileImg), name: NSNotification.Name("finishProfileImg"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setWallImg), name: NSNotification.Name("finishWallImg"), object: nil)
     }
     
     func resizeTableView() {
         table!.reloadData()
-        scrollHeight!.constant = UIScreen.main().bounds.width * 0.4 + 110 + table!.contentSize.height
+        scrollHeight!.constant = UIScreen.main.bounds.width * 0.4 + 110 + table!.contentSize.height
     }
     
     func setProfileImg(){
@@ -329,20 +329,20 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         return 50
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true) {
             if self.setImgTo == "profileImg"{
-                self.profileImg.image = info["UIImagePickerControllerOriginalImage"] as? UIImage
+                self.profileImg.image = info[UIImagePickerControllerOriginalImage] as? UIImage
             }
             else if self.setImgTo == "wallImg"{
-                self.wallImg.image = info["UIImagePickerControllerOriginalImage"] as? UIImage
+                self.wallImg.image = info[UIImagePickerControllerOriginalImage] as? UIImage
             }
         }
     }
     
     func keyboardWasShown(notification: NSNotification) {
         let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue()
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.bottomSpace?.constant = keyboardFrame.size.height + 20

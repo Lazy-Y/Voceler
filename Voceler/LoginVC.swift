@@ -66,7 +66,7 @@ class LoginVC: UIViewController{
         }
     }
     @IBAction func resetAct(_ sender: AnyObject) {
-        if let text = emailField.text where text.isEmail(){
+        if let text = emailField.text , text.isEmail(){
             let spinner = SwiftSpinner.show("Processing...")
             spinner.backgroundColor = themeColor
             FIRAuth.auth()?.sendPasswordReset(withEmail: text, completion: { (error) in
@@ -99,26 +99,26 @@ class LoginVC: UIViewController{
     }
     
     func initNoti(){
-        let notiCenter = NotificationCenter.default()
+        let notiCenter = NotificationCenter.default
         notiCenter.addObserver(self, selector: #selector(emailChange(noti:)), name: Notification.Name.UITextFieldTextDidChange, object: emailField)
         notiCenter.addObserver(self, selector: #selector(passwordChange(noti:)), name: Notification.Name.UITextFieldTextDidChange, object: passwordField)
     }
     
     func emailChange(noti:Notification) {
         if checkEmail(){
-            emailField.textColor = UIColor.black()
+            emailField.textColor = UIColor.black
         }
         else {
-            emailField.textColor = UIColor.red()
+            emailField.textColor = UIColor.red
         }
     }
     
     func passwordChange(noti:Notification) {
         if checkPassword(){
-            passwordField.textColor = UIColor.black()
+            passwordField.textColor = UIColor.black
         }
         else {
-            passwordField.textColor = UIColor.red()
+            passwordField.textColor = UIColor.red
         }
     }
     
@@ -152,7 +152,6 @@ class LoginVC: UIViewController{
         repassField?.isSecureTextEntry = true
         _ = alert.addButton("Done", action: alertClose)
         _ = alert.showEdit("Sign up", subTitle: "Please re-enter your password.", closeButtonTitle: "Cancel")
-        alert.doneButton.setTitle("Cancel", for: [])
     }
     
     func alertClose(){

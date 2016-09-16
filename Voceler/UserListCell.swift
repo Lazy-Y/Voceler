@@ -15,7 +15,7 @@ class UserListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        userImg.board(radius: 24, width: 0, color: UIColor.clear())
+        userImg.board(radius: 24, width: 0, color: UIColor.clear)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

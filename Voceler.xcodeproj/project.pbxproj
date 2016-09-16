@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		521B6ADC8DEEA2D69804A5AC /* Pods_Voceler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6436A294F41E6FC8BFCCD4 /* Pods_Voceler.framework */; };
+		BA72F77F1D893FDA007F9229 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA72F77E1D893FDA007F9229 /* Main.storyboard */; };
+		BA72F7811D89400A007F9229 /* OptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA72F7801D89400A007F9229 /* OptCell.xib */; };
+		BABAD35B1D8A5315002954D2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */; };
+		BABAD35C1D8A5315002954D2 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BABAD3501D8A5315002954D2 /* CollectionViewCell.xib */; };
+		BABAD35D1D8A5315002954D2 /* UIImage+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3511D8A5315002954D2 /* UIImage+Extended.swift */; };
+		BABAD35E1D8A5315002954D2 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3521D8A5315002954D2 /* ReusableView.swift */; };
+		BABAD35F1D8A5315002954D2 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3531D8A5315002954D2 /* DataSource.swift */; };
+		BABAD3601D8A5315002954D2 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3541D8A5315002954D2 /* Repository.swift */; };
+		BABAD3611D8A5315002954D2 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3551D8A5315002954D2 /* Presenter.swift */; };
+		BABAD3621D8A5315002954D2 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3561D8A5315002954D2 /* Renderer.swift */; };
+		BABAD3631D8A5315002954D2 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3571D8A5315002954D2 /* Resource.swift */; };
+		BABAD3641D8A5315002954D2 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3581D8A5315002954D2 /* Mapper.swift */; };
+		BABAD3651D8A5315002954D2 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3591D8A5315002954D2 /* Parser.swift */; };
+		BABAD3661D8A5315002954D2 /* Resources.plist in Resources */ = {isa = PBXBuildFile; fileRef = BABAD35A1D8A5315002954D2 /* Resources.plist */; };
+		BABAD3681D8A5A12002954D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BABAD3671D8A5A12002954D2 /* Images.xcassets */; };
 		BAD6C0A91D6AA95F00361A93 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAD6C0A81D6AA95F00361A93 /* Categories.plist */; };
 		BAD6C0AC1D6AB56800361A93 /* TreeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD6C0AA1D6AB56800361A93 /* TreeViewCell.swift */; };
 		BAD6C0B01D6B646900361A93 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD6C0AF1D6B646900361A93 /* UserModel.swift */; };
@@ -23,7 +38,6 @@
 		FD17E2071D2F4B3500FC0FB3 /* AddOptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD17E2051D2F4B3500FC0FB3 /* AddOptCell.xib */; };
 		FD17E2091D2F666000FC0FB3 /* TagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD17E2081D2F666000FC0FB3 /* TagsController.swift */; };
 		FD1DBB0B1D1A4D9E00E6762D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */; };
-		FD1DBB101D1A4D9E00E6762D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB0E1D1A4D9E00E6762D /* Main.storyboard */; };
 		FD1DBB121D1A4D9E00E6762D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */; };
 		FD1DBB151D1A4D9E00E6762D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB131D1A4D9E00E6762D /* LaunchScreen.storyboard */; };
 		FD1DBB1D1D1A65CC00E6762D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD1DBB1C1D1A65CC00E6762D /* GoogleService-Info.plist */; };
@@ -37,7 +51,6 @@
 		FD8A5E531D1F97620068F57A /* CtrlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8A5E521D1F97620068F57A /* CtrlVC.swift */; };
 		FD9855421D1FA5CB0038CBC3 /* CtrlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */; };
 		FDA2BA791D222A1A0003633E /* OptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2BA781D222A1A0003633E /* OptCell.swift */; };
-		FDA2BA7B1D222A250003633E /* OptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDA2BA7A1D222A250003633E /* OptCell.xib */; };
 		FDA2BA7D1D222A790003633E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2BA7C1D222A790003633E /* ProfileVC.swift */; };
 		FDA2BA7F1D222BD70003633E /* OptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2BA7E1D222BD70003633E /* OptView.swift */; };
 		FDBBB5DF1D20544100D75467 /* QuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBBB5DE1D20544100D75467 /* QuestionVC.swift */; };
@@ -49,6 +62,23 @@
 /* Begin PBXFileReference section */
 		48CD1EA7447FC7E965D6ED24 /* Pods-Voceler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voceler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Voceler/Pods-Voceler.release.xcconfig"; sourceTree = "<group>"; };
 		7BCB2A59640AD1049CD15269 /* Pods-Voceler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voceler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Voceler/Pods-Voceler.debug.xcconfig"; sourceTree = "<group>"; };
+		BA72F77E1D893FDA007F9229 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BA72F7801D89400A007F9229 /* OptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptCell.xib; sourceTree = "<group>"; };
+		BAB796111D8BB73F0033DEFE /* Voceler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Voceler.entitlements; sourceTree = "<group>"; };
+		BABAD3461D89FC2C002954D2 /* Voceler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Voceler-Bridging-Header.h"; sourceTree = "<group>"; };
+		BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		BABAD3501D8A5315002954D2 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		BABAD3511D8A5315002954D2 /* UIImage+Extended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extended.swift"; sourceTree = "<group>"; };
+		BABAD3521D8A5315002954D2 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		BABAD3531D8A5315002954D2 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		BABAD3541D8A5315002954D2 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		BABAD3551D8A5315002954D2 /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		BABAD3561D8A5315002954D2 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		BABAD3571D8A5315002954D2 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		BABAD3581D8A5315002954D2 /* Mapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		BABAD3591D8A5315002954D2 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		BABAD35A1D8A5315002954D2 /* Resources.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Resources.plist; sourceTree = "<group>"; };
+		BABAD3671D8A5A12002954D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BAD6C0A81D6AA95F00361A93 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
 		BAD6C0AA1D6AB56800361A93 /* TreeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewCell.swift; sourceTree = "<group>"; };
 		BAD6C0AF1D6B646900361A93 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -66,7 +96,6 @@
 		FD17E2081D2F666000FC0FB3 /* TagsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsController.swift; sourceTree = "<group>"; };
 		FD1DBB071D1A4D9E00E6762D /* Voceler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voceler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FD1DBB0F1D1A4D9E00E6762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD1DBB141D1A4D9E00E6762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD1DBB161D1A4D9E00E6762D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,7 +110,6 @@
 		FD8A5E521D1F97620068F57A /* CtrlVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CtrlVC.swift; sourceTree = "<group>"; };
 		FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CtrlCell.xib; sourceTree = "<group>"; };
 		FDA2BA781D222A1A0003633E /* OptCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptCell.swift; sourceTree = "<group>"; };
-		FDA2BA7A1D222A250003633E /* OptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptCell.xib; sourceTree = "<group>"; };
 		FDA2BA7C1D222A790003633E /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		FDA2BA7E1D222BD70003633E /* OptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptView.swift; sourceTree = "<group>"; };
 		FDBBB5DE1D20544100D75467 /* QuestionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionVC.swift; sourceTree = "<group>"; };
@@ -110,6 +138,25 @@
 				BD6436A294F41E6FC8BFCCD4 /* Pods_Voceler.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BABAD34E1D8A52FA002954D2 /* FocusLayout */ = {
+			isa = PBXGroup;
+			children = (
+				BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */,
+				BABAD3501D8A5315002954D2 /* CollectionViewCell.xib */,
+				BABAD3511D8A5315002954D2 /* UIImage+Extended.swift */,
+				BABAD3521D8A5315002954D2 /* ReusableView.swift */,
+				BABAD3531D8A5315002954D2 /* DataSource.swift */,
+				BABAD3541D8A5315002954D2 /* Repository.swift */,
+				BABAD3551D8A5315002954D2 /* Presenter.swift */,
+				BABAD3561D8A5315002954D2 /* Renderer.swift */,
+				BABAD3571D8A5315002954D2 /* Resource.swift */,
+				BABAD3581D8A5315002954D2 /* Mapper.swift */,
+				BABAD3591D8A5315002954D2 /* Parser.swift */,
+				BABAD35A1D8A5315002954D2 /* Resources.plist */,
+			);
+			name = FocusLayout;
 			sourceTree = "<group>";
 		};
 		BAD6C0AE1D6B644B00361A93 /* Models */ = {
@@ -152,8 +199,10 @@
 		FD1DBB091D1A4D9E00E6762D /* Voceler */ = {
 			isa = PBXGroup;
 			children = (
+				BAB796111D8BB73F0033DEFE /* Voceler.entitlements */,
 				BAD6C0AE1D6B644B00361A93 /* Models */,
 				FD682A9B1D33042500D2F4B6 /* View Controllers */,
+				BABAD34E1D8A52FA002954D2 /* FocusLayout */,
 				FD682A9C1D33043700D2F4B6 /* Views */,
 				FD682A9E1D33044F00D2F4B6 /* Nibs */,
 				FD682A9D1D33044300D2F4B6 /* Other */,
@@ -196,15 +245,17 @@
 			isa = PBXGroup;
 			children = (
 				FD1DBB111D1A4D9E00E6762D /* Assets.xcassets */,
+				BABAD3671D8A5A12002954D2 /* Images.xcassets */,
 				FD1DBB0A1D1A4D9E00E6762D /* AppDelegate.swift */,
 				FD149E1A1D1B7939007F3F7B /* UIExtension.swift */,
 				FD149E1C1D1B7C81007F3F7B /* NSExtension.swift */,
 				FD87D7281D1F8DA900D77DC2 /* Globle.swift */,
-				FD1DBB0E1D1A4D9E00E6762D /* Main.storyboard */,
+				BA72F77E1D893FDA007F9229 /* Main.storyboard */,
 				FD1DBB131D1A4D9E00E6762D /* LaunchScreen.storyboard */,
 				FD1DBB161D1A4D9E00E6762D /* Info.plist */,
 				BAD6C0A81D6AA95F00361A93 /* Categories.plist */,
 				FD1DBB1C1D1A65CC00E6762D /* GoogleService-Info.plist */,
+				BABAD3461D89FC2C002954D2 /* Voceler-Bridging-Header.h */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -212,10 +263,10 @@
 		FD682A9E1D33044F00D2F4B6 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				BA72F7801D89400A007F9229 /* OptCell.xib */,
 				FD0325281D24E53E002956FD /* UserListCell.xib */,
 				FD682A981D33002500D2F4B6 /* CollectionCell.xib */,
 				FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */,
-				FDA2BA7A1D222A250003633E /* OptCell.xib */,
 				FD17E2051D2F4B3500FC0FB3 /* AddOptCell.xib */,
 				FD67A7D41D360889008E3ACC /* ProfileCell.xib */,
 			);
@@ -229,7 +280,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD1DBB191D1A4D9E00E6762D /* Build configuration list for PBXNativeTarget "Voceler" */;
 			buildPhases = (
-				96A5B47E27560AA186A755AF /* 📦 Check Pods Manifest.lock */,
+				96A5B47E27560AA186A755AF /* [CP] Check Pods Manifest.lock */,
 				5F57B7078AE17EB4159BA709 /* [CP] Check Pods Manifest.lock */,
 				FD1DBB031D1A4D9E00E6762D /* Sources */,
 				FD1DBB041D1A4D9E00E6762D /* Frameworks */,
@@ -264,6 +315,11 @@
 						DevelopmentTeamName = "Zhenyang Zhong (Personal Team)";
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -292,13 +348,16 @@
 			files = (
 				FD1DBB151D1A4D9E00E6762D /* LaunchScreen.storyboard in Resources */,
 				FD03252A1D24E53E002956FD /* UserListCell.xib in Resources */,
-				FDA2BA7B1D222A250003633E /* OptCell.xib in Resources */,
+				BABAD3661D8A5315002954D2 /* Resources.plist in Resources */,
 				FD682A9A1D33002500D2F4B6 /* CollectionCell.xib in Resources */,
 				FD17E2071D2F4B3500FC0FB3 /* AddOptCell.xib in Resources */,
+				BABAD3681D8A5A12002954D2 /* Images.xcassets in Resources */,
+				BABAD35C1D8A5315002954D2 /* CollectionViewCell.xib in Resources */,
+				BA72F7811D89400A007F9229 /* OptCell.xib in Resources */,
+				BA72F77F1D893FDA007F9229 /* Main.storyboard in Resources */,
 				FD1DBB121D1A4D9E00E6762D /* Assets.xcassets in Resources */,
 				BAD6C0A91D6AA95F00361A93 /* Categories.plist in Resources */,
 				FD1DBB1D1D1A65CC00E6762D /* GoogleService-Info.plist in Resources */,
-				FD1DBB101D1A4D9E00E6762D /* Main.storyboard in Resources */,
 				FD9855421D1FA5CB0038CBC3 /* CtrlCell.xib in Resources */,
 				FD67A7D61D360889008E3ACC /* ProfileCell.xib in Resources */,
 			);
@@ -352,19 +411,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Voceler/Pods-Voceler-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		96A5B47E27560AA186A755AF /* 📦 Check Pods Manifest.lock */ = {
+		96A5B47E27560AA186A755AF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A010AEBFE41EAB9861F2A252 /* [CP] Embed Pods Frameworks */ = {
@@ -404,29 +463,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BABAD35E1D8A5315002954D2 /* ReusableView.swift in Sources */,
 				FD17E2091D2F666000FC0FB3 /* TagsController.swift in Sources */,
 				FD0325291D24E53E002956FD /* UserListCell.swift in Sources */,
 				FDA2BA7D1D222A790003633E /* ProfileVC.swift in Sources */,
+				BABAD3641D8A5315002954D2 /* Mapper.swift in Sources */,
 				FDA2BA7F1D222BD70003633E /* OptView.swift in Sources */,
 				BAD6C0B41D6CF43E00361A93 /* OptionModel.swift in Sources */,
+				BABAD35B1D8A5315002954D2 /* CollectionViewCell.swift in Sources */,
+				BABAD3601D8A5315002954D2 /* Repository.swift in Sources */,
 				FD682A991D33002500D2F4B6 /* CollectionCell.swift in Sources */,
 				FD87D7291D1F8DA900D77DC2 /* Globle.swift in Sources */,
 				FD8A5E531D1F97620068F57A /* CtrlVC.swift in Sources */,
 				FD149E1B1D1B7939007F3F7B /* UIExtension.swift in Sources */,
+				BABAD3621D8A5315002954D2 /* Renderer.swift in Sources */,
 				FDA2BA791D222A1A0003633E /* OptCell.swift in Sources */,
 				FD67A7D51D360889008E3ACC /* ProfileCell.swift in Sources */,
 				FDBBB5DF1D20544100D75467 /* QuestionVC.swift in Sources */,
+				BABAD35F1D8A5315002954D2 /* DataSource.swift in Sources */,
+				BABAD3631D8A5315002954D2 /* Resource.swift in Sources */,
 				FD2148021D375694008A52B9 /* Birthday.swift in Sources */,
+				BABAD35D1D8A5315002954D2 /* UIImage+Extended.swift in Sources */,
 				FDBBB5E31D2055D000D75467 /* CollectionVC.swift in Sources */,
 				FDBBB5E71D2055E600D75467 /* SettingsVC.swift in Sources */,
 				FD149E1D1D1B7C81007F3F7B /* NSExtension.swift in Sources */,
 				BAD6C0B21D6CF1A600361A93 /* QuestionModel.swift in Sources */,
 				FD1DBB0B1D1A4D9E00E6762D /* AppDelegate.swift in Sources */,
 				BAD6C0AC1D6AB56800361A93 /* TreeViewCell.swift in Sources */,
+				BABAD3611D8A5315002954D2 /* Presenter.swift in Sources */,
 				FDD344361D1B91980040356A /* LoginVC.swift in Sources */,
 				FD1036DA1D1FB01600AC1FE9 /* CtrlCell.swift in Sources */,
 				FD17E2061D2F4B3500FC0FB3 /* AddOptCell.swift in Sources */,
 				FD10047B1D262BA600627FFA /* AskProblemVC.swift in Sources */,
+				BABAD3651D8A5315002954D2 /* Parser.swift in Sources */,
 				BAD6C0B01D6B646900361A93 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,14 +503,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FD1DBB0E1D1A4D9E00E6762D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FD1DBB0F1D1A4D9E00E6762D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FD1DBB131D1A4D9E00E6762D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -546,11 +607,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Voceler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = owen.Voceler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Voceler/Voceler-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -561,11 +625,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Voceler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = owen.Voceler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Voceler/Voceler-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

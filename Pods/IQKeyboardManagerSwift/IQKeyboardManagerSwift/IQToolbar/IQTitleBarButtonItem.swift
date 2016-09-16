@@ -24,9 +24,9 @@
 
 import UIKit
 
-public class IQTitleBarButtonItem: IQBarButtonItem {
+open class IQTitleBarButtonItem: IQBarButtonItem {
    
-    public var font : UIFont? {
+    open var font : UIFont? {
     
         didSet {
             if let unwrappedFont = font {
@@ -37,8 +37,8 @@ public class IQTitleBarButtonItem: IQBarButtonItem {
         }
     }
     
-    private var _titleLabel : UILabel?
-    private var _titleView : UIView?
+    fileprivate var _titleLabel : UILabel?
+    fileprivate var _titleView : UIView?
 
     override init() {
         super.init()
@@ -49,13 +49,13 @@ public class IQTitleBarButtonItem: IQBarButtonItem {
         self.init(title: nil, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
         _titleView = UIView()
-        _titleView?.backgroundColor = UIColor.clear()
+        _titleView?.backgroundColor = UIColor.clear
         _titleView?.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         
         _titleLabel = UILabel()
         _titleLabel?.numberOfLines = 0
-        _titleLabel?.textColor = UIColor.gray()
-        _titleLabel?.backgroundColor = UIColor.clear()
+        _titleLabel?.textColor = UIColor.gray
+        _titleLabel?.backgroundColor = UIColor.clear
         _titleLabel?.textAlignment = .center
         _titleLabel?.text = title
         _titleLabel?.autoresizingMask = [.flexibleWidth,.flexibleHeight]

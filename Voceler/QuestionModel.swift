@@ -36,6 +36,6 @@ class QuestionModel: NSObject {
         qType = type
     }
     static func getQuestion(qid: String)->QuestionModel{
-        return QuestionModel(qid: qid, descrpt:"Hello" , askerID: "abc")
+        return QuestionModel(qid: qid, descrpt:"2016-09-15 22:01:01.551154 Voceler[942:341432] 0refresh2016-09-15 22:01:04.644524 Voceler[942:341432] 0" , askerID: "abc")
     }
 }

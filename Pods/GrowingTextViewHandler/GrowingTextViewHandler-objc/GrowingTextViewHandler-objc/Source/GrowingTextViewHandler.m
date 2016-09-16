@@ -53,7 +53,7 @@ static NSInteger kMaximumNumberOfLines = INT_MAX;
     verticalAlignmentConstant = self.initialHeight;
   }else if ((textViewNumberOfLines > self.minimumNumberOfLines) && (textViewNumberOfLines <= self.maximumNumberOfLines)) {
     CGFloat currentHeight = [self currentHeight];
-    verticalAlignmentConstant = (currentHeight > self.initialHeight) ? currentHeight : self.initialHeight;
+      verticalAlignmentConstant = (currentHeight > self.initialHeight) ? currentHeight : self.initialHeight;
   }else if (textViewNumberOfLines > self.maximumNumberOfLines){
     verticalAlignmentConstant = self.maximumHeight;
   }
@@ -75,7 +75,7 @@ static NSInteger kMaximumNumberOfLines = INT_MAX;
 
 - (CGFloat)estimatedInitialHeight {
   CGFloat totalHeight = [self caretHeight] * self.minimumNumberOfLines + self.growingTextView.textContainerInset.top + self.growingTextView.textContainerInset.bottom;
-  return fmax(totalHeight,self.growingTextView.frame.size.height);
+    return 36;//fmax(totalHeight,self.growingTextView.frame.size.height);
 }
 
 - (CGFloat)estimatedMaximumHeight {
@@ -94,6 +94,7 @@ static NSInteger kMaximumNumberOfLines = INT_MAX;
                                                       attributes:@{ NSFontAttributeName:self.growingTextView.font}
                                                          context:nil];
   CGFloat heightByBoundingRect = CGRectGetHeight(boundingRect) + self.growingTextView.font.lineHeight;
+    NSLog(@"%d",_growingTextView.font.lineHeight);
   return MAX(heightByBoundingRect,self.growingTextView.contentSize.height);
 }
 

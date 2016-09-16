@@ -2,7 +2,7 @@
 
 public extension String {
     
-    private struct HTMLEntities {
+    fileprivate struct HTMLEntities {
         static let characterEntities : [String: Character] = [
             
             // XML predefined entities:
@@ -268,9 +268,9 @@ public extension String {
     // Unicode character, e.g.
     //    decodeNumeric("64", 10)   --> "@"
     //    decodeNumeric("20ac", 16) --> "€"
-    private func decodeNumeric(_ string : String, base : Int32) -> Character? {
+    fileprivate func decodeNumeric(_ string : String, base : Int32) -> Character? {
         let code = UInt32(strtoul(string, nil, base))
-        return Character(UnicodeScalar(code))
+        return Character(UnicodeScalar(code)!)
     }
     
     // Decode the HTML character entity to the corresponding
@@ -279,7 +279,7 @@ public extension String {
     //     decode("&#x20ac;") --> "€"
     //     decode("&lt;")     --> "<"
     //     decode("&foo;")    --> nil
-    private func decode(_ entity : String) -> Character? {
+    fileprivate func decode(_ entity : String) -> Character? {
         if entity.hasPrefix("&#x") || entity.hasPrefix("&#X"){
             return decodeNumeric(entity.substring(from: entity.characters.index(entity.startIndex, offsetBy: 3)), base: 16)
         } else if entity.hasPrefix("&#") {

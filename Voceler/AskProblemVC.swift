@@ -76,7 +76,7 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
     
     // Functions
     func setupUI() {
-        let notiCenter = NotificationCenter.default()
+        let notiCenter = NotificationCenter.default
         notiCenter.addObserver(self, selector: #selector(textChange(noti:)), name: Notification.Name.UITextViewTextDidChange, object: textView)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(addOpt))
@@ -101,7 +101,7 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
                 .heightIs(50)
             addBtn.setTitle("Add Option", for: [])
             addBtn.backgroundColor = themeColor
-            addBtn.tintColor = UIColor.white()
+            addBtn.tintColor = UIColor.white
             addBtn.addTarget(self, action: #selector(addAction), for: .touchUpInside)
             
             // Setup Table

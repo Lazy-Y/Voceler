@@ -7,7 +7,7 @@ public extension Networking {
     - parameter path: The path for the GET request.
     - parameter completion: A closure that gets called when the GET request is completed, it contains a `JSON` object and a `NSError`.
     */
-    public func GET(_ path: String, parameterType: ParameterType = .json, completion: (JSON: AnyObject?, error: NSError?) -> ()) {
+    public func GET(_ path: String, parameterType: ParameterType = .json, completion: @escaping (_ JSON: AnyObject?, _ error: NSError?) -> ()) {
         self.request(.GET, path: path, parameterType: parameterType, parameters: nil, parts: nil, responseType: .json, completion: completion)
     }
 
@@ -27,7 +27,7 @@ public extension Networking {
      - parameter fileName: The name of the file, whose contents will be registered as a reponse.
      - parameter bundle: The NSBundle where the file is located.
      */
-    public func fakeGET(_ path: String, fileName: String, bundle: Bundle = Bundle.main()) {
+    public func fakeGET(_ path: String, fileName: String, bundle: Bundle = Bundle.main) {
         self.fake(.GET, path: path, fileName: fileName, bundle: bundle)
     }
 
@@ -50,7 +50,7 @@ public extension Networking {
      default this is JSON.
     - parameter completion: A closure that gets called when the POST request is completed, it contains a `JSON` object and a `NSError`.
     */
-    public func POST(_ path: String, parameterType: ParameterType = .json, parameters: AnyObject? = nil, completion: (JSON: AnyObject?, error: NSError?) -> ()) {
+    public func POST(_ path: String, parameterType: ParameterType = .json, parameters: AnyObject? = nil, completion: @escaping (_ JSON: AnyObject?, _ error: NSError?) -> ()) {
         self.request(.POST, path: path, parameterType: parameterType, parameters: parameters, parts: nil, responseType: .json, completion: completion)
     }
 
@@ -62,7 +62,7 @@ public extension Networking {
      - parameter part: The form data that will be sent in the request.
      - parameter completion: A closure that gets called when the POST request is completed, it contains a `JSON` object and a `NSError`.
      */
-    public func POST(_ path: String, parameters: AnyObject? = nil, part: FormDataPart, completion: (JSON: AnyObject?, error: NSError?) -> ()) {
+    public func POST(_ path: String, parameters: AnyObject? = nil, part: FormDataPart, completion: @escaping (_ JSON: AnyObject?, _ error: NSError?) -> ()) {
         self.POST(path, parameters: parameters, parts: [part], completion: completion)
     }
 
@@ -74,7 +74,7 @@ public extension Networking {
      - parameter parts: The list of form data parts that will be sent in the request.
      - parameter completion: A closure that gets called when the POST request is completed, it contains a `JSON` object and a `NSError`.
      */
-    public func POST(_ path: String, parameters: AnyObject? = nil, parts: [FormDataPart], completion: (JSON: AnyObject?, error: NSError?) -> ()) {
+    public func POST(_ path: String, parameters: AnyObject? = nil, parts: [FormDataPart], completion: @escaping (_ JSON: AnyObject?, _ error: NSError?) -> ()) {
         self.request(.POST, path: path, parameterType: .multipartFormData, parameters: parameters, parts: parts, responseType: .json, completion: completion)
     }
 
@@ -94,7 +94,7 @@ public extension Networking {
      - parameter fileName: The name of the file, whose contents will be registered as a reponse.
      - parameter bundle: The NSBundle where the file is located.
      */
-    public func fakePOST(_ path: String, fileName: String, bundle: Bundle = Bundle.main()) {
+    public func fakePOST(_ path: String, fileName: String, bundle: Bundle = Bundle.main) {
         self.fake(.POST, path: path, fileName: fileName, bundle: bundle)
     }
 
@@ -117,7 +117,7 @@ public extension Networking {
      default this is JSON.
     - parameter completion: A closure that gets called when the PUT request is completed, it contains a `JSON` object and a `NSError`.
     */
-    public func PUT(_ path: String, parameterType: ParameterType = .json, parameters: AnyObject?, completion: (JSON: AnyObject?, error: NSError?) -> ()) {
+    public func PUT(_ path: String, parameterType: ParameterType = .json, parameters: AnyObject?, completion: @escaping (_ JSON: AnyObject?, _ error: NSError?) -> ()) {
         self.request(.PUT, path: path, parameterType: parameterType, parameters: parameters, parts: nil, responseType: .json, completion: completion)
     }
 
@@ -137,7 +137,7 @@ public extension Networking {
      - parameter fileName: The name of the file, whose contents will be registered as a reponse.
      - parameter bundle: The NSBundle where the file is located.
      */
-    public func fakePUT(_ path: String, fileName: String, bundle: Bundle = Bundle.main()) {
+    public func fakePUT(_ path: String, fileName: String, bundle: Bundle = Bundle.main) {
         self.fake(.PUT, path: path, fileName: fileName, bundle: bundle)
     }
 
@@ -158,7 +158,7 @@ public extension Networking {
     - parameter path: The path for the DELETE request.
     - parameter completion: A closure that gets called when the DELETE request is completed, it contains a `JSON` object and a `NSError`.
     */
-    public func DELETE(_ path: String, completion: (JSON: AnyObject?, error: NSError?) -> ()) {
+    public func DELETE(_ path: String, completion: @escaping (_ JSON: AnyObject?, _ error: NSError?) -> ()) {
         self.request(.DELETE, path: path, parameterType: .json, parameters: nil, parts: nil, responseType: .json, completion: completion)
     }
 
@@ -178,7 +178,7 @@ public extension Networking {
      - parameter fileName: The name of the file, whose contents will be registered as a reponse.
      - parameter bundle: The NSBundle where the file is located.
      */
-    public func fakeDELETE(_ path: String, fileName: String, bundle: Bundle = Bundle.main()) {
+    public func fakeDELETE(_ path: String, fileName: String, bundle: Bundle = Bundle.main) {
         self.fake(.DELETE, path: path, fileName: fileName, bundle: bundle)
     }
 

@@ -25,9 +25,9 @@
 import UIKit
 
 /** @abstract   IQToolbar for IQKeyboardManager.    */
-public class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
+open class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
 
-    override public class func initialize() {
+    override open class func initialize() {
         
         superclass()?.initialize()
                 
@@ -48,7 +48,7 @@ public class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
         self.appearance().backgroundColor = nil
     }
     
-    public var titleFont : UIFont? {
+    open var titleFont : UIFont? {
         
         didSet {
             
@@ -63,7 +63,7 @@ public class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
         }
     }
     
-    public var title : String? {
+    open var title : String? {
         
         didSet {
             
@@ -83,7 +83,7 @@ public class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
         
         sizeToFit()
         autoresizingMask = UIViewAutoresizing.flexibleWidth
-        tintColor = UIColor .black()
+        tintColor = UIColor.black
         self.isTranslucent = true
     }
     
@@ -92,17 +92,17 @@ public class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
 
         sizeToFit()
         autoresizingMask = UIViewAutoresizing.flexibleWidth
-        tintColor = UIColor .black()
+        tintColor = UIColor.black
         self.isTranslucent = true
     }
 
-    override public func sizeThatFits(_ size: CGSize) -> CGSize {
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFit = super.sizeThatFits(size)
         sizeThatFit.height = 44
         return sizeThatFit
     }
 
-    override public var tintColor: UIColor! {
+    override open var tintColor: UIColor! {
         
         didSet {
             if let unwrappedItems = items {
@@ -116,7 +116,7 @@ public class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
         }
     }
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
 
         super.layoutSubviews()
         
@@ -131,7 +131,7 @@ public class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
         var rightRect = CGRect.null
         var isTitleBarButtonFound = false
         
-        let sortedSubviews = self.subviews.sorted(isOrderedBefore: { (view1 : UIView, view2 : UIView) -> Bool in
+        let sortedSubviews = self.subviews.sorted(by: { (view1 : UIView, view2 : UIView) -> Bool in
             
             let x1 = view1.frame.minX
             let y1 = view1.frame.minY
@@ -152,7 +152,7 @@ public class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
                 rightRect = barButtonItemView.frame
                 break
             }
-            else if (barButtonItemView.dynamicType === UIView.self)
+            else if (type(of: barButtonItemView) === UIView.self)
             {
                 isTitleBarButtonFound = true
             }
@@ -185,7 +185,7 @@ public class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
         }
     }
     
-    public var enableInputClicksWhenVisible: Bool {
+    open var enableInputClicksWhenVisible: Bool {
         return true
     }
 }

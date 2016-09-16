@@ -8,10 +8,9 @@
 
 import UIKit
 import TagListView
-import RATreeView
 import SDAutoLayout
 
-class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate, RATreeViewDelegate, RATreeViewDataSource {
+class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate {
     var optTBV = UITableView()
     
     @IBOutlet weak var tagView: TagListView!
@@ -24,7 +23,6 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
         tagView.removeAllTags()
         textField.text = ""
         optTBV.isHidden = true
-        treeView.isHidden = false
         tagView.isHidden = false
         navigationController?.dismiss(animated: true, completion: {
             _ = self.navigationController!.popToRootViewController(animated: false)
@@ -43,14 +41,12 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
                 _ = tagView.addTag(text)
                 textField.text = ""
                 optTBV.isHidden = true
-                treeView.isHidden = false
                 tagView.isHidden = false
             }
         }
     }
     
     @IBOutlet weak var addBtn: UIButton!
-    let treeView = RATreeView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,31 +72,23 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
         
         addBtn.imageView?.setIcon(img: #imageLiteral(resourceName: "plus-50").withRenderingMode(.alwaysTemplate), color: themeColor)
         
-        let noti = NotificationCenter.default()
+        let noti = NotificationCenter.default
         noti.addObserver(self, selector: #selector(textChange(noti:)), name: Notification.Name.UITextFieldTextDidChange, object: textField)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(endEdit))
         tagView.addGestureRecognizer(tap)
-        
-        treeView.delegate = self
-        treeView.dataSource = self
-        treeView.backgroundColor = .white()
-        view.addSubview(treeView)
-        _ = treeView.sd_layout().topSpaceToView(tagView, 20)?.bottomSpaceToView(view, 0)?.leftSpaceToView(view, 0)?.rightSpaceToView(view, 0)
     }
     
-    let categories = NSDictionary(contentsOfFile: Bundle.main().pathForResource("Categories", ofType: "plist")!)!
+    let categories = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Categories", ofType: "plist")!)!
     
     func textChange(noti:Notification) {
         if textField.text == "" {
             optTBV.isHidden = true
             tagView.isHidden = false
-            treeView.isHidden = false
         }
         else {
             optTBV.isHidden = false
             tagView.isHidden = true
-            treeView.isHidden = true
         }
     }
     
@@ -115,42 +103,5 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func treeView(_ treeView: RATreeView, numberOfChildrenOfItem item: AnyObject?) -> Int{
-        if let item = item as? NSArray{
-            return (item[1] as! NSDictionary).count
-        }
-        else{
-            return categories.count
-        }
-    }
-    
-    func treeView(_ treeView: RATreeView, cellForItem item: AnyObject?) -> UITableViewCell{
-        let cell = TreeViewCell()
-        let arr = item as! NSArray
-        cell.setUp(level: treeView.levelForCell(forItem: item!), text: arr[0] as! String, numOfChild: (arr[1] as! NSDictionary).count)
-        return cell
-    }
-    
-    func treeView(_ treeView: RATreeView, child index: Int, ofItem item: AnyObject?) -> AnyObject{
-        if let item = (item as? NSArray)?[1] as? NSDictionary{
-            return [item.allKeys[index],item.allValues[index]]
-        }
-        else{
-            return [categories.allKeys[index], categories.allValues[index]]
-        }
-    }
-    
-    func treeView(_ treeView: RATreeView, willExpandRowForItem item: AnyObject) {
-        (treeView.cell(forItem: item) as! TreeViewCell).change(expand: true)
-    }
-    
-    func treeView(_ treeView: RATreeView, willCollapseRowForItem item: AnyObject) {
-        (treeView.cell(forItem: item) as! TreeViewCell).change(expand: false)
-    }
-    
-    func treeView(_ treeView: RATreeView, didSelectRowForItem item: AnyObject) {
-        treeView.cell(forItem: item)?.isSelected = false
     }
 }

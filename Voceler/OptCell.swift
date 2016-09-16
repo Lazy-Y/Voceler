@@ -45,14 +45,14 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
         foregroundView.board(radius: 5, width: 1, color: UIColor(cgColor: foregroundView.layer.borderColor!))
         likeBtn.setIcon(img: #imageLiteral(resourceName: "checked_2-50"), color: pinkColor)
         controlView.backgroundColor = lightGray
-        controlView.board(radius: 0, width: 1, color: .black())
+        controlView.board(radius: 0, width: 1, color: .black)
         let tap = UITapGestureRecognizer(target: self, action: #selector(likeAction))
         controlView.addGestureRecognizer(tap)
         let textTap = UITapGestureRecognizer(target: self, action: #selector(textTapped))
         textLbl.addGestureRecognizer(textTap)
         contentTF.text = contentViewText
         contentCV.backgroundColor = lightGray
-        contentCV.board(radius: 0, width: 1, color: .black())
+        contentCV.board(radius: 0, width: 1, color: .black)
         let contentTap = UITapGestureRecognizer(target: self, action: #selector(textTapped))
         contentTF.addGestureRecognizer(contentTap)
         contentTF.font = UIFont(name: "Helvetica Neue", size: 16)
@@ -62,10 +62,10 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
         userTBV.delegate = self
         userTBV.dataSource = self
         userTBV.separatorStyle = .none
-        userTBV.board(radius: 0, width: 1, color: .black())
+        userTBV.board(radius: 0, width: 1, color: .black)
         
-        moreImg.setIcon(img: #imageLiteral(resourceName: "more-50"), color: .black())
-        reportImg.setIcon(img: #imageLiteral(resourceName: "police-50"), color: .black())
+        moreImg.setIcon(img: #imageLiteral(resourceName: "more-50"), color: .black)
+        reportImg.setIcon(img: #imageLiteral(resourceName: "police-50"), color: .black)
         
         if isInCollection{
             likeBtn.isHidden = true
@@ -100,7 +100,7 @@ class OptCell: FoldingCell, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        parent.showAskerInfo()
+//        parent.showAskerInfo()
         tableView.cellForRow(at: indexPath)?.isSelected = false
     }
 }

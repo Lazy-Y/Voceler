@@ -1,7 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
+
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 
+#pod 'Alamofire'
 #pod 'OmniCarouselView'
+pod 'SFFocusViewLayout'
 pod 'Networking'
 pod 'TagListView'
 pod 'SwiftSpinner'
@@ -33,10 +39,19 @@ pod 'IQKeyboardManagerSwift'
 pod 'RATreeView'
 pod 'MJRefresh'
 
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '3.0'
+        end
+    end
+end
+
 target 'Voceler' do
-  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for Voceler
-
+    # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
+    # Pods for Voceler
+    
 end

@@ -28,7 +28,7 @@ class Birthday: UIViewController {
         birthPicker.datePickerMode = .date
         title = "Birthday"
         formatter.dateFormat = "MM-dd-yyyy"
-        if let date = textField.text where date != ""{
+        if let date = textField.text , date != ""{
             birthPicker.setDate(formatter.date(from: date)!, animated: true)
         }
         else{

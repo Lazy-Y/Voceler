@@ -29,7 +29,7 @@ func getNav(name:String, isCenter:Bool) -> UINavigationController {
     vc.title = name
     if isCenter{
         vc.setProfileItem()
-        nav.navigationBar.setColor(color: .clear())
+        nav.navigationBar.setColor(color: .clear)
     }
     else {
         nav.navigationBar.setColor(color: themeColor)

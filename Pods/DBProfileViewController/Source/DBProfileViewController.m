@@ -399,7 +399,7 @@ static NSString * const DBProfileViewControllerContentOffsetCacheName = @"DBProf
     if (self.traitCollection.verticalSizeClass != UIUserInterfaceSizeClassCompact) {
         
         if ([self.delegate respondsToSelector:@selector(profileViewController:titleForContentControllerAtIndex:)]) {
-            overlaySubtitle = @"Hello";//[self.dataSource profileViewController:self subtitleForContentControllerAtIndex:controllerIndex];
+            overlaySubtitle = [self.dataSource profileViewController:self subtitleForContentControllerAtIndex:controllerIndex];
         }
     }
     

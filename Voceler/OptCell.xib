@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -163,13 +163,13 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="containerView" destination="1EA-4B-hx8" id="V3G-kd-Quc"/>
-                <outlet property="containerViewHeight" destination="Bxe-O6-ruk" id="foP-Pu-3gu"/>
+                <outlet property="containerViewHeight" destination="Bxe-O6-ruk" id="neh-9r-cAF"/>
                 <outlet property="containerViewTop" destination="1J4-qP-d2r" id="Idn-Cx-bAk"/>
                 <outlet property="contentCV" destination="phg-I7-A5H" id="kcO-GU-OqY"/>
                 <outlet property="contentTF" destination="rxW-3K-MDv" id="3OE-sk-hXl"/>
                 <outlet property="controlView" destination="OKx-kc-d4R" id="7og-Qo-3c2"/>
                 <outlet property="foregroundView" destination="24H-Ap-m3A" id="DKA-jE-Px6"/>
-                <outlet property="foregroundViewHeight" destination="y38-DU-eb0" id="pJe-wu-9WV"/>
+                <outlet property="foregroundViewHeight" destination="y38-DU-eb0" id="X7u-6C-sTM"/>
                 <outlet property="foregroundViewTop" destination="RJG-1n-kbr" id="Fvf-Oy-hOD"/>
                 <outlet property="likeBtn" destination="ZSQ-I6-ev0" id="rO7-2a-sqj"/>
                 <outlet property="moreImg" destination="wTX-iB-1fR" id="3nA-d5-mxy"/>

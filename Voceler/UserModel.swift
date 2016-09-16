@@ -34,7 +34,10 @@ class UserModel: NSObject {
             if let data = data{
                 self.profileImg = UIImage(data: data)
             }
-            NotificationCenter.default().post(name: NSNotification.Name(name), object: nil)
+            else {
+                self.profileImg = #imageLiteral(resourceName: "logo")
+            }
+            NotificationCenter.default.post(name: NSNotification.Name(name), object: nil)
         }
     }
     
@@ -51,8 +54,11 @@ class UserModel: NSObject {
                 if let data = data{
                     user.wallImg = UIImage(data: data)
                 }
+                else {
+                    user.wallImg = #imageLiteral(resourceName: "WallBG")
+                }
                 if currUser == user{
-                    NotificationCenter.default().post(name: NSNotification.Name("finishWallImg"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("finishWallImg"), object: nil)
                 }
             }
         }

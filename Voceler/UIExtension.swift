@@ -50,9 +50,10 @@ extension UIViewController{
         else{
             let img = UIImage(named: "logo")!.resize(newWidth: 40)
             btn.setImage(img, for: [])
-            NotificationCenter.default().addObserver(self, selector: #selector(setProfileItem), name: NSNotification.Name("finishProfileImg"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(setProfileItem), name: NSNotification.Name("finishProfileImg"), object: nil)
         }
-        btn.board(radius: 20, width: 3, color: UIColor.white())
+        btn.board(radius: 20, width: 3, color: UIColor.white)
+        btn.imageView?.contentMode = .scaleAspectFill
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
     }
 }
@@ -61,10 +62,10 @@ extension UINavigationBar{
     func setColor(color:UIColor){
         barTintColor = color
         backgroundColor = color
-        tintColor = .white()
+        tintColor = .white
         isTranslucent = true
-        titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 20)!, NSForegroundColorAttributeName: UIColor.white()]
-        if color == UIColor.clear(){
+        titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 20)!, NSForegroundColorAttributeName: UIColor.white]
+        if color == .clear{
             setBackgroundImage(UIImage(), for: .default)
         }
     }
@@ -124,7 +125,7 @@ extension UIColor {
 extension UIView{
     func blury() {
         if !UIAccessibilityIsReduceTransparencyEnabled() {
-            self.backgroundColor = UIColor.clear()
+            self.backgroundColor = UIColor.clear
             let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             //always fill the view
@@ -133,7 +134,7 @@ extension UIView{
             
             self.addSubview(blurEffectView) //if you have more UIViews, use an insertSubview API to place it where needed
         } else {
-            self.backgroundColor = UIColor.black()
+            self.backgroundColor = UIColor.black
         }
     }
     func hideKeyboard(){
@@ -150,7 +151,7 @@ extension UIView{
         layer.borderColor = color.cgColor
         layer.borderWidth = width
     }
-    func addBorder(edges: UIRectEdge, colour: UIColor = UIColor.white(), thickness: CGFloat = 1) -> [UIView] {
+    func addBorder(edges: UIRectEdge, colour: UIColor = UIColor.white, thickness: CGFloat = 1) -> [UIView] {
         
         var borders = [UIView]()
         
@@ -230,12 +231,12 @@ extension UIView{
 }
 
 extension UIImage {
-    var uncompressedPNGData: NSData! { return UIImagePNGRepresentation(self)! }
-    var highestQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 1.0)! }
-    var highQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 0.75)! }
-    var mediumQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 0.5)! }
-    var lowQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 0.25)! }
-    var lowestQualityJPEGNSData:NSData! { return UIImageJPEGRepresentation(self, 0.0)! }
+    var uncompressedPNGData: NSData! { return UIImagePNGRepresentation(self)! as NSData! }
+    var highestQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 1.0)! as NSData! }
+    var highQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 0.75)! as NSData! }
+    var mediumQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 0.5)! as NSData! }
+    var lowQualityJPEGNSData: NSData! { return UIImageJPEGRepresentation(self, 0.25)! as NSData! }
+    var lowestQualityJPEGNSData:NSData! { return UIImageJPEGRepresentation(self, 0.0)! as NSData! }
     func dataAtMost(bytes:Int)->Data{
         if uncompressedPNGData.length <= bytes{
             return uncompressedPNGData as Data

@@ -77,7 +77,6 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.cellForRow(at: indexPath)?.isSelected = false
         let vc = VC(name: "CollectionQuestion") as! QuestionVC
-        vc.collectionSetup(collection: indexPath.section == 1)
         navigationController?.pushViewController(vc, animated: true)
     }
     

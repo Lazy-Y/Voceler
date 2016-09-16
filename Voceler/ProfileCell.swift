@@ -56,10 +56,10 @@ class ProfileCell: UITableViewCell, UITextFieldDelegate {
         textField.borderStyle = .none
         textField.delegate = self
         textField.isUserInteractionEnabled = false
-        editImg.setIcon(img: #imageLiteral(resourceName: "edit_row-50"), color: .gray())
+        editImg.setIcon(img: #imageLiteral(resourceName: "edit_row-50"), color: .gray)
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         contentView.addGestureRecognizer(tap)
-        NotificationCenter.default().addObserver(self, selector: #selector(textChanged(sender:)), name: .UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChanged(sender:)), name: .UITextFieldTextDidChange, object: nil)
     }
     
     func textChanged(sender:AnyObject) {
