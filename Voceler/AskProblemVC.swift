@@ -9,6 +9,8 @@
 import UIKit
 import GrowingTextViewHandler
 import BFPaperButton
+import SwiftString
+import SCLAlertView
 
 class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate{
     // UIVars
@@ -22,11 +24,11 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
     
     // FieldVars
     var optArr = [String]()
+    var cellHeightArr = [CGFloat]()
     var handler:GrowingTextViewHandler!
     var text:String?
     var parentVC:AskProblemVC?
     var indexPath:IndexPath?
-    var isOption = false
     
     // Actions
     func textChange(noti:Notification) {
@@ -44,7 +46,6 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
         vc.navigationItem.title = "Option"
         nav.navigationBar.setColor(color: themeColor)
         vc.parentVC = self
-        vc.isOption = true
         show(nav, sender: self)
     }
     
@@ -66,15 +67,22 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
     }
     
     func addOpt() {
+        table.endEditing(true)
         optArr.append("")
+        cellHeightArr.append(42)
         table.reloadData()
         let cell = table.cellForRow(at: IndexPath(row: optArr.count-1, section: 0)) as! AddOptCell
         cell.textView.becomeFirstResponder()
     }
     
     func nextAction(){
-        let vc = VC(name: "Tags", isNav: false, isCenter: false)
-        navigationController?.pushViewController(vc, animated: true)
+        if textView.text.length < 10{
+            _ = SCLAlertView().showError("Sorry", subTitle: "The question description should be at least 10 characters long.")
+        }
+        else{
+            let vc = VC(name: "Tags", isNav: false, isCenter: false)
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // Functions
@@ -91,29 +99,27 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
         handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 10)
         scroll.delegate = self
         
-        if !isOption {
-            let rightBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
-            navigationItem.rightBarButtonItem = rightBtn
-            
-           
-            
-            // Setup Table
-            table = UITableView()
-            contentView.addSubview(table)
-            _ = table.sd_layout()
-                .topSpaceToView(textView, 2)!
-                .leftSpaceToView(contentView, 0)!
-                .rightSpaceToView(contentView, 0)!
-                .bottomSpaceToView(contentView, 0)!
-            _ = table.addBorder(edges: .top, colour: .black, thickness: 2)
-            _ = textView.addBorder(edges: .bottom, colour: .black)
-            table.backgroundColor = lightGray
-            table.delegate = self
-            table.dataSource = self
-            table.register(UINib(nibName: "AddOptCell", bundle: nil), forCellReuseIdentifier: "AddOptCell")
-            navigationBar.setColor(color: themeColor)
-            table.tableFooterView = UIView()
-        }
+        let rightBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
+        navigationItem.rightBarButtonItem = rightBtn
+        
+       
+        
+        // Setup Table
+        table = UITableView()
+        contentView.addSubview(table)
+        _ = table.sd_layout()
+            .topSpaceToView(textView, 2)!
+            .leftSpaceToView(contentView, 0)!
+            .rightSpaceToView(contentView, 0)!
+            .bottomSpaceToView(contentView, 0)!
+        _ = table.addBorder(edges: .top, colour: .black, thickness: 2)
+        _ = textView.addBorder(edges: .bottom, colour: .black)
+        table.delegate = self
+        table.dataSource = self
+        table.register(UINib(nibName: "AddOptCell", bundle: nil), forCellReuseIdentifier: "AddOptCell")
+        navigationBar.setColor(color: themeColor)
+        table.tableFooterView = UIView()
+        table.separatorStyle = .none
         
         textView.becomeFirstResponder()
     }
@@ -123,6 +129,11 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textView.becomeFirstResponder()
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -152,17 +163,19 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddOptCell") as! AddOptCell
             cell.textView.text = optArr[indexPath.row]
             cell.parent = self
-            cell.index = indexPath.row
+            cell.index = indexPath
+            cell.setNeedsUpdateConstraints()
+            cell.updateConstraintsIfNeeded()
             return cell
         }
     }
     
-    override func cellHeight(for indexPath: IndexPath!, cellContentViewWidth width: CGFloat, tableView: UITableView!) -> CGFloat {
-        if let cell = tableView.cellForRow(at: indexPath) as? AddOptCell{
-            return cell.textViewHeight.constant + 16
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == optArr.count{
+            return 42
         }
         else {
-            return tableView.cellForRow(at: indexPath)!.height
+            return cellHeightArr[indexPath.row]
         }
     }
     
@@ -178,14 +191,12 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        tableView.endEditing(true)
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
             self.optArr.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            self.cellHeightArr.remove(at: indexPath.row)
+            tableView.reloadData()
         }
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            tableView.setEditing(false, animated: true)
-            self.editAction(indexPath: indexPath)
-        }
-        return [deleteAction, editAction]
+        return [deleteAction]
     }
 }

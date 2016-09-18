@@ -9,32 +9,33 @@
 import UIKit
 import GrowingTextViewHandler
 
-class AddOptCell: UITableViewCell {
+class AddOptCell: UITableViewCell, UITextViewDelegate{
 
     @IBOutlet weak var textView: UITextView!
-    var index:Int!
+    var index:IndexPath!
     var parent:AskProblemVC!
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     var handler:GrowingTextViewHandler!
     
-//    func tapped(){
-//        parentTB.delegate?.tableView!(parentTB, didSelectRowAt: parentTB.indexPath(for: self)!)
-//    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
-//        textView.addGestureRecognizer(tap)
         textView.font = UIFont(name: "Helvetica Neue", size: 16)
         handler = GrowingTextViewHandler(textView: textView, withHeightConstraint: textViewHeight)
-        let notiCenter = NotificationCenter.default
-        notiCenter.addObserver(self, selector: #selector(textChange(noti:)), name: Notification.Name.UITextViewTextDidChange, object: textView)
+        textView.board(radius: 3, width: 1, color: .gray)
+        textView.delegate = self
     }
     
-    func textChange(noti:Notification) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         handler.setText(textView.text, withAnimation: true)
-        parent.optArr[index] = textView.text
+        parent.optArr[index.row] = textView.text
+        parent.cellHeightArr[index.row] = textViewHeight.constant + 8
+        parent.table.reloadRows(at: [index], with: .automatic)
+    }
+    
+    override func cellHeight(for indexPath: IndexPath!, cellContentViewWidth width: CGFloat, tableView: UITableView!) -> CGFloat {
+        super.cellHeight(for: indexPath, cellContentViewWidth: width, tableView: tableView)
+        return textViewHeight.constant + 8
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

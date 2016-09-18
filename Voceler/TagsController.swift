@@ -9,6 +9,7 @@
 import UIKit
 import TagListView
 import SDAutoLayout
+import SCLAlertView
 
 class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate {
     var optTBV = UITableView()
@@ -32,7 +33,13 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
     @IBOutlet weak var textField: UITextField!
     @IBAction func addAction(sender: AnyObject) {
         if let text = textField.text{
-            if !text.isEmpty {
+            if text.isEmpty{
+                _ = SCLAlertView().showError("Sorry", subTitle: "Tag text cannot be empty")
+            }
+            else if tagView.tagViews.count == 5{
+                _ = SCLAlertView().showError("Sorry", subTitle: "You can only add at most 5 tags.")
+            }
+            else {
                 for tag in tagView.tagViews{
                     if tag.titleLabel?.text == text{
                         return
@@ -51,7 +58,6 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         edgesForExtendedLayout = []
-        view.backgroundColor = lightGray
         
         // Do any additional setup after loading the view.
         tagView.textFont = UIFont.systemFont(ofSize: 16)
@@ -67,7 +73,6 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
             .bottomSpaceToView(view, 0)!
             .leftSpaceToView(view, 0)!
             .rightSpaceToView(view, 0)!
-        optTBV.backgroundColor = lightGray
         optTBV.isHidden = true
         
         addBtn.imageView?.setIcon(img: #imageLiteral(resourceName: "plus-50").withRenderingMode(.alwaysTemplate), color: themeColor)
@@ -98,10 +103,5 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
     
     func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) -> Void{
         self.tagView.removeTagView(tagView)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

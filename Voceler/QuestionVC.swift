@@ -29,6 +29,7 @@ class QuestionVC: UIViewController{
             if let asker = asker{
                 if let img = asker.profileImg {
                     askerProfile.setImage(img, for: [])
+                    askerProfile.imageView?.contentMode = .scaleAspectFill
                 }
                 else{
                     asker.loadProfileImg(name: "finishAskerProfile")

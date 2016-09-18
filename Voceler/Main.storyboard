@@ -204,7 +204,7 @@
                                     <constraint firstAttribute="width" secondItem="JMF-KM-aOR" secondAttribute="height" multiplier="1:1" id="UAk-GV-Viz"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="760A3AC0-4875-4052-91EF-7F08F179AB02" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B7297324-8DD5-4036-B133-DA5C2A0699C2" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CHq-WE-AFu"/>
                                     <constraint firstAttribute="width" secondItem="FcM-1F-ypy" secondAttribute="height" multiplier="1:1" id="Cs5-Mb-8RV"/>
@@ -395,7 +395,7 @@
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-bM-wV8">
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="760A3AC0-4875-4052-91EF-7F08F179AB02" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B7297324-8DD5-4036-B133-DA5C2A0699C2" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
                                                                 <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Vy3-mf-sh0" secondAttribute="height" multiplier="1:1" id="hjN-Wc-liO"/>
@@ -556,7 +556,7 @@
                             <constraint firstItem="0aQ-wb-5m6" firstAttribute="bottom" secondItem="5xI-BP-hpi" secondAttribute="top" id="CGi-3q-Mbd"/>
                             <constraint firstItem="rwR-BJ-Tu8" firstAttribute="width" secondItem="Y3E-gT-CV2" secondAttribute="width" id="Eg1-P9-MB5"/>
                             <constraint firstItem="5xI-BP-hpi" firstAttribute="top" secondItem="0aQ-wb-5m6" secondAttribute="bottom" id="Kmq-gO-Vug"/>
-                            <constraint firstItem="rwR-BJ-Tu8" firstAttribute="height" secondItem="Y3E-gT-CV2" secondAttribute="height" constant="501" id="efQ-o4-UJV"/>
+                            <constraint firstItem="rwR-BJ-Tu8" firstAttribute="height" secondItem="Y3E-gT-CV2" secondAttribute="height" id="efQ-o4-UJV"/>
                             <constraint firstAttribute="trailing" secondItem="0aQ-wb-5m6" secondAttribute="trailing" id="xqb-Jn-43c"/>
                             <constraint firstItem="0aQ-wb-5m6" firstAttribute="leading" secondItem="Y3E-gT-CV2" secondAttribute="leading" id="y8y-a5-OKt"/>
                         </constraints>
@@ -598,7 +598,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZV4-bv-9DX" id="JQY-mX-5hc">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -721,7 +721,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="760A3AC0-4875-4052-91EF-7F08F179AB02" width="50" height="50">
+        <image name="B7297324-8DD5-4036-B133-DA5C2A0699C2" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
