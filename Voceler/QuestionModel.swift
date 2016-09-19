@@ -19,7 +19,7 @@ class QuestionModel: NSObject {
     var qOptions = Array<String>() // Question options (option id: OID)
     var qTags = Array<String>()
     var qViews = 0
-    var qPriority:String!
+    var qPriority:Double!
     private init(qid:String, descrpt:String, askerID:String, anonymous:Bool=false) {
         QID = qid
         qDescrption = descrpt
@@ -41,8 +41,10 @@ class QuestionModel: NSObject {
         ref.child("anonymous").setValue(qAnonymous)
         ref.child("isOpen").setValue(qIsOpen)
         ref.child("time").setValue(qTime.timeIntervalSince1970)
+        ref.child("priority").setValue(qPriority)
         for opt in qOptions{
-            ref.child("options").child(opt).setValue(0)
+            ref.child("options").child(opt).child("offerBy").setValue(qAskerID)
+            ref.child("options").child(opt).child("val").setValue(0)
         }
         ref.child("tags").setValue(qTags)
         let tagRef = FIRDatabase.database().reference().child("Tags")

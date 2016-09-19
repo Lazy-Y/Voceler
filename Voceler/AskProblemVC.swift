@@ -103,8 +103,6 @@ class AskProblemVC: UIViewController, UIScrollViewDelegate, UITableViewDataSourc
         let rightBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
         navigationItem.rightBarButtonItem = rightBtn
         
-       
-        
         // Setup Table
         table = UITableView()
         contentView.addSubview(table)

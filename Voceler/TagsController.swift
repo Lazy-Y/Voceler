@@ -52,8 +52,8 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
         _ = alert.showNotice("Post", subTitle: alertText, closeButtonTitle: "Cancel")
     }
     
-    func generatePriority() -> String{
-        return String(Int64((Float64(question.qTime.timeIntervalSince1970) + Float64(slider.value)) * 10000))
+    func generatePriority() -> Double{
+        return question.qTime.timeIntervalSince1970 + Double(slider.value)
     }
 
     func finishQuestion(){
