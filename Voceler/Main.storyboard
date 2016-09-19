@@ -204,7 +204,7 @@
                                     <constraint firstAttribute="width" secondItem="JMF-KM-aOR" secondAttribute="height" multiplier="1:1" id="UAk-GV-Viz"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="16C3ECFC-B939-4C94-9F2D-32F86B93C7BE" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="76057A09-A64D-49F4-8A9D-168390D9641A" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CHq-WE-AFu"/>
                                     <constraint firstAttribute="width" secondItem="FcM-1F-ypy" secondAttribute="height" multiplier="1:1" id="Cs5-Mb-8RV"/>
@@ -395,7 +395,7 @@
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-bM-wV8">
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="16C3ECFC-B939-4C94-9F2D-32F86B93C7BE" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="76057A09-A64D-49F4-8A9D-168390D9641A" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
                                                                 <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Vy3-mf-sh0" secondAttribute="height" multiplier="1:1" id="hjN-Wc-liO"/>
@@ -506,6 +506,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QNO-co-7rb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="717.60000000000002" y="690.40479760119945"/>
+        </scene>
+        <!--TagsVC-->
+        <scene sceneID="smX-9f-694">
+            <objects>
+                <viewController storyboardIdentifier="Tags" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yb0-FS-XdD" customClass="TagsVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RNc-l2-mmf"/>
+                        <viewControllerLayoutGuide type="bottom" id="6hU-86-5E7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eTD-ed-Eqm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Kxh-rc-kEb">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="un2-B9-Knl"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2t8-hp-EwU">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kxh-rc-kEb" firstAttribute="leading" secondItem="eTD-ed-Eqm" secondAttribute="leading" id="0Jp-ix-lKl"/>
+                            <constraint firstItem="2t8-hp-EwU" firstAttribute="leading" secondItem="eTD-ed-Eqm" secondAttribute="leading" id="2OP-no-gxV"/>
+                            <constraint firstAttribute="trailing" secondItem="2t8-hp-EwU" secondAttribute="trailing" id="95A-a8-KtY"/>
+                            <constraint firstItem="2t8-hp-EwU" firstAttribute="top" secondItem="Kxh-rc-kEb" secondAttribute="bottom" id="Eu9-3c-X2p"/>
+                            <constraint firstItem="Kxh-rc-kEb" firstAttribute="top" secondItem="eTD-ed-Eqm" secondAttribute="top" id="Yai-Hs-WWZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Kxh-rc-kEb" secondAttribute="trailing" id="a0b-4x-6bW"/>
+                            <constraint firstItem="6hU-86-5E7" firstAttribute="top" secondItem="2t8-hp-EwU" secondAttribute="bottom" id="eL6-2Q-DQp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zRT-YP-nx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1360.8" y="689.5052473763119"/>
         </scene>
         <!--Ask ProblemVC-->
         <scene sceneID="KNf-2L-6iC">
@@ -646,7 +684,7 @@
         <!--Tags-->
         <scene sceneID="kre-6w-RXt">
             <objects>
-                <viewController storyboardIdentifier="Tags" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TlI-qa-gel" customClass="TagsController" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTags" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TlI-qa-gel" customClass="TagsController" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dTu-UA-34u"/>
                         <viewControllerLayoutGuide type="bottom" id="72r-PZ-rFq"/>
@@ -756,7 +794,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="16C3ECFC-B939-4C94-9F2D-32F86B93C7BE" width="50" height="50">
+        <image name="76057A09-A64D-49F4-8A9D-168390D9641A" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

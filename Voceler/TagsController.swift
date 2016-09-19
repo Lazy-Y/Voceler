@@ -10,7 +10,7 @@ import UIKit
 import TagListView
 import SDAutoLayout
 import SCLAlertView
-
+import FirebaseDatabase
 
 class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate {
     var optTBV = UITableView()
@@ -39,19 +39,20 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
     private func sliderValue()->Int{
         return Int(slider.value)
     }
-
+    
     @IBAction func doneAction(sender: AnyObject) {
         let alert = SCLAlertView()
         _ = alert.addButton("Confirm") {
             self.finishQuestion()
-            print(self.question.QID)
+            self.question.postQuestion()
+            _ = SCLAlertView().showSuccess("Success!", subTitle: "Successfully posted the question.", duration: 1)
             self.clearNav()
         }
         let alertText = sliderValue() == 0 ? "Are you sure you wants to post the question?" : "Are you sure you wants to spend \(sliderValue()) coins to post the question?"
         _ = alert.showNotice("Post", subTitle: alertText, closeButtonTitle: "Cancel")
     }
-
-    func generateQID() -> String{
+    
+    func generatePriority() -> String{
         return String(Int64((Float64(question.qTime.timeIntervalSince1970) + Float64(slider.value)) * 10000))
     }
 
@@ -60,7 +61,7 @@ class TagsController: UIViewController, TagListViewDelegate, UITextFieldDelegate
             question.qTags.append(tag.titleLabel!.text!)
         }
         question.qTime = Date()
-        question.QID = generateQID()
+        question.qPriority = generatePriority()
     }
 
     func clearNav(){

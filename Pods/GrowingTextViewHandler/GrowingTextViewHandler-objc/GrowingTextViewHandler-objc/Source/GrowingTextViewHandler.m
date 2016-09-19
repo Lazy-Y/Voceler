@@ -94,7 +94,6 @@ static NSInteger kMaximumNumberOfLines = INT_MAX;
                                                       attributes:@{ NSFontAttributeName:self.growingTextView.font}
                                                          context:nil];
   CGFloat heightByBoundingRect = CGRectGetHeight(boundingRect) + self.growingTextView.font.lineHeight;
-    NSLog(@"%d",_growingTextView.font.lineHeight);
   return MAX(heightByBoundingRect,self.growingTextView.contentSize.height);
 }
 

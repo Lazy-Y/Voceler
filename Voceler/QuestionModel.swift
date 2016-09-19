@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 class QuestionModel: NSObject {
     var QID:String!
@@ -17,6 +18,8 @@ class QuestionModel: NSObject {
     var qTime:Date!
     var qOptions = Array<String>() // Question options (option id: OID)
     var qTags = Array<String>()
+    var qViews = 0
+    var qPriority:String!
     private init(qid:String, descrpt:String, askerID:String, anonymous:Bool=false) {
         QID = qid
         qDescrption = descrpt
@@ -28,5 +31,25 @@ class QuestionModel: NSObject {
     }
     static func getQuestion(qid: String)->QuestionModel{
         return QuestionModel(qid: qid, descrpt:"2016-09-15 22:01:01.551154 Voceler[942:341432] 0refresh2016-09-15 22:01:04.644524 Voceler[942:341432] 0" , askerID: "abc")
+    }
+    func postQuestion(){
+        let ref = FIRDatabase.database().reference().child("Questions").childByAutoId()
+        QID = ref.key
+        ref.setPriority(qPriority)
+        ref.child("description").setValue(qDescrption)
+        ref.child("askerID").setValue(qAskerID)
+        ref.child("anonymous").setValue(qAnonymous)
+        ref.child("isOpen").setValue(qIsOpen)
+        ref.child("time").setValue(qTime.timeIntervalSince1970)
+        for opt in qOptions{
+            ref.child("options").child(opt).setValue(0)
+        }
+        ref.child("tags").setValue(qTags)
+        let tagRef = FIRDatabase.database().reference().child("Tags")
+        for tag in qTags{
+            let ref = tagRef.child(tag).child(QID)
+            ref.setValue("0")
+            ref.setPriority(qPriority)
+        }
     }
 }

@@ -184,6 +184,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     }
     
     func setupUI(){
+        navigationController?.navigationBar.setColor(color: .clear)
         picker.delegate = self
         edgesForExtendedLayout = .top
         for parent in self.navigationController!.navigationBar.subviews {

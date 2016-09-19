@@ -114,7 +114,7 @@ class QuestionVC: UIViewController{
     }
     
     func setupUI() {
-        askerProfile.contentMode = .scaleAspectFill
+        askerProfile.imageView?.contentMode = .scaleAspectFill
         asker = currUser
         
         setupProfile()

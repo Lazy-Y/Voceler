@@ -24,7 +24,7 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     
     // FieldVars
-    let viewsArr = ["Question", "Collection", "Settings", "Log out"]
+    let viewsArr = ["Question", "Collection", "Tags", "Settings", "Log out"]
     
     // Actions
     @IBAction func showProfile(_ sender: AnyObject) {
