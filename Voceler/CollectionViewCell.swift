@@ -34,6 +34,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBAction func likeAction(_ sender: AnyObject) {
         likeBtn.setImage(img: #imageLiteral(resourceName: "like_filled"), color: pinkColor)
         parent.collectionView.isUserInteractionEnabled = false
+        titleLabel.text = "Like: \(option.oVal + 1)"
         let optRef = option.oRef
         optRef?.child("val").observeSingleEvent(of: .value, with: { (snapshot) in
             let val = (snapshot.value as! Int) + 1

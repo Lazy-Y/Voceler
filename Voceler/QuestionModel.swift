@@ -23,6 +23,7 @@ class QuestionModel: NSObject {
     var qRef:FIRDatabaseReference!{
         return FIRDatabase.database().reference().child("Questions").child(QID)
     }
+    
     static func loadQuestion(qid:String){
         _ = FIRDatabase.database().reference().child("Questions").child(qid).observeSingleEvent(of: .value, with: { (snapshot) in
             print(snapshot.value)
@@ -57,6 +58,7 @@ class QuestionModel: NSObject {
             return nil
         }
     }
+    
     func postQuestion(){
         let ref = FIRDatabase.database().reference().child("Questions").childByAutoId()
         QID = ref.key

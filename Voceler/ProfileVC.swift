@@ -258,8 +258,8 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     }
     
     func setProfileImg(){
-        if currUser?.profileImg != nil {
-            profileImg.image = currUser?.profileImg
+        if thisUser?.profileImg != nil {
+            profileImg.image = thisUser?.profileImg
             loadComplete()
         }
         else{
@@ -269,8 +269,8 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     
     func setWallImg(){
         wallImg.contentMode = .scaleAspectFill
-        if currUser?.wallImg != nil {
-            wallImg.image = currUser?.wallImg
+        if thisUser?.wallImg != nil {
+            wallImg.image = thisUser?.wallImg
             loadComplete()
         }
         else{
