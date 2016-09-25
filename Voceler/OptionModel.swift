@@ -13,12 +13,18 @@ class OptionModel: NSObject {
     var oOfferBy:String?
     var oVal = 0
     init(description:String, offerBy:String? = nil, val:Int = 0) {
-        oDescription = description
+        if let d = description.removingPercentEncoding{
+            oDescription = d
+        }
+        else {
+            oDescription = description
+        }
+        print(oDescription)
         oOfferBy = offerBy
         oVal = val
     }
-    init(description:String, dict:Dictionary<String,Any>){
-        oDescription = description
+    init(dict:Dictionary<String,Any>){
+        oDescription = dict["description"] as! String
         if let offerBy = dict["offerBy"] as? String{
             oOfferBy = offerBy
         }

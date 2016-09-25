@@ -48,7 +48,7 @@ class QuestionModel: NSObject {
             var optArr = [OptionModel]()
             if let opts = question["options"] as? Dictionary<String, Any>{
                 for (key, dict) in opts {
-                    optArr.append(OptionModel(description: key, dict: dict as! Dictionary<String, Any>))
+                    optArr.append(OptionModel(dict: dict as! Dictionary<String, Any>))
                 }
             }
             return QuestionModel(qid: qid, descrpt: question["description"] as! String, askerID: question["askerID"] as! String, anonymous: question["anonymous"] as! Bool, options: optArr)
@@ -68,8 +68,10 @@ class QuestionModel: NSObject {
         ref.child("time").setValue(qTime.timeIntervalSince1970)
         ref.child("priority").setValue(qPriority)
         for opt in qOptions{
-            ref.child("options").child(opt.oDescription).child("offerBy").setValue(qAskerID)
-            ref.child("options").child(opt.oDescription).child("val").setValue(0)
+            let optRef = ref.child("options").childByAutoId()
+            optRef.child("description").setValue(opt.oDescription)
+            optRef.child("offerBy").setValue(qAskerID)
+            optRef.child("val").setValue(0)
         }
 //        ref.child("tags").setValue(qTags)
         let tagRef = FIRDatabase.database().reference().child("Tags")
@@ -84,7 +86,8 @@ class QuestionModel: NSObject {
     }
     
     func addOption(opt:OptionModel){
-        let optRef = qRef.child("options").child(opt.oDescription)
+        let optRef = qRef.child("options").childByAutoId()
+        optRef.child("description").setValue(opt.oDescription)
         optRef.child("offerBy").setValue(opt.oOfferBy)
         optRef.child("val").setValue(opt.oVal)
     }

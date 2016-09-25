@@ -40,12 +40,16 @@ class CollectionViewCell: UICollectionViewCell {
             optRef?.child("val").setValue(val)
         })
         if #available(iOS 10.0, *) {
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false) { (timer) in
                 self.parent.nextQuestion()
             }
         } else {
-            _ = Timer(timeInterval: 1, target: self, selector: #selector(self.parent.nextQuestion), userInfo: nil, repeats: false)
+            _ = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(nextQuestion), userInfo: nil, repeats: false)
         }
+    }
+    
+    func nextQuestion(){
+        self.parent.nextQuestion()
     }
     
     func setProfile(){
