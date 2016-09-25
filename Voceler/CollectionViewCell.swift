@@ -32,7 +32,20 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func likeAction(_ sender: AnyObject) {
-        
+        likeBtn.setImage(img: #imageLiteral(resourceName: "like_filled"), color: pinkColor)
+        parent.collectionView.isUserInteractionEnabled = false
+        let optRef = parent.currQuestion?.qRef.child("options").child(option.oDescription)
+        optRef?.child("val").observeSingleEvent(of: .value, with: { (snapshot) in
+            let val = (snapshot.value as! Int) + 1
+            optRef?.child("val").setValue(val)
+        })
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+                self.parent.nextQuestion()
+            }
+        } else {
+            _ = Timer(timeInterval: 1, target: self, selector: #selector(self.parent.nextQuestion), userInfo: nil, repeats: false)
+        }
     }
     
     func setProfile(){
@@ -63,7 +76,7 @@ class CollectionViewCell: UICollectionViewCell {
         // Initialization code
         offererBtn.board(radius: 18, width: 1, color: .white)
         board(radius: 3, width: 1, color: themeColor)
-        likeBtn.tintColor = pinkColor
+        likeBtn.setImage(img: #imageLiteral(resourceName: "like"), color: pinkColor)
     }
 
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {

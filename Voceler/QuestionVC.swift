@@ -23,7 +23,6 @@ class QuestionVC: UIViewController{
     var handler:GrowingTextViewHandler!
     
     var liked = false
-    var cellContent = ["Swift", "Python", "C++", "Java", "PHP", "JavaScript", "Nodejs", "HTML", "Bash", "Assembly"]
     var asker:UserModel?{
         didSet{
             if let asker = asker{
@@ -47,6 +46,7 @@ class QuestionVC: UIViewController{
     @IBOutlet weak var askerProfile: UIButton!
     @IBOutlet weak var askerLbl: UILabel!
     //    @IBOutlet weak var optTbv: UITableView!
+    var currQuestion:QuestionModel?
     var collectionView:UICollectionView!
     var pullUpMask = UILabel()
     var pullDownMask = UILabel()
@@ -87,12 +87,16 @@ class QuestionVC: UIViewController{
         }
     }
     
-    func setQuestion(question:QuestionModel?){
+    private func setQuestion(question:QuestionModel?){
+        currQuestion = question
+        collectionView.isUserInteractionEnabled = true
         let noQuestion = (question == nil)
         titleBarView.isHidden = noQuestion
         detailTV.isHidden = noQuestion
         pullUpMask.isHidden = noQuestion
         noQuestionMask.isHidden = !noQuestion
+        optArr.removeAll()
+        collectionView.reloadData()
         if let question = question{
             collectionView.isHidden = false
             if question.qAnonymous {
@@ -103,7 +107,7 @@ class QuestionVC: UIViewController{
             }
             handler.setText(question.qDescrption, withAnimation: true)
             optArr = question.qOptions
-            if cellContent.count == 0 {
+            if optArr.count == 0 {
                 pullUpMask.isHidden = false
                 pullDownMask.isHidden = false
             }
@@ -115,7 +119,6 @@ class QuestionVC: UIViewController{
         }
         else{
             // no more question available
-            optArr.removeAll()
             collectionView.isHidden = true
             _ = collectionView.sd_layout().topSpaceToView(view, 56)
         }
@@ -171,13 +174,15 @@ class QuestionVC: UIViewController{
     }
     
     func addOption(text:String){
-        cellContent.append(text)
+        let opt = OptionModel(description: text, offerBy: (appSetting.isAnonymous) ? nil : currUser!.uid)
+        currQuestion?.addOption(opt: opt)
+        optArr.append(opt)
         collectionView.reloadData()
         pullDownMask.isHidden = true
         pullUpMask.isHidden = true
     }
     
-    private func nextQuestion(){
+    func nextQuestion(){
         setQuestion(question: questionManager.getQuestion())
     }
     
@@ -302,6 +307,7 @@ extension QuestionVC: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CollectionViewCell
         cell.option = optArr[indexPath.row]
         cell.parent = self
+        cell.likeBtn.setImage(img: #imageLiteral(resourceName: "like"), color: pinkColor)
         return cell
     }
     

@@ -498,7 +498,8 @@ open class SCLAlertView: UIViewController {
         keyboardHasBeenShown = true
         
         guard let userInfo = (notification as NSNotification).userInfo else {return}
-        let endKeyBoardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.minY
+        let endKeyBoardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.midY
+//        let endKeyBoardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.minY
         
         if tmpContentViewFrameOrigin == nil {
         tmpContentViewFrameOrigin = self.contentView.frame.origin

@@ -20,7 +20,11 @@ class QuestionModel: NSObject {
     var qTags = [String]()
     var qViews = 0
     var qPriority:Double = 0.0
+    var qRef:FIRDatabaseReference!{
+        return FIRDatabase.database().reference().child("Questions").child(QID)
+    }
     private init(qid:String, descrpt:String, askerID:String, anonymous:Bool=false, options:[OptionModel]) {
+        super.init()
         QID = qid
         qDescrption = descrpt
         qAskerID = askerID
@@ -68,5 +72,11 @@ class QuestionModel: NSObject {
 //            ref.setValue("0")
 //            ref.setPriority(qPriority)
 //        }
+    }
+    
+    func addOption(opt:OptionModel){
+        let optRef = qRef.child("options").child(opt.oDescription)
+        optRef.child("offerBy").setValue(opt.oOfferBy)
+        optRef.child("val").setValue(opt.oVal)
     }
 }

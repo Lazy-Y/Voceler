@@ -17,7 +17,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t4Q-g6-sla"/>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uV-Rv-vxr">
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Myh-CU-LNb">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myh-CU-LNb">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="kxw-Q9-YQC"/>
@@ -36,13 +36,13 @@
                                     <action selector="showAsker:" destination="gTV-IL-0wX" eventType="touchUpInside" id="zcd-UT-H94"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ia6-yP-MH6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ia6-yP-MH6">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="PcS-5r-vmW"/>
                                     <constraint firstAttribute="width" constant="24" id="WT9-yd-9x8"/>
                                 </constraints>
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" backgroundImage="like"/>
+                                <state key="normal" image="like"/>
                                 <connections>
                                     <action selector="likeAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="8rr-Av-xkq"/>
                                 </connections>

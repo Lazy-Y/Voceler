@@ -256,3 +256,11 @@ extension UIImage {
         }
     }
 }
+
+extension UIButton{
+    func setImage(img:UIImage, color:UIColor){
+        let img = img.withRenderingMode(.alwaysTemplate)
+        tintColor = color
+        setImage(img, for: [])
+    }
+}
