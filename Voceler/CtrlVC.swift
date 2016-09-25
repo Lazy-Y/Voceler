@@ -24,7 +24,7 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     
     // FieldVars
-    let viewsArr = ["Question", "Collection", "Tags", "Settings", "Log out"]
+    let viewsArr = ["Question", "Collection", "Settings", "Log out"]
     
     // Actions
     @IBAction func showProfile(_ sender: AnyObject) {
@@ -42,12 +42,14 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             profileBtn.setImage(img, for: [])
             profileBtn.imageView?.contentMode = .scaleAspectFill
         }
+        else {
+            NotificationCenter.default.addObserver(self, selector: #selector(setProfileImg), name: NSNotification.Name(FIRAuth.auth()!.currentUser!.uid + "profile"), object: nil)
+        }
     }
     
     func setupUI() {
         profileBtn.board(radius: 32, width: 3, color: themeColor)
-            setProfileImg()
-        NotificationCenter.default.addObserver(self, selector: #selector(setProfileImg), name: NSNotification.Name("finishProfileImg"), object: nil)
+        setProfileImg()
         moneyImg.setIcon(img: #imageLiteral(resourceName: "money"), color: themeColor)
         collectionView.register(UINib(nibName: "CtrlCell", bundle: nil), forCellWithReuseIdentifier: "CtrlCell")
         let layout = GridCollectionViewLayout()

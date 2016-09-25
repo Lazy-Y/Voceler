@@ -17,8 +17,8 @@ import LTNavigationBar
 class QuestionVC: UIViewController{
     
     // FieldVars
-    let repository = Repository()
-    let renderer = Renderer()
+//    let repository = Repository()
+//    let renderer = Renderer()
 
     var handler:GrowingTextViewHandler!
     
@@ -32,8 +32,8 @@ class QuestionVC: UIViewController{
                     askerProfile.imageView?.contentMode = .scaleAspectFill
                 }
                 else{
-                    asker.loadProfileImg(name: "finishAskerProfile")
-                    NotificationCenter.default.addObserver(self, selector: #selector(setAskerImg), name: NSNotification.Name("finishAskerProfile"), object: nil)
+                    asker.loadProfileImg()
+                    setAskerImg()
                 }
             }
         }
@@ -50,10 +50,12 @@ class QuestionVC: UIViewController{
     var collectionView:UICollectionView!
     var pullUpMask = UILabel()
     var pullDownMask = UILabel()
+    var optArr = [OptionModel]()
+    var noQuestionMask = UILabel()
     
     // Actions
     @IBAction func askerInfo(_ sender: AnyObject) {
-        showAskerInfo()
+        showUser(user: asker)
     }
     
     @IBAction func showAskVC(_ sender: AnyObject) {
@@ -80,32 +82,51 @@ class QuestionVC: UIViewController{
         if let img = asker?.profileImg{
             askerProfile.setImage(img, for: [])
         }
+        else if let askerId = asker?.uid{
+            NotificationCenter.default.addObserver(self, selector: #selector(setAskerImg), name: NSNotification.Name(askerId + "profile"), object: nil)
+        }
     }
     
-    func setQuestion(question:QuestionModel){
-        if question.qAnonymous {
-            asker = nil
+    func setQuestion(question:QuestionModel?){
+        let noQuestion = (question == nil)
+        titleBarView.isHidden = noQuestion
+        detailTV.isHidden = noQuestion
+        pullUpMask.isHidden = noQuestion
+        noQuestionMask.isHidden = !noQuestion
+        if let question = question{
+            collectionView.isHidden = false
+            if question.qAnonymous {
+                asker = nil
+            }
+            else{
+                asker = UserModel.getUser(uid: question.qAskerID, getProfile: true)
+            }
+            handler.setText(question.qDescrption, withAnimation: true)
+            optArr = question.qOptions
+            if cellContent.count == 0 {
+                pullUpMask.isHidden = false
+                pullDownMask.isHidden = false
+            }
+            else {
+                pullUpMask.isHidden = true
+                pullDownMask.isHidden = true
+            }
+            _ = collectionView.sd_layout().topSpaceToView(detailTV, 8)
         }
         else{
-            asker = UserModel.getUser(uid: question.qAskerID, getProfile: true)
-        }
-        handler.setText(question.qDescrption, withAnimation: true)
-        cellContent = question.qOptions
-        if cellContent.count == 0 {
-            pullUpMask.isHidden = false
-            pullDownMask.isHidden = false
-        }
-        else {
-            pullUpMask.isHidden = true
-            pullDownMask.isHidden = true
+            // no more question available
+            optArr.removeAll()
+            collectionView.isHidden = true
+            _ = collectionView.sd_layout().topSpaceToView(view, 56)
         }
         collectionView.reloadData()
     }
     
-    func showAskerInfo(){
-        if let asker = asker{
+    func showUser(user:UserModel?){
+        if let user = user{
             let vc = VC(name: "Profile", isNav: false, isCenter: false, isNew: true) as! ProfileVC
-            vc.thisUser = asker
+            vc.thisUser = user
+            user.profileVC = vc
             navigationController?.pushViewController(vc, animated: true)
         }
         else{
@@ -142,6 +163,11 @@ class QuestionVC: UIViewController{
         pullDownMask.textColor = .gray
         collectionView.addSubview(pullDownMask)
         _ = pullDownMask.sd_layout().topSpaceToView(pullUpMask, 10)?.leftSpaceToView(collectionView, 0)?.rightSpaceToView(collectionView, 0)?.heightIs(30)
+        
+        noQuestionMask.text = "No question available now."
+        noQuestionMask.textAlignment = .center
+        view.addSubview(noQuestionMask)
+        _ = noQuestionMask.sd_layout().topSpaceToView(view, 0)?.bottomSpaceToView(view, 0)?.rightSpaceToView(view, 0)?.leftSpaceToView(view, 0)
     }
     
     func addOption(text:String){
@@ -151,11 +177,15 @@ class QuestionVC: UIViewController{
         pullUpMask.isHidden = true
     }
     
+    private func nextQuestion(){
+        setQuestion(question: questionManager.getQuestion())
+    }
+    
     func initTable() {
         // Do any additional setup after loading the view.
         let layout = SFFocusViewLayout()
         layout.standardHeight = 50
-        layout.focusedHeight = 200
+        layout.focusedHeight = 180
         layout.dragOffset = 100
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 110), collectionViewLayout: layout)
         view.addSubview(collectionView)
@@ -166,6 +196,7 @@ class QuestionVC: UIViewController{
             .rightSpaceToView(view, 0)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.board(radius: 0, width: 1, color: .gray)
         
         collectionView.register(CollectionViewCell.self)
         
@@ -175,9 +206,7 @@ class QuestionVC: UIViewController{
         if navigationController?.childViewControllers.first == self{
             let header = MJRefreshNormalHeader(refreshingBlock: {
                 print("refresh")
-                let q = QuestionModel.getQuestion(qid: "abcdefg")
-                q.qAnonymous = true
-                self.setQuestion(question: q)
+                self.nextQuestion()
                 self.collectionView.mj_header.endRefreshing()
             })!
             header.lastUpdatedTimeLabel.isHidden = true
@@ -218,6 +247,12 @@ class QuestionVC: UIViewController{
         collectionSetup()
     }
     
+    func questionLoaded(){
+        if noQuestionMask.isHidden == false{
+            nextQuestion()
+        }
+    }
+    
     func collectionSetup(){
         if let isCollection = isCollection, let likeBtn = likeBtn , isCollection{
             likeBtn.isHidden = false
@@ -233,6 +268,8 @@ class QuestionVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(questionLoaded), name: NSNotification.Name("QuestionLoaded"), object: nil)
+        nextQuestion()
         if isCollection != nil{
             collectionSetup()
         }
@@ -256,25 +293,28 @@ extension QuestionVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(collectionView)
-        return repository.count
+//        return repository.count
+        return optArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CollectionViewCell
-        renderer.presentModel(model: repository[indexPath.item], inView: cell)
+        cell.option = optArr[indexPath.row]
+        cell.parent = self
         return cell
     }
     
     @objc(collectionView:willDisplayCell:forItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        
-        guard let cell = cell as? CollectionViewCellRender else {
-            fatalError("error with registred cell")
-        }
-        
-        renderer.presentModel(model: repository[indexPath.item], inView: cell)
+        (cell as! CollectionViewCell).option = optArr[indexPath.row]
+//        guard let cell = cell as? CollectionViewCellRender else {
+//            fatalError("error with registred cell")
+//        }
+//        
+//        renderer.presentModel(model: repository[indexPath.item], inView: cell)
     }
+    
 }
 
 extension QuestionVC: UICollectionViewDelegate {
@@ -291,5 +331,6 @@ extension QuestionVC: UICollectionViewDelegate {
         }
         
     }
+    
     
 }

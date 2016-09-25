@@ -148,7 +148,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                 _ = SwiftSpinner.show("Uploading profile image...")
                 currUser?.profileImg = self.profileImg.image
                 self.thisUser?.storageRef.child("profileImg.jpeg").put(self.profileImg.image!.dataAtMost(bytes: 100*1024))
-                NotificationCenter.default.post(name: NSNotification.Name("finishProfileImg"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(self.thisUser!.uid + "profile"), object: nil)
                 self.setProfileItem()
                 SwiftSpinner.hide()
             }
@@ -248,8 +248,6 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         
         setProfileImg()
         setWallImg()
-        NotificationCenter.default.addObserver(self, selector: #selector(setProfileImg), name: NSNotification.Name("finishProfileImg"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(setWallImg), name: NSNotification.Name("finishWallImg"), object: nil)
     }
     
     func resizeTableView() {
@@ -262,12 +260,19 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             profileImg.image = currUser?.profileImg
             loadComplete()
         }
+        else{
+            NotificationCenter.default.addObserver(self, selector: #selector(setProfileImg), name: NSNotification.Name(self.thisUser!.uid + "profile"), object: nil)
+        }
     }
     
     func setWallImg(){
+        wallImg.contentMode = .scaleAspectFill
         if currUser?.wallImg != nil {
             wallImg.image = currUser?.wallImg
             loadComplete()
+        }
+        else{
+            NotificationCenter.default.addObserver(self, selector: #selector(setWallImg), name: NSNotification.Name(self.thisUser!.uid + "wall"), object: nil)
         }
     }
 

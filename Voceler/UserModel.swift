@@ -29,15 +29,39 @@ class UserModel: NSObject {
         self.uid = uid
     }
     
-    func loadProfileImg(name:String = "finishProfileImg"){
-        storageRef.child("profileImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
-            if let data = data{
-                self.profileImg = UIImage(data: data)
+    func loadProfileImg(){
+        if let img = imageStorage[uid + "profile"]{
+            profileImg = img
+        }
+        else{
+            storageRef.child("profileImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
+                if let data = data{
+                    self.profileImg = UIImage(data: data)
+                }
+                else {
+                    self.profileImg = #imageLiteral(resourceName: "logo")
+                }
+                imageStorage[self.uid + "profile"] = self.profileImg
+                NotificationCenter.default.post(name: NSNotification.Name(self.uid + "profile"), object: nil)
             }
-            else {
-                self.profileImg = #imageLiteral(resourceName: "logo")
+        }
+    }
+    
+    func loadWallImg(){
+        if let img = imageStorage[uid + "wall"]{
+            wallImg = img
+        }
+        else {
+            storageRef.child("wallImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
+                if let data = data{
+                    self.wallImg = UIImage(data: data)
+                }
+                else {
+                    self.wallImg = #imageLiteral(resourceName: "WallBG")
+                }
+                imageStorage[self.uid + "wall"] = self.wallImg
+                NotificationCenter.default.post(name: NSNotification.Name(self.uid + "wall"), object: nil)
             }
-            NotificationCenter.default.post(name: NSNotification.Name(name), object: nil)
         }
     }
     
@@ -50,17 +74,7 @@ class UserModel: NSObject {
             user.loadProfileImg()
         }
         if getWall{
-            user.storageRef.child("wallImg.jpeg").data(withMaxSize: 1024*1024) { (data, error) in
-                if let data = data{
-                    user.wallImg = UIImage(data: data)
-                }
-                else {
-                    user.wallImg = #imageLiteral(resourceName: "WallBG")
-                }
-                if currUser == user{
-                    NotificationCenter.default.post(name: NSNotification.Name("finishWallImg"), object: nil)
-                }
-            }
+            user.loadWallImg()
         }
         return user
     }
@@ -68,7 +82,6 @@ class UserModel: NSObject {
     func setup(ref:FIRDatabaseReference){
         self.ref = ref
         ref.observe(FIRDataEventType.value, with:{ (snapshot) in
-            print(snapshot)
             if let userInfo = snapshot.value as? Dictionary<String,String>{
                 self.email = userInfo["email"]!
                 self.username = userInfo["username"]

@@ -15,6 +15,8 @@ let darkRed = UIColor(red: 0.8824, green: 0.0039, blue: 0.2353, alpha: 1.0)
 let lightGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
 var currUser:UserModel?
 var appSetting = SettingModel.getSetting()
+let questionManager = QuestionManager()
+var imageStorage = Dictionary<String, UIImage?>()
 
 func getVC(name:String) -> UIViewController {
     let board = UIStoryboard(name: "Main", bundle: nil)
@@ -89,7 +91,7 @@ func randFloat()->CGFloat{
 }
 
 func getRandomColorImage()->UIImage{
-    return getImageWithColor(color: UIColor(red: randFloat(), green: randFloat(), blue: randFloat(), alpha: 1), size: CGSize(width: 100, height: 100))
+    return getImageWithColor(color: getRandomColor(), size: CGSize(width: 100, height: 100))
 }
 
 func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
@@ -100,6 +102,10 @@ func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
     let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return image
+}
+
+func getRandomColor()->UIColor{
+    return UIColor(red: randFloat(), green: randFloat(), blue: randFloat(), alpha: 1)
 }
 
 func changingColor(firstColor:UIColor, secondeColor:UIColor, fraction:CGFloat) -> CGColor {

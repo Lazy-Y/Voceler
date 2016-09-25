@@ -16,21 +16,33 @@ class QuestionModel: NSObject {
     var qAnonymous = false // Don't show the asker to public
     var qIsOpen = true
     var qTime:Date!
-    var qOptions = Array<String>() // Question options (option id: OID)
-    var qTags = Array<String>()
+    var qOptions = [OptionModel]() // Question options (option id: OID)
+    var qTags = [String]()
     var qViews = 0
-    var qPriority:Double!
-    private init(qid:String, descrpt:String, askerID:String, anonymous:Bool=false) {
+    var qPriority:Double = 0.0
+    private init(qid:String, descrpt:String, askerID:String, anonymous:Bool=false, options:[OptionModel]) {
         QID = qid
         qDescrption = descrpt
         qAskerID = askerID
         qAnonymous = anonymous
+        qOptions = options
     }
     override init(){
         super.init()
     }
-    static func getQuestion(qid: String)->QuestionModel{
-        return QuestionModel(qid: qid, descrpt:"2016-09-15 22:01:01.551154 Voceler[942:341432] 0refresh2016-09-15 22:01:04.644524 Voceler[942:341432] 0" , askerID: "abc")
+    static func getQuestion(qid: String?, question:Dictionary<String, Any>?)->QuestionModel?{
+        if let qid = qid, let question = question{
+            var optArr = [OptionModel]()
+            if let opts = question["options"] as? Dictionary<String, Any>{
+                for (key, dict) in opts {
+                    optArr.append(OptionModel(description: key, dict: dict as! Dictionary<String, Any>))
+                }
+            }
+            return QuestionModel(qid: qid, descrpt: question["description"] as! String, askerID: question["askerID"] as! String, anonymous: question["anonymous"] as! Bool, options: optArr)
+        }
+        else{
+            return nil
+        }
     }
     func postQuestion(){
         let ref = FIRDatabase.database().reference().child("Questions").childByAutoId()
@@ -43,15 +55,18 @@ class QuestionModel: NSObject {
         ref.child("time").setValue(qTime.timeIntervalSince1970)
         ref.child("priority").setValue(qPriority)
         for opt in qOptions{
-            ref.child("options").child(opt).child("offerBy").setValue(qAskerID)
-            ref.child("options").child(opt).child("val").setValue(0)
+            ref.child("options").child(opt.oDescription).child("offerBy").setValue(qAskerID)
+            ref.child("options").child(opt.oDescription).child("val").setValue(0)
         }
-        ref.child("tags").setValue(qTags)
+//        ref.child("tags").setValue(qTags)
         let tagRef = FIRDatabase.database().reference().child("Tags")
-        for tag in qTags{
-            let ref = tagRef.child(tag).child(QID)
-            ref.setValue("0")
-            ref.setPriority(qPriority)
-        }
+        let allTagRef = tagRef.child("all").child(QID)
+        allTagRef.setValue("0")
+        allTagRef.setPriority(qPriority)
+//        for tag in qTags{
+//            let ref = tagRef.child(tag).child(QID)
+//            ref.setValue("0")
+//            ref.setPriority(qPriority)
+//        }
     }
 }

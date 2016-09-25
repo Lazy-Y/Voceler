@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Renderer: Presenter {
-
-    func presentModel(model: Resource, inView view: CollectionViewCellRender) {
-        view.setTitle(title: model.title)
-        view.setDescription(description: model.description)
-        view.setBackgroundImage(image: model.image)
-    }
-}
+//struct Renderer: Presenter {
+//
+//    func presentModel(model: Resource, inView view: CollectionViewCellRender) {
+//        view.setTitle(title: model.title)
+//        view.setDescription(description: model.description)
+//        view.setBackgroundImage(image: model.image)
+//    }
+//}
