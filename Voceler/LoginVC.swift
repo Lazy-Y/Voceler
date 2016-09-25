@@ -49,6 +49,9 @@ class LoginVC: UIViewController{
                         _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
                     }
                     else if let user = user{
+                        let standard = UserDefaults.standard
+                        standard.set(self.emailField.text!, forKey: "username")
+                        standard.set(self.passwordField.text!, forKey: "password")
                         currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
                         drawer.centerViewController = VC(name: "Question")
                         self.show(drawer, sender: self)
@@ -172,6 +175,9 @@ class LoginVC: UIViewController{
                         ref.child("email").setValue(user.email)
                         currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
                         let alert = SCLAlertView().showSuccess("Success", subTitle: "Signup successfully!")
+                        let standard = UserDefaults.standard
+                        standard.set(user.email, forKey: "username")
+                        standard.set(self.passwordField.text, forKey: "password")
                         alert.setDismissBlock({ 
                             drawer.centerViewController = VC(name: "Question")
                             self.show(drawer, sender: self)
@@ -193,8 +199,13 @@ class LoginVC: UIViewController{
         initUI()
         initNoti()
         print(loginBtn.backgroundColor)
-        emailField.text = "zhenyanz@usc.edu"
-        passwordField.text = "123456"
+        let standard = UserDefaults.standard
+        if let username = standard.string(forKey: "username"){
+            emailField.text = username
+            if let password = standard.string(forKey: "password"){
+                passwordField.text = password
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

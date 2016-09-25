@@ -23,6 +23,15 @@ class QuestionModel: NSObject {
     var qRef:FIRDatabaseReference!{
         return FIRDatabase.database().reference().child("Questions").child(QID)
     }
+    static func loadQuestion(qid:String){
+        _ = FIRDatabase.database().reference().child("Questions").child(qid).observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot.value)
+            questionManager.collection.append(QuestionModel.getQuestion(qid: qid, question: snapshot.value as? Dictionary<String, Any>)!)
+            if questionManager.collection.count < 2{
+                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "QuestionLoaded")))
+            }
+        })
+    }
     private init(qid:String, descrpt:String, askerID:String, anonymous:Bool=false, options:[OptionModel]) {
         super.init()
         QID = qid

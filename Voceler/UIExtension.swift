@@ -51,7 +51,9 @@ extension UIViewController{
         else{
             let img = UIImage(named: "logo")!.resize(newWidth: 40)
             btn.setImage(img, for: [])
-            NotificationCenter.default.addObserver(self, selector: #selector(setProfileItem), name: NSNotification.Name(FIRAuth.auth()!.currentUser!.uid + "profile"), object: nil)
+            if let uid = FIRAuth.auth()?.currentUser?.uid{
+                NotificationCenter.default.addObserver(self, selector: #selector(setProfileItem), name: NSNotification.Name(uid + "profile"), object: nil)
+            }
         }
         btn.board(radius: 20, width: 3, color: UIColor.white)
         btn.imageView?.contentMode = .scaleAspectFill

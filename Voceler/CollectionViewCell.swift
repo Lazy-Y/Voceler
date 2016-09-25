@@ -51,12 +51,12 @@ class CollectionViewCell: UICollectionViewCell {
     func setProfile(){
         offererBtn.tintColor = .clear
         if let img = offerer?.profileImg{
-            offererBtn.setBackgroundImage(img, for: [])
+            offererBtn.setImage(img, for: [])
+            offererBtn.imageView?.contentMode = .scaleAspectFill
         }
         else if let uid = offerer?.uid{
             NotificationCenter.default.addObserver(self, selector: #selector(setProfile), name: NSNotification.Name(uid + "profile"), object: nil)
         }
-        offererBtn.imageView?.contentMode = .scaleAspectFill
     }
     
     var option:OptionModel!{

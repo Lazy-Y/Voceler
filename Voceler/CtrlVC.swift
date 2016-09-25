@@ -99,6 +99,7 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             try! FIRAuth.auth()?.signOut()
             dismiss(animated: true, completion: {
                 clearVC()
+                questionManager.clean()
             })
         }
         else {

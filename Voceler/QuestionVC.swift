@@ -98,7 +98,6 @@ class QuestionVC: UIViewController{
         optArr.removeAll()
         collectionView.reloadData()
         if let question = question{
-            collectionView.isHidden = false
             if question.qAnonymous {
                 asker = nil
             }
@@ -116,13 +115,17 @@ class QuestionVC: UIViewController{
                 pullDownMask.isHidden = true
             }
             _ = collectionView.sd_layout().topSpaceToView(detailTV, 8)
+//            collectionView.board(radius: 0, width: 1, color: .gray)
         }
         else{
-            // no more question available
-            collectionView.isHidden = true
             _ = collectionView.sd_layout().topSpaceToView(view, 56)
+//            collectionView.board(radius: 0, width: 0, color: .gray)
         }
         collectionView.reloadData()
+        if optArr.count > 0{
+            collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: UICollectionViewScrollPosition.top, animated: false)
+        }
+
     }
     
     func showUser(user:UserModel?){
@@ -193,6 +196,7 @@ class QuestionVC: UIViewController{
         layout.focusedHeight = 180
         layout.dragOffset = 100
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 110), collectionViewLayout: layout)
+        collectionView.board(radius: 0, width: 1, color: .gray)
         view.addSubview(collectionView)
         _ = collectionView.sd_layout()
             .topSpaceToView(detailTV, 0)?
@@ -201,7 +205,6 @@ class QuestionVC: UIViewController{
             .rightSpaceToView(view, 0)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.board(radius: 0, width: 1, color: .gray)
         
         collectionView.register(CollectionViewCell.self)
         

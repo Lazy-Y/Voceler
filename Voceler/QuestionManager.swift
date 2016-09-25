@@ -11,24 +11,26 @@ import FirebaseDatabase
 
 class QuestionManager: NSObject {
     private let size:UInt = 10
-    private var collection = [QuestionModel]()
+    var collection = [QuestionModel]()
     private var ref:FIRDatabaseReference!
+    private var tagsRef:FIRDatabaseReference!
     private var isLoading = false
+//    private var loadingSet = NSSet()
     
     override init() {
         super.init()
         ref = FIRDatabase.database().reference().child("Questions")
+        tagsRef = FIRDatabase.database().reference().child("Tags")
         self.refreshCollection()
     }
     private func refreshCollection() {
         if !isLoading{
             isLoading = true
-            ref.queryOrderedByPriority().queryLimited(toFirst: size).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+            tagsRef.child("all").queryOrderedByPriority().queryLimited(toLast: size).observeSingleEvent(of: .value, with: { (snapshot) in
                 if let value = snapshot.value as? Dictionary<String, Any>{
-                    for (key, val) in value{
-                        self.collection.append(QuestionModel.getQuestion(qid: key, question: val as? Dictionary<String, Any>)!)
+                    for (key, _) in value{
+                        QuestionModel.loadQuestion(qid: key)
                     }
-                    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "QuestionLoaded")))
                 }
                 self.isLoading = false
             })
@@ -40,5 +42,11 @@ class QuestionManager: NSObject {
             refreshCollection()
         }
         return collection.popLast()
+    }
+    
+    func clean(){
+        isLoading = false
+        collection.removeAll()
+        imageStorage.removeAll()
     }
 }
