@@ -48,7 +48,7 @@ class QuestionModel: NSObject {
             var optArr = [OptionModel]()
             if let opts = question["options"] as? Dictionary<String, Any>{
                 for (key, dict) in opts {
-                    optArr.append(OptionModel(dict: dict as! Dictionary<String, Any>))
+                    optArr.append(OptionModel(ref: FIRDatabase.database().reference().child("Questions").child(qid).child("options").child(key) ,dict: dict as! Dictionary<String, Any>))
                 }
             }
             return QuestionModel(qid: qid, descrpt: question["description"] as! String, askerID: question["askerID"] as! String, anonymous: question["anonymous"] as! Bool, options: optArr)

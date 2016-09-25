@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class OptionModel: NSObject {
     var oDescription = ""
     var oOfferBy:String?
     var oVal = 0
+    var oRef:FIRDatabaseReference?
     init(description:String, offerBy:String? = nil, val:Int = 0) {
         if let d = description.removingPercentEncoding{
             oDescription = d
@@ -23,7 +25,8 @@ class OptionModel: NSObject {
         oOfferBy = offerBy
         oVal = val
     }
-    init(dict:Dictionary<String,Any>){
+    init(ref:FIRDatabaseReference, dict:Dictionary<String,Any>){
+        oRef = ref
         oDescription = dict["description"] as! String
         if let offerBy = dict["offerBy"] as? String{
             oOfferBy = offerBy
