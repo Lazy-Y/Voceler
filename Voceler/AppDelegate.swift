@@ -32,6 +32,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         
         
+//        let ref = FIRDatabase.database().reference().child("Questions")
+//        ref.queryStarting(atValue: "-KSVI47OyTCRjWnuk4RJ").observeSingleEvent(of: .value, with:
+//            { (snapshot) in
+//                print(snapshot.value)
+//        })
+//        
+//        let arr = ["a","b","c","d"]
+//        ref.child("Array").setValue(arr)
+//        ref.child("Dict").setValue(["hello":"World", "Java":"Python"])
+//        ref.child("0").runTransactionBlock({ (data) -> FIRTransactionResult in
+//            print(data.value)
+//            let result = FIRTransactionResult.success(withValue: data)
+//            return result
+//            }, andCompletionBlock: { (error, bool, snapshot) in
+//            print(snapshot?.value)
+//        })
+        
         return true
     }
 

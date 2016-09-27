@@ -30,7 +30,7 @@ class UserModel: NSObject {
     }
     
     func loadProfileImg(){
-        if let img = imageStorage[uid + "profile"]{
+        if let img = memoryHandler.imageStorage[uid + "profile"]{
             profileImg = img
         }
         else{
@@ -41,14 +41,14 @@ class UserModel: NSObject {
                 else {
                     self.profileImg = #imageLiteral(resourceName: "logo")
                 }
-                imageStorage[self.uid + "profile"] = self.profileImg
+                memoryHandler.imageStorage[self.uid + "profile"] = self.profileImg
                 NotificationCenter.default.post(name: NSNotification.Name(self.uid + "profile"), object: nil)
             }
         }
     }
     
     func loadWallImg(){
-        if let img = imageStorage[uid + "wall"]{
+        if let img = memoryHandler.imageStorage[uid + "wall"]{
             wallImg = img
         }
         else {
@@ -59,7 +59,7 @@ class UserModel: NSObject {
                 else {
                     self.wallImg = #imageLiteral(resourceName: "WallBG")
                 }
-                imageStorage[self.uid + "wall"] = self.wallImg
+                memoryHandler.imageStorage[self.uid + "wall"] = self.wallImg
                 NotificationCenter.default.post(name: NSNotification.Name(self.uid + "wall"), object: nil)
             }
         }

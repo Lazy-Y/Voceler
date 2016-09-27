@@ -29,6 +29,7 @@
 		BAD6C0AC1D6AB56800361A93 /* TreeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD6C0AA1D6AB56800361A93 /* TreeViewCell.swift */; };
 		BAD6C0B01D6B646900361A93 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD6C0AF1D6B646900361A93 /* UserModel.swift */; };
 		BAD6C0B21D6CF1A600361A93 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD6C0B11D6CF1A600361A93 /* QuestionModel.swift */; };
+		BAE1391C1D9A1D56009A8143 /* MemoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE1391B1D9A1D56009A8143 /* MemoryHandler.swift */; };
 		BAFD787C1D960DD4004322C0 /* QuestionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD787B1D960DD4004322C0 /* QuestionManager.swift */; };
 		BAFD787E1D961945004322C0 /* OptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD787D1D961945004322C0 /* OptionModel.swift */; };
 		FD0325291D24E53E002956FD /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0325271D24E53E002956FD /* UserListCell.swift */; };
@@ -88,6 +89,7 @@
 		BAD6C0AA1D6AB56800361A93 /* TreeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewCell.swift; sourceTree = "<group>"; };
 		BAD6C0AF1D6B646900361A93 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BAD6C0B11D6CF1A600361A93 /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		BAE1391B1D9A1D56009A8143 /* MemoryHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryHandler.swift; sourceTree = "<group>"; };
 		BAFD787B1D960DD4004322C0 /* QuestionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionManager.swift; sourceTree = "<group>"; };
 		BAFD787D1D961945004322C0 /* OptionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionModel.swift; sourceTree = "<group>"; };
 		BD6436A294F41E6FC8BFCCD4 /* Pods_Voceler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voceler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				BAFD787B1D960DD4004322C0 /* QuestionManager.swift */,
+				BAE1391B1D9A1D56009A8143 /* MemoryHandler.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				BABAD35E1D8A5315002954D2 /* ReusableView.swift in Sources */,
 				FD17E2091D2F666000FC0FB3 /* TagsController.swift in Sources */,
 				FD0325291D24E53E002956FD /* UserListCell.swift in Sources */,
+				BAE1391C1D9A1D56009A8143 /* MemoryHandler.swift in Sources */,
 				FDA2BA7D1D222A790003633E /* ProfileVC.swift in Sources */,
 				BABAD3641D8A5315002954D2 /* Mapper.swift in Sources */,
 				FDA2BA7F1D222BD70003633E /* OptView.swift in Sources */,

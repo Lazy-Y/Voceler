@@ -13,7 +13,7 @@ class OptionModel: NSObject {
     var oDescription = ""
     var oOfferBy:String?
     var oVal = 0
-    var oRef:FIRDatabaseReference?
+    var oRef:FIRDatabaseReference!
     init(description:String, offerBy:String? = nil, val:Int = 0) {
         if let d = description.removingPercentEncoding{
             oDescription = d

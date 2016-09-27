@@ -16,7 +16,7 @@ let lightGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
 var currUser:UserModel?
 var appSetting = SettingModel.getSetting()
 let questionManager = QuestionManager()
-var imageStorage = Dictionary<String, UIImage?>()
+var memoryHandler = MemoryHandler()
 
 func getVC(name:String) -> UIViewController {
     let board = UIStoryboard(name: "Main", bundle: nil)

@@ -148,7 +148,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                 _ = SwiftSpinner.show("Uploading profile image...")
                 currUser?.profileImg = self.profileImg.image
                 self.thisUser?.storageRef.child("profileImg.jpeg").put(self.profileImg.image!.dataAtMost(bytes: 100*1024))
-                imageStorage[self.thisUser!.uid + "profile"] = self.profileImg.image
+                memoryHandler.imageStorage[self.thisUser!.uid + "profile"] = self.profileImg.image
                 NotificationCenter.default.post(name: NSNotification.Name(self.thisUser!.uid + "profile"), object: nil)
                 self.setProfileItem()
                 SwiftSpinner.hide()
@@ -158,7 +158,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                 _ = SwiftSpinner.show("Uploading wall image...")
                 currUser?.wallImg = self.wallImg.image
                 self.thisUser?.storageRef.child("wallImg.jpeg").put(self.wallImg.image!.dataAtMost(bytes: 400*1024))
-                imageStorage[self.thisUser!.uid + "wall"] = self.wallImg.image
+                memoryHandler.imageStorage[self.thisUser!.uid + "wall"] = self.wallImg.image
                 SwiftSpinner.hide()
             }
             self.old_val[self.contentArr.count+1] = self.wallImg.image!

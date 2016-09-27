@@ -36,17 +36,12 @@ class CollectionViewCell: UICollectionViewCell {
         parent.collectionView.isUserInteractionEnabled = false
         titleLabel.text = "Like: \(option.oVal + 1)"
         let optRef = option.oRef
+        parent.currQuestion?.choose(val: optRef!.ref.key)
         optRef?.child("val").observeSingleEvent(of: .value, with: { (snapshot) in
             let val = (snapshot.value as! Int) + 1
             optRef?.child("val").setValue(val)
         })
-        if #available(iOS 10.0, *) {
-            Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false) { (timer) in
-                self.parent.nextQuestion()
-            }
-        } else {
-            _ = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(nextQuestion), userInfo: nil, repeats: false)
-        }
+        self.parent.nextQuestion()
     }
     
     func nextQuestion(){

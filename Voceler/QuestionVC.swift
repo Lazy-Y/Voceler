@@ -19,7 +19,7 @@ class QuestionVC: UIViewController{
     // FieldVars
 //    let repository = Repository()
 //    let renderer = Renderer()
-
+    @IBOutlet weak var titlebarHeight: NSLayoutConstraint!
     var handler:GrowingTextViewHandler!
     
     var liked = false
@@ -52,6 +52,7 @@ class QuestionVC: UIViewController{
     var pullDownMask = UILabel()
     var optArr = [OptionModel]()
     var noQuestionMask = UILabel()
+    var collectionFooter:MJRefreshBackNormalFooter!
     
     // Actions
     @IBAction func askerInfo(_ sender: AnyObject) {
@@ -87,17 +88,18 @@ class QuestionVC: UIViewController{
         }
     }
     
-    private func setQuestion(question:QuestionModel?){
-        currQuestion = question
+    func setQuestion(){
+        currQuestion = questionManager.getQuestion()
         collectionView.isUserInteractionEnabled = true
-        let noQuestion = (question == nil)
+        let noQuestion = (currQuestion == nil)
         titleBarView.isHidden = noQuestion
         detailTV.isHidden = noQuestion
         pullUpMask.isHidden = noQuestion
         noQuestionMask.isHidden = !noQuestion
         optArr.removeAll()
         collectionView.reloadData()
-        if let question = question{
+        if let question = currQuestion{
+            collectionView.mj_footer = collectionFooter
             if question.qAnonymous {
                 asker = nil
             }
@@ -114,12 +116,14 @@ class QuestionVC: UIViewController{
                 pullUpMask.isHidden = true
                 pullDownMask.isHidden = true
             }
-            _ = collectionView.sd_layout().topSpaceToView(detailTV, 8)
-//            collectionView.board(radius: 0, width: 1, color: .gray)
+            titlebarHeight.constant = 56
+            collectionView.board(radius: 0, width: 1, color: .gray)
         }
         else{
-            _ = collectionView.sd_layout().topSpaceToView(view, 56)
-//            collectionView.board(radius: 0, width: 0, color: .gray)
+            heightConstraint.constant = 0
+            titlebarHeight.constant = 0
+            collectionView.mj_footer = nil
+            collectionView.board(radius: 0, width: 0, color: .gray)
         }
         collectionView.reloadData()
         if optArr.count > 0{
@@ -183,10 +187,18 @@ class QuestionVC: UIViewController{
         collectionView.reloadData()
         pullDownMask.isHidden = true
         pullUpMask.isHidden = true
+        collectionView.scrollToItem(at: IndexPath(row: optArr.count-1, section: 0), at: UICollectionViewScrollPosition.top, animated: false)
+        currQuestion?.choose(val: opt.oRef.key)
     }
     
     func nextQuestion(){
-        setQuestion(question: questionManager.getQuestion())
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false) { (timer) in
+                self.setQuestion()
+            }
+        } else {
+            _ = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(setQuestion), userInfo: nil, repeats: false)
+        }
     }
     
     func initTable() {
@@ -196,10 +208,9 @@ class QuestionVC: UIViewController{
         layout.focusedHeight = 180
         layout.dragOffset = 100
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 110), collectionViewLayout: layout)
-        collectionView.board(radius: 0, width: 1, color: .gray)
         view.addSubview(collectionView)
         _ = collectionView.sd_layout()
-            .topSpaceToView(detailTV, 0)?
+            .topSpaceToView(detailTV, 8)?
             .bottomSpaceToView(view, 0)?
             .leftSpaceToView(view, 0)?
             .rightSpaceToView(view, 0)
@@ -214,6 +225,7 @@ class QuestionVC: UIViewController{
         if navigationController?.childViewControllers.first == self{
             let header = MJRefreshNormalHeader(refreshingBlock: {
                 print("refresh")
+                self.currQuestion?.choose()
                 self.nextQuestion()
                 self.collectionView.mj_header.endRefreshing()
             })!
@@ -222,7 +234,7 @@ class QuestionVC: UIViewController{
             header.setTitle("Pull down to skip", for: .idle)
             collectionView.mj_header = header
             
-            let footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            collectionFooter = MJRefreshBackNormalFooter(refreshingBlock: {
                 let alert = SCLAlertView()
                 let optionText = alert.addTextView()
                 _ = alert.addButton("Add", action: {
@@ -231,14 +243,14 @@ class QuestionVC: UIViewController{
                     }
                     else{
                         self.addOption(text: optionText.text)
+                        self.nextQuestion()
                     }
                 })
                 _ = alert.showEdit("Another Option", subTitle: "", closeButtonTitle: "Cancel")
                 self.collectionView.mj_footer.endRefreshing()
             })!
-            footer.setTitle("Pull to add an option", for: .idle)
-            footer.setTitle("Add an option", for: .pulling)
-            collectionView.mj_footer = footer
+            collectionFooter.setTitle("Pull to add an option", for: .idle)
+            collectionFooter.setTitle("Add an option", for: .pulling)
         }
     }
     
@@ -281,8 +293,7 @@ class QuestionVC: UIViewController{
         if isCollection != nil{
             collectionSetup()
         }
-        setDescription(description: "Which language is the best in the world?")
-        ()
+        setDescription(description: "")
     }
     
     override func didReceiveMemoryWarning() {

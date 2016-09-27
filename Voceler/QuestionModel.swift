@@ -14,7 +14,6 @@ class QuestionModel: NSObject {
     var qDescrption:String! // Question Description
     var qAskerID:String! // UID
     var qAnonymous = false // Don't show the asker to public
-    var qIsOpen = true
     var qTime:Date!
     var qOptions = [OptionModel]() // Question options (option id: OID)
     var qTags = [String]()
@@ -24,16 +23,7 @@ class QuestionModel: NSObject {
         return FIRDatabase.database().reference().child("Questions").child(QID)
     }
     
-    static func loadQuestion(qid:String){
-        _ = FIRDatabase.database().reference().child("Questions").child(qid).observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot.value)
-            questionManager.collection.append(QuestionModel.getQuestion(qid: qid, question: snapshot.value as? Dictionary<String, Any>)!)
-            if questionManager.collection.count < 2{
-                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "QuestionLoaded")))
-            }
-        })
-    }
-    private init(qid:String, descrpt:String, askerID:String, anonymous:Bool=false, options:[OptionModel]) {
+    init(qid:String, descrpt:String, askerID:String, anonymous:Bool=false, options:[OptionModel]) {
         super.init()
         QID = qid
         qDescrption = descrpt
@@ -41,56 +31,54 @@ class QuestionModel: NSObject {
         qAnonymous = anonymous
         qOptions = options
     }
+    
     override init(){
         super.init()
     }
-    static func getQuestion(qid: String?, question:Dictionary<String, Any>?)->QuestionModel?{
-        if let qid = qid, let question = question{
-            var optArr = [OptionModel]()
-            if let opts = question["options"] as? Dictionary<String, Any>{
-                for (key, dict) in opts {
-                    optArr.append(OptionModel(ref: FIRDatabase.database().reference().child("Questions").child(qid).child("options").child(key) ,dict: dict as! Dictionary<String, Any>))
-                }
-            }
-            return QuestionModel(qid: qid, descrpt: question["description"] as! String, askerID: question["askerID"] as! String, anonymous: question["anonymous"] as! Bool, options: optArr)
-        }
-        else{
-            return nil
-        }
-    }
     
     func postQuestion(){
+        // Set up question
         let ref = FIRDatabase.database().reference().child("Questions").childByAutoId()
         QID = ref.key
+        let contentRef = ref.child("content")
         ref.setPriority(qPriority)
-        ref.child("description").setValue(qDescrption)
-        ref.child("askerID").setValue(qAskerID)
-        ref.child("anonymous").setValue(qAnonymous)
-        ref.child("isOpen").setValue(qIsOpen)
-        ref.child("time").setValue(qTime.timeIntervalSince1970)
+        contentRef.child("description").setValue(qDescrption)
+        contentRef.child("askerID").setValue(qAskerID)
+        contentRef.child("anonymous").setValue(qAnonymous)
+        contentRef.child("time").setValue(qTime.timeIntervalSince1970)
         ref.child("priority").setValue(qPriority)
         for opt in qOptions{
-            let optRef = ref.child("options").childByAutoId()
+            let optRef = contentRef.child("options").childByAutoId()
             optRef.child("description").setValue(opt.oDescription)
             optRef.child("offerBy").setValue(qAskerID)
             optRef.child("val").setValue(0)
         }
+        
+        // Set up tags
 //        ref.child("tags").setValue(qTags)
         let tagRef = FIRDatabase.database().reference().child("Tags")
         let allTagRef = tagRef.child("all").child(QID)
-        allTagRef.setValue("0")
         allTagRef.setPriority(qPriority)
+        allTagRef.setValue("1")
 //        for tag in qTags{
 //            let ref = tagRef.child(tag).child(QID)
 //            ref.setValue("0")
 //            ref.setPriority(qPriority)
 //        }
+        
+        // Add question to user
+        choose(val: "owner")
     }
     
     func addOption(opt:OptionModel){
-        let optRef = qRef.child("options").childByAutoId()
+        let optRef = qRef.child("content").child("options").childByAutoId()
         optRef.child("description").setValue(opt.oDescription)
         optRef.child("offerBy").setValue(opt.oOfferBy)
         optRef.child("val").setValue(opt.oVal)
+        opt.oRef = optRef
+    }
+    
+    func choose(val:String = "skipped"){
+        qRef.child("Users").child(currUser!.uid).setValue(val)
     }
 }
