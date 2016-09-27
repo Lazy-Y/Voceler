@@ -49,7 +49,7 @@ class QuestionVC: UIViewController{
     var currQuestion:QuestionModel?
     var collectionView:UICollectionView!
     var pullUpMask = UILabel()
-    var pullDownMask = UILabel()
+//    var pullDownMask = UILabel()
     var optArr = [OptionModel]()
     var noQuestionMask = UILabel()
     var collectionFooter:MJRefreshBackNormalFooter!
@@ -110,11 +110,11 @@ class QuestionVC: UIViewController{
             optArr = question.qOptions
             if optArr.count == 0 {
                 pullUpMask.isHidden = false
-                pullDownMask.isHidden = false
+//                pullDownMask.isHidden = false
             }
             else {
                 pullUpMask.isHidden = true
-                pullDownMask.isHidden = true
+//                pullDownMask.isHidden = true
             }
             titlebarHeight.constant = 56
             collectionView.board(radius: 0, width: 1, color: .gray)
@@ -167,12 +167,12 @@ class QuestionVC: UIViewController{
         pullUpMask.textColor = .gray
         collectionView.addSubview(pullUpMask)
         _ = pullUpMask.sd_layout().topSpaceToView(detailTV, 10)?.leftSpaceToView(collectionView, 0)?.rightSpaceToView(collectionView, 0)?.heightIs(30)
-        pullDownMask.text = "Pull down to skip"
-        pullDownMask.textAlignment = .center
-        pullDownMask.isHidden = true
-        pullDownMask.textColor = .gray
-        collectionView.addSubview(pullDownMask)
-        _ = pullDownMask.sd_layout().topSpaceToView(pullUpMask, 10)?.leftSpaceToView(collectionView, 0)?.rightSpaceToView(collectionView, 0)?.heightIs(30)
+//        pullDownMask.text = "Pull down to get next question"
+//        pullDownMask.textAlignment = .center
+//        pullDownMask.isHidden = true
+//        pullDownMask.textColor = .gray
+//        collectionView.addSubview(pullDownMask)
+//        _ = pullDownMask.sd_layout().topSpaceToView(pullUpMask, 10)?.leftSpaceToView(collectionView, 0)?.rightSpaceToView(collectionView, 0)?.heightIs(30)
         
         noQuestionMask.text = "No question available now."
         noQuestionMask.textAlignment = .center
@@ -185,7 +185,7 @@ class QuestionVC: UIViewController{
         currQuestion?.addOption(opt: opt)
         optArr.append(opt)
         collectionView.reloadData()
-        pullDownMask.isHidden = true
+//        pullDownMask.isHidden = true
         pullUpMask.isHidden = true
         collectionView.scrollToItem(at: IndexPath(row: optArr.count-1, section: 0), at: UICollectionViewScrollPosition.top, animated: false)
         currQuestion?.choose(val: opt.oRef.key)
@@ -210,7 +210,7 @@ class QuestionVC: UIViewController{
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 110), collectionViewLayout: layout)
         view.addSubview(collectionView)
         _ = collectionView.sd_layout()
-            .topSpaceToView(detailTV, 8)?
+            .topSpaceToView(detailTV, 0)?
             .bottomSpaceToView(view, 0)?
             .leftSpaceToView(view, 0)?
             .rightSpaceToView(view, 0)
@@ -231,7 +231,7 @@ class QuestionVC: UIViewController{
             })!
             header.lastUpdatedTimeLabel.isHidden = true
             header.setTitle("Next question", for: .pulling)
-            header.setTitle("Pull down to skip", for: .idle)
+            header.setTitle("Pull down to get next question", for: .idle)
             collectionView.mj_header = header
             
             collectionFooter = MJRefreshBackNormalFooter(refreshingBlock: {
