@@ -12,6 +12,8 @@
 		BA72F7811D89400A007F9229 /* OptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA72F7801D89400A007F9229 /* OptCell.xib */; };
 		BA8FEBD21DA05EAE00F23011 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */; };
 		BA8FEBD41DA05EBA00F23011 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */; };
+		BA8FEBD61DA06AC100F23011 /* NoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBD51DA06AC100F23011 /* NoContentView.swift */; };
+		BA8FEBD81DA06AD100F23011 /* NoContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8FEBD71DA06AD100F23011 /* NoContentView.xib */; };
 		BABAD35B1D8A5315002954D2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */; };
 		BABAD35C1D8A5315002954D2 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BABAD3501D8A5315002954D2 /* CollectionViewCell.xib */; };
 		BABAD35D1D8A5315002954D2 /* UIImage+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3511D8A5315002954D2 /* UIImage+Extended.swift */; };
@@ -72,6 +74,8 @@
 		BA72F7801D89400A007F9229 /* OptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptCell.xib; sourceTree = "<group>"; };
 		BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
+		BA8FEBD51DA06AC100F23011 /* NoContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoContentView.swift; sourceTree = "<group>"; };
+		BA8FEBD71DA06AD100F23011 /* NoContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoContentView.xib; sourceTree = "<group>"; };
 		BAB796111D8BB73F0033DEFE /* Voceler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Voceler.entitlements; sourceTree = "<group>"; };
 		BABAD3461D89FC2C002954D2 /* Voceler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Voceler-Bridging-Header.h"; sourceTree = "<group>"; };
 		BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				FD67A7D31D360889008E3ACC /* ProfileCell.swift */,
 				BAD6C0AA1D6AB56800361A93 /* TreeViewCell.swift */,
 				BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */,
+				BA8FEBD51DA06AC100F23011 /* NoContentView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				FD17E2051D2F4B3500FC0FB3 /* AddOptCell.xib */,
 				FD67A7D41D360889008E3ACC /* ProfileCell.xib */,
 				BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */,
+				BA8FEBD71DA06AD100F23011 /* NoContentView.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 				BABAD3661D8A5315002954D2 /* Resources.plist in Resources */,
 				FD682A9A1D33002500D2F4B6 /* CollectionCell.xib in Resources */,
 				FD17E2071D2F4B3500FC0FB3 /* AddOptCell.xib in Resources */,
+				BA8FEBD81DA06AD100F23011 /* NoContentView.xib in Resources */,
 				BA8FEBD41DA05EBA00F23011 /* QuestionView.xib in Resources */,
 				BABAD3681D8A5A12002954D2 /* Images.xcassets in Resources */,
 				BABAD35C1D8A5315002954D2 /* CollectionViewCell.xib in Resources */,
@@ -507,6 +514,7 @@
 				FDA2BA791D222A1A0003633E /* OptCell.swift in Sources */,
 				FD67A7D51D360889008E3ACC /* ProfileCell.swift in Sources */,
 				FDBBB5DF1D20544100D75467 /* QuestionVC.swift in Sources */,
+				BA8FEBD61DA06AC100F23011 /* NoContentView.swift in Sources */,
 				BABAD35F1D8A5315002954D2 /* DataSource.swift in Sources */,
 				BABAD3631D8A5315002954D2 /* Resource.swift in Sources */,
 				BA8FEBD21DA05EAE00F23011 /* QuestionView.swift in Sources */,
