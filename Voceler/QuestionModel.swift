@@ -68,6 +68,7 @@ class QuestionModel: NSObject {
         
         // Add question to user
         choose(val: "owner")
+        currUser!.qRef.child(QID).setValue("In progress")
     }
     
     func addOption(opt:OptionModel){

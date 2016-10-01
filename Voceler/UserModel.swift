@@ -15,7 +15,21 @@ class UserModel: NSObject {
     var uid:String!
     var email = ""
     var username:String?
-    var ref:FIRDatabaseReference!
+    var ref:FIRDatabaseReference!{
+        didSet{
+            ref.observe(.value, with:{ (snapshot) in
+                if let userInfo = snapshot.value as? Dictionary<String,String>{
+                    self.email = userInfo["email"]!
+                    self.username = userInfo["username"]
+                    self.infoDic = userInfo
+                    if let profileVC = self.profileVC{
+                        profileVC.loadUserInfo()
+                    }
+                }
+            })
+        }
+    }
+    var qRef:FIRDatabaseReference!
     var storageRef:FIRStorageReference!
     var qInProgress = Array<String>() // Question in progress (contains QID)
     var qAsked = Array<String>() // Asked Question
@@ -24,6 +38,8 @@ class UserModel: NSObject {
     var profileVC:ProfileVC?
     var profileImg:UIImage?
     var wallImg:UIImage?
+    var qInProgressLimit = 5
+    var qInCollectionLimit = 20
     
     private init(uid:String){
         self.uid = uid
@@ -67,7 +83,7 @@ class UserModel: NSObject {
     
     static func getUser(uid:String, getWall:Bool = false, getProfile:Bool = false)->UserModel{
         let user = UserModel(uid: uid)
-        let ref = FIRDatabase.database().reference().child("Users").child(uid)
+        let ref = FIRDatabase.database().reference().child("Users").child(uid).child("info")
         user.storageRef = FIRStorage.storage().reference().child("Users").child(uid)
         user.setup(ref: ref)
         if getProfile {
@@ -81,13 +97,19 @@ class UserModel: NSObject {
     
     func setup(ref:FIRDatabaseReference){
         self.ref = ref
-        ref.observe(FIRDataEventType.value, with:{ (snapshot) in
-            if let userInfo = snapshot.value as? Dictionary<String,String>{
-                self.email = userInfo["email"]!
-                self.username = userInfo["username"]
-                self.infoDic = userInfo
-                if let profileVC = self.profileVC{
-                    profileVC.loadUserInfo()
+        qRef = ref.parent?.child("Questions")
+    }
+    
+    func loadCollection(){
+        qRef.observe(.value, with: { (snapshot) in
+            self.qInProgress.removeAll()
+            self.qCollection.removeAll()
+            for (qid, val) in snapshot.value as! Dictionary<String, String>{
+                if val == "In progress"{
+                    self.qInProgress.append(qid)
+                }
+                else if val == "liked"{
+                    self.qCollection.append(qid)
                 }
             }
         })

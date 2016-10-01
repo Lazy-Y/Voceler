@@ -13,6 +13,7 @@ import MJRefresh
 import SCLAlertView
 import SFFocusViewLayout
 import LTNavigationBar
+import SCLAlertView
 
 class QuestionVC: UIViewController{
     
@@ -22,7 +23,12 @@ class QuestionVC: UIViewController{
     @IBOutlet weak var titlebarHeight: NSLayoutConstraint!
     var handler:GrowingTextViewHandler!
     
-    var liked = false
+    var liked = false{
+        didSet{
+            currUser?.qRef.child(currQuestion!.QID).setValue(liked ? "liked" : nil)
+            likeBtn?.setImage(liked ? #imageLiteral(resourceName: "star_filled") : #imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
+        }
+    }
     var asker:UserModel?{
         didSet{
             if let asker = asker{
@@ -60,17 +66,21 @@ class QuestionVC: UIViewController{
     }
     
     @IBAction func showAskVC(_ sender: AnyObject) {
-        let vc = VC(name: "Ask Question", isCenter: false) as! UINavigationController
-        show(vc, sender: self)
+        if currUser!.qInProgress.count >= currUser!.qInProgressLimit{
+            _ = SCLAlertView().showError("Sorry", subTitle: "You are only allowed to have up to \(currUser!.qInProgressLimit) in progress questions. Please conclude a question.")
+        }
+        else{
+            let vc = VC(name: "Ask Question", isCenter: false) as! UINavigationController
+            show(vc, sender: self)
+        }
     }
     
     @IBAction func likeAction(_ sender: AnyObject) {
-        liked = !liked
-        if liked {
-            likeBtn?.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
+        if !liked && currUser!.qCollection.count >= currUser!.qInCollectionLimit{
+            _ = SCLAlertView().showError("Sorry", subTitle: "You are only allowed to have up to \(currUser!.qInCollectionLimit) in collection. Please conclude a question.")
         }
         else{
-            likeBtn?.setImage(#imageLiteral(resourceName: "star_filled").withRenderingMode(.alwaysTemplate), for: [])
+            liked = !liked
         }
     }
     
