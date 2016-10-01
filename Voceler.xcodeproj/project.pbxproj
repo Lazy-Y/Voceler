@@ -10,6 +10,8 @@
 		521B6ADC8DEEA2D69804A5AC /* Pods_Voceler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6436A294F41E6FC8BFCCD4 /* Pods_Voceler.framework */; };
 		BA72F77F1D893FDA007F9229 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA72F77E1D893FDA007F9229 /* Main.storyboard */; };
 		BA72F7811D89400A007F9229 /* OptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA72F7801D89400A007F9229 /* OptCell.xib */; };
+		BA8FEBD21DA05EAE00F23011 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */; };
+		BA8FEBD41DA05EBA00F23011 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */; };
 		BABAD35B1D8A5315002954D2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */; };
 		BABAD35C1D8A5315002954D2 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BABAD3501D8A5315002954D2 /* CollectionViewCell.xib */; };
 		BABAD35D1D8A5315002954D2 /* UIImage+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3511D8A5315002954D2 /* UIImage+Extended.swift */; };
@@ -68,6 +70,8 @@
 		7BCB2A59640AD1049CD15269 /* Pods-Voceler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voceler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Voceler/Pods-Voceler.debug.xcconfig"; sourceTree = "<group>"; };
 		BA72F77E1D893FDA007F9229 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BA72F7801D89400A007F9229 /* OptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptCell.xib; sourceTree = "<group>"; };
+		BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
 		BAB796111D8BB73F0033DEFE /* Voceler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Voceler.entitlements; sourceTree = "<group>"; };
 		BABAD3461D89FC2C002954D2 /* Voceler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Voceler-Bridging-Header.h"; sourceTree = "<group>"; };
 		BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				FD0325271D24E53E002956FD /* UserListCell.swift */,
 				FD67A7D31D360889008E3ACC /* ProfileCell.swift */,
 				BAD6C0AA1D6AB56800361A93 /* TreeViewCell.swift */,
+				BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				FD9855411D1FA5CB0038CBC3 /* CtrlCell.xib */,
 				FD17E2051D2F4B3500FC0FB3 /* AddOptCell.xib */,
 				FD67A7D41D360889008E3ACC /* ProfileCell.xib */,
+				BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 				BABAD3661D8A5315002954D2 /* Resources.plist in Resources */,
 				FD682A9A1D33002500D2F4B6 /* CollectionCell.xib in Resources */,
 				FD17E2071D2F4B3500FC0FB3 /* AddOptCell.xib in Resources */,
+				BA8FEBD41DA05EBA00F23011 /* QuestionView.xib in Resources */,
 				BABAD3681D8A5A12002954D2 /* Images.xcassets in Resources */,
 				BABAD35C1D8A5315002954D2 /* CollectionViewCell.xib in Resources */,
 				BA72F7811D89400A007F9229 /* OptCell.xib in Resources */,
@@ -502,6 +509,7 @@
 				FDBBB5DF1D20544100D75467 /* QuestionVC.swift in Sources */,
 				BABAD35F1D8A5315002954D2 /* DataSource.swift in Sources */,
 				BABAD3631D8A5315002954D2 /* Resource.swift in Sources */,
+				BA8FEBD21DA05EAE00F23011 /* QuestionView.swift in Sources */,
 				BAFD787E1D961945004322C0 /* OptionModel.swift in Sources */,
 				FD2148021D375694008A52B9 /* Birthday.swift in Sources */,
 				BABAD35D1D8A5315002954D2 /* UIImage+Extended.swift in Sources */,

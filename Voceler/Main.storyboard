@@ -204,7 +204,7 @@
                                     <constraint firstAttribute="width" secondItem="JMF-KM-aOR" secondAttribute="height" multiplier="1:1" id="UAk-GV-Viz"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EDB672E4-A6CE-4D6E-B6A8-8034BF083171" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E7B6ECC5-204F-4757-8E5A-DD1E972924AA" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CHq-WE-AFu"/>
                                     <constraint firstAttribute="width" secondItem="FcM-1F-ypy" secondAttribute="height" multiplier="1:1" id="Cs5-Mb-8RV"/>
@@ -397,7 +397,7 @@
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-bM-wV8">
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EDB672E4-A6CE-4D6E-B6A8-8034BF083171" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E7B6ECC5-204F-4757-8E5A-DD1E972924AA" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
                                                                 <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Vy3-mf-sh0" secondAttribute="height" multiplier="1:1" id="hjN-Wc-liO"/>
@@ -796,7 +796,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="EDB672E4-A6CE-4D6E-B6A8-8034BF083171" width="50" height="50">
+        <image name="E7B6ECC5-204F-4757-8E5A-DD1E972924AA" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

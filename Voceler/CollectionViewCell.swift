@@ -31,17 +31,26 @@ class CollectionViewCell: UICollectionViewCell {
         parent.showUser(user: offerer)
     }
     
+    func concludeQuestion(){
+        print("conclude question")
+    }
+    
     @IBAction func likeAction(_ sender: AnyObject) {
-        likeBtn.setImage(img: #imageLiteral(resourceName: "like_filled"), color: pinkColor)
-        parent.collectionView.isUserInteractionEnabled = false
-        titleLabel.text = "Like: \(option.oVal + 1)"
-        let optRef = option.oRef
-        parent.currQuestion?.choose(val: optRef!.ref.key)
-        optRef?.child("val").observeSingleEvent(of: .value, with: { (snapshot) in
-            let val = (snapshot.value as! Int) + 1
-            optRef?.child("val").setValue(val)
-        })
-        self.parent.nextQuestion()
+        if offerer != nil && offerer!.uid == currUser!.uid{
+            concludeQuestion()
+        }
+        else{
+            likeBtn.setImage(img: #imageLiteral(resourceName: "like_filled"), color: pinkColor)
+            parent.collectionView.isUserInteractionEnabled = false
+            titleLabel.text = "Like: \(option.oVal + 1)"
+            let optRef = option.oRef
+            parent.currQuestion?.choose(val: optRef!.ref.key)
+            optRef?.child("val").observeSingleEvent(of: .value, with: { (snapshot) in
+                let val = (snapshot.value as! Int) + 1
+                optRef?.child("val").setValue(val)
+            })
+            self.parent.nextQuestion()
+        }
     }
     
     func nextQuestion(){

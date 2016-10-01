@@ -18,8 +18,6 @@ import SCLAlertView
 class QuestionVC: UIViewController{
     
     // FieldVars
-//    let repository = Repository()
-//    let renderer = Renderer()
     @IBOutlet weak var titlebarHeight: NSLayoutConstraint!
     var handler:GrowingTextViewHandler!
     
@@ -52,7 +50,7 @@ class QuestionVC: UIViewController{
     @IBOutlet weak var askerProfile: UIButton!
     @IBOutlet weak var askerLbl: UILabel!
     //    @IBOutlet weak var optTbv: UITableView!
-    var currQuestion:QuestionModel?
+    var currQuestion:QuestionModel!
     var collectionView:UICollectionView!
     var pullUpMask = UILabel()
 //    var pullDownMask = UILabel()

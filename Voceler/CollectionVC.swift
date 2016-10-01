@@ -16,12 +16,41 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     // FieldVars
     var inProgArr = ["Foo", "Bar"]
     var collectionArr = ["Hello world", "FIFA", "Real Madrid", "Cristiano Ronaldo won Euro Champion!"]
+    var qInProgressArr = Array<QuestionModel>()
+    var qCollectionArr = Array<QuestionModel>()
     
     // Actions
     func detailAction(indexPath:IndexPath){
         
     }
     // Functions
+    func loadCollections(){
+        currUser?.loadCollectionDetail()
+        _ = NotificationCenter.default.addObserver(forName: NSNotification.Name("qInProgressLoaded"), object: nil, queue: nil, using:{ (noti) in
+            if let dict = noti.object as? Dictionary<String, Any>{
+                let qid = dict["qid"] as! String
+                if currUser!.qInProgress.contains(qid){
+                    let question = questionManager.getQuestion(qid: qid, question: dict)!
+                    self.qInProgressArr.append(question)
+//                    let indexPath = IndexPath(row: self.qInProgressArr.count-1, section: 0)
+//                    self.table.reloadRows(at: [indexPath], with: .automatic)
+                    self.table.reloadData()
+                }
+            }
+        })
+        _ = NotificationCenter.default.addObserver(forName: NSNotification.Name("qCollectionLoaded"), object: nil, queue: nil, using: { (noti) in
+            if let dict = noti.object as? Dictionary<String, Any>{
+                let qid = dict["qid"] as! String
+                if currUser!.qCollection.contains(qid){
+                    let question = questionManager.getQuestion(qid: qid, question: dict)!
+                    self.qCollectionArr.append(question)
+//                    let indexPath = IndexPath(row: self.qCollectionArr.count-1, section: 1)
+//                    self.table.reloadRows(at: [indexPath], with: .automatic)
+                    self.table.reloadData()
+                }
+            }
+        })
+    }
     
     // Override functions
     override func viewDidLoad() {
@@ -32,6 +61,7 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         table.delegate = self
         table.dataSource = self
         table.register(UINib(nibName: "CollectionCell", bundle: nil), forCellReuseIdentifier: "CollectionCell")
+        loadCollections()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,10 +75,10 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return inProgArr.count
+            return qInProgressArr.count
         }
         else{
-            return collectionArr.count
+            return qCollectionArr.count
         }
     }
     
@@ -67,7 +97,7 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionCell") as! CollectionCell
-        cell.textLabel?.text = indexPath.section == 0 ? inProgArr[indexPath.row] : collectionArr[indexPath.row]
+        cell.textLabel?.text = indexPath.section == 0 ? qInProgressArr[indexPath.row].qDescrption : qCollectionArr[indexPath.row].qDescrption
         if indexPath.section == 0{
             cell.starBtn.isHidden = true
         }

@@ -51,17 +51,21 @@ class QuestionManager: NSObject {
         }
     }
     
-    private func loadQuestionContent(qid:String){
+    func loadQuestionContent(qid:String, purpose:String = "QuestionLoaded"){
         _ = FIRDatabase.database().reference().child("Questions").child(qid).child("content").observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot.value)
+//            print(snapshot.value)
             self.collection.append(self.getQuestion(qid: qid, question: snapshot.value as? Dictionary<String, Any>)!)
-            if self.collection.count < 2{
-                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "QuestionLoaded")))
+            if purpose != "QuestionLoaded" || self.collection.count < 2{
+                print(snapshot.value)
+                if var dict = snapshot.value as? Dictionary<String, Any>{
+                    dict["qid"] = qid
+                    NotificationCenter.default.post(name: Notification.Name(purpose), object: dict)
+                }
             }
         })
     }
     
-    private func getQuestion(qid: String?, question:Dictionary<String, Any>?)->QuestionModel?{
+    func getQuestion(qid: String?, question:Dictionary<String, Any>?)->QuestionModel?{
         if let qid = qid, let question = question{
             var optArr = [OptionModel]()
             if let opts = question["options"] as? Dictionary<String, Any>{

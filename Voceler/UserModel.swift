@@ -104,14 +104,25 @@ class UserModel: NSObject {
         qRef.observe(.value, with: { (snapshot) in
             self.qInProgress.removeAll()
             self.qCollection.removeAll()
-            for (qid, val) in snapshot.value as! Dictionary<String, String>{
-                if val == "In progress"{
-                    self.qInProgress.append(qid)
-                }
-                else if val == "liked"{
-                    self.qCollection.append(qid)
+            if let dict = snapshot.value as? Dictionary<String, String>{
+                for (qid, val) in dict{
+                    if val == "In progress"{
+                        self.qInProgress.append(qid)
+                    }
+                    else if val == "liked"{
+                        self.qCollection.append(qid)
+                    }
                 }
             }
         })
+    }
+    
+    func loadCollectionDetail(){
+        for question in qInProgress{
+            questionManager.loadQuestionContent(qid: question, purpose: "qInProgressLoaded")
+        }
+        for question in qCollection{
+            questionManager.loadQuestionContent(qid: question, purpose: "qCollectionLoaded")
+        }
     }
 }
