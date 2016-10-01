@@ -23,7 +23,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var offererBtn: UIButton!
     @IBOutlet weak var likeBtn: UIButton!
-    var parent:QuestionVC!
+    var parent:QuestionView!
     var offerer:UserModel?
     
     @IBAction func showAsker(_ sender: AnyObject) {
@@ -49,12 +49,12 @@ class CollectionViewCell: UICollectionViewCell {
                 let val = (snapshot.value as! Int) + 1
                 optRef?.child("val").setValue(val)
             })
-            self.parent.nextQuestion()
+            self.parent.parent.nextContent()
         }
     }
     
     func nextQuestion(){
-        self.parent.nextQuestion()
+        self.parent.parent.nextContent()
     }
     
     func setProfile(){

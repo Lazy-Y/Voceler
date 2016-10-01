@@ -23,7 +23,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     var liked = false{
         didSet{
             currUser?.qRef.child(currQuestion!.QID).setValue(liked ? "liked" : nil)
-            likeBtn?.setImage(liked ? #imageLiteral(resourceName: "star_filled") : #imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
+            likeBtn?.setImage(img: liked ? #imageLiteral(resourceName: "star_filled") : #imageLiteral(resourceName: "star"), color: darkRed)
         }
     }
     
@@ -80,7 +80,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
-    func setQuestion(question:QuestionModel){
+    private func setQuestion(question:QuestionModel){
         currQuestion = question
         collectionView.isUserInteractionEnabled = true
         optArr.removeAll()
@@ -88,6 +88,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         collectionView.mj_footer = collectionFooter
         asker = question.qAnonymous ? nil : UserModel.getUser(uid: question.qAskerID, getProfile: true)
         handler.setText(question.qDescrption, withAnimation: true)
+        askerLbl.text = asker?.username
         optArr = question.qOptions
         pullUpMask.isHidden = optArr.count > 0
         titlebarHeight.constant = 56
@@ -112,7 +113,10 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
-    func setupUI() {
+    private func setupUI() {
+        parent.view.addSubview(self)
+        _ = sd_layout().topSpaceToView(parent.view, 0)?.rightSpaceToView(parent.view, 0)?.leftSpaceToView(parent.view, 0)?.bottomSpaceToView(parent.view, 0)
+        
         askerProfile.imageView?.contentMode = .scaleAspectFill
         asker = currUser
 
@@ -121,8 +125,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 5)
         detailTV.isEditable = false
         askerProfile.board(radius: 20, width: 3, color: UIColor.white)
-        likeBtn?.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
-        likeBtn?.tintColor = darkRed
+        likeBtn?.setImage(img: #imageLiteral(resourceName: "star"), color: darkRed)
         initTable()
         
         pullUpMask.text = "Pull up to add an option"
@@ -168,7 +171,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         let header = MJRefreshNormalHeader(refreshingBlock: {
             print("refresh")
             self.currQuestion?.choose()
-            self.parent.nextQuestion()
+            self.parent.nextContent()
             self.collectionView.mj_header.endRefreshing()
         })!
         header.lastUpdatedTimeLabel.isHidden = true
@@ -185,7 +188,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
                 }
                 else{
                     self.addOption(text: optionText.text)
-                    self.parent.nextQuestion()
+                    self.parent.nextContent()
                 }
             })
             _ = alert.showEdit("Another Option", subTitle: "", closeButtonTitle: "Cancel")
@@ -202,10 +205,10 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     // Override functions
-    func setupView(superVC:QuestionVC, question:QuestionModel) {
-        parent = superVC
+    func setupView(parent:QuestionVC, question:QuestionModel) {
+        self.parent = parent
         setupUI()
-        setDescription(description: "")
+        setQuestion(question: question)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -217,7 +220,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CollectionViewCell
         cell.option = optArr[indexPath.row]
-        cell.parent = self.parent
+        cell.parent = self
         cell.likeBtn.setImage(img: #imageLiteral(resourceName: "like"), color: pinkColor)
         return cell
     }
