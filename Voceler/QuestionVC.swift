@@ -14,6 +14,7 @@ import SCLAlertView
 import SFFocusViewLayout
 import LTNavigationBar
 import SCLAlertView
+import UIViewController_NavigationBar
 
 class QuestionVC: UIViewController{
     // Actions
@@ -36,6 +37,7 @@ class QuestionVC: UIViewController{
                 self.setContent()
             }
         })
+        navigationBar.setColor(color: themeColor)
     }
     
     func nextContent(){
@@ -54,7 +56,7 @@ class QuestionVC: UIViewController{
         }
         if let content = questionManager.getQuestion(){
             let questionView = Bundle.main.loadNibNamed("QuestionView", owner: self, options: nil)!.first as! QuestionView
-            questionView.setupView(parent: self, question: content)
+            questionView.setup(parent: self, question: content)
         }
         else{
             let noContentView = Bundle.main.loadNibNamed("NoContentView", owner: self, options: nil)!.first as! NoContentView

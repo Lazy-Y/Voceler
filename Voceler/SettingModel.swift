@@ -10,7 +10,4 @@ import UIKit
 
 class SettingModel: NSObject {
     var isAnonymous:Bool = false
-    static func getSetting()->SettingModel{
-        return SettingModel()
-    }
 }

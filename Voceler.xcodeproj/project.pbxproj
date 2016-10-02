@@ -14,6 +14,9 @@
 		BA8FEBD41DA05EBA00F23011 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */; };
 		BA8FEBD61DA06AC100F23011 /* NoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBD51DA06AC100F23011 /* NoContentView.swift */; };
 		BA8FEBD81DA06AD100F23011 /* NoContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8FEBD71DA06AD100F23011 /* NoContentView.xib */; };
+		BA8FEBDD1DA08A7E00F23011 /* InProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBDB1DA08A7E00F23011 /* InProgressVC.swift */; };
+		BA8FEBDE1DA08A7E00F23011 /* InProgressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8FEBDC1DA08A7E00F23011 /* InProgressVC.xib */; };
+		BA8FEBE01DA0C7E500F23011 /* InCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBDF1DA0C7E500F23011 /* InCollectionVC.swift */; };
 		BABAD35B1D8A5315002954D2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */; };
 		BABAD35C1D8A5315002954D2 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BABAD3501D8A5315002954D2 /* CollectionViewCell.xib */; };
 		BABAD35D1D8A5315002954D2 /* UIImage+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD3511D8A5315002954D2 /* UIImage+Extended.swift */; };
@@ -76,6 +79,9 @@
 		BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
 		BA8FEBD51DA06AC100F23011 /* NoContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoContentView.swift; sourceTree = "<group>"; };
 		BA8FEBD71DA06AD100F23011 /* NoContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoContentView.xib; sourceTree = "<group>"; };
+		BA8FEBDB1DA08A7E00F23011 /* InProgressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressVC.swift; sourceTree = "<group>"; };
+		BA8FEBDC1DA08A7E00F23011 /* InProgressVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InProgressVC.xib; sourceTree = "<group>"; };
+		BA8FEBDF1DA0C7E500F23011 /* InCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InCollectionVC.swift; sourceTree = "<group>"; };
 		BAB796111D8BB73F0033DEFE /* Voceler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Voceler.entitlements; sourceTree = "<group>"; };
 		BABAD3461D89FC2C002954D2 /* Voceler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Voceler-Bridging-Header.h"; sourceTree = "<group>"; };
 		BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -250,6 +256,8 @@
 				FDA2BA7C1D222A790003633E /* ProfileVC.swift */,
 				FD2148011D375694008A52B9 /* Birthday.swift */,
 				BAC479001D8FBAA800041D94 /* TagsVC.swift */,
+				BA8FEBDB1DA08A7E00F23011 /* InProgressVC.swift */,
+				BA8FEBDF1DA0C7E500F23011 /* InCollectionVC.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -293,6 +301,7 @@
 		FD682A9E1D33044F00D2F4B6 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				BA8FEBDC1DA08A7E00F23011 /* InProgressVC.xib */,
 				BA72F7801D89400A007F9229 /* OptCell.xib */,
 				FD0325281D24E53E002956FD /* UserListCell.xib */,
 				FD682A981D33002500D2F4B6 /* CollectionCell.xib */,
@@ -386,6 +395,7 @@
 				BA8FEBD81DA06AD100F23011 /* NoContentView.xib in Resources */,
 				BA8FEBD41DA05EBA00F23011 /* QuestionView.xib in Resources */,
 				BABAD3681D8A5A12002954D2 /* Images.xcassets in Resources */,
+				BA8FEBDE1DA08A7E00F23011 /* InProgressVC.xib in Resources */,
 				BABAD35C1D8A5315002954D2 /* CollectionViewCell.xib in Resources */,
 				BA72F7811D89400A007F9229 /* OptCell.xib in Resources */,
 				BA72F77F1D893FDA007F9229 /* Main.storyboard in Resources */,
@@ -506,6 +516,7 @@
 				FDA2BA7F1D222BD70003633E /* OptView.swift in Sources */,
 				BABAD35B1D8A5315002954D2 /* CollectionViewCell.swift in Sources */,
 				BABAD3601D8A5315002954D2 /* Repository.swift in Sources */,
+				BA8FEBE01DA0C7E500F23011 /* InCollectionVC.swift in Sources */,
 				FD682A991D33002500D2F4B6 /* CollectionCell.swift in Sources */,
 				FD87D7291D1F8DA900D77DC2 /* Globle.swift in Sources */,
 				FD8A5E531D1F97620068F57A /* CtrlVC.swift in Sources */,
@@ -528,6 +539,7 @@
 				BAD6C0B21D6CF1A600361A93 /* QuestionModel.swift in Sources */,
 				FD1DBB0B1D1A4D9E00E6762D /* AppDelegate.swift in Sources */,
 				BAD6C0AC1D6AB56800361A93 /* TreeViewCell.swift in Sources */,
+				BA8FEBDD1DA08A7E00F23011 /* InProgressVC.swift in Sources */,
 				BABAD3611D8A5315002954D2 /* Presenter.swift in Sources */,
 				FDD344361D1B91980040356A /* LoginVC.swift in Sources */,
 				FD1036DA1D1FB01600AC1FE9 /* CtrlCell.swift in Sources */,

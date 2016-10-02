@@ -22,8 +22,10 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     var liked = false{
         didSet{
-            currUser?.qRef.child(currQuestion!.QID).setValue(liked ? "liked" : nil)
             likeBtn?.setImage(img: liked ? #imageLiteral(resourceName: "star_filled") : #imageLiteral(resourceName: "star"), color: darkRed)
+            if let question = currQuestion{
+                currUser?.collectQuestion(QID: question.QID, like: liked)
+            }
         }
     }
     
@@ -49,12 +51,12 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var askerProfile: UIButton!
     @IBOutlet weak var askerLbl: UILabel!
-    var currQuestion:QuestionModel!
+    var currQuestion:QuestionModel?
     var collectionView:UICollectionView!
     var pullUpMask = UILabel()
     var optArr = [OptionModel]()
     var collectionFooter:MJRefreshBackNormalFooter!
-    var parent:QuestionVC!
+    var parent:UIViewController!
     
     // Actions
     @IBAction func askerInfo(_ sender: AnyObject) {
@@ -62,10 +64,15 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     @IBAction func likeAction(_ sender: AnyObject) {
-        if !liked && currUser!.qCollection.count >= currUser!.qInCollectionLimit{
-            _ = SCLAlertView().showError("Sorry", subTitle: "You are only allowed to have up to \(currUser!.qInCollectionLimit) in collection. Please conclude a question.")
+        if parent is QuestionVC{
+            if !liked && currUser!.qCollection.count >= currUser!.qInCollectionLimit{
+                _ = SCLAlertView().showError("Sorry", subTitle: "You are only allowed to have up to \(currUser!.qInCollectionLimit) in collection. Please conclude a question.")
+            }
+            else{
+                liked = !liked
+            }
         }
-        else{
+        else if parent is InCollectionVC{
             liked = !liked
         }
     }
@@ -82,12 +89,25 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     private func setQuestion(question:QuestionModel){
         currQuestion = question
+        setDescription()
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
+                self.setDescription()
+            }
+        } else {
+            // Fallback on earlier versions
+            _ = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(setDescription), userInfo: nil, repeats: false)
+        }
         collectionView.isUserInteractionEnabled = true
         optArr.removeAll()
         
         collectionView.mj_footer = collectionFooter
         asker = question.qAnonymous ? nil : UserModel.getUser(uid: question.qAskerID, getProfile: true)
-        handler.setText(question.qDescrption, withAnimation: true)
+        if let asker = asker{
+            NotificationCenter.default.addObserver(forName: NSNotification.Name(asker.uid+"username"), object: nil, queue: nil, using: { (noti) in
+                self.askerLbl.text = asker.username
+            })
+        }
         askerLbl.text = asker?.username
         optArr = question.qOptions
         pullUpMask.isHidden = optArr.count > 0
@@ -118,12 +138,10 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         _ = sd_layout().topSpaceToView(parent.view, 0)?.rightSpaceToView(parent.view, 0)?.leftSpaceToView(parent.view, 0)?.bottomSpaceToView(parent.view, 0)
         
         askerProfile.imageView?.contentMode = .scaleAspectFill
-        asker = currUser
 
         _ = titleBarView.addBorder(edges: .bottom, colour: UIColor.gray, thickness: 1.5)
         handler = GrowingTextViewHandler(textView: self.detailTV, withHeightConstraint: self.heightConstraint)
-        handler.updateMinimumNumber(ofLines: 1, andMaximumNumberOfLine: 5)
-        detailTV.isEditable = false
+        handler.updateMinimumNumber(ofLines: 0, andMaximumNumberOfLine: 5)
         askerProfile.board(radius: 20, width: 3, color: UIColor.white)
         likeBtn?.setImage(img: #imageLiteral(resourceName: "star"), color: darkRed)
         initTable()
@@ -168,47 +186,60 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         collectionView.backgroundColor = .white
         
-        let header = MJRefreshNormalHeader(refreshingBlock: {
-            print("refresh")
-            self.currQuestion?.choose()
-            self.parent.nextContent()
-            self.collectionView.mj_header.endRefreshing()
-        })!
-        header.lastUpdatedTimeLabel.isHidden = true
-        header.setTitle("Next question", for: .pulling)
-        header.setTitle("Pull down to get next question", for: .idle)
-        collectionView.mj_header = header
-        
-        collectionFooter = MJRefreshBackNormalFooter(refreshingBlock: {
-            let alert = SCLAlertView()
-            let optionText = alert.addTextView()
-            _ = alert.addButton("Add", action: {
-                if optionText.text == ""{
-                    _ = SCLAlertView().showError("Sorry", subTitle: "Option text cannot be empty.")
-                }
-                else{
-                    self.addOption(text: optionText.text)
-                    self.parent.nextContent()
-                }
-            })
-            _ = alert.showEdit("Another Option", subTitle: "", closeButtonTitle: "Cancel")
-            self.collectionView.mj_footer.endRefreshing()
-        })!
-        collectionFooter.setTitle("Pull to add an option", for: .idle)
-        collectionFooter.setTitle("Add an option", for: .pulling)
+        addHeaderFooter()
     }
     
-    func setDescription(description:String) {
+    private func addHeaderFooter(){
+        if let vc = parent as? QuestionVC{
+            let header = MJRefreshNormalHeader(refreshingBlock: {
+                print("refresh")
+                self.currQuestion?.choose()
+                vc.nextContent()
+                self.collectionView.mj_header.endRefreshing()
+            })!
+            header.lastUpdatedTimeLabel.isHidden = true
+            header.setTitle("Next question", for: .pulling)
+            header.setTitle("Pull down to get next question", for: .idle)
+            collectionView.mj_header = header
+            
+            collectionFooter = MJRefreshBackNormalFooter(refreshingBlock: {
+                let alert = SCLAlertView()
+                let optionText = alert.addTextView()
+                _ = alert.addButton("Add", action: {
+                    if optionText.text == ""{
+                        _ = SCLAlertView().showError("Sorry", subTitle: "Option text cannot be empty.")
+                    }
+                    else{
+                        self.addOption(text: optionText.text)
+                        vc.nextContent()
+                    }
+                })
+                _ = alert.showEdit("Another Option", subTitle: "", closeButtonTitle: "Cancel")
+                self.collectionView.mj_footer.endRefreshing()
+            })!
+            collectionFooter.setTitle("Pull to add an option", for: .idle)
+            collectionFooter.setTitle("Add an option", for: .pulling)
+        }
+    }
+    
+    func setDescription() {
         detailTV.isSelectable = true
-        handler.setText(description, withAnimation: true)
+        handler.setText(currQuestion?.qDescrption, withAnimation: true)
         detailTV.isSelectable = false
     }
     
-    // Override functions
-    func setupView(parent:QuestionVC, question:QuestionModel) {
+    func setup(parent:UIViewController, question:QuestionModel) {
         self.parent = parent
         setupUI()
         setQuestion(question: question)
+    }
+    
+    // Override functions
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if let _ = parent as? InProgressVC{
+            likeBtn?.isHidden = true
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

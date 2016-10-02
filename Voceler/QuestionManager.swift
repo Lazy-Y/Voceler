@@ -53,7 +53,6 @@ class QuestionManager: NSObject {
     
     func loadQuestionContent(qid:String, purpose:String = "QuestionLoaded"){
         _ = FIRDatabase.database().reference().child("Questions").child(qid).child("content").observeSingleEvent(of: .value, with: { (snapshot) in
-//            print(snapshot.value)
             self.collection.append(self.getQuestion(qid: qid, question: snapshot.value as? Dictionary<String, Any>)!)
             if purpose != "QuestionLoaded" || self.collection.count < 2{
                 print(snapshot.value)

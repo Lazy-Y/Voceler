@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // UIVars
@@ -14,8 +15,6 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var table: UITableView!
     
     // FieldVars
-    var inProgArr = ["Foo", "Bar"]
-    var collectionArr = ["Hello world", "FIFA", "Real Madrid", "Cristiano Ronaldo won Euro Champion!"]
     var qInProgressArr = Array<QuestionModel>()
     var qCollectionArr = Array<QuestionModel>()
     
@@ -29,27 +28,45 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         _ = NotificationCenter.default.addObserver(forName: NSNotification.Name("qInProgressLoaded"), object: nil, queue: nil, using:{ (noti) in
             if let dict = noti.object as? Dictionary<String, Any>{
                 let qid = dict["qid"] as! String
-                if currUser!.qInProgress.contains(qid){
-                    let question = questionManager.getQuestion(qid: qid, question: dict)!
-                    self.qInProgressArr.append(question)
-//                    let indexPath = IndexPath(row: self.qInProgressArr.count-1, section: 0)
-//                    self.table.reloadRows(at: [indexPath], with: .automatic)
-                    self.table.reloadData()
-                }
+                print(dict)
+                self.load(qid: qid, dict: dict, inProgress: true)
             }
         })
         _ = NotificationCenter.default.addObserver(forName: NSNotification.Name("qCollectionLoaded"), object: nil, queue: nil, using: { (noti) in
             if let dict = noti.object as? Dictionary<String, Any>{
                 let qid = dict["qid"] as! String
-                if currUser!.qCollection.contains(qid){
-                    let question = questionManager.getQuestion(qid: qid, question: dict)!
-                    self.qCollectionArr.append(question)
-//                    let indexPath = IndexPath(row: self.qCollectionArr.count-1, section: 1)
-//                    self.table.reloadRows(at: [indexPath], with: .automatic)
-                    self.table.reloadData()
-                }
+                self.load(qid: qid, dict: dict, inProgress: false)
             }
         })
+    }
+    
+    func load(qid:String, dict:Dictionary<String, Any>, inProgress:Bool){
+        if inProgress{
+            if currUser!.qInProgress.contains(qid){
+                for question in self.qInProgressArr{
+                    if question.QID == qid{
+                        table.mj_header.endRefreshing()
+                        return
+                    }
+                }
+                let question = questionManager.getQuestion(qid: qid, question: dict)!
+                self.qInProgressArr.append(question)
+            }
+        }
+        else{
+            if currUser!.qCollection.contains(qid){
+                for question in self.qCollectionArr{
+                    if question.QID == qid{
+                        table.mj_header.endRefreshing()
+                        return
+                    }
+                }
+                let question = questionManager.getQuestion(qid: qid, question: dict)!
+                self.qCollectionArr.append(question)
+            }
+        }
+        self.table.reloadData()
+        table.mj_header.endRefreshing()
     }
     
     // Override functions
@@ -61,6 +78,16 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         table.delegate = self
         table.dataSource = self
         table.register(UINib(nibName: "CollectionCell", bundle: nil), forCellReuseIdentifier: "CollectionCell")
+        let header = MJRefreshNormalHeader(refreshingBlock: {
+            currUser?.loadCollectionDetail()
+            if currUser!.qInProgress.isEmpty && currUser!.qCollection.isEmpty{
+                self.table.mj_header.endRefreshing()
+            }
+        })!
+        header.lastUpdatedTimeLabel.isHidden = true
+        header.setTitle("Refresh", for: .pulling)
+        header.setTitle("Pull down to refresh", for: .idle)
+        table.mj_header = header
         loadCollections()
     }
 
@@ -97,38 +124,37 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionCell") as! CollectionCell
-        cell.textLabel?.text = indexPath.section == 0 ? qInProgressArr[indexPath.row].qDescrption : qCollectionArr[indexPath.row].qDescrption
         if indexPath.section == 0{
             cell.starBtn.isHidden = true
+            cell.setup(parent: self, question: qInProgressArr[indexPath.row])
+        }
+        else{
+            cell.starBtn.isHidden = false
+            cell.setup(parent: self, question: qCollectionArr[indexPath.row])
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.cellForRow(at: indexPath)?.isSelected = false
-        let vc = VC(name: "CollectionQuestion") as! QuestionVC
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
-        print("Hello")
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
-            if indexPath.section == 0{
-                self.inProgArr.remove(at: indexPath.row)
-            }
-            else {
-                self.collectionArr.remove(at: indexPath.row)
-            }
-            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        if indexPath.section == 0{
+            let question = qInProgressArr[indexPath.row]
+            let vc = InProgressVC()
+            vc.setup(parent: self, question: question)
+            show(vc, sender: self)
         }
-        return [deleteAction]
+        else{
+            let cell = table.cellForRow(at: indexPath) as! CollectionCell
+            if cell.isStared{
+                let question = qCollectionArr[indexPath.row]
+                let vc = InCollectionVC()
+                vc.setup(parent: self, question: question)
+                show(vc, sender: self)
+            }
+            else{
+                cell.isStared = true
+            }
+        }
     }
     
     override func hasCustomNavigationBar() -> Bool {

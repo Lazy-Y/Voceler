@@ -14,7 +14,11 @@ import FirebaseStorage
 class UserModel: NSObject {
     var uid:String!
     var email = ""
-    var username:String?
+    var username:String?{
+        didSet{
+            NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: uid+"username")))
+        }
+    }
     var ref:FIRDatabaseReference!{
         didSet{
             ref.observe(.value, with:{ (snapshot) in
@@ -113,6 +117,7 @@ class UserModel: NSObject {
                         self.qCollection.append(qid)
                     }
                 }
+                self.loadCollectionDetail()
             }
         })
     }
@@ -124,5 +129,9 @@ class UserModel: NSObject {
         for question in qCollection{
             questionManager.loadQuestionContent(qid: question, purpose: "qCollectionLoaded")
         }
+    }
+    
+    func collectQuestion(QID:String, like:Bool = true){
+        currUser?.qRef.child(QID).setValue(like ? "liked" : nil)
     }
 }

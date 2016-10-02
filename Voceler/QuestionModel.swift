@@ -69,6 +69,17 @@ class QuestionModel: NSObject {
         // Add question to user
         choose(val: "owner")
         currUser!.qRef.child(QID).setValue("In progress")
+        currUser!.qInProgress.append(QID)
+        NotificationCenter.default.post(name: Notification.Name("qInProgressLoaded"), object: toDict())
+    }
+    
+    func toDict()->Dictionary<String,Any>{
+        var dict = Dictionary<String, Any>()
+        dict["qid"] = QID
+        dict["anonymous"] = qAnonymous
+        dict["askerID"] = qAskerID
+        dict["description"] = qDescrption
+        return dict
     }
     
     func addOption(opt:OptionModel){
@@ -81,5 +92,20 @@ class QuestionModel: NSObject {
     
     func choose(val:String = "skipped"){
         qRef.child("Users").child(currUser!.uid).setValue(val)
+    }
+    
+    func conclude(OID:String? = nil){
+        if let OID = OID{
+            qRef.child("content").child("conclusion").setValue(OID)
+        }
+        else{
+            qRef.child("content").child("conclusion").setValue("nil")
+        }
+         FIRDatabase.database().reference().child("Tags").child("all").child(QID).removeValue()
+        currUser?.collectQuestion(QID: QID, like: true)
+    }
+    
+    func removeFromCollection(){
+        currUser?.qRef.child(QID).removeValue()
     }
 }

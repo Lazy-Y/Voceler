@@ -112,7 +112,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                 let vc = VC(name: "Birthday", isNav: false, isCenter: false) as! Birthday
                 vc.text = text
                 vc.textField = textField
-                vc.navigationBar.setColor(color: themeColor)
+//                vc.navigationBar.setColor(color: themeColor)
                 navigationController?.pushViewController(vc, animated: true)
             default:
                 textField.isUserInteractionEnabled = true
@@ -186,16 +186,16 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     }
     
     func setupUI(){
-        navigationController?.navigationBar.setColor(color: .clear)
+        navigationBar.setColor(color: .clear)
         picker.delegate = self
         edgesForExtendedLayout = .top
-        for parent in self.navigationController!.navigationBar.subviews {
-            for childView in parent.subviews {
-                if(childView is UIImageView && !childView.clipsToBounds) {
-                    childView.removeFromSuperview()
-                }
-            }
-        }
+//        for parent in self.navigationController!.navigationBar.subviews {
+//            for childView in parent.subviews {
+//                if(childView is UIImageView && !childView.clipsToBounds) {
+//                    childView.removeFromSuperview()
+//                }
+//            }
+//        }
         title = ""
         usernameTF!.placeholder = "Username"
         usernameTF!.layer.borderColor = UIColor.lightGray.cgColor
@@ -305,8 +305,11 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     // Override functions
     override func viewWillAppear(_ animated: Bool) {
         setEditable()
-        navigationBar.isHidden = false
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLoad() {
@@ -359,5 +362,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         hideKeyboard()
+    }
+    
+    override func hasCustomNavigationBar() -> Bool {
+        return true
     }
 }

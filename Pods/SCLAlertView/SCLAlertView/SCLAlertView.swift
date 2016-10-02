@@ -227,6 +227,10 @@ open class SCLAlertView: UIViewController {
     internal var buttons = [SCLButton]()
     fileprivate var selfReference: SCLAlertView?
     
+    public func hideDefaultButton(){
+        appearance.showCloseButton = false
+    }
+    
     public init(appearance: SCLAppearance) {
         self.appearance = appearance
         super.init(nibName:nil, bundle:nil)

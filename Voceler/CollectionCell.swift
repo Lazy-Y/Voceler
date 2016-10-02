@@ -11,22 +11,55 @@ import SDAutoLayout
 
 class CollectionCell: UITableViewCell {
     @IBOutlet weak var starBtn: UIButton!
+    var timer:Timer?
+    var isStared = true{
+        didSet{
+            setBtn()
+            backgroundColor = (isStared ? .white : .lightGray)
+            if !isStared{
+                if #available(iOS 10.0, *) {
+                    timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+                        self.dislikeThisQuestion()
+                    }
+                } else {
+                    // Fallback on earlier versions
+                    timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(dislikeThisQuestion), userInfo: nil, repeats: false)
+                }
+                textLabel?.text = "deleting..."
+            }
+            else{
+                timer?.invalidate()
+                timer = nil
+                textLabel?.text = question.qDescrption
+            }
+        }
+    }
+    var question:QuestionModel!
+    var parentVC:CollectionVC!
 
     @IBAction func starAction(_ sender: AnyObject) {
         isStared = !isStared
-        setBtn()
+    }
+    
+    func dislikeThisQuestion(){
+        if let index = parentVC.qCollectionArr.index(of: question){
+            parentVC.qCollectionArr.remove(at: index)
+            parentVC.table.reloadData()
+            question.removeFromCollection()
+        }
+        isStared = true
     }
     
     func setBtn() {
-        if isStared{
-            starBtn.setImage(#imageLiteral(resourceName: "star_filled").withRenderingMode(.alwaysTemplate), for: [])
-        }
-        else {
-            starBtn.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysTemplate), for: [])
-        }
+        starBtn.setImage(img: (isStared ? #imageLiteral(resourceName: "star_filled") : #imageLiteral(resourceName: "star")), color: darkRed)
     }
     
-    var isStared = true
+    
+    func setup(parent:CollectionVC, question:QuestionModel){
+        parentVC = parent
+        self.question = question
+        textLabel?.text = question.qDescrption
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

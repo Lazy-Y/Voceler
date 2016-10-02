@@ -76,7 +76,7 @@
                 <outlet property="askerLbl" destination="1vD-7A-Cew" id="nZH-k4-agQ"/>
                 <outlet property="askerProfile" destination="aav-DN-4w3" id="xfE-5t-2TJ"/>
                 <outlet property="detailTV" destination="vGj-Ln-5H7" id="bK6-ZR-03l"/>
-                <outlet property="heightConstraint" destination="c7V-eb-FY2" id="GLf-GT-sXg"/>
+                <outlet property="heightConstraint" destination="c7V-eb-FY2" id="y86-OW-NO3"/>
                 <outlet property="likeBtn" destination="R0A-rl-E9x" id="bHO-Ax-EQv"/>
                 <outlet property="titleBarView" destination="yow-ju-kPI" id="hgA-8M-kF9"/>
                 <outlet property="titlebarHeight" destination="Wl1-8K-Enz" id="dDi-PY-Ojo"/>

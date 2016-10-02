@@ -18,7 +18,7 @@ var currUser:UserModel?{
         currUser?.loadCollection()
     }
 }
-var appSetting = SettingModel.getSetting()
+var appSetting = SettingModel()
 let questionManager = QuestionManager()
 var memoryHandler = MemoryHandler()
 

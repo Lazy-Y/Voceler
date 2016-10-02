@@ -7,6 +7,7 @@
  */
 
 import UIKit
+import SCLAlertView
 
 //protocol CollectionViewCellRender {
 //
@@ -26,6 +27,18 @@ class CollectionViewCell: UICollectionViewCell {
     var parent:QuestionView!
     var offerer:UserModel?
     
+    var option:OptionModel!{
+        didSet{
+            descriptionTextView.text = option.oDescription
+            titleLabel.text = "Like: \(option.oVal)"
+            backgroundImageView.backgroundColor = getRandomColor()
+            if let uid = option.oOfferBy{
+                offerer = UserModel.getUser(uid: uid, getProfile: true)
+                setProfile()
+            }
+        }
+    }
+    
     @IBAction func showAsker(_ sender: AnyObject) {
         offerer?.loadWallImg()
         parent.showUser(user: offerer)
@@ -36,25 +49,29 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func likeAction(_ sender: AnyObject) {
-        if offerer != nil && offerer!.uid == currUser!.uid{
-            concludeQuestion()
-        }
-        else{
+        if let vc = self.parent.parent as? QuestionVC{
             likeBtn.setImage(img: #imageLiteral(resourceName: "like_filled"), color: pinkColor)
             parent.collectionView.isUserInteractionEnabled = false
             titleLabel.text = "Like: \(option.oVal + 1)"
             let optRef = option.oRef
             parent.currQuestion?.choose(val: optRef!.ref.key)
-            optRef?.child("val").observeSingleEvent(of: .value, with: { (snapshot) in
+            optRef!.child("val").observeSingleEvent(of: .value, with: { (snapshot) in
                 let val = (snapshot.value as! Int) + 1
                 optRef?.child("val").setValue(val)
             })
-            self.parent.parent.nextContent()
+            vc.nextContent()
+        }
+        else if let vc = self.parent.parent as? InProgressVC{
+            likeBtn.setImage(img: #imageLiteral(resourceName: "like_filled"), color: pinkColor)
+            vc.conclude(OID: self.option.oRef.key, cell: self)
+        }
+        else if self.parent.parent is InCollectionVC{
+            _ = SCLAlertView().showWarning("Warning", subTitle: "You cannot modify the question in collection")
         }
     }
     
-    func nextQuestion(){
-        self.parent.parent.nextContent()
+    private func nextQuestion(){
+        (self.parent.parent as! QuestionVC).nextContent()
     }
     
     func setProfile(){
@@ -65,18 +82,6 @@ class CollectionViewCell: UICollectionViewCell {
         }
         else if let uid = offerer?.uid{
             NotificationCenter.default.addObserver(self, selector: #selector(setProfile), name: NSNotification.Name(uid + "profile"), object: nil)
-        }
-    }
-    
-    var option:OptionModel!{
-        didSet{
-            descriptionTextView.text = option.oDescription
-            titleLabel.text = "Like: \(option.oVal)"
-            backgroundImageView.backgroundColor = getRandomColor()
-            if let uid = option.oOfferBy{
-                offerer = UserModel.getUser(uid: uid, getProfile: true)
-                setProfile()
-            }
         }
     }
     
