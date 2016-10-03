@@ -24,8 +24,10 @@ import SCLAlertView
 import FirebaseAuth
 import SwiftSpinner
 import FirebaseDatabase
+import GoogleSignIn
+import Firebase
 
-class LoginVC: UIViewController{
+class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     // UIVars
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var emailField: KaedeTextField!
@@ -33,6 +35,7 @@ class LoginVC: UIViewController{
     @IBOutlet weak var loginBtn: BFPaperButton!
     @IBOutlet weak var signupBtn: BFPaperButton!
     @IBOutlet weak var resetBtn: BFPaperButton!
+    @IBOutlet weak var googleLoginBtn: GIDSignInButton!
     
     // FieldVars
     var repassField: UITextField?
@@ -191,10 +194,17 @@ class LoginVC: UIViewController{
         }
     }
     
+    func googleSignIn(){
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+    }
+    
     // Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        googleSignIn()
         initView()
         initUI()
         initNoti()
@@ -219,4 +229,23 @@ class LoginVC: UIViewController{
             currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
         }
     }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error{
+            _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
+        }
+        else{
+            let auth = user.authentication
+            let cred = FIRGoogleAuthProvider.credential(withIDToken: auth!.idToken, accessToken: auth!.accessToken)
+            FIRAuth.auth()?.signIn(with: cred, completion: { (user, error) in
+                if let error = error{
+                    _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
+                }
+                else{
+                    print("Login successfully")
+                }
+            })
+        }
+    }
+
 }

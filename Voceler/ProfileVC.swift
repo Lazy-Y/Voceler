@@ -164,7 +164,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
             self.old_val[self.contentArr.count+1] = self.wallImg.image!
             if self.old_val[self.contentArr.count+2] as? String != self.usernameTF?.text!{
                 self.old_val[self.contentArr.count+2] = self.usernameTF!.text!
-                 self.thisUser?.ref.child("username").setValue(self.usernameTF!.text!)
+                self.thisUser?.ref.child("username").setValue(self.usernameTF!.text!)
             }
         })
         let resp = alert.showNotice("Save", subTitle: "Do you want to save changes?", closeButtonTitle: "Cancel", duration: 0, colorStyle: 0x2866BF, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: SCLAnimationStyle.bottomToTop)

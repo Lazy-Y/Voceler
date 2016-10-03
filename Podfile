@@ -38,7 +38,7 @@ pod 'UIViewController+NavigationBar'
 pod 'IQKeyboardManagerSwift'
 pod 'RATreeView'
 pod 'MJRefresh'
-
+pod 'GoogleSignIn'
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

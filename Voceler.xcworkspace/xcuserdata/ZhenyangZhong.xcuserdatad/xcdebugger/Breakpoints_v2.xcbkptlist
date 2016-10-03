@@ -6,97 +6,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Voceler/CollectionVC.swift"
-            timestampString = "497080516.01998"
+            filePath = "Voceler/LoginVC.swift"
+            timestampString = "497229372.265947"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "loadCollections()"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "googleSignIn()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Voceler.CollectionVC.(loadCollections () -&gt; ()).(closure #2)"
-                  moduleName = "Voceler"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ZhenyangZhong/Desktop/Projects/Voceler-2/Voceler/CollectionVC.swift"
-                  timestampString = "497080516.031115"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Voceler.CollectionVC.(loadCollections () -&gt; ()).(closure #2)"
-                  moduleName = "Voceler"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ZhenyangZhong/Desktop/Projects/Voceler-2/Voceler/CollectionVC.swift"
-                  timestampString = "497080516.034022"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "340">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Voceler/CollectionVC.swift"
-            timestampString = "497080522.796017"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "loadCollections()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Voceler.CollectionVC.(loadCollections () -&gt; ()).(closure #1)"
-                  moduleName = "Voceler"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ZhenyangZhong/Desktop/Projects/Voceler-2/Voceler/CollectionVC.swift"
-                  timestampString = "497080522.807132"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Voceler.CollectionVC.(loadCollections () -&gt; ()).(closure #1)"
-                  moduleName = "Voceler"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ZhenyangZhong/Desktop/Projects/Voceler-2/Voceler/CollectionVC.swift"
-                  timestampString = "497080522.810032"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "340">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
