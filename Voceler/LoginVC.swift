@@ -42,6 +42,8 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     
     // Actions
     @IBAction func gLoginAct(_ sender: AnyObject) {
+        let spinner = SwiftSpinner.show("Login...")
+        spinner.backgroundColor = themeColor
         GIDSignIn.sharedInstance().signIn()
     }
     
@@ -59,9 +61,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
                         let standard = UserDefaults.standard
                         standard.set(self.emailField.text!, forKey: "username")
                         standard.set(self.passwordField.text!, forKey: "password")
-                        currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
-                        drawer.centerViewController = VC(name: "Question")
-                        self.show(drawer, sender: self)
+                        self.login(user: user)
                     }
                     else {
                         _ = SCLAlertView().showError("Sorry", subTitle: "Unable to find the user.")
@@ -100,6 +100,10 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     
     // Functions
     func initUI(){
+        print(UIDevice.current.modelName)
+//        if UIDevice.current.modelName == "iPhone 6s Plus"{
+//            emailField.placeholderFontScale = 1
+//        }
         logoImg.setup(radius: 64)
         emailField.setup(radius: 5)
         passwordField.setup(radius: 5)
@@ -166,6 +170,12 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
         _ = alert.showEdit("Sign up", subTitle: "Please re-enter your password.", closeButtonTitle: "Cancel")
     }
     
+    func login(user:FIRUser){
+        currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
+//        drawer.centerViewController = VC(name: "Question")
+        self.show(drawer, sender: self)
+    }
+    
     func alertClose(){
         if let text = repassField?.text{
             if text != passwordField.text{
@@ -182,14 +192,12 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
                     else if let user = user{
                         let ref = FIRDatabase.database().reference().child("Users").child(user.uid)
                         ref.child("email").setValue(user.email)
-                        currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
                         let alert = SCLAlertView().showSuccess("Success", subTitle: "Signup successfully!")
                         let standard = UserDefaults.standard
                         standard.set(user.email, forKey: "username")
                         standard.set(self.passwordField.text, forKey: "password")
                         alert.setDismissBlock({ 
-                            drawer.centerViewController = VC(name: "Question")
-                            self.show(drawer, sender: self)
+                            self.login(user: user)
                         })
                     }
                     else {
@@ -231,39 +239,43 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         if let user = FIRAuth.auth()?.currentUser{
-            show(drawer, sender: self)
-            currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
+            login(user: user)
         }
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error{
+            _ = SwiftSpinner.hide()
             _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
         }
         else{
             let auth = user.authentication
             let cred = FIRGoogleAuthProvider.credential(withIDToken: auth!.idToken, accessToken: auth!.accessToken)
+            let spinner = SwiftSpinner.show("Login...")
+            spinner.backgroundColor = themeColor
             FIRAuth.auth()?.signIn(with: cred, completion: { (user, error) in
                 print(user?.email)
+                _ = SwiftSpinner.hide()
                 if let error = error{
                     _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
                 }
                 else{
-                    print("Login successfully")
+                    self.login(user: user!)
                 }
             })
         }
     }
     
-    func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
-        
-    }
-    
-    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
-        
-    }
-    
-//    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+//    func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
 //        
 //    }
+//    
+//    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+//        
+//    }
+    
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+        _ = SwiftSpinner.hide()
+        present(viewController, animated: true, completion: nil)
+    }
 }

@@ -11,6 +11,7 @@ import SDAutoLayout
 import BSGridCollectionViewLayout
 import BFPaperButton
 import FirebaseAuth
+import GoogleSignIn
 
 class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     // UIVars
@@ -97,6 +98,7 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == viewsArr.count - 1 {
             try! FIRAuth.auth()?.signOut()
+            GIDSignIn.sharedInstance().signOut()
             dismiss(animated: true, completion: {
                 clearVC()
                 questionManager.clean()
