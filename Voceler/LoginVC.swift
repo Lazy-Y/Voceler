@@ -101,9 +101,9 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     // Functions
     func initUI(){
         print(UIDevice.current.modelName)
-//        if UIDevice.current.modelName == "iPhone 6s Plus"{
-//            emailField.placeholderFontScale = 1
-//        }
+        if UIDevice.current.modelName != "iPhone 6s Plus"{
+            emailField.placeholderFontScale = 1
+        }
         logoImg.setup(radius: 64)
         emailField.setup(radius: 5)
         passwordField.setup(radius: 5)
