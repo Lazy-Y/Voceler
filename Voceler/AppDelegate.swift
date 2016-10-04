@@ -11,7 +11,6 @@ import Firebase
 import IQKeyboardManagerSwift
 import Networking
 import SDAutoLayout
-import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -52,25 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    
-    
-    private func application(application: UIApplication,
-                     openURL url: URL, options: [String: AnyObject]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url as URL!,
-                                                 sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication as! String] as! String!,
-                                                 annotation: options[UIApplicationOpenURLOptionsKey.annotation as! String])
-    }
-    
-    private func application(application: UIApplication,
-                     openURL url: URL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        let options = [UIApplicationOpenURLOptionsKey.sourceApplication.rawValue: sourceApplication as AnyObject,
-                                            UIApplicationOpenURLOptionsKey.annotation.rawValue: annotation!]
-        return GIDSignIn.sharedInstance().handle(url as URL!,
-                                                 sourceApplication: sourceApplication,
-                                                 annotation: annotation)
-    }
-    
-
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

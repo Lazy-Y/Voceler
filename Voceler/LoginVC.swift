@@ -35,12 +35,16 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     @IBOutlet weak var loginBtn: BFPaperButton!
     @IBOutlet weak var signupBtn: BFPaperButton!
     @IBOutlet weak var resetBtn: BFPaperButton!
-    @IBOutlet weak var googleLoginBtn: GIDSignInButton!
+    @IBOutlet weak var googleLoginBtn: UIButton!
     
     // FieldVars
     var repassField: UITextField?
     
     // Actions
+    @IBAction func gLoginAct(_ sender: AnyObject) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
     @IBAction func loginAct(_ sender: AnyObject) {
         if checkEmail(showAlert: true) && checkPassword(showAlert: true){
             let spinner = SwiftSpinner.show("Login...")
@@ -66,11 +70,13 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
             })
         }
     }
+    
     @IBAction func signupAct(_ sender: AnyObject) {
         if checkEmail(showAlert: true) && checkPassword(showAlert: true){
             showConfirmPsw()
         }
     }
+    
     @IBAction func resetAct(_ sender: AnyObject) {
         if let text = emailField.text , text.isEmail(){
             let spinner = SwiftSpinner.show("Processing...")
@@ -195,7 +201,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     }
     
     func googleSignIn(){
-        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()!.options.clientID
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
     }
@@ -238,6 +244,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
             let auth = user.authentication
             let cred = FIRGoogleAuthProvider.credential(withIDToken: auth!.idToken, accessToken: auth!.accessToken)
             FIRAuth.auth()?.signIn(with: cred, completion: { (user, error) in
+                print(user?.email)
                 if let error = error{
                     _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
                 }
@@ -247,5 +254,16 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
             })
         }
     }
-
+    
+    func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
+        
+    }
+    
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        
+    }
+    
+//    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+//        
+//    }
 }
