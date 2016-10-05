@@ -44,6 +44,7 @@ class QuestionManager: NSObject {
     func loadQuestion(qid:String){
         if let uid = currUser?.uid{
             _ = FIRDatabase.database().reference().child("Questions").child(qid).child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                print(snapshot.value)
                 if snapshot.value is NSNull{
                     self.loadQuestionContent(qid: qid)
                 }
@@ -89,6 +90,7 @@ class QuestionManager: NSObject {
     func clean(){
         isLoading = false
         collection.removeAll()
+        questionKeySet.removeAll()
         memoryHandler.imageStorage.removeAll()
     }
 }

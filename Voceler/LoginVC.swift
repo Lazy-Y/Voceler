@@ -104,6 +104,9 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
         if UIDevice.current.modelName != "iPhone 6s Plus"{
             emailField.placeholderFontScale = 1
         }
+        else{
+            emailField.placeholderFontScale = 0.7
+        }
         logoImg.setup(radius: 64)
         emailField.setup(radius: 5)
         passwordField.setup(radius: 5)
@@ -172,7 +175,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     
     func login(user:FIRUser){
         currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
-//        drawer.centerViewController = VC(name: "Question")
+        currUser?.ref.child("email").setValue(user.email)
         self.show(drawer, sender: self)
     }
     
@@ -191,7 +194,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
                     }
                     else if let user = user{
                         let ref = FIRDatabase.database().reference().child("Users").child(user.uid)
-                        ref.child("email").setValue(user.email)
                         let alert = SCLAlertView().showSuccess("Success", subTitle: "Signup successfully!")
                         let standard = UserDefaults.standard
                         standard.set(user.email, forKey: "username")
@@ -222,7 +224,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
         initView()
         initUI()
         initNoti()
-        print(loginBtn.backgroundColor)
         let standard = UserDefaults.standard
         if let username = standard.string(forKey: "username"){
             emailField.text = username
