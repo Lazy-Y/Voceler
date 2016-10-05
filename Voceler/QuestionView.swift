@@ -57,6 +57,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     var optArr = [OptionModel]()
     var collectionFooter:MJRefreshBackNormalFooter!
     var parent:UIViewController!
+    var focusLayout:SFFocusViewLayout!
     
     // Actions
     @IBAction func askerInfo(_ sender: AnyObject) {
@@ -165,13 +166,13 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         currQuestion?.choose(val: opt.oRef.key)
     }
     
-    func initTable() {
+    private func initTable() {
         // Do any additional setup after loading the view.
-        let layout = SFFocusViewLayout()
-        layout.standardHeight = 50
-        layout.focusedHeight = 180
-        layout.dragOffset = 100
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 110), collectionViewLayout: layout)
+        focusLayout = SFFocusViewLayout()
+        focusLayout.standardHeight = 50
+        focusLayout.focusedHeight = 180
+        focusLayout.dragOffset = 100
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 110), collectionViewLayout: focusLayout)
         addSubview(collectionView)
         _ = collectionView.sd_layout()
             .topSpaceToView(detailTV, 0)?
@@ -250,9 +251,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CollectionViewCell
-        cell.option = optArr[indexPath.row]
-        cell.parent = self
-        cell.likeBtn.setImage(img: #imageLiteral(resourceName: "like"), color: pinkColor)
+        cell.setup(parent: self, option: optArr[indexPath.row], indexPath: indexPath)
         return cell
     }
     

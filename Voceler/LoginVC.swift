@@ -101,7 +101,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     // Functions
     func initUI(){
         print(UIDevice.current.modelName)
-        if UIDevice.current.modelName != "iPhone 6s Plus"{
+        if UIDevice.current.modelName == "iPhone 6s Plus"{
             emailField.placeholderFontScale = 1
         }
         else{

@@ -26,6 +26,14 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var likeBtn: UIButton!
     var parent:QuestionView!
     var offerer:UserModel?
+    var indexPath:IndexPath!
+    
+    func setup(parent:QuestionView, option:OptionModel, indexPath:IndexPath){
+        self.parent = parent
+        self.option = option
+        self.indexPath = indexPath
+        likeBtn.setImage(img: #imageLiteral(resourceName: "like"), color: pinkColor)
+    }
     
     var option:OptionModel!{
         didSet{
@@ -49,6 +57,10 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func likeAction(_ sender: AnyObject) {
+        itemLiked()
+    }
+    
+    func itemLiked() {
         if let vc = self.parent.parent as? QuestionVC{
             likeBtn.setImage(img: #imageLiteral(resourceName: "like_filled"), color: pinkColor)
             parent.collectionView.isUserInteractionEnabled = false
@@ -91,6 +103,17 @@ class CollectionViewCell: UICollectionViewCell {
         offererBtn.board(radius: 18, width: 1, color: .white)
         board(radius: 3, width: 1, color: themeColor)
         likeBtn.setImage(img: #imageLiteral(resourceName: "like"), color: pinkColor)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        tap.numberOfTapsRequired = 2
+        addGestureRecognizer(tap)
+        descriptionTextView.isUserInteractionEnabled = false
+    }
+    
+    func doubleTapped(){
+        if parent.collectionView.visibleCells.first == self{
+            itemLiked()
+        }
     }
 
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
