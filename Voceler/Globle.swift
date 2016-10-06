@@ -19,7 +19,7 @@ var currUser:UserModel?{
     }
 }
 var appSetting = SettingModel()
-let questionManager = QuestionManager()
+var questionManager:QuestionManager!
 var memoryHandler = MemoryHandler()
 
 func getVC(name:String) -> UIViewController {

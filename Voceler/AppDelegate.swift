@@ -32,14 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print(JSON)
 //            print(error)
 //        }
-        
-        
 //        let ref = FIRDatabase.database().reference().child("Questions")
 //        ref.queryStarting(atValue: "-KSVI47OyTCRjWnuk4RJ").observeSingleEvent(of: .value, with:
 //            { (snapshot) in
 //                print(snapshot.value)
 //        })
-//        
+//
 //        let arr = ["a","b","c","d"]
 //        ref.child("Array").setValue(arr)
 //        ref.child("Dict").setValue(["hello":"World", "Java":"Python"])

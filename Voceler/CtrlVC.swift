@@ -101,7 +101,7 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             GIDSignIn.sharedInstance().signOut()
             dismiss(animated: true, completion: {
                 clearVC()
-                questionManager.clean()
+//                questionManager.clean()
             })
         }
         else {

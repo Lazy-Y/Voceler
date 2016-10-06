@@ -91,7 +91,7 @@ class QuestionModel: NSObject {
     }
     
     func choose(val:String = "skipped"){
-        qRef.child("Users-v1").child(currUser!.uid).setValue(val)
+        qRef.child("Users").child(currUser!.uid).setValue(val)
     }
     
     func conclude(OID:String? = nil){
