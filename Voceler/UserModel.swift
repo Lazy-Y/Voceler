@@ -87,8 +87,8 @@ class UserModel: NSObject {
     
     static func getUser(uid:String, getWall:Bool = false, getProfile:Bool = false)->UserModel{
         let user = UserModel(uid: uid)
-        let ref = FIRDatabase.database().reference().child("Users").child(uid).child("info")
-        user.storageRef = FIRStorage.storage().reference().child("Users").child(uid)
+        let ref = FIRDatabase.database().reference().child("Users-v1").child(uid).child("info")
+        user.storageRef = FIRStorage.storage().reference().child("Users-v1").child(uid)
         user.setup(ref: ref)
         if getProfile {
             user.loadProfileImg()

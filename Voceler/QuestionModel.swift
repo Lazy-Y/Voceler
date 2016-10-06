@@ -20,7 +20,7 @@ class QuestionModel: NSObject {
     var qViews = 0
     var qPriority:Double = 0.0
     var qRef:FIRDatabaseReference!{
-        return FIRDatabase.database().reference().child("Questions").child(QID)
+        return FIRDatabase.database().reference().child("Questions-v1").child(QID)
     }
     
     init(qid:String, descrpt:String, askerID:String, anonymous:Bool=false, options:[OptionModel]) {
@@ -38,7 +38,7 @@ class QuestionModel: NSObject {
     
     func postQuestion(){
         // Set up question
-        let ref = FIRDatabase.database().reference().child("Questions").childByAutoId()
+        let ref = FIRDatabase.database().reference().child("Questions-v1").childByAutoId()
         QID = ref.key
         let contentRef = ref.child("content")
         ref.setPriority(qPriority)
@@ -56,7 +56,7 @@ class QuestionModel: NSObject {
         
         // Set up tags
 //        ref.child("tags").setValue(qTags)
-        let tagRef = FIRDatabase.database().reference().child("Tags")
+        let tagRef = FIRDatabase.database().reference().child("Tags-v1")
         let allTagRef = tagRef.child("all").child(QID)
         allTagRef.setPriority(qPriority)
         allTagRef.setValue("1")
@@ -91,7 +91,7 @@ class QuestionModel: NSObject {
     }
     
     func choose(val:String = "skipped"){
-        qRef.child("Users").child(currUser!.uid).setValue(val)
+        qRef.child("Users-v1").child(currUser!.uid).setValue(val)
     }
     
     func conclude(OID:String? = nil){
@@ -101,7 +101,7 @@ class QuestionModel: NSObject {
         else{
             qRef.child("content").child("conclusion").setValue("nil")
         }
-         FIRDatabase.database().reference().child("Tags").child("all").child(QID).removeValue()
+         FIRDatabase.database().reference().child("Tags-v1").child("all").child(QID).removeValue()
         currUser?.collectQuestion(QID: QID, like: true)
     }
     

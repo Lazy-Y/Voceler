@@ -141,6 +141,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         askerProfile.imageView?.contentMode = .scaleAspectFill
 
         _ = titleBarView.addBorder(edges: .bottom, colour: UIColor.gray, thickness: 1.5)
+        print(detailTV, heightConstraint)
         handler = GrowingTextViewHandler(textView: self.detailTV, withHeightConstraint: self.heightConstraint)
         handler.updateMinimumNumber(ofLines: 0, andMaximumNumberOfLine: 5)
         askerProfile.board(radius: 20, width: 3, color: UIColor.white)

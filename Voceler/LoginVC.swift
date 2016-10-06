@@ -101,12 +101,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     // Functions
     func initUI(){
         print(UIDevice.current.modelName)
-        if UIDevice.current.modelName == "iPhone 6s Plus"{
-            emailField.placeholderFontScale = 1
-        }
-        else{
-            emailField.placeholderFontScale = 0.7
-        }
         logoImg.setup(radius: 64)
         emailField.setup(radius: 5)
         passwordField.setup(radius: 5)
@@ -179,6 +173,16 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
         self.show(drawer, sender: self)
     }
     
+    func initUserInfo(){
+        let standard = UserDefaults.standard
+        if let username = standard.string(forKey: "username"){
+            emailField.text = username
+            if let password = standard.string(forKey: "password"){
+                passwordField.text = password
+            }
+        }
+    }
+    
     func alertClose(){
         if let text = repassField?.text{
             if text != passwordField.text{
@@ -193,7 +197,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
                         _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
                     }
                     else if let user = user{
-                        let ref = FIRDatabase.database().reference().child("Users").child(user.uid)
                         let alert = SCLAlertView().showSuccess("Success", subTitle: "Signup successfully!")
                         let standard = UserDefaults.standard
                         standard.set(user.email, forKey: "username")
@@ -224,13 +227,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
         initView()
         initUI()
         initNoti()
-        let standard = UserDefaults.standard
-        if let username = standard.string(forKey: "username"){
-            emailField.text = username
-            if let password = standard.string(forKey: "password"){
-                passwordField.text = password
-            }
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -239,6 +235,8 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initUserInfo()
         if let user = FIRAuth.auth()?.currentUser{
             login(user: user)
         }

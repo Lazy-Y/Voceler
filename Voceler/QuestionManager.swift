@@ -19,8 +19,8 @@ class QuestionManager: NSObject {
     
     override init() {
         super.init()
-        ref = FIRDatabase.database().reference().child("Questions")
-        tagsRef = FIRDatabase.database().reference().child("Tags")
+        ref = FIRDatabase.database().reference().child("Questions-v1")
+        tagsRef = FIRDatabase.database().reference().child("Tags-v1")
         self.refreshCollection()
     }
     private func refreshCollection() {
@@ -43,7 +43,7 @@ class QuestionManager: NSObject {
     
     func loadQuestion(qid:String){
         if let uid = currUser?.uid{
-            _ = FIRDatabase.database().reference().child("Questions").child(qid).child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            _ = FIRDatabase.database().reference().child("Questions-v1").child(qid).child("Users-v1").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 print(snapshot.value)
                 if snapshot.value is NSNull{
                     self.loadQuestionContent(qid: qid)
@@ -53,7 +53,7 @@ class QuestionManager: NSObject {
     }
     
     func loadQuestionContent(qid:String, purpose:String = "QuestionLoaded"){
-        _ = FIRDatabase.database().reference().child("Questions").child(qid).child("content").observeSingleEvent(of: .value, with: { (snapshot) in
+        _ = FIRDatabase.database().reference().child("Questions-v1").child(qid).child("content").observeSingleEvent(of: .value, with: { (snapshot) in
             self.collection.append(self.getQuestion(qid: qid, question: snapshot.value as? Dictionary<String, Any>)!)
             if purpose != "QuestionLoaded" || self.collection.count < 2{
                 print(snapshot.value)
@@ -70,7 +70,7 @@ class QuestionManager: NSObject {
             var optArr = [OptionModel]()
             if let opts = question["options"] as? Dictionary<String, Any>{
                 for (key, dict) in opts {
-                    optArr.append(OptionModel(ref: FIRDatabase.database().reference().child("Questions").child(qid).child("content").child("options").child(key) ,dict: dict as! Dictionary<String, Any>))
+                    optArr.append(OptionModel(ref: FIRDatabase.database().reference().child("Questions-v1").child(qid).child("content").child("options").child(key) ,dict: dict as! Dictionary<String, Any>))
                 }
             }
             return QuestionModel(qid: qid, descrpt: question["description"] as! String, askerID: question["askerID"] as! String, anonymous: question["anonymous"] as! Bool, options: optArr)
