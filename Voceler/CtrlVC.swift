@@ -39,17 +39,25 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     // Functions
     func setProfileImg() {
-        if let img = currUser?.profileImg{
+        if let img = currUser?.profileImg, img != #imageLiteral(resourceName: "user-50"){
             profileBtn.setImage(img, for: [])
             profileBtn.imageView?.contentMode = .scaleAspectFill
         }
         else {
+            profileBtn.setImage(img: #imageLiteral(resourceName: "user-50"), color: themeColor)
             NotificationCenter.default.addObserver(self, selector: #selector(setProfileImg), name: NSNotification.Name(FIRAuth.auth()!.currentUser!.uid + "profile"), object: nil)
         }
     }
     
     func setupUI() {
-        profileBtn.board(radius: 32, width: 3, color: themeColor)
+        nameLbl.text = currUser?.username
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("UsernameLoaded"), object: nil, queue: nil, using: { (noti) in
+            if let name = noti.object as? String{
+                self.nameLbl.text = name
+            }
+        })
+        profileBtn.setImage(img: #imageLiteral(resourceName: "user-50"), color: themeColor)
+        profileBtn.board(radius: 32, width: 0, color: themeColor)
         setProfileImg()
         moneyImg.setIcon(img: #imageLiteral(resourceName: "money"), color: themeColor)
         collectionView.register(UINib(nibName: "CtrlCell", bundle: nil), forCellWithReuseIdentifier: "CtrlCell")
@@ -66,6 +74,9 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         wuLbl.text = "I'll regrade your ass ignment!"
         wuLbl.textColor = themeColor
         nameLbl.textColor = themeColor
+        if let name = currUser?.username{
+            nameLbl.text = name
+        }
         amountLbl.textColor = themeColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
     }
@@ -101,7 +112,6 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             GIDSignIn.sharedInstance().signOut()
             dismiss(animated: true, completion: {
                 clearVC()
-//                questionManager.clean()
             })
         }
         else {

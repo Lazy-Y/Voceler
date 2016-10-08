@@ -25,6 +25,9 @@ class UserModel: NSObject {
                 if let userInfo = snapshot.value as? Dictionary<String,String>{
                     self.email = userInfo["email"]!
                     self.username = userInfo["username"]
+                    if self.uid == currUser?.uid{
+                        NotificationCenter.default.post(name: NSNotification.Name("UsernameLoaded"), object: self.username)
+                    }
                     self.infoDic = userInfo
                     if let profileVC = self.profileVC{
                         profileVC.loadUserInfo()
@@ -59,7 +62,7 @@ class UserModel: NSObject {
                     self.profileImg = UIImage(data: data)
                 }
                 else {
-                    self.profileImg = #imageLiteral(resourceName: "logo")
+                    self.profileImg = #imageLiteral(resourceName: "user-50")
                 }
                 memoryHandler.imageStorage[self.uid + "profile"] = self.profileImg
                 NotificationCenter.default.post(name: NSNotification.Name(self.uid + "profile"), object: nil)

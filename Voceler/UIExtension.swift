@@ -45,17 +45,16 @@ extension UIViewController{
     func setProfileItem() {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         btn.addTarget(self, action: #selector(profileClicked), for: .touchUpInside)
-        if let img = currUser?.profileImg {
+        if let img = currUser?.profileImg, img != #imageLiteral(resourceName: "user-50") {
             btn.setImage(img, for: [])
         }
         else{
-            let img = UIImage(named: "logo")!.resize(newWidth: 40)
-            btn.setImage(img, for: [])
+            btn.setImage(img: #imageLiteral(resourceName: "user-50"), color: .white)
             if let uid = FIRAuth.auth()?.currentUser?.uid{
                 NotificationCenter.default.addObserver(self, selector: #selector(setProfileItem), name: NSNotification.Name(uid + "profile"), object: nil)
             }
         }
-        btn.board(radius: 20, width: 3, color: UIColor.white)
+        btn.board(radius: 20, width: 0, color: .black)
         btn.imageView?.contentMode = .scaleAspectFill
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
     }

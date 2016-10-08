@@ -52,7 +52,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     let old_val = NSMutableArray()
     
     // FieldVars
-    let attributeArr = ["What's up", "Region", "Sex", "Birthday"]
+    let attributeArr = ["What's up", "Region", "Sex", "Birthday", "Profession"]
     var contentArr:[NSMutableString] = ["I'll regrade your ass ignment!", "Los Angeles", "Male", "10-06-1995"]
     var editable = true
     private var loadNeeded = 3
@@ -112,7 +112,6 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
                 let vc = VC(name: "Birthday", isNav: false, isCenter: false) as! Birthday
                 vc.text = text
                 vc.textField = textField
-//                vc.navigationBar.setColor(color: themeColor)
                 navigationController?.pushViewController(vc, animated: true)
             default:
                 textField.isUserInteractionEnabled = true
@@ -137,6 +136,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
     private func showSaveAlert(){
         let alert = SCLAlertView()
         _ = alert.addButton("Save", action: {
+            NotificationCenter.default.post(name: NSNotification.Name("UsernameLoaded"), object: self.usernameTF?.text)
             for i in 0..<self.contentArr.count{
                 if self.old_val[i] as! String != self.contentArr[i] as String{
                     self.old_val[i] = self.contentArr[i] as String
@@ -189,13 +189,6 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         navigationBar.setColor(color: .clear)
         picker.delegate = self
         edgesForExtendedLayout = .top
-//        for parent in self.navigationController!.navigationBar.subviews {
-//            for childView in parent.subviews {
-//                if(childView is UIImageView && !childView.clipsToBounds) {
-//                    childView.removeFromSuperview()
-//                }
-//            }
-//        }
         title = ""
         usernameTF!.placeholder = "Username"
         usernameTF!.layer.borderColor = UIColor.lightGray.cgColor
@@ -203,7 +196,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UI
         scroll.delegate = self
         view.backgroundColor = lightGray
         controlView!.backgroundColor = themeColor
-        profileImg.board(radius: 50, width: 3, color: .white)
+        profileImg.board(radius: 50, width: 5, color: .lightGray)
         _ = profileImg.sd_layout().topSpaceToView(wallImg, -70)?.heightIs(100)?.widthIs(100)
         table!.delegate = self
         table!.dataSource = self

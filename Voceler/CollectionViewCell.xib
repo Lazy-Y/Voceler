@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="width" constant="36" id="nt4-Fj-M2h"/>
                                     <constraint firstAttribute="height" constant="36" id="v1G-3b-paH"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="logo"/>
+                                <state key="normal" backgroundImage="user-50"/>
                                 <connections>
                                     <action selector="showAsker:" destination="gTV-IL-0wX" eventType="touchUpInside" id="zcd-UT-H94"/>
                                 </connections>
@@ -95,6 +95,6 @@
     </objects>
     <resources>
         <image name="like" width="25" height="25"/>
-        <image name="logo" width="640" height="610"/>
+        <image name="user-50" width="512" height="512"/>
     </resources>
 </document>

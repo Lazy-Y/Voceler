@@ -153,7 +153,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         _ = titleBarView.addBorder(edges: .bottom, colour: UIColor.gray, thickness: 1.5)
         handler = GrowingTextViewHandler(textView: self.detailTV, withHeightConstraint: self.heightConstraint)
         handler.updateMinimumNumber(ofLines: 0, andMaximumNumberOfLine: 5)
-        askerProfile.board(radius: 20, width: 3, color: UIColor.white)
+        askerProfile.board(radius: 20, width: 0, color: .white)
         likeBtn?.setImage(img: #imageLiteral(resourceName: "star"), color: darkRed)
         initTable()
         

@@ -113,7 +113,7 @@ class CollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        offererBtn.board(radius: 18, width: 1, color: .white)
+        offererBtn.board(radius: 18, width: 0, color: .white)
         board(radius: 3, width: 1, color: themeColor)
         likeBtn.setImage(img: #imageLiteral(resourceName: "like"), color: pinkColor)
         
