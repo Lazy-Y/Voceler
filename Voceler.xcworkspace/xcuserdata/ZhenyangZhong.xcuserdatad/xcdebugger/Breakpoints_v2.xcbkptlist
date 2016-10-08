@@ -6,94 +6,46 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Voceler/QuestionManager.swift"
-            timestampString = "497431130.596874"
+            filePath = "Voceler/CollectionViewCell.swift"
+            timestampString = "497592023.56363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "refreshCollection()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Voceler/QuestionManager.swift"
-            timestampString = "497431116.206675"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "refreshCollection()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Voceler/QuestionManager.swift"
-            timestampString = "497431201.842219"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "loadQuestion(qid:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Voceler/QuestionManager.swift"
-            timestampString = "497431233.395781"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "refreshCollection()"
-            landmarkType = "7">
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "CollectionViewCell"
+            landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Voceler.QuestionManager.(refreshCollection in _939FBA04F4D19CFEFAC5E494C48CDD7C) () -&gt; ()"
+                  symbolName = "Voceler.CollectionViewCell.(option.didset : Swift.ImplicitlyUnwrappedOptional&lt;Voceler.OptionModel&gt;).(closure #1)"
                   moduleName = "Voceler"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ZhenyangZhong/Desktop/Projects/Voceler-2/Voceler/QuestionManager.swift"
-                  timestampString = "497431717.779208"
+                  urlString = "file:///Users/ZhenyangZhong/Desktop/Projects/Voceler-2/Voceler/CollectionViewCell.swift"
+                  timestampString = "497592420.267594"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "236">
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Voceler.QuestionManager.((refreshCollection in _939FBA04F4D19CFEFAC5E494C48CDD7C) () -&gt; ()).(closure #1)"
+                  symbolName = "Voceler.CollectionViewCell.(option.didset : Swift.ImplicitlyUnwrappedOptional&lt;Voceler.OptionModel&gt;).(closure #1).(closure #1)"
                   moduleName = "Voceler"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ZhenyangZhong/Desktop/Projects/Voceler-2/Voceler/QuestionManager.swift"
-                  timestampString = "497431717.781744"
+                  urlString = "file:///Users/ZhenyangZhong/Desktop/Projects/Voceler-2/Voceler/CollectionViewCell.swift"
+                  timestampString = "497592420.269604"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
                   offsetFromSymbolStart = "32">
                </Location>
             </Locations>

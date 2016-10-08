@@ -8,6 +8,7 @@
 
 import UIKit
 import MJRefresh
+import FirebaseDatabase
 
 class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // UIVars
@@ -28,7 +29,6 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         _ = NotificationCenter.default.addObserver(forName: NSNotification.Name("qInProgressLoaded"), object: nil, queue: nil, using:{ (noti) in
             if let dict = noti.object as? Dictionary<String, Any>{
                 let qid = dict["qid"] as! String
-                print(dict)
                 self.load(qid: qid, dict: dict, inProgress: true)
             }
         })

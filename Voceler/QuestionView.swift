@@ -54,7 +54,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     var currQuestion:QuestionModel?
     var collectionView:UICollectionView!
     var pullUpMask = UILabel()
-    var optArr = [OptionModel]()
+//    var optArr = [OptionModel]()
     var collectionFooter:MJRefreshBackNormalFooter!
     var parent:UIViewController!
     var focusLayout:SFFocusViewLayout!
@@ -97,10 +97,21 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             }
         } else {
             // Fallback on earlier versions
-            _ = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(setDescription), userInfo: nil, repeats: false)
+            _ = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(setDescription), userInfo: nil, repeats: false)
         }
         collectionView.isUserInteractionEnabled = true
-        optArr.removeAll()
+        
+        let oRef = question.qRef.child("options")
+        oRef.observe(.childAdded, with: { (snapshot) in
+            if let dict = snapshot.value as? Dictionary<String, Any>{
+                let opt = OptionModel(ref: snapshot.ref, dict: dict)
+                question.qOptions.append(opt)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                self.pullUpMask.isHidden = true
+            }
+        })
         
         collectionView.mj_footer = collectionFooter
         asker = question.qAnonymous ? nil : UserModel.getUser(uid: question.qAskerID, getProfile: true)
@@ -110,13 +121,12 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             })
         }
         askerLbl.text = asker?.username
-        optArr = question.qOptions
-        pullUpMask.isHidden = optArr.count > 0
+        pullUpMask.isHidden = question.qOptions.count > 0
         titlebarHeight.constant = 56
         collectionView.board(radius: 0, width: 1, color: .gray)
         
         collectionView.reloadData()
-        if optArr.count > 0{
+        if question.qOptions.count > 0{
             collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: UICollectionViewScrollPosition.top, animated: false)
         }
         
@@ -141,7 +151,6 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         askerProfile.imageView?.contentMode = .scaleAspectFill
 
         _ = titleBarView.addBorder(edges: .bottom, colour: UIColor.gray, thickness: 1.5)
-        print(detailTV, heightConstraint)
         handler = GrowingTextViewHandler(textView: self.detailTV, withHeightConstraint: self.heightConstraint)
         handler.updateMinimumNumber(ofLines: 0, andMaximumNumberOfLine: 5)
         askerProfile.board(radius: 20, width: 3, color: UIColor.white)
@@ -159,11 +168,10 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     func addOption(text:String){
         let opt = OptionModel(description: text, offerBy: (appSetting.isAnonymous) ? nil : currUser!.uid)
         currQuestion?.addOption(opt: opt)
-        optArr.append(opt)
-        collectionView.reloadData()
+//        collectionView.reloadData()
         //        pullDownMask.isHidden = true
         pullUpMask.isHidden = true
-        collectionView.scrollToItem(at: IndexPath(row: optArr.count-1, section: 0), at: UICollectionViewScrollPosition.top, animated: false)
+//        collectionView.scrollToItem(at: IndexPath(row: optArr.count-1, section: 0), at: UICollectionViewScrollPosition.top, animated: false)
         currQuestion?.choose(val: opt.oRef.key)
     }
     
@@ -194,7 +202,6 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     private func addHeaderFooter(){
         if let vc = parent as? QuestionVC{
             let header = MJRefreshNormalHeader(refreshingBlock: {
-                print("refresh")
                 self.currQuestion?.choose()
                 vc.nextContent()
                 self.collectionView.mj_header.endRefreshing()
@@ -245,20 +252,19 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(collectionView)
-        return optArr.count
+        return currQuestion!.qOptions.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CollectionViewCell
-        cell.setup(parent: self, option: optArr[indexPath.row], indexPath: indexPath)
+        cell.setup(parent: self, option: currQuestion!.qOptions[indexPath.row], indexPath: indexPath)
         return cell
     }
     
     @objc(collectionView:willDisplayCell:forItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        (cell as! CollectionViewCell).option = optArr[indexPath.row]
+        (cell as! CollectionViewCell).option = currQuestion?.qOptions[indexPath.row]
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

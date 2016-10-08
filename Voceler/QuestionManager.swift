@@ -24,7 +24,7 @@ class QuestionManager: NSObject {
         ref = FIRDatabase.database().reference().child("Questions-v1")
         tagsRef = FIRDatabase.database().reference().child("Tags-v1")
         var initialLoading = true
-        tagsRef.child("all").queryLimited(toFirst: 1).observe(.childAdded, with: { (snapshot) in
+        tagsRef.child("all").observe(.childAdded, with: { (snapshot) in
             if !initialLoading{
                 self.size = self.init_size
                 self.refreshCollection()
@@ -35,12 +35,9 @@ class QuestionManager: NSObject {
     private func refreshCollection() {
         if !isLoading{
             isLoading = true
-            print("size befor call back", size)
             tagsRef.child("all").queryOrderedByPriority().queryLimited(toLast: size).observeSingleEvent(of: .value, with: { (snapshot) in
                 if let value = snapshot.value as? Dictionary<String, Any>{
-                    print("value count", value.count, "size", self.size)
                     let setCount = self.questionKeySet.count
-                    print("set count", setCount)
                     
                     // check if the key is checked, if not, add to the set and load the question
                     for (key, _) in value{
@@ -55,7 +52,6 @@ class QuestionManager: NSObject {
                         self.isLoading = false
                         return
                     }
-                    print("set count", setCount, "key set count", self.questionKeySet.count)
                     
                     // if no new question is added into the set, then expand the size and reload data
                     if setCount == self.questionKeySet.count{
@@ -104,12 +100,12 @@ class QuestionManager: NSObject {
     
     func getQuestion(qid: String?, question:Dictionary<String, Any>?)->QuestionModel?{
         if let qid = qid, let question = question{
-            var optArr = [OptionModel]()
-            if let opts = question["options"] as? Dictionary<String, Any>{
-                for (key, dict) in opts {
-                    optArr.append(OptionModel(ref: FIRDatabase.database().reference().child("Questions-v1").child(qid).child("content").child("options").child(key) ,dict: dict as! Dictionary<String, Any>))
-                }
-            }
+            let optArr = [OptionModel]()
+//            if let opts = question["options"] as? Dictionary<String, Any>{
+//                for (key, dict) in opts {
+//                    optArr.append(OptionModel(ref: FIRDatabase.database().reference().child("Questions-v1").child(qid).child("content").child("options").child(key) ,dict: dict as! Dictionary<String, Any>))
+//                }
+//            }
             return QuestionModel(qid: qid, descrpt: question["description"] as! String, askerID: question["askerID"] as! String, anonymous: question["anonymous"] as! Bool, options: optArr)
         }
         else{

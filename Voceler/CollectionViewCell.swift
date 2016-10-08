@@ -8,6 +8,7 @@
 
 import UIKit
 import SCLAlertView
+import FirebaseDatabase
 
 //protocol CollectionViewCellRender {
 //
@@ -38,12 +39,19 @@ class CollectionViewCell: UICollectionViewCell {
     var option:OptionModel!{
         didSet{
             descriptionTextView.text = option.oDescription
-            titleLabel.text = "Like: \(option.oVal)"
+            setNumLikes(num: option.oVal)
             backgroundImageView.backgroundColor = getRandomColor()
             if let uid = option.oOfferBy{
                 offerer = UserModel.getUser(uid: uid, getProfile: true)
                 setProfile()
             }
+            option.oRef.child("val").observe(.value, with: { (snapshot) in
+                DispatchQueue.main.async {
+                    if let num = snapshot.value as? Int{
+                        self.setNumLikes(num: num)
+                    }
+                }
+            })
         }
     }
     
@@ -60,16 +68,21 @@ class CollectionViewCell: UICollectionViewCell {
         itemLiked()
     }
     
+    func setNumLikes(num:Int){
+        titleLabel.text = "Like: \(num)"
+    }
+    
     func itemLiked() {
         if let vc = self.parent.parent as? QuestionVC{
             likeBtn.setImage(img: #imageLiteral(resourceName: "like_filled"), color: pinkColor)
             parent.collectionView.isUserInteractionEnabled = false
-            titleLabel.text = "Like: \(option.oVal + 1)"
             let optRef = option.oRef
             parent.currQuestion?.choose(val: optRef!.ref.key)
-            optRef!.child("val").observeSingleEvent(of: .value, with: { (snapshot) in
-                let val = (snapshot.value as! Int) + 1
-                optRef?.child("val").setValue(val)
+            optRef?.child("val").runTransactionBlock({ (data) -> FIRTransactionResult in
+                if let num = data.value as? Int{
+                    data.value = num + 1
+                }
+                return FIRTransactionResult.success(withValue: data)
             })
             vc.nextContent()
         }

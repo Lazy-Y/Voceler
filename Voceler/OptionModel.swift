@@ -21,7 +21,6 @@ class OptionModel: NSObject {
         else {
             oDescription = description
         }
-        print(oDescription)
         oOfferBy = offerBy
         oVal = val
     }
@@ -31,6 +30,11 @@ class OptionModel: NSObject {
         if let offerBy = dict["offerBy"] as? String{
             oOfferBy = offerBy
         }
-        oVal = dict["val"] as! Int
+        if let val = dict["val"] as? Int{
+            oVal = val
+        }
+        else{
+            oVal = 0
+        }
     }
 }

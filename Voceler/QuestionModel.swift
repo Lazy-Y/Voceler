@@ -48,7 +48,7 @@ class QuestionModel: NSObject {
         contentRef.child("time").setValue(qTime.timeIntervalSince1970)
         ref.child("priority").setValue(qPriority)
         for opt in qOptions{
-            let optRef = contentRef.child("options").childByAutoId()
+            let optRef = ref.child("options").childByAutoId()
             optRef.child("description").setValue(opt.oDescription)
             optRef.child("offerBy").setValue(qAskerID)
             optRef.child("val").setValue(0)
@@ -83,7 +83,7 @@ class QuestionModel: NSObject {
     }
     
     func addOption(opt:OptionModel){
-        let optRef = qRef.child("content").child("options").childByAutoId()
+        let optRef = qRef.child("options").childByAutoId()
         optRef.child("description").setValue(opt.oDescription)
         optRef.child("offerBy").setValue(opt.oOfferBy)
         optRef.child("val").setValue(opt.oVal)

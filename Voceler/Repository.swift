@@ -18,7 +18,6 @@ class Repository: DataSource {
             fatalError("resource file not found")
         }
         let resourcesFromPlist = NSArray(contentsOf: fileURL)!
-        print(resourcesFromPlist)
         return resourcesFromPlist.map { resourceDictionary in
             guard let dictionary = resourceDictionary as? [String : String] else {
                 fatalError("invalid dictionary format")

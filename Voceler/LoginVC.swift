@@ -100,7 +100,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     
     // Functions
     func initUI(){
-        print(UIDevice.current.modelName)
         logoImg.setup(radius: 64)
         emailField.setup(radius: 5)
         passwordField.setup(radius: 5)
@@ -254,7 +253,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
             let spinner = SwiftSpinner.show("Login...")
             spinner.backgroundColor = themeColor
             FIRAuth.auth()?.signIn(with: cred, completion: { (user, error) in
-                print(user?.email)
                 _ = SwiftSpinner.hide()
                 if let error = error{
                     _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
