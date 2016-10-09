@@ -12,6 +12,7 @@ import BSGridCollectionViewLayout
 import BFPaperButton
 import FirebaseAuth
 import GoogleSignIn
+import FBSDKLoginKit
 
 class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     // UIVars
@@ -115,6 +116,8 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         if indexPath.row == viewsArr.count - 1 {
             try! FIRAuth.auth()?.signOut()
             GIDSignIn.sharedInstance().signOut()
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
             dismiss(animated: true, completion: {
                 clearVC()
             })

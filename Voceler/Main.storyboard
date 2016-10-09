@@ -101,7 +101,7 @@
                                     <constraint firstAttribute="width" constant="160" id="oCE-dr-7Oy"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3j-Nf-PCT">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3j-Nf-PCT" customClass="FBSDKLoginButton">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="RLY-Dl-XP1"/>
                                     <constraint firstAttribute="width" constant="40" id="zuM-1k-aH1"/>
@@ -229,7 +229,7 @@
                                     <constraint firstAttribute="width" secondItem="JMF-KM-aOR" secondAttribute="height" multiplier="1:1" id="UAk-GV-Viz"/>
                                 </constraints>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="40455FE3-371D-49A9-A915-7F659EB957F8" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="94998696-4400-4200-BBAB-BDCFEA2F0D43" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CHq-WE-AFu"/>
                                     <constraint firstAttribute="width" secondItem="FcM-1F-ypy" secondAttribute="height" multiplier="1:1" id="Cs5-Mb-8RV"/>
@@ -349,7 +349,7 @@
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-bM-wV8">
                                                         <subviews>
-                                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="40455FE3-371D-49A9-A915-7F659EB957F8" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
+                                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="94998696-4400-4200-BBAB-BDCFEA2F0D43" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
                                                                 <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Vy3-mf-sh0" secondAttribute="height" multiplier="1:1" id="hjN-Wc-liO"/>
@@ -587,10 +587,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="collectCell" id="ZV4-bv-9DX">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZV4-bv-9DX" id="JQY-mX-5hc">
-                                            <frame key="frameInset" width="1000" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -762,7 +762,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="40455FE3-371D-49A9-A915-7F659EB957F8" width="50" height="50">
+        <image name="94998696-4400-4200-BBAB-BDCFEA2F0D43" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

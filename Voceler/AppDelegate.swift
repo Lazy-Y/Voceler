@@ -12,6 +12,7 @@ import IQKeyboardManagerSwift
 import Networking
 import GoogleSignIn
 import SDAutoLayout
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true
-//        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
 //        _ = questionManager.getQuestion()
 //        let networking = Networking(baseURL: "http://45.55.110.230:3000/v1")
@@ -56,9 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
 //        _ = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         print(url)
-        return GIDSignIn.sharedInstance().handle(url,
+        if url.absoluteString.startsWith("com.googleusercontent.apps"){
+            return GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        }
+        else {
+            return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        }
     }
     func application(_ application: UIApplication,
                      open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -85,6 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

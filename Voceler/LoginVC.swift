@@ -26,8 +26,9 @@ import SwiftSpinner
 import FirebaseDatabase
 import GoogleSignIn
 import Firebase
+import FBSDKLoginKit
 
-class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
+class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate{
     // UIVars
     @IBOutlet weak var emailField: KaedeTextField!
     @IBOutlet weak var passwordField: KaedeTextField!
@@ -35,7 +36,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     @IBOutlet weak var signupBtn: BFPaperButton!
     @IBOutlet weak var resetBtn: BFPaperButton!
     @IBOutlet weak var googleLoginBtn: UIButton!
-    @IBOutlet weak var facebookLoginBtn: UIButton!
+    @IBOutlet weak var facebookLoginBtn: FBSDKLoginButton!
     
     // FieldVars
     var repassField: UITextField?
@@ -113,6 +114,9 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
         signupBtn.backgroundColor = btnBGColor
         loginBtn.setTitleColor(themeColor, for: [])
         signupBtn.setTitleColor(themeColor, for: [])
+        
+        facebookLoginBtn.delegate = self
+        facebookLoginBtn.readPermissions = ["public_profile", "email", "name", "gender", "picture", "user_about_me"]
     }
     
     func initNoti(){
@@ -280,5 +284,25 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
         _ = SwiftSpinner.hide()
         present(viewController, animated: true, completion: nil)
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        print("User login")
+        for item in result.grantedPermissions{
+            print(item)
+        }
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if let error = error{
+                _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
+            }
+            else if let user = user{
+                self.login(user: user)
+            }
+        })
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("User logout")
     }
 }

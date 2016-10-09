@@ -11,6 +11,8 @@
 		521B6ADC8DEEA2D69804A5AC /* Pods_Voceler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6436A294F41E6FC8BFCCD4 /* Pods_Voceler.framework */; };
 		BA72F77F1D893FDA007F9229 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA72F77E1D893FDA007F9229 /* Main.storyboard */; };
 		BA72F7811D89400A007F9229 /* OptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA72F7801D89400A007F9229 /* OptCell.xib */; };
+		BA76EDEE1DAA448C0055CA06 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA76EDEC1DAA448C0055CA06 /* FBSDKCoreKit.framework */; };
+		BA76EDEF1DAA448C0055CA06 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA76EDED1DAA448C0055CA06 /* FBSDKLoginKit.framework */; };
 		BA8FEBD21DA05EAE00F23011 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */; };
 		BA8FEBD41DA05EBA00F23011 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */; };
 		BA8FEBD61DA06AC100F23011 /* NoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBD51DA06AC100F23011 /* NoContentView.swift */; };
@@ -78,6 +80,8 @@
 		3E51813FA473779D7B69CD53 /* Pods-QAQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QAQ.release.xcconfig"; path = "Pods/Target Support Files/Pods-QAQ/Pods-QAQ.release.xcconfig"; sourceTree = "<group>"; };
 		BA72F77E1D893FDA007F9229 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BA72F7801D89400A007F9229 /* OptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptCell.xib; sourceTree = "<group>"; };
+		BA76EDEC1DAA448C0055CA06 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		BA76EDED1DAA448C0055CA06 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
 		BA8FEBD51DA06AC100F23011 /* NoContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoContentView.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD2148001D373B07008A52B9 /* BFPaperButton.framework in Frameworks */,
+				BA76EDEE1DAA448C0055CA06 /* FBSDKCoreKit.framework in Frameworks */,
+				BA76EDEF1DAA448C0055CA06 /* FBSDKLoginKit.framework in Frameworks */,
 				521B6ADC8DEEA2D69804A5AC /* Pods_Voceler.framework in Frameworks */,
 				186CBF3ABBFD9DAB6AD8872B /* Pods_QAQ.framework in Frameworks */,
 			);
@@ -161,6 +167,8 @@
 		8D6A22570FF0744EA3138BDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA76EDEC1DAA448C0055CA06 /* FBSDKCoreKit.framework */,
+				BA76EDED1DAA448C0055CA06 /* FBSDKLoginKit.framework */,
 				FD2147FF1D373B07008A52B9 /* BFPaperButton.framework */,
 				BD6436A294F41E6FC8BFCCD4 /* Pods_Voceler.framework */,
 				2182C66C980A16CA1CF236E9 /* Pods_QAQ.framework */,
@@ -674,7 +682,8 @@
 				CODE_SIGN_ENTITLEMENTS = Voceler/Voceler.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FacebookSDKs-iOS-4",
+					"$(PROJECT_DIR)/FBSDKLoginKit",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Voceler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -697,7 +706,8 @@
 				CODE_SIGN_ENTITLEMENTS = Voceler/Voceler.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FacebookSDKs-iOS-4",
+					"$(PROJECT_DIR)/FBSDKLoginKit",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Voceler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
