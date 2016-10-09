@@ -44,7 +44,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLo
     
     // Actions
     @IBAction func fbLoginAct(_ sender: AnyObject) {
-        _ = SwiftSpinner.show("Login...")
+        
     }
     
     @IBAction func gLoginAct(_ sender: AnyObject) {
@@ -293,7 +293,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLo
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("User login")
-        _ = SwiftSpinner.hide()
         if error != nil{
             _ = SCLAlertView().showError("Sorry", subTitle: error.localizedDescription)
         }
