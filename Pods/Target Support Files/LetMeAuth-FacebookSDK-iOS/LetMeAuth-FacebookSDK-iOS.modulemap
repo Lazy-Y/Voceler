@@ -1,0 +1,6 @@
+framework module LetMeAuth_FacebookSDK_iOS {
+  umbrella header "LetMeAuth-FacebookSDK-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

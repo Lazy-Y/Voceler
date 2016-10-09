@@ -1,10 +1,18 @@
 PODS:
   - BFPaperButton (2.0.29):
     - UIColor+BFPaperColors
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - BSGridCollectionViewLayout (1.1.1)
   - DBProfileViewController (2.0.2):
     - FXBlurView (~> 1.6.4)
   - DGElasticPullToRefresh (1.0.3)
+  - Facebook-iOS-SDK (3.24.4):
+    - Bolts (~> 1.2)
   - Firebase/Analytics (3.2.1):
     - FirebaseAnalytics (= 3.2.0)
   - Firebase/Auth (3.2.1):
@@ -56,6 +64,10 @@ PODS:
   - JSQMessagesViewController (7.3.3):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - LetMeAuth (2.0.0)
+  - LetMeAuth-FacebookSDK-iOS (2.0.0):
+    - Facebook-iOS-SDK (~> 3.21)
+    - LetMeAuth (~> 2.0)
   - LTNavigationBar (2.1.2)
   - MJRefresh (3.1.7)
   - MMDrawerController (0.6.0):
@@ -101,6 +113,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - JSBadgeView
   - JSQMessagesViewController
+  - LetMeAuth-FacebookSDK-iOS
   - LTNavigationBar
   - MJRefresh
   - MMDrawerController
@@ -122,9 +135,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   BFPaperButton: 7df738f2e749a9a4edd3e043f0621ee02215e417
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   BSGridCollectionViewLayout: d7304dcb35c6b3b4420c527e9f9b77ff322250f3
   DBProfileViewController: a2da39408911b0a732ac04512e999468d39f0802
   DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
+  Facebook-iOS-SDK: 5a7c414a084708220b72d5fd016f2cf3eb6deda4
   Firebase: 6c80ac28d59d06bfd9152a7b6ea17625ca93183d
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseAuth: 94b851fc345ce98036dfedfdc2eddeaef8fa3b4c
@@ -145,6 +160,8 @@ SPEC CHECKSUMS:
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
   JSQMessagesViewController: 0ee3f80237268192a3e8337fd0d787f1a1bf5a7a
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  LetMeAuth: d6e1aa76633bf8e422c50f5f0eaf674c30f0302b
+  LetMeAuth-FacebookSDK-iOS: c12a0e503a6c80738ff6092ed66d08a5c43d5bb2
   LTNavigationBar: bfc5fc06a83463009b9d99675f2a32dcbb631b00
   MJRefresh: f67f0750d57a4e4ae433da549359ca53b52cdc7d
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
@@ -165,6 +182,6 @@ SPEC CHECKSUMS:
   WZDraggableSwitchHeaderView: 6debb503cc70def6200c45a0b3ecaeb6fb7606c8
   ZFDragableModalTransition: 0d294eaaba6edfcb9839595de765f9ca06a4b524
 
-PODFILE CHECKSUM: 24d9f48586ae3d7341445c89255fb923cebdd2b5
+PODFILE CHECKSUM: 7ad672a0a2eaa505f90ab8d5908eeeed4c4e7ab9
 
 COCOAPODS: 1.1.0.beta.2

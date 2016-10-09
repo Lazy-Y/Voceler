@@ -29,18 +29,22 @@ import Firebase
 
 class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     // UIVars
-    @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var emailField: KaedeTextField!
     @IBOutlet weak var passwordField: KaedeTextField!
     @IBOutlet weak var loginBtn: BFPaperButton!
     @IBOutlet weak var signupBtn: BFPaperButton!
     @IBOutlet weak var resetBtn: BFPaperButton!
     @IBOutlet weak var googleLoginBtn: UIButton!
+    @IBOutlet weak var facebookLoginBtn: UIButton!
     
     // FieldVars
     var repassField: UITextField?
     
     // Actions
+    @IBAction func fbLoginAct(_ sender: AnyObject) {
+        
+    }
+    
     @IBAction func gLoginAct(_ sender: AnyObject) {
         let spinner = SwiftSpinner.show("Login...")
         spinner.backgroundColor = themeColor
@@ -100,14 +104,15 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate{
     
     // Functions
     func initUI(){
-        logoImg.setup(radius: 64)
         emailField.setup(radius: 5)
         passwordField.setup(radius: 5)
         loginBtn.setup(radius: 5)
         signupBtn.setup(radius: 5)
         resetBtn.setup(radius: 5)
-        loginBtn.backgroundColor = themeColor
-        signupBtn.backgroundColor = themeColor
+        loginBtn.backgroundColor = btnBGColor
+        signupBtn.backgroundColor = btnBGColor
+        loginBtn.setTitleColor(themeColor, for: [])
+        signupBtn.setTitleColor(themeColor, for: [])
     }
     
     func initNoti(){

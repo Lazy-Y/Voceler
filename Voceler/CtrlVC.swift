@@ -73,6 +73,11 @@ class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         wuImg.setIcon(img: #imageLiteral(resourceName: "lol-32"), color: themeColor)
         wuLbl.text = "I'll regrade your ass ignment!"
         wuLbl.textColor = themeColor
+        
+        // TODO
+        wuImg.isHidden = true
+        wuLbl.isHidden = true
+        
         nameLbl.textColor = themeColor
         if let name = currUser?.username{
             nameLbl.text = name

@@ -39,6 +39,7 @@ pod 'IQKeyboardManagerSwift'
 pod 'RATreeView'
 pod 'MJRefresh'
 pod 'GoogleSignIn'
+pod 'LetMeAuth-FacebookSDK-iOS'
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
@@ -48,10 +49,10 @@ post_install do |installer|
     end
 end
 
-target 'Voceler' do
+target 'QAQ' do
     # Comment this line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
     
-    # Pods for Voceler
+    # Pods for QAQ
     
 end

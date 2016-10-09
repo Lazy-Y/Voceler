@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Voceler-->
+        <!--QAQ-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -19,12 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="vY9-mY-jrV">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="GgJ-VU-o60"/>
-                                    <constraint firstAttribute="width" secondItem="vY9-mY-jrV" secondAttribute="height" multiplier="1:1" id="XI7-gp-L89"/>
-                                </constraints>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mFA-E2-9gi" customClass="KaedeTextField" customModule="TextFieldEffects">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="B51-go-Yr9"/>
@@ -78,8 +72,8 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGw-O8-qgm">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="7Jm-zx-MMN"/>
-                                    <constraint firstAttribute="height" constant="36" id="mIz-oZ-V6p"/>
+                                    <constraint firstAttribute="width" constant="40" id="7Jm-zx-MMN"/>
+                                    <constraint firstAttribute="height" constant="40" id="mIz-oZ-V6p"/>
                                 </constraints>
                                 <state key="normal" image="google"/>
                                 <connections>
@@ -101,36 +95,54 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QAQ_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eAl-z5-Rvk">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="hau-wW-38I"/>
+                                    <constraint firstAttribute="width" constant="160" id="oCE-dr-7Oy"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3j-Nf-PCT">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="RLY-Dl-XP1"/>
+                                    <constraint firstAttribute="width" constant="40" id="zuM-1k-aH1"/>
+                                </constraints>
+                                <state key="normal" image="facebook-icon"/>
+                                <connections>
+                                    <action selector="fbLoginAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dwj-r0-SBM"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96590465307235718" green="0.44901555776596069" blue="0.32874298095703125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vY9-mY-jrV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="3qh-Va-TpK"/>
+                            <constraint firstItem="k3j-Nf-PCT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="30" id="2L5-3D-7NY"/>
                             <constraint firstItem="ory-dq-nfx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="3yd-87-18g"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="k3j-Nf-PCT" secondAttribute="bottom" constant="20" id="43U-JW-NVZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mGw-O8-qgm" secondAttribute="bottom" constant="20" id="4nJ-M9-SEM"/>
+                            <constraint firstItem="eAl-z5-Rvk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="64r-qK-erX"/>
                             <constraint firstItem="mFA-E2-9gi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="9dm-F0-Ltb"/>
                             <constraint firstItem="ory-dq-nfx" firstAttribute="top" secondItem="jLD-vp-sEX" secondAttribute="bottom" constant="8" id="CSj-GY-Khl"/>
-                            <constraint firstItem="mFA-E2-9gi" firstAttribute="top" secondItem="vY9-mY-jrV" secondAttribute="bottom" constant="30" id="Cn8-r5-uqR"/>
                             <constraint firstItem="oYI-bW-1Rw" firstAttribute="top" secondItem="mFA-E2-9gi" secondAttribute="bottom" constant="10" id="Efu-On-dPq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mFA-E2-9gi" secondAttribute="trailing" constant="20" id="Epc-bE-ens"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jLD-vp-sEX" secondAttribute="trailing" constant="50" id="Gbe-vG-hOV"/>
-                            <constraint firstItem="vY9-mY-jrV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OSg-kW-eDY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ory-dq-nfx" secondAttribute="trailing" constant="50" id="Odp-8e-uqF"/>
                             <constraint firstItem="5Oi-52-GCo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="PIO-ej-Ov4"/>
                             <constraint firstItem="jLD-vp-sEX" firstAttribute="top" secondItem="5Oi-52-GCo" secondAttribute="bottom" constant="8" id="YXK-Ao-eGS"/>
+                            <constraint firstItem="mFA-E2-9gi" firstAttribute="top" secondItem="eAl-z5-Rvk" secondAttribute="bottom" constant="24" id="dhp-1A-mdu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oYI-bW-1Rw" secondAttribute="trailing" constant="20" id="duo-f8-NWg"/>
                             <constraint firstItem="jLD-vp-sEX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="ecM-cH-1ar"/>
+                            <constraint firstItem="eAl-z5-Rvk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="24" id="iTV-zf-60U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5Oi-52-GCo" secondAttribute="trailing" constant="50" id="ma5-gb-KYt"/>
-                            <constraint firstItem="mGw-O8-qgm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pNk-bT-yGx"/>
-                            <constraint firstItem="5Oi-52-GCo" firstAttribute="top" secondItem="oYI-bW-1Rw" secondAttribute="bottom" constant="42" id="tY4-38-Rof"/>
+                            <constraint firstItem="5Oi-52-GCo" firstAttribute="top" secondItem="oYI-bW-1Rw" secondAttribute="bottom" constant="24" id="tY4-38-Rof"/>
                             <constraint firstItem="oYI-bW-1Rw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="wKn-Jo-9dL"/>
+                            <constraint firstItem="mGw-O8-qgm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-30" id="wbU-mH-yQU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Voceler" id="k5l-fn-M2g"/>
+                    <navigationItem key="navigationItem" title="QAQ" id="k5l-fn-M2g"/>
                     <connections>
                         <outlet property="emailField" destination="mFA-E2-9gi" id="bzj-9S-gDh"/>
+                        <outlet property="facebookLoginBtn" destination="k3j-Nf-PCT" id="3Cd-mi-FNT"/>
                         <outlet property="googleLoginBtn" destination="mGw-O8-qgm" id="f9v-sw-6Ud"/>
                         <outlet property="loginBtn" destination="5Oi-52-GCo" id="sWs-YA-DOJ"/>
-                        <outlet property="logoImg" destination="vY9-mY-jrV" id="XTp-An-JwY"/>
                         <outlet property="passwordField" destination="oYI-bW-1Rw" id="cy1-fG-Ge6"/>
                         <outlet property="resetBtn" destination="ory-dq-nfx" id="pqr-Gi-JdJ"/>
                         <outlet property="signupBtn" destination="jLD-vp-sEX" id="cG0-Kb-jPe"/>
@@ -143,7 +155,7 @@
         <!--CtrlVC-->
         <scene sceneID="8w8-Q1-ULa">
             <objects>
-                <viewController storyboardIdentifier="CtrlVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Bf-16-xYp" customClass="CtrlVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CtrlVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Bf-16-xYp" customClass="CtrlVC" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="18q-0D-JKc"/>
                         <viewControllerLayoutGuide type="bottom" id="7ZM-CZ-Sy2"/>
@@ -217,7 +229,7 @@
                                     <constraint firstAttribute="width" secondItem="JMF-KM-aOR" secondAttribute="height" multiplier="1:1" id="UAk-GV-Viz"/>
                                 </constraints>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="55B210DC-5B01-46DB-9FE3-2F3D70A052F2" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="40455FE3-371D-49A9-A915-7F659EB957F8" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-1F-ypy">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CHq-WE-AFu"/>
                                     <constraint firstAttribute="width" secondItem="FcM-1F-ypy" secondAttribute="height" multiplier="1:1" id="Cs5-Mb-8RV"/>
@@ -263,7 +275,7 @@
         <!--Title-->
         <scene sceneID="MWW-Ij-Q3a">
             <objects>
-                <viewController storyboardIdentifier="Question" useStoryboardIdentifierAsRestorationIdentifier="YES" id="84w-yr-X7O" customClass="QuestionVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Question" useStoryboardIdentifierAsRestorationIdentifier="YES" id="84w-yr-X7O" customClass="QuestionVC" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fKZ-PZ-Ppz"/>
                         <viewControllerLayoutGuide type="bottom" id="kKs-8s-5aI"/>
@@ -289,7 +301,7 @@
         <!--Birthday-->
         <scene sceneID="r1m-hd-m3m">
             <objects>
-                <viewController storyboardIdentifier="Birthday" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bud-q0-8Oy" customClass="Birthday" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Birthday" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bud-q0-8Oy" customClass="Birthday" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yad-eY-QnD"/>
                         <viewControllerLayoutGuide type="bottom" id="bHR-lg-eUe"/>
@@ -307,7 +319,7 @@
         <!--ProfileVC-->
         <scene sceneID="Rm5-t0-FOh">
             <objects>
-                <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="szR-mG-dQI" customClass="ProfileVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="szR-mG-dQI" customClass="ProfileVC" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BAK-w4-bcB"/>
                         <viewControllerLayoutGuide type="bottom" id="L5U-aa-xEo"/>
@@ -337,7 +349,7 @@
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2i5-bM-wV8">
                                                         <subviews>
-                                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="55B210DC-5B01-46DB-9FE3-2F3D70A052F2" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
+                                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="40455FE3-371D-49A9-A915-7F659EB957F8" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-mf-sh0">
                                                                 <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Vy3-mf-sh0" secondAttribute="height" multiplier="1:1" id="hjN-Wc-liO"/>
@@ -452,7 +464,7 @@
         <!--TagsVC-->
         <scene sceneID="smX-9f-694">
             <objects>
-                <viewController storyboardIdentifier="Tags" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yb0-FS-XdD" customClass="TagsVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Tags" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yb0-FS-XdD" customClass="TagsVC" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RNc-l2-mmf"/>
                         <viewControllerLayoutGuide type="bottom" id="6hU-86-5E7"/>
@@ -490,7 +502,7 @@
         <!--Ask ProblemVC-->
         <scene sceneID="KNf-2L-6iC">
             <objects>
-                <viewController storyboardIdentifier="Ask Question" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3XZ-G3-JzT" customClass="AskProblemVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Ask Question" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3XZ-G3-JzT" customClass="AskProblemVC" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O8d-ON-Phk"/>
                         <viewControllerLayoutGuide type="bottom" id="5xI-BP-hpi"/>
@@ -556,7 +568,7 @@
         <!--CollectionVC-->
         <scene sceneID="dCc-L8-CPU">
             <objects>
-                <viewController storyboardIdentifier="Collection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JTE-Eh-GAa" customClass="CollectionVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Collection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JTE-Eh-GAa" customClass="CollectionVC" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kuL-Bw-lwi"/>
                         <viewControllerLayoutGuide type="bottom" id="qeO-5Z-w8J"/>
@@ -575,10 +587,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="collectCell" id="ZV4-bv-9DX">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZV4-bv-9DX" id="JQY-mX-5hc">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="1000" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -608,7 +620,7 @@
         <!--SettingsVC-->
         <scene sceneID="NBc-BI-h3q">
             <objects>
-                <viewController storyboardIdentifier="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3CT-9r-mVs" customClass="SettingsVC" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3CT-9r-mVs" customClass="SettingsVC" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RrU-5B-349"/>
                         <viewControllerLayoutGuide type="bottom" id="Tcd-AP-qUS"/>
@@ -640,7 +652,7 @@
         <!--Tags-->
         <scene sceneID="kre-6w-RXt">
             <objects>
-                <viewController storyboardIdentifier="AddTags" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TlI-qa-gel" customClass="TagsController" customModule="Voceler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTags" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TlI-qa-gel" customClass="TagsController" customModule="QAQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dTu-UA-34u"/>
                         <viewControllerLayoutGuide type="bottom" id="72r-PZ-rFq"/>
@@ -750,7 +762,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="55B210DC-5B01-46DB-9FE3-2F3D70A052F2" width="50" height="50">
+        <image name="40455FE3-371D-49A9-A915-7F659EB957F8" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -766,10 +778,11 @@ kQGZAZwBowGrAbgBvQG/AcEBxgHOAdEB1gHeAeEB8wH2AfsAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAA
 AAAAAAAB/Q
 </mutableData>
         </image>
+        <image name="QAQ_icon" width="1618" height="1606"/>
         <image name="WallBG" width="852" height="480"/>
         <image name="ask" width="32" height="32"/>
+        <image name="facebook-icon" width="512" height="512"/>
         <image name="google" width="2000" height="2000"/>
-        <image name="logo" width="640" height="610"/>
         <image name="plus-50" width="50" height="50"/>
         <image name="user-50" width="512" height="512"/>
     </resources>

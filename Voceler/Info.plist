@@ -25,6 +25,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>fb353365331664083</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>com.googleusercontent.apps.877094242191-sqi4aqcb9mbei1lifcefqsnmcl1et018</string>
 			</array>
 		</dict>
@@ -39,6 +47,17 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>353365331664083</string>
+	<key>FacebookDisplayName</key>
+	<string>QAQ</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -49,7 +68,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Used to take a photo</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Used to choose a photo</string>
+	<string>{Human-readable reason for photo access}</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

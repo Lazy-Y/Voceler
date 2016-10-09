@@ -8,11 +8,12 @@
 
 import UIKit
 import MMDrawerController
-let themeColor = UIColor(red: 0, green: 191/256, blue: 1, alpha: 1)//UIColor(red: 0.434777, green: 0.794178, blue: 0.885027, alpha: 1)
+let themeColor = UIColor(red: 0.965, green: 0.447, blue: 0.329, alpha: 1)
 let buttomColor = UIColor(red: 0.694986, green: 0.813917, blue: 0.213036, alpha: 1)
 let pinkColor = UIColor(red: 1, green: 0.3, blue: 0.3, alpha: 1.0)
 let darkRed = UIColor(red: 0.8824, green: 0.0039, blue: 0.2353, alpha: 1.0)
 let lightGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+let btnBGColor = UIColor(red: 0.941, green: 0.98, blue: 1, alpha: 1)
 var currUser:UserModel?{
     didSet{
         currUser?.loadCollection()
