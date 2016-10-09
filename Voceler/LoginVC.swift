@@ -116,7 +116,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLo
         signupBtn.setTitleColor(themeColor, for: [])
         
         facebookLoginBtn.delegate = self
-        facebookLoginBtn.readPermissions = ["public_profile", "email", "name", "gender", "picture", "user_about_me"]
+        facebookLoginBtn.readPermissions = ["public_profile", "email"]
     }
     
     func initNoti(){
@@ -288,9 +288,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLo
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("User login")
-        for item in result.grantedPermissions{
-            print(item)
-        }
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if let error = error{
