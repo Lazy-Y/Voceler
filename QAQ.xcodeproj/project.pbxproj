@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		186CBF3ABBFD9DAB6AD8872B /* Pods_QAQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2182C66C980A16CA1CF236E9 /* Pods_QAQ.framework */; };
-		521B6ADC8DEEA2D69804A5AC /* Pods_Voceler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6436A294F41E6FC8BFCCD4 /* Pods_Voceler.framework */; };
 		BA72F77F1D893FDA007F9229 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA72F77E1D893FDA007F9229 /* Main.storyboard */; };
 		BA72F7811D89400A007F9229 /* OptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA72F7801D89400A007F9229 /* OptCell.xib */; };
 		BA76EDEE1DAA448C0055CA06 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA76EDEC1DAA448C0055CA06 /* FBSDKCoreKit.framework */; };
-		BA76EDEF1DAA448C0055CA06 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA76EDED1DAA448C0055CA06 /* FBSDKLoginKit.framework */; };
 		BA8FEBD21DA05EAE00F23011 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */; };
 		BA8FEBD41DA05EBA00F23011 /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */; };
 		BA8FEBD61DA06AC100F23011 /* NoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBD51DA06AC100F23011 /* NoContentView.swift */; };
@@ -20,6 +18,8 @@
 		BA8FEBDD1DA08A7E00F23011 /* InProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBDB1DA08A7E00F23011 /* InProgressVC.swift */; };
 		BA8FEBDE1DA08A7E00F23011 /* InProgressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8FEBDC1DA08A7E00F23011 /* InProgressVC.xib */; };
 		BA8FEBE01DA0C7E500F23011 /* InCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8FEBDF1DA0C7E500F23011 /* InCollectionVC.swift */; };
+		BA9ED4311DAADA61002CF233 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9ED4301DAADA61002CF233 /* FBSDKLoginKit.framework */; };
+		BA9ED4331DAADBA0002CF233 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9ED4321DAADBA0002CF233 /* Bolts.framework */; };
 		BAA0938F1DAA2B10006F1D72 /* privacy.txt in Resources */ = {isa = PBXBuildFile; fileRef = BAA0938E1DAA2B10006F1D72 /* privacy.txt */; };
 		BAA093911DAA305C006F1D72 /* TextViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA093901DAA305C006F1D72 /* TextViewVC.swift */; };
 		BABAD35B1D8A5315002954D2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAD34F1D8A5315002954D2 /* CollectionViewCell.swift */; };
@@ -81,7 +81,6 @@
 		BA72F77E1D893FDA007F9229 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BA72F7801D89400A007F9229 /* OptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptCell.xib; sourceTree = "<group>"; };
 		BA76EDEC1DAA448C0055CA06 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		BA76EDED1DAA448C0055CA06 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		BA8FEBD11DA05EAE00F23011 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		BA8FEBD31DA05EBA00F23011 /* QuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
 		BA8FEBD51DA06AC100F23011 /* NoContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +88,8 @@
 		BA8FEBDB1DA08A7E00F23011 /* InProgressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressVC.swift; sourceTree = "<group>"; };
 		BA8FEBDC1DA08A7E00F23011 /* InProgressVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InProgressVC.xib; sourceTree = "<group>"; };
 		BA8FEBDF1DA0C7E500F23011 /* InCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InCollectionVC.swift; sourceTree = "<group>"; };
+		BA9ED4301DAADA61002CF233 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		BA9ED4321DAADBA0002CF233 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BAA0938E1DAA2B10006F1D72 /* privacy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privacy.txt; sourceTree = "<group>"; };
 		BAA093901DAA305C006F1D72 /* TextViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewVC.swift; sourceTree = "<group>"; };
 		BAB796111D8BB73F0033DEFE /* Voceler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Voceler.entitlements; sourceTree = "<group>"; };
@@ -153,10 +154,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA9ED4331DAADBA0002CF233 /* Bolts.framework in Frameworks */,
 				FD2148001D373B07008A52B9 /* BFPaperButton.framework in Frameworks */,
 				BA76EDEE1DAA448C0055CA06 /* FBSDKCoreKit.framework in Frameworks */,
-				BA76EDEF1DAA448C0055CA06 /* FBSDKLoginKit.framework in Frameworks */,
-				521B6ADC8DEEA2D69804A5AC /* Pods_Voceler.framework in Frameworks */,
+				BA9ED4311DAADA61002CF233 /* FBSDKLoginKit.framework in Frameworks */,
 				186CBF3ABBFD9DAB6AD8872B /* Pods_QAQ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,11 +168,12 @@
 		8D6A22570FF0744EA3138BDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA9ED4301DAADA61002CF233 /* FBSDKLoginKit.framework */,
 				BA76EDEC1DAA448C0055CA06 /* FBSDKCoreKit.framework */,
-				BA76EDED1DAA448C0055CA06 /* FBSDKLoginKit.framework */,
 				FD2147FF1D373B07008A52B9 /* BFPaperButton.framework */,
 				BD6436A294F41E6FC8BFCCD4 /* Pods_Voceler.framework */,
 				2182C66C980A16CA1CF236E9 /* Pods_QAQ.framework */,
+				BA9ED4321DAADBA0002CF233 /* Bolts.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -343,8 +345,6 @@
 				FD1DBB051D1A4D9E00E6762D /* Resources */,
 				A010AEBFE41EAB9861F2A252 /* [CP] Embed Pods Frameworks */,
 				E078468EFA13A2DADB2F2B97 /* [CP] Copy Pods Resources */,
-				121A7597155DFF0E70894905 /* 📦 Embed Pods Frameworks */,
-				935617E69EB4904AC74299A5 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -428,21 +428,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		121A7597155DFF0E70894905 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Voceler/Pods-Voceler-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5F57B7078AE17EB4159BA709 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,21 +441,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		935617E69EB4904AC74299A5 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Voceler/Pods-Voceler-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		96A5B47E27560AA186A755AF /* [CP] Check Pods Manifest.lock */ = {

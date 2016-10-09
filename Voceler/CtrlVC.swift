@@ -13,6 +13,7 @@ import BFPaperButton
 import FirebaseAuth
 import GoogleSignIn
 import FBSDKLoginKit
+import IQKeyboardManager
 
 class CtrlVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     // UIVars

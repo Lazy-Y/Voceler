@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import IQKeyboardManagerSwift
+import IQKeyboardManager
 import Networking
 import GoogleSignIn
 import SDAutoLayout
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared().isEnabled = true
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
 //        _ = questionManager.getQuestion()

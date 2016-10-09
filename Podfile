@@ -35,11 +35,10 @@ pod 'DBProfileViewController'
 pod 'DGElasticPullToRefresh'
 pod 'LTNavigationBar'
 pod 'UIViewController+NavigationBar'
-pod 'IQKeyboardManagerSwift'
+pod 'IQKeyboardManager'
 pod 'RATreeView'
 pod 'MJRefresh'
 pod 'GoogleSignIn'
-pod 'LetMeAuth-FacebookSDK-iOS'
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

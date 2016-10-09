@@ -1,6 +1,0 @@
-framework module LetMeAuth {
-  umbrella header "LetMeAuth-umbrella.h"
-
-  export *
-  module * { export * }
-}
