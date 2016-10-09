@@ -82,6 +82,17 @@ class QuestionModel: NSObject {
         return dict
     }
     
+    // load to opt array
+    func optArrAdd(option:OptionModel){
+        for opt in qOptions{
+            if opt.oRef.key == option.oRef.key{
+                return
+            }
+        }
+        qOptions.append(option)
+    }
+    
+    // add to database
     func addOption(opt:OptionModel){
         let optRef = qRef.child("options").childByAutoId()
         optRef.child("description").setValue(opt.oDescription)

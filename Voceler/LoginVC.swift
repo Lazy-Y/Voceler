@@ -180,9 +180,9 @@ class LoginVC: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLo
         currUser = UserModel.getUser(uid: user.uid, getWall: true, getProfile: true)
         currUser?.ref.child("email").setValue(user.email)
         currUser?.username = user.displayName
-        if let url = user.photoURL, let data = NSData(contentsOf: url), let img = UIImage(data: data as Data){
-            currUser?.profileImg = img
-        }
+//        if let url = user.photoURL, let data = NSData(contentsOf: url), let img = UIImage(data: data as Data){
+//            currUser?.profileImg = img
+//        }
         questionManager = QuestionManager()
         self.show(drawer, sender: self)
     }

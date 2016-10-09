@@ -105,7 +105,7 @@ class QuestionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         oRef.observe(.childAdded, with: { (snapshot) in
             if let dict = snapshot.value as? Dictionary<String, Any>{
                 let opt = OptionModel(ref: snapshot.ref, dict: dict)
-                question.qOptions.append(opt)
+                question.optArrAdd(option: opt)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
